@@ -12,7 +12,7 @@
 			<div class="barra-loguin">
 			</div>
 				<div class="contenedor-form">
-					<form action="loguin.php" method="POST">
+					<form action="loguin_script.php" method="POST">
 						<input type="text" name="usuario" placeholder="Nombre de usuario">
 						<br>
 						<input type="text" name="pass" placeholder="Contraseña">

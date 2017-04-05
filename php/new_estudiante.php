@@ -1,3 +1,1 @@
-<?php require("../view/cabecera-view.html");?>
-
-<?php require("../view/piedepagina"); ?>
+<?php require("../view/new_estudiantes-view.php") ?>
