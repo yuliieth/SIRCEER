@@ -12,16 +12,23 @@
 	<header>
 		<h1>modulo de administracion</h1>
 		
-		<div class="nav-bar">
+		<!--<div class="nav-bar">
 			<ul>
 				<li><a href="view/login.php">Empecemos</a></li>
 			</ul>
-		</div>
+		</div>-->
 	</header>
 
 
 	<div class="contenedor">
 		
+		<div class="charts admin">
+			charts admin
+		</div>
+		<div class="charts general">
+			charts general
+		</div>
+
 	</div>
 </body>
 <footer>

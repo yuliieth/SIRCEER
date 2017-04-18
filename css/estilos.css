@@ -75,6 +75,14 @@ header h1{
 	padding: 50px 10px;
 }
 
+.charts{
+	padding: 30px;
+	width: 95%;
+	height: 150px;
+	margin-top: 7px;
+	background-color: rgb(151,50,29);
+}
+
 
 footer{
 	margin: auto;
