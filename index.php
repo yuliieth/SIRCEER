@@ -17,6 +17,11 @@
 				<li><a href="admin/index.php">Empecemos</a></li>
 			</ul>
 		</div>
+
+	<div>
+		solo prueba
+	</div>
+
 	</header>
 
 
