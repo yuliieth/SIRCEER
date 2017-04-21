@@ -19,6 +19,16 @@
 		</div>-->
 	</header>
 
+	<div class="wraper-nav">
+	<nav class="menu">
+
+		<ul>
+			<li><a href="#">Gestion estudiantes</a></li>
+			<li><a href="#">Gestion usuarios</a></li>
+			<li><a href="#">Modulo de estadisticas</a></li>
+		</ul>
+	</nav>
+	</div>
 
 	<div class="contenedor">
 		
