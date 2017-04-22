@@ -1,0 +1,1 @@
+<?php require'../view/gestion-estudiantes.view.php' ?>
