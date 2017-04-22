@@ -9,7 +9,7 @@
 <body>
 
 	<header>
-		<h1>modulo de administracion</h1>
+		<h1><a href="index.php">modulo de administracion</a></h1>
 		
 		<!--<div class="nav-bar">
 			<ul>

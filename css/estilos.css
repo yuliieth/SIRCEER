@@ -33,7 +33,7 @@ ul li{
 }
 
 ul li a{
-	color: white;
+	color: #ec1313;
 	text-decoration: none;
 	font-size: 1.2em;
 	padding: 5px;
@@ -99,7 +99,7 @@ header h1{
 }
 
 .menu ul li a{
-	color: black;
+	color: red;
 	font-size: 1.5em;
 	text-decoration: none;
 	display: inline-block;
@@ -110,6 +110,56 @@ header h1{
 	color: white;
 }
 
+/********TABLE GENERAL***********/
+table,tr,td{
+	border-collapse: collapse;
+	vertical-align: top;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+#estructura{
+	height: 600px;
+	width: 100%;
+}
+
+#menu{
+	width: 20%;
+	padding: 1em 2em;
+	background-color: rgb(254,254,254);
+}
+
+#menu ul li{
+	padding: 5px;
+}
+
+
+/********TABLE GENERAL***********/
+.formulario{
+	width: 90%;
+	margin: auto;
+}
+
+
+form{
+	width: 100%;
+	margin: 20px 0;
+	padding: 20px;
+	background-color: rgb(255,255,255);
+	overflow: hidden;
+	border-top: 4px solid #536DFE;
+}
+
+.table-formulario{
+	height: 400px;
+	width: 90%;
+	
+}
+
+.table-formulario td,tr{
+	vertical-align: top;
+
+}
 
 /*******************/
 
