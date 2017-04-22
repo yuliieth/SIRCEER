@@ -23,9 +23,9 @@
 	<nav class="menu">
 
 		<ul>
-			<li><a href="#">Gestion estudiantes</a></li>
-			<li><a href="#">Gestion usuarios</a></li>
-			<li><a href="#">Modulo de estadisticas</a></li>
+			<li><a href="gestion-estudiantes.php">Gestion estudiantes</a></li>
+			<li><a href="gestion-usuarios.php">Gestion usuarios</a></li>
+			<li><a href="modulo-estadistico.php">Modulo de estadisticas</a></li>
 		</ul>
 	</nav>
 	</div>
