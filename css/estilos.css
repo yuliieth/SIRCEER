@@ -33,7 +33,7 @@ ul li{
 }
 
 ul li a{
-	color: #ec1313;
+	color: #fff;
 	text-decoration: none;
 	font-size: 1.2em;
 	padding: 5px;
@@ -90,22 +90,22 @@ header h1{
 	background-color: rgb(254,254,254);
 }
 
-.menu{
+.menu-bar{
 	width: 91%;
 	}
 
-.menu ul{
+.menu-bar ul{
 	padding: 0;
 }
 
-.menu ul li a{
-	color: red;
+.menu-bar ul li a{
 	font-size: 1.5em;
 	text-decoration: none;
 	display: inline-block;
+	color: black;
 }
 
-.menu ul li a:hover{
+.menu-bar ul li a:hover{
 	background-color: rgb(219,55,55);
 	color: white;
 }
@@ -129,8 +129,9 @@ table,tr,td{
 	background-color: rgb(254,254,254);
 }
 
-#menu ul li{
+#menu ul li a{
 	padding: 5px;
+	color: black;
 }
 
 
@@ -144,10 +145,11 @@ table,tr,td{
 form{
 	width: 100%;
 	margin: 20px 0;
-	padding: 20px;
+	padding: 10px;
 	background-color: rgb(255,255,255);
 	overflow: hidden;
-	border-top: 4px solid #536DFE;
+	border-top: 4px solid rgba(227, 84, 96, 1);
+	font-size: 1.7em;
 }
 
 .table-formulario{

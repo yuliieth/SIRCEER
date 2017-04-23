@@ -19,7 +19,7 @@
 	</header>
 
 	<div class="wraper-nav">
-	<nav class="menu">
+	<nav class="menu-bar">
 
 		<ul>
 			<li><a href="gestion-estudiantes.php">Gestion estudiantes</a></li>
