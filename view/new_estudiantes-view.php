@@ -1,38 +1,67 @@
 <?php require("cabecera-admin.php") ?>
 
-<div class="formulario">
+<div class="wrap-formulario">
 
 <!--<table class="table-formulario">-->
-	<form action="new_estudiante.php" method="POST">
-		<tr>
-			<td><input type="text" size="20" name="documento" placeholder="Documento de identidad"></td>
-			<td><input type="text" size="30" name="primer-nombre" placeholder="Primer nombre"></td>
-			<td><input type="text" size="30" name="segundo-nombre" placeholder="Segundo nombre"></td>
-		</tr>
+	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		
-		<tr>
-			<td><input type="text" size="30" name="primer-apellido" placeholder="Primer apellido"></td>
-			<td><input type="text" size="30" name="segundo-apellido" placeholder="Segundo apellido"></td>
-			<td><input type="text" size="30" name="direccion" placeholder="Direccion"></td>
-		</tr>
+			<input type="text" size="20" name="documento" placeholder="Documento de identidad">
+			<input type="text" size="30" name="primer-nombre" placeholder="Primer nombre">
+			<input type="text" size="30" name="segundo-nombre" placeholder="Segundo nombre">
+		
+	
+			<input type="text" size="30" name="primer-apellido" placeholder="Primer apellido">
+			<input type="text" size="30" name="segundo-apellido" placeholder="Segundo apellido">
+			<input type="text" size="30" name="direccion" placeholder="Direccion">
+			<br>
+			<select  name="municipio" id="municipio">
+			  <optgroup label="Risaralda">
+				<option value="pereira">Pereira</option>
+				<option value="dosquebradas">D/Quebradas</option>
+				<option value="santa rosa">Santa rosa</option>
+				<option value="apia">Apia</option>
+				<option value="mistrato">Mistrato</option>
+				<option value="belen de umbria">Belen de umbria</option>
+				<option value="chinchina">Chinchina</option>
+			  </optgroup>
+			</select>		
+		
+			<input type="text" size="30" name="celular" placeholder="Celular">
+			<input type="text" size="30" name="telefono" placeholder="Telefono">
 		
 
-		<tr>
-			<td><input type="text" size="30" name="celular" placeholder="Celular"></td>
-			<td><input type="text" size="30" name="telefono" placeholder="Telefono"></td>
-		</tr>
+	
+			<input type="email" size="30" name="email" placeholder="E-mail">
+			<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento">
+		
 
-		<tr>
-			<td><input type="text" size="30" name="email" placeholder="E-mail"></td>
-			<td><input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento"></td>
-		</tr>
+	
+			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento">
+			<input type="number" size="30" name="estrato" placeholder="Estrato 1-5">
+			<br>
+			<label class="input-redit" for="desplazado">Desplazado</label><input type="checkbox" id="desplazado" value="desplazado" name="desplazado">
+			<label class="input-redit" for="afro">Afrodescendiente</label><input type="checkbox" id="afro" value="afrodescendiente" name="afrodescendiente
+			">
+			<br>
+			<label class="input-redit" for="negros">Negros</label><input type="radio" id="negros" value="negros" name="ojos
+			">
+			<label class="input-redit" for="azules">Azules</label><input type="radio" id="azules" value="azules" name="ojos
+			">
+			<label class="input-redit" for="cafes">Cafes</label><input type="radio" id="cafes" value="cafes" name="ojos
+			">
+			<label class="input-redit" for="marron">Marron</label><input type="radio" id="marron" value="marron" name="ojos
+			">
 
-		<tr>
-			<td><input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento"></td>
-			<td><input type="text" size="30" name="estrato" placeholder="Estrato"></td>
-			<td><input type="text" size="30" name="descendencia" placeholder="Descedencia"></td>
-			<td><input type="submit" value="Enviar"></td>
-		</tr>
+			<div class="input-redit alert error">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.
+			</div>
+
+			<div class="input-redit alert success">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.
+			</div>
+	
+			<input type="submit" name="submit" class="btn btn-primary" value="Enviar">
+		
 
 
 	</form>

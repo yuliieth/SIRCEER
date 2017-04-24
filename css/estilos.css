@@ -135,8 +135,8 @@ table,tr,td{
 }
 
 
-/********TABLE GENERAL***********/
-.formulario{
+/********formulario estiante nuevo***********/
+.wrap-formulario{
 	width: 90%;
 	margin: auto;
 }
@@ -147,9 +147,10 @@ form{
 	margin: 20px 0;
 	padding: 10px;
 	background-color: rgb(255,255,255);
-	overflow: hidden;
+	overflow: hidden;/*Para el efecto del boton ya que le pusimos loat:left*/
 	border-top: 4px solid rgba(227, 84, 96, 1);
-	font-size: 1.7em;
+	box-shadow: 0 2px 3px grey;/*Creamos la sombra: primer parametro:,segundo parametro: grosor abajo,tercer parametro es el grosor*/
+	font-size: 1.0em;
 }
 
 .table-formulario{
@@ -163,6 +164,68 @@ form{
 
 }
 
+
+/*-------estilos imput----------*/
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="checkbox"],
+form input[type="select"]{
+	border: 1px solid #536DFE;
+	border-radius: 4px;
+	padding: 10px;
+	width: 25%;
+	display: inline-block;
+	margin-bottom: 9px;
+	font-size: .4em;
+	color: #141938;
+}
+
+
+form input[type="text"]:focus,
+form input[type="email"]:focus{
+	border: 2px solid rgba(227, 84, 96, 1);
+	padding: 7px;
+}
+
+
+.input-redit{
+	font-size: .5em;
+}
+
+.alert{
+	padding: 1em;
+	border-radius: 2px;
+	margin-bottom: 20px;
+	font-size: .5em;
+	color: white;
+}
+
+.alert.error{
+	background: #F2DEDE;
+	border: 1px solid #A94442;
+	color: #A94442;
+}
+
+.alert.success{
+	background: #4CA450;
+}
+
+.btn,
+form input[type="submit"]{
+	padding: 15px;
+	background: #ED572A;
+	color: #E1E9FA;
+	font-size: .4em;
+	border-radius: 2px;
+	border: none;
+	float: right;
+	cursor: pointer;
+}
+
+form input[type="submit"]:hover{
+	background-color: #E64E19;
+}
 /*******************/
 
 footer{
