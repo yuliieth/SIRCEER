@@ -2,7 +2,7 @@
 	$errores = "";
 
 	if (isset($_POST['submit'])) {
-		$documento = $_POST['documneto'];
+		$documento = $_POST['documento'];
 		$primerNombre = $_POST['primer-nombre'];
 		$segundoNombre = $_POST['segundo-nombre'];
 		$primerApellido = $_POST['primer-apellido'];
@@ -19,6 +19,8 @@
 		$afrodescendiente = $_POST['afrodescendiente'];
 		$ojos = $_POST['ojos'];
 	
+		print_r($_POST);
+
 	}
  ?>
 <?php require("../view/new_estudiantes-view.php") ?>

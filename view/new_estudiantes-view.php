@@ -39,18 +39,19 @@
 			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento">
 			<input type="number" size="30" name="estrato" placeholder="Estrato 1-5">
 			<br>
-			<label class="input-redit" for="desplazado">Desplazado</label><input type="checkbox" id="desplazado" value="desplazado" name="desplazado">
-			<label class="input-redit" for="afro">Afrodescendiente</label><input type="checkbox" id="afro" value="afrodescendiente" name="afrodescendiente
-			">
+			<label class="input-redit" for="desplazado">Desplazado</label>
+			<input type="checkbox" id="desplazado" value="desplazado" name="despla[]">
+			<label class="input-redit" for="afro">Afrodescendiente</label>
+			<input type="checkbox" id="afro" value="afrodescendiente" name="afro[]">
 			<br>
-			<label class="input-redit" for="negros">Negros</label><input type="radio" id="negros" value="negros" name="ojos
-			">
-			<label class="input-redit" for="azules">Azules</label><input type="radio" id="azules" value="azules" name="ojos
-			">
-			<label class="input-redit" for="cafes">Cafes</label><input type="radio" id="cafes" value="cafes" name="ojos
-			">
-			<label class="input-redit" for="marron">Marron</label><input type="radio" id="marron" value="marron" name="ojos
-			">
+			<label class="input-redit" for="negros">Negros</label>
+			<input type="radio" id="negros" value="negros" name="ojos[]">
+			<label class="input-redit" for="azules">Azules</label>
+			<input type="radio" id="azules" value="azules" name="ojos[]">
+			<label class="input-redit" for="cafes">Cafes</label>
+			<input type="radio" id="cafes" value="cafes" name="ojos[]">
+			<label class="input-redit" for="marron">Marron</label>
+			<input type="radio" id="marron" value="marron" name="ojos[]">
 
 			<div class="input-redit alert error">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.
