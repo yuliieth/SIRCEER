@@ -15,8 +15,8 @@
 		$fechaNaci = $_POST['fecha-naci'];
 		$lugarNaci = $_POST['lugar-naci'];
 		$estrato = $_POST['estrato'];
-		$desplazado = $_POST['desplazado'];
-		$afrodescendiente = $_POST['afrodescendiente'];
+		$desplazado = $_POST['despla'];
+		$afrodescendiente = $_POST['afro'];
 		$ojos = $_POST['ojos'];
 	
 		print_r($_POST);

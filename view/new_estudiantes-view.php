@@ -39,10 +39,10 @@
 			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento">
 			<input type="number" size="30" name="estrato" placeholder="Estrato 1-5">
 			<br>
-			<label class="input-redit" for="desplazado">Desplazado</label>
-			<input type="checkbox" id="desplazado" value="desplazado" name="despla[]">
+			<label class="input-redit" for="despla">Desplazado</label>
+			<input type="checkbox" id="despla" value="despla" name="despla[]">
 			<label class="input-redit" for="afro">Afrodescendiente</label>
-			<input type="checkbox" id="afro" value="afrodescendiente" name="afro[]">
+			<input type="checkbox" id="afro" value="afro" name="afro[]">
 			<br>
 			<label class="input-redit" for="negros">Negros</label>
 			<input type="radio" id="negros" value="negros" name="ojos[]">
