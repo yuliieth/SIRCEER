@@ -41,25 +41,30 @@
 			<br>
 
 		 
-			
-			<label class="input-redit" for="desplazado">Desplazado</label>
-			<input type="radio" id="desplazado" value="si" name="despla" checked>
+			<label>Desplazado</label>
+			<label class="input-redit" for="des_si">Si</label>
+			<input type="radio" id="des_si" value="si" name="despla">
+			<label class="input-redit" for="des_no">No</label>
+			<input type="radio" id="des_no" value="no" name="despla" checked>
 		
-			<label class="input-redit" for="afro">Afrodescendiente</label>
-			<input type="radio" id="afro" value="si" name="afro" checked>
-
+			<label>Afrodescendiente</label>
+			<label class="input-redit" for="afro-si">Si</label>
+			<input type="radio" id="afro-si" value="si" name="afro">
+			
+			<label class="input-redit" for="afro-no">No</label>
+			<input type="radio" id="afro-no" value="no" name="afro" checked>
 	
 
 			<br>
 			<label>Color de ojos:</label>
 			<label class="input-redit" for="negros">Negros</label>
-			<input type="radio" id="negros" value="negros" name="ojos[]">
+			<input type="radio" id="negros" value="negros" name="ojos" checked>
 			<label class="input-redit" for="azules">Azules</label>
-			<input type="radio" id="azules" value="azules" name="ojos[]">
+			<input type="radio" id="azules" value="azules" name="ojos">
 			<label class="input-redit" for="cafes">Cafes</label>
-			<input type="radio" id="cafes" value="cafes" name="ojos[]">
+			<input type="radio" id="cafes" value="cafes" name="ojos">
 			<label class="input-redit" for="marron">Marron</label>
-			<input type="radio" id="marron" value="marron" name="ojos[]">
+			<input type="radio" id="marron" value="marron" name="ojos">
 
 			<div class="input-redit alert error">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.

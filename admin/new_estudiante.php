@@ -18,20 +18,17 @@
 		$lugarNaci = $_POST['lugar-naci'];
 		$estrato = $_POST['estrato'];
 
-
-		
 		$desplazado = $_POST['despla'];
 		$afrodescendiente = $_POST['afro'];
-
 		$ojos = $_POST['ojos'];
 	
 		print_r($_POST);
 
 		
 		registrarProductos(
-			$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$direccion,$municipio,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$estrato,$desplazado,$afrodescendiente,$ojos
+			$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos
 			);
-			echo "Error";
+			
 	}else{
 		echo "No se pudo realizar la consulta";
 	}
