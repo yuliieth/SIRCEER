@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="../css/estilos.css">
+	<link rel="stylesheet" href="../css/estilos.loguin.css">
 	<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +12,7 @@
 			<div class="barra-loguin">
 			</div>
 				<div class="contenedor-form">
-					<form action="loguin_script.php" method="POST">
+					<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 						<input type="text" name="usuario" placeholder="Nombre de usuario">
 						<br>
 						<input type="text" name="pass" placeholder="Contraseña">
