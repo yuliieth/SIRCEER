@@ -53,8 +53,19 @@ header h1{
 	font-size: 3em;
 }
 
+.contenedor #features{
+	text-align: center;
+}
 
+/*******************/
+.imagenes-bienvenida{
+	margin: auto;
+	text-align: center;
+}
 
+#img-index{
+	padding: 30px;
+}
 
 /*******************/
 .charts{

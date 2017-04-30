@@ -52,7 +52,7 @@ form input[type="password"]
 
 
 form input[type="text"]:focus,
-form input[type="email"]:focus{
+form input[type="password"]:focus{
 	border: 2px solid rgba(227, 84, 96, 1);
 	padding: 7px;
 }
