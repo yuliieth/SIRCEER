@@ -1,3 +1,12 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-color: rgba(227, 84, 96, 1);
+}
+
 .contenedor{
 	margin: auto;
 	width: 80%;
@@ -13,15 +22,8 @@
 	margin: auto;
 	width: 50%;	
 	height: 300px;
-	background-color: white;
+	background-color: rgb(161,40,40);
 	border-radius: 10px 10px;
-}
-
-.barra-loguin{
-	width: 100%;
-	height: 30%;
-	background-color: rgba(227, 84, 96, 1);
-	border-radius: 10px 10px 10px 10px;
 }
 
 .contenedor-form{
@@ -30,18 +32,27 @@
 	padding: 50px 10px;
 }
 
+
+.contenedor-loguin{
+	border-top: 5px solid #fff;
+}
 .btn,
-form input[type="submit"]{
-	padding: 15px;
-	background: #ED572A;
-	color: #E1E9FA;
+form input[type="text"],
+form input[type="password"]
+{
+	border: 1px solid #536DFE;
+	border-radius: 4px;
+	padding: 10px;
+	width: 65%;
+	display: inline-block;
+	margin-bottom: 9px;
 	font-size: .4em;
-	border-radius: 2px;
-	border: none;
-	float: right;
-	cursor: pointer;
+	color: #141938;
 }
 
-form input[type="submit"]:hover{
-	background-color: #E64E19;
+
+form input[type="text"]:focus,
+form input[type="email"]:focus{
+	border: 2px solid rgba(227, 84, 96, 1);
+	padding: 7px;
 }
