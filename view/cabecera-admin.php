@@ -3,8 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sistema de registro y control estudiantes de risaralda</title>
-	<link rel="stylesheet" href="../css/estilos.css">
+	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">
+	<script type="text/javascript" src="../js/javascript.js"></script>
+	<link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 

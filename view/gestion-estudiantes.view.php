@@ -9,8 +9,13 @@
 				<li><a href="#">Reportes</a></li>
 			</ul>
 		</td>
-		<td id="pagina">Edicion de contenido</td>
+		<td id="pagina">Edicion de contenido
+			
+
+<div id="chartdiv">charts</div>								
+		</td>
 	</tr>
 </table>
 
 <?php require'piedepagina-admin.php' ?>
+
