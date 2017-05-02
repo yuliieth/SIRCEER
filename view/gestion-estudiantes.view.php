@@ -1,5 +1,8 @@
 <?php require 'cabecera-admin.php' ?>
 	<!--mediatek mt6572, cortex A7 CPU-->
+
+
+	
 <table id="estructura">
 	<tr>
 		<td id="menu">&nbsp;

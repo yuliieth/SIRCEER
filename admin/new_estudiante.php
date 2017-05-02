@@ -3,7 +3,7 @@
 	$errores = "";
 
 	if (isset($_POST['submit'])) {
-		echo "entro";
+		
 		$documento = $_POST['documento'];
 		$primerNombre = $_POST['primer-nombre'];
 		$segundoNombre = $_POST['segundo-nombre'];
@@ -21,16 +21,15 @@
 		$desplazado = $_POST['despla'];
 		$afrodescendiente = $_POST['afro'];
 		$ojos = $_POST['ojos'];
+		$genero = $_POST['genero'];
 	
 		print_r($_POST);
 
 		
 		registrarProductos(
-			$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos
+			$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero
 			);
 			
-	}else{
-		echo "No se pudo realizar la consulta";
 	}
  ?>
 <?php require("../view/new_estudiantes-view.php") ?>

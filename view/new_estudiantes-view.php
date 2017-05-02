@@ -53,7 +53,16 @@
 			
 			<label class="input-redit" for="afro-no">No</label>
 			<input type="radio" id="afro-no" value="no" name="afro" checked>
-	
+			
+
+
+
+			<label>Genero</label>
+			<label class="input-redit" for="femenino">Mujer</label>
+			<input type="radio" id="femenino" value="femenino" name="genero">
+			<label class="input-redit" for="masculino">Hombre</label>
+			<input type="radio" id="masculino" value="masculino" name="genero" checked>
+		
 
 			<br>
 			<label>Color de ojos:</label>

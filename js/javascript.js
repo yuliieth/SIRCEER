@@ -1,7 +1,9 @@
 var chart = AmCharts.makeChart("chartdiv", {
 	"type": "serial",
+	"dataProvider: "data.ph",
      "theme": "light",
-	"categoryField": "year",
+	}
+	"categoryField": "Año",
 	"rotate": true,
 	"startDuration": 1,
 	"categoryAxis": {
@@ -42,29 +44,29 @@ var chart = AmCharts.makeChart("chartdiv", {
 	"titles": [],
 	"dataProvider": [
 		{
-			"year": 2013,
+			"Año": 2013,
 			"Mujer": 23.5,
 			"Hombre": 18.1
 		},
 		{
-			"year": 2014,
+			"Año": 2014,
 			"Mujer": 26.2,
 			"Hombre": 22.8
 		},
 		{
-			"year": 2015,
+			"Año": 2015,
 			"Mujer": 30.1,
 			"Hombre": 23.9
 		},
 		{
-			"year": 2016,
+			"Año": 2016,
 			"Mujer": 29.5,
 			"Hombre": 25.1
 		},
 		{
-			"year": 2017,
+			"Año": 2017,
 			"Mujer": 24.6,
-			"expenses": 25
+			"Hombre": 25
 		}
 	],
     "export": {

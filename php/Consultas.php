@@ -8,7 +8,7 @@
 			$telefono,$email,$fechaNaci,
 			$lugarNaci,$direccion,
 			$municipio,$estrato,$desplazado,
-			$afro,$ojos
+			$afro,$ojos,$genero
 			)
 		{
 			echo "Entro a registrar";
@@ -20,7 +20,7 @@
 
 			try {
 			var_dump($conexion);
-			$sql = ("INSERT INTO estudiantes values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_nacimiento,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos)"
+			$sql = ("INSERT INTO estudiantes   (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_nacimiento, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_nacimiento,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero)"
 				);
 
 			$statement = $conexion->prepare($sql);
@@ -41,12 +41,13 @@
 					 $statement->bindParam( ':desplazado' , $desplazado);
 					 $statement->bindParam( ':afrodescendiente' , $afro);
 					 $statement->bindParam( ':ojos' , $ojos);
+					 $statement->bindParam( ':genero' , $genero);
 
 			 $result= $statement->execute();
-			echo "Antes del fetch";
-			//$result->fetchAll();
-			//$resultado = $statement->fetchAll();
-			var_dump($result);
+			
+			if ($result !== null) {
+				header("Location:new_estudiante.php");
+			}
 
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	
