@@ -8,7 +8,7 @@
 			$telefono,$email,$fechaNaci,
 			$lugarNaci,$direccion,
 			$municipio,$estrato,$desplazado,
-			$afro,$ojos,$genero
+			$afro,$ojos,$genero,$fecha_registro
 			)
 		{
 			echo "Entro a registrar";
@@ -20,7 +20,7 @@
 
 			try {
 			var_dump($conexion);
-			$sql = ("INSERT INTO estudiantes   (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_nacimiento, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_nacimiento,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero)"
+			$sql = ("INSERT INTO estudiantes   (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_nacimiento, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_nacimiento,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro)"
 				);
 
 			$statement = $conexion->prepare($sql);
@@ -42,6 +42,7 @@
 					 $statement->bindParam( ':afrodescendiente' , $afro);
 					 $statement->bindParam( ':ojos' , $ojos);
 					 $statement->bindParam( ':genero' , $genero);
+					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
 
 			 $result= $statement->execute();
 			

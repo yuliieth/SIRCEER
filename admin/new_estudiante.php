@@ -22,12 +22,12 @@
 		$afrodescendiente = $_POST['afro'];
 		$ojos = $_POST['ojos'];
 		$genero = $_POST['genero'];
-	
-		print_r($_POST);
+		$fecha_registro = date("Y");
+		
 
 		
 		registrarProductos(
-			$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero
+			$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro
 			);
 			
 	}
