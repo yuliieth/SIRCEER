@@ -10,7 +10,7 @@
 <body>
 	<div class="contenedor">
 		<div class="contenedor-loguin">
-				<div class="contenedor-form">
+				
 					<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="frm-login">
 					<i class="fa fa-user-circle-o" aria-hidden="true"></i>
 						<input type="text" name="usuario" placeholder="Nombre de usuario">
@@ -22,6 +22,6 @@
 					</form>
 			</div>
 		
-	</div>
+	
 </body>
 </html>

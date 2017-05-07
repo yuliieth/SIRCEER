@@ -4,7 +4,7 @@
 }
 
 body{
-	background-color: rgba(227, 84, 96, 1);
+	background-color: rgba(254,254, 254);
 }
 
 .contenedor{
@@ -20,30 +20,26 @@ body{
 /*LOGUIN*/
 .contenedor-loguin{
 	margin: auto;
-	width: 50%;	
-	height: 300px;
-	background-color: rgb(161,40,40);
-	
+	width: 40%;	
+	height: 242px;
 }
 
-.contenedor-form{
-	margin: auto;
-	width: 50%;
-	padding: 50px 10px;
+.frm-login{
+	margin-top: 50px;
+	padding: 80Px 20px;
+	text-align: center;
+	background-color: #42e599;
 }
 
 
-.contenedor-loguin{
-	border-top: 5px solid #fff;
-}
 .btn,
 form input[type="text"],
 form input[type="password"]
 {
 	border: 1px solid #536DFE;
 	border-radius: 4px;
-	padding: 10px;
-	width: 65%;
+	padding: 5px;
+	width: 50%;
 	display: inline-block;
 	margin-bottom: 9px;
 	font-size: .4em;
