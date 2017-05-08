@@ -3,6 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sistema de registro y control estudiantes de risaralda</title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
 	<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">
 	<link rel="stylesheet" href="../css/estilos.css">
 </head>
