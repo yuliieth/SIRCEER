@@ -39,22 +39,41 @@
 			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento">
 			<input type="number" size="30" name="estrato" placeholder="Estrato 1-5">
 			<br>
-	
-	
-			<label class="input-redit" for="desplazado">Desplazado</label>
-			<input type="radio" id="desplazado" value="desplazado" name="despla[]">
-			<label class="input-redit" for="afro">Afrodescendiente</label>
-			<input type="radio" id="afro" value="afrodescendiente" name="afro[]">
-	
+
+		 
+			<label>Desplazado</label>
+			<label class="input-redit" for="des_si">Si</label>
+			<input type="radio" id="des_si" value="si" name="despla">
+			<label class="input-redit" for="des_no">No</label>
+			<input type="radio" id="des_no" value="no" name="despla" checked>
+		
+			<label>Afrodescendiente</label>
+			<label class="input-redit" for="afro-si">Si</label>
+			<input type="radio" id="afro-si" value="si" name="afro">
+			
+			<label class="input-redit" for="afro-no">No</label>
+			<input type="radio" id="afro-no" value="no" name="afro" checked>
+			
+
+
+
+			<label>Genero</label>
+			<label class="input-redit" for="femenino">Mujer</label>
+			<input type="radio" id="femenino" value="femenino" name="genero">
+			<label class="input-redit" for="masculino">Hombre</label>
+			<input type="radio" id="masculino" value="masculino" name="genero" checked>
+		
+
 			<br>
+			<label>Color de ojos:</label>
 			<label class="input-redit" for="negros">Negros</label>
-			<input type="radio" id="negros" value="negros" name="ojos[]">
+			<input type="radio" id="negros" value="negros" name="ojos" checked>
 			<label class="input-redit" for="azules">Azules</label>
-			<input type="radio" id="azules" value="azules" name="ojos[]">
+			<input type="radio" id="azules" value="azules" name="ojos">
 			<label class="input-redit" for="cafes">Cafes</label>
-			<input type="radio" id="cafes" value="cafes" name="ojos[]">
+			<input type="radio" id="cafes" value="cafes" name="ojos">
 			<label class="input-redit" for="marron">Marron</label>
-			<input type="radio" id="marron" value="marron" name="ojos[]">
+			<input type="radio" id="marron" value="marron" name="ojos">
 
 			<div class="input-redit alert error">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.

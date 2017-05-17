@@ -1,0 +1,1 @@
+<?php require '../view/modulo-estadistico.view.php' ?>
