@@ -48,8 +48,9 @@
 		<td id="menu">&nbsp;
 			<ul>
 				<li><a href="../admin/new_estudiante.php">Nuevo</a></li>
-				<li><a href="#">Buscar</a></li>
-				<li><a href="#">Reportes</a></li>
+				<li><a href="../admin/buscar_estudiantes.php">Buscar</a></li>
+				<li><a href="../admin/reportes.php">Reportes</a></li>
+				<li><a href="../admin/estadisticas.php">Estadisticas</a></li>
 			</ul>
 		</td>
 		<td id="pagina">Edicion de contenido>

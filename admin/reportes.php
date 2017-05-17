@@ -1,0 +1,1 @@
+<?php require("../view/reportes.view.php") ?>

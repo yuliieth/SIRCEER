@@ -1,2 +1,2 @@
-<?php require("../view/buscar_estudiantes-view.php") ?>
+<?php require("../view/buscar_estudiantes.view.php") ?>
 
