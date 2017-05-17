@@ -68,7 +68,7 @@ Highcharts.chart('container', {
         type: 'area'
     },
     title: {
-        text: 'Historic and Estimated Departement Population Distribution by sexo'
+        text: 'Historico y estimacion estudiantes por genero'
     },
     subtitle: {
         text: 'Source: Gobernacion de Risaralda'
