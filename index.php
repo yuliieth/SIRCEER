@@ -35,7 +35,17 @@
 	</div>
 </body>
 <footer>
+
+	
 	<p>Todos los derechos reservados</p>
 	<p>Gobernacion de risaralda °2017</p>
+
+	<ul>
+		<li><img src="imagenes/gobernacion.PNG" alt="gobernacion" height="100" width="100"><a href="#"></a></li>
+		<li><img src="imagenes/pereira-escudo.PNG" alt="Pereira" height="100" width="100" alt=""><a href="#"></a></li>
+		<li><img src="imagenes/colombia.jpg" alt="Colombia" height="100" width="100" alt=""><a href="#"></a></li>
+	</ul>
+	
+
 </footer>
 </html>

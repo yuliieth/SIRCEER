@@ -1,6 +1,6 @@
 <?php require 'cabecera-admin.php' ?>
-<?php require_once '../php/Conexion.php' ?>
-	<!--mediatek mt6572, cortex A7 CPU-->
+<?php /*Este require debe moverse a su archivo paralelo*/ require_once '../php/Conexion.php' ?>
+	
 
 
 	<?php 
@@ -49,8 +49,8 @@
 			<ul>
 				<li><a href="../admin/new_estudiante.php">Nuevo</a></li>
 				<li><a href="../admin/buscar_estudiantes.php">Buscar</a></li>
-				<li><a href="../admin/reportes.php">Reportes</a></li>
-				<li><a href="../admin/estadisticas.php">Estadisticas</a></li>
+				<li><a href="../admin/reportes-estudiantes.php">Reportes</a></li>
+				<li><a href="../admin/estadisticas-estudiantes.php">Estadisticas</a></li>
 			</ul>
 		</td>
 		<td id="pagina">Edicion de contenido>

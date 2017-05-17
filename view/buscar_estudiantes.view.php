@@ -1,4 +1,4 @@
-<?php require("cabecera.html") ?>
+<?php require("cabecera-admin.php") ?>
 
 <div class="formulario">
 	<form action="" method="POST">
@@ -15,4 +15,4 @@
 	</form>
 </div>
 
-<?php require("piedepagina.html") ?>
+<?php require("piedepagina-admin.php") ?>
