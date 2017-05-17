@@ -233,6 +233,7 @@ form input[type="submit"]:hover{
 /*******************/
 
 footer{
+	width: auto;
 	margin: auto;
 	height: 110px;
 	background-color: #42e599;
@@ -240,4 +241,10 @@ footer{
 	font-size: 1.5em;
 	font-family: Arial - sans-serif;
 	padding: 40px;
+
+	margin-top:200px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    border-top: 2px solid #000;
 }
