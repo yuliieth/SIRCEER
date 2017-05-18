@@ -1,2 +1,2 @@
-<?php require("../view/busqueda.html") ?>
+<?php require("../view/busqueda.php") ?>
 

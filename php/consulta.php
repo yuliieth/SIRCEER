@@ -2,9 +2,9 @@
 /////// CONEXIÓN A LA BASE DE DATOS /////////
 $host = 'localhost';
 $basededatos = 'srceer';
-$usuario = 'roo';
+$usuario = 'root';
 $contrasena = '';
-echo "Iniciando conexion";
+
 $conexion = new mysqli($host, $usuario,$contrasena, $basededatos);
 if ($conexion -> connect_errno)
 {
