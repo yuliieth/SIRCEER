@@ -7,6 +7,6 @@
 		<!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 		</section
 
-	<?php //require 'piedepagina-admin.php' ?>
+	<?php require 'piedepagina-admin.php' ?>
 
 

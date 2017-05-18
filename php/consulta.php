@@ -37,6 +37,9 @@ if ($buscarAlumnos->num_rows > 0)
 {
 	$tabla.= 
 	'<table class="table">
+	  <tr>
+	  	<th scope="colgroup" colspan="4">Listado de estudiantes</th>
+	  </tr>
 		<tr class="bg-primary">
 			<td>ID ALUMNO</td>
 			<td>NOMBRES</td>
@@ -50,7 +53,7 @@ if ($buscarAlumnos->num_rows > 0)
 	while($filaAlumnos= $buscarAlumnos->fetch_assoc())
 	{
 		$tabla.=
-		'<tr>
+		'<tr class="color">
 			<td>'.$filaAlumnos['id'].'</td>
 			<td>'.$filaAlumnos['primer_nombre']." ".$filaAlumnos['segundo_nombre'].'</td>
 			<td>'.$filaAlumnos['primer_apellido']." ".$filaAlumnos['segundo_apellido'].'</td>
