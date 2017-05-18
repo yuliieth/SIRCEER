@@ -83,7 +83,7 @@
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.
 			</div>
 	
-			<input type="submit" name="submit" class="btn btn-primary" value="Enviar">
+			<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
 		
 
 

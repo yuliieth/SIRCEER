@@ -20,7 +20,7 @@
 
 			try {
 			var_dump($conexion);
-			$sql = ("INSERT INTO estudiantes   (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_nacimiento, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_nacimiento,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro)"
+			$sql = ("INSERT INTO estudiantes  (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_naci, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_naci,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro)"
 				);
 
 			$statement = $conexion->prepare($sql);
@@ -33,7 +33,7 @@
 					 $statement->bindParam( ':cel_contacto' , $celular);
 					 $statement->bindParam( ':tel_contacto' , $telefono);
 					 $statement->bindParam( ':email' , $email);
-					 $statement->bindParam( ':fecha_nacimiento' , $fechaNaci);
+					 $statement->bindParam( ':fecha_naci' , $fechaNaci);
 					 $statement->bindParam( ':lugar_naci' , $lugarNaci);
 					 $statement->bindParam( ':direccion' , $direccion);
 					 $statement->bindParam( ':municipio' , $municipio);
@@ -47,7 +47,7 @@
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				header("Location:new_estudiante.php");
+				//header("Location:new_estudiante.php");
 			}
 
 			} catch (Exception $e) {
@@ -57,5 +57,5 @@
 		}
 	  
 	}
-
+echo "string";
  ?>

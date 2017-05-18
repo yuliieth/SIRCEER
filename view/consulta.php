@@ -1,7 +1,18 @@
-<?
+<?php
+/////// CONEXIÓN A LA BASE DE DATOS /////////
+$host = 'localhost';
+$basededatos = 'srceer';
+$usuario = 'roo';
+$contrasena = '';
+echo "Iniciando conexion";
+$conexion = new mysqli($host, $usuario,$contrasena, $basededatos);
+if ($conexion -> connect_errno)
+{
+	die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> mysqli_connect_error());
+}
 
-require_once'Conexion.php';
-$conexion = getConexion();
+//////////////// VALORES INICIALES ///////////////////////
+
 $tabla="";
 $query="SELECT * FROM estudiantes ORDER BY id";
 
@@ -9,7 +20,7 @@ $query="SELECT * FROM estudiantes ORDER BY id";
 if(isset($_POST['alumnos']))
 {
 	$q=$conexion->real_escape_string($_POST['alumnos']);
-	$query="SELECT * FROM alumnos WHERE 
+	$query="SELECT * FROM estudiantes WHERE 
 		id LIKE '%".$q."%' OR
 		primer_nombre LIKE '%".$q."%' OR
 		primer_apellido LIKE '%".$q."%' OR
@@ -41,8 +52,8 @@ if ($buscarAlumnos->num_rows > 0)
 		$tabla.=
 		'<tr>
 			<td>'.$filaAlumnos['id'].'</td>
-			<td>'.$filaAlumnos['primer_nombre'].$filaAlumnos['segundo_nombre'].'</td>
-			<td>'.$filaAlumnos['primer_apellido'].$filaAlumnos['segundo_apellido'].'</td>
+			<td>'.$filaAlumnos['primer_nombre']." ".$filaAlumnos['segundo_nombre'].'</td>
+			<td>'.$filaAlumnos['primer_apellido']." ".$filaAlumnos['segundo_apellido'].'</td>
 			<td>'.$filaAlumnos['email'].'</td>
 			<td>'.$filaAlumnos['ojos'].'</td>
 			<td>'.$filaAlumnos['estrato'].'</td>

@@ -63,7 +63,6 @@ CREATE TABLE `estudiantes` (
   `email` varchar(70) DEFAULT NULL,
   `descendencia` varchar(45) DEFAULT NULL,
   `estrato` varchar(10) NOT NULL,
-  `programa_id` int(11) NOT NULL,
   `ojos` varchar(45) DEFAULT NULL,
   `condicion` varchar(45) DEFAULT NULL,
   `descedencia` varchar(45) DEFAULT NULL
