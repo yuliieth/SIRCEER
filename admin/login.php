@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 	require_once'../php/Conexion.php';
 	if (isset($_SESSION['usuario'])) {
 		header("Location: index.php");
@@ -13,7 +13,7 @@
 	
 	$conexion = getConexion();
 	if (!$conexion) {
-		header("Location:loguin.php");
+		header("Location:login.php");
 	}
 
 	$sql = "SELECT * FROM usuarios WHERE nombre=:usuario AND password=:password";
@@ -30,8 +30,5 @@
 		}
 	}
 
-
-
-
  ?>
-<?php require("../view/loguin.view.php") ?>
+<?php require("../view/login.view.php") ?>
