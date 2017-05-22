@@ -1,4 +1,5 @@
 <?php
+session_start();
 	require_once'../php/Conexion.php';
 	if (isset($_SESSION['usuario'])) {
 		header("Location: index.php");

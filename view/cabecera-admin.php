@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Sistema de registro y control estudiantes de risaralda</title>
+	<title>SRCEER | Gobernaci&oacute;n</title>
 	<link rel="icon" href="../iconos/favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -13,7 +13,7 @@
 <body>
 
 	<header>
-		<h1><a href="index.php">modulo de administracion</a></h1>
+		<h1><a href="index.php">SRCEER</a></h1>
 		
 		<!--<div class="nav-bar">
 			<ul>
