@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sistema de registro y control estudiantes de risaralda</title>
-
+	<link rel="icon" href="../iconos/favicon.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="../js/peticion.js"></script>
