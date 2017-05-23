@@ -24,15 +24,15 @@
 
 		$numStudent = $conexion->query("SELECT FOUND_ROWS() AS total");
 		$numStudent = $numStudent->fetch()['total'];
-		echo " el es : {$numStudent}";
+		//echo " el es : {$numStudent}";
 
 		$sql ="SELECT  COUNT(genero)  FROM estudiantes WHERE genero='femenino'";
 		$numWomen = $conexion->query($sql);
 		$numWomen = $numWomen->fetchColumn();
-		echo "{$numWomen}";
+		//echo "{$numWomen}";
 
 		$numMen = $numStudent - $numWomen;
-		echo "{$numMen}";
+		//echo "{$numMen}";
 
 
 
@@ -53,7 +53,7 @@
 				<li><a href="../admin/estadisticas-estudiantes.php">Estadisticas</a></li>
 			</ul>
 		</td>
-		<td id="pagina">Edicion de contenido>
+		<td id="pagina">
 			
 
 <div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>							
