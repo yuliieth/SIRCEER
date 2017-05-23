@@ -4,7 +4,7 @@
 }
 
 body{
-	background-color: rgba(254,254, 254);
+	background-color: rgba( 39, 55, 70 );
 }
 
 .contenedor{
@@ -13,37 +13,48 @@ body{
 	height: 450px;
 	margin-top: 80px;
 	padding: 5px;
-	font-size: 3em;
+	font-size: 1.8em;
 }
 
 
 /*LOGUIN*/
-.contenedor-loguin{
+.contenedor-login{
 	margin: auto;
 	width: 40%;	
 	height: 242px;
 }
 
 .frm-login{
-	margin-top: 50px;
-	padding: 80Px 20px;
+	margin-top: 75px;
+	padding: 30Px 0px;
 	text-align: center;
-	background-color: #42e599;
+	background-color: rgb( 39, 55, 70 );
 }
 
+.envuelve-input{
+	padding: 1px;
+}
 
-.btn,
+.btn{
+	padding: 8px;
+	background: #ED572A;
+	color: #E1E9FA;
+	font-size: .4em;
+	border-radius: 2px;
+	border: none;
+	float: right;
+	cursor: pointer;
+}
+
 form input[type="text"],
 form input[type="password"]
 {
 	border: 1px solid #536DFE;
 	border-radius: 4px;
-	padding: 5px;
+	padding: 7px;
 	width: 50%;
-	display: inline-block;
-	margin-bottom: 9px;
 	font-size: .4em;
-	color: #141938;
+	color: #060c2f;
 }
 
 
