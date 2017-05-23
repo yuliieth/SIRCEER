@@ -16,11 +16,7 @@
 	<header>
 		<h1><a href="index.php">SRCEER</a></h1>
 		
-		<!--<div class="nav-bar">
-			<ul>
-				<li><a href="view/login.php">Empecemos</a></li>
-			</ul>
-		</div>-->
+	
 	</header>
 
 	<div class="wraper-nav">
@@ -28,11 +24,13 @@
 
 		<ul>
 			<li class="students"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
-<a href="gestion-estudiantes.php">Gestion estudiantes</a></li>
+<a href="gestion-estudiantes.php">Estudiantes</a></li>
 			<li class="users"><i class="fa fa-users fa-2x" aria-hidden="true"></i>
-<a href="gestion-usuarios.php">Gestion usuarios</a></li>
+<a href="usuarios.php">Usuarios</a></li>
 			<li class="chart"><i class="fa fa-bar-chart fa-2x" aria-hidden="true"></i>
-<a href="modulo-estadistico.php">Modulo de estadisticas</a></li>
+<a href="estadisticas-estudiantes.php">Estadisticas</a></li>
+<li class="reports"><i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+<a href="reportes-estudiantes.php">Reportes</a></li>
 		</ul>
 	</nav>
 	</div>
