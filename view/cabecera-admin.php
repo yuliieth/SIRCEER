@@ -15,7 +15,9 @@
 
 	<header>
 		<h1><a href="index.php">SRCEER</a></h1>
-		
+		<div class="user">
+			<?php echo $_SESSION['usuario']; ?>
+		</div>
 	
 	</header>
 
