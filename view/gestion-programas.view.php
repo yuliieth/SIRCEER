@@ -80,7 +80,7 @@ Highcharts.chart('container', {
         type: 'area'
     },
     title: {
-        text: 'Historico y estimacion estudiantes por genero'
+        text: 'Historico y estimacion de programas por especialidad'
     },
     subtitle: {
         text: 'Source: Gobernacion de Risaralda'
