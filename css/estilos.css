@@ -166,14 +166,14 @@ table,tr,td{
 
 
 form{
-	width: 100%;
+	width: 86%;
 	margin: 20px 0;
 	padding: 10px;
 	background-color: rgb(255,255,255);
 	overflow: hidden;/*Para el efecto del boton ya que le pusimos loat:left*/
 	border-top: 4px solid rgba(227, 84, 96, 1);
 	box-shadow: 0 2px 3px grey;/*Creamos la sombra: primer parametro:,segundo parametro: grosor abajo,tercer parametro es el grosor*/
-	font-size: 1.0em;
+	font-size: 2.2em;
 }
 
 .table-formulario{
@@ -252,9 +252,10 @@ form input[type="submit"]:hover{
 /**ESETILOS BUSCAR ALUMNO*/
 
 #tabla_resultado .table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
+    width: 86%;
+	max-width: 86%;
+	margin-bottom: 38px;
+	margin-left: 65px;
 }
 
 table {
