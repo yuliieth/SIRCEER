@@ -16,7 +16,7 @@
 	<header>
 		<h1><a href="index.php">SRCEER</a></h1>
 		<div class="user">
-			<?php echo $_SESSION['usuario']; ?>
+			<p><i class="fa fa-user-circle fa-4x" aria-hidden="true"></i><?php echo $_SESSION['usuario']; ?></p>
 		</div>
 	
 	</header>
