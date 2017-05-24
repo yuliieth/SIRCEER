@@ -25,12 +25,12 @@
 		<ul>
 			<li class="students"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
 <a href="gestion-estudiantes.php">Estudiantes</a></li>
-			<li class="users"><i class="fa fa-users fa-2x" aria-hidden="true"></i>
-<a href="usuarios.php">Usuarios</a></li>
-			<li class="chart"><i class="fa fa-bar-chart fa-2x" aria-hidden="true"></i>
-<a href="estadisticas-estudiantes.php">Estadisticas</a></li>
-<li class="reports"><i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-<a href="reportes-estudiantes.php">Reportes</a></li>
+			<li class="users"><i class="fa fa-university fa-2x" aria-hidden="true"></i>
+<a href="usuarios.php">Instituciones</a></li>
+			<li class="chart"><i class="fa fa-tasks fa-2x" aria-hidden="true"></i>
+<a href="estadisticas-estudiantes.php">Programas</a></li>
+<!--<li class="reports"><i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+<a href="reportes-estudiantes.php">Reportes</a></li>-->
 		</ul>
 	</nav>
 	</div>

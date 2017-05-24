@@ -20,10 +20,6 @@ header{
 	width: 100%;
 }
 
-a{
-	text-decoration: none;
-	color:white;
-}
 
 ul{
 	padding: 10px;
@@ -31,7 +27,7 @@ ul{
 }
 
 li{
-	text-decoration: none;
+	list-style: none;
 }
 
 header h1{
@@ -92,33 +88,39 @@ header h1{
 
 .menu-bar ul{
 	display: inline-flex;
-	width: 0%;
+
 }
 
 .menu-bar ul li a{
-	font-size: 1.5em;
+	font-size: 1.4em;
 	display: inline-block;
 	padding: 4px;
 	color: black;
 }
 
 
-
+/*Mejorar el codigo para estos tres elementos*/
 .users{
 	background-color: red;
 	margin-left: 13px;
+	width: 188px;
+	padding: 12px;
 }
 
 
 .students{
 	background-color: blue;
 	margin-left: 13px;
+	width: 188px;
+	padding: 12px;
 }
 
 
 .chart{
 	background-color: green;
 	margin-left: 13px;
+	width: 188px;
+	padding: 12px;
 }
 
 .reports{
@@ -149,9 +151,9 @@ table,tr,td{
 }
 
 #menu ul li a{
-	padding: 15px;
+	padding: 5px;
 	color: white;
-	display: block;
+	display: inline-block;
 	text-decoration: none;
 }
 
