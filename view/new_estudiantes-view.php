@@ -65,7 +65,7 @@
 
 	
 			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento">
-			<input type="number" size="30" name="estrato" placeholder="Estrato 1-5">
+			<input type="number" size="30" min="1" max="5" name="estrato" placeholder="Estrato 1-5">
 			<br>
 
 		 
