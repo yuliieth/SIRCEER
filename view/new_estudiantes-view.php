@@ -66,16 +66,17 @@
 	
 			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento">
 			<input type="number" size="30" min="1" max="5" name="estrato" placeholder="Estrato 1-5">
+			
 			<br>
-
-		 
-			<label>Desplazado</label>
+			<label class="labels">Desplazado:</label>
 			<label class="input-redit" for="des_si">Si</label>
 			<input type="radio" id="des_si" value="si" name="despla">
 			<label class="input-redit" for="des_no">No</label>
 			<input type="radio" id="des_no" value="no" name="despla" checked>
-		
-			<label>Afrodescendiente</label>
+			
+			<br>
+			<br>
+			<label class="labels">Afrodescendiente:</label>
 			<label class="input-redit" for="afro-si">Si</label>
 			<input type="radio" id="afro-si" value="si" name="afro">
 			
@@ -83,9 +84,9 @@
 			<input type="radio" id="afro-no" value="no" name="afro" checked>
 			
 
-
-
-			<label>Genero</label>
+			<br>
+			<br>
+			<label class="labels">Genero:</label>
 			<label class="input-redit" for="femenino">Mujer</label>
 			<input type="radio" id="femenino" value="femenino" name="genero">
 			<label class="input-redit" for="masculino">Hombre</label>
@@ -93,7 +94,8 @@
 		
 
 			<br>
-			<label>Color de ojos:</label>
+			<br>
+			<label class="labels">Color de ojos:</label>
 			<label class="input-redit" for="negros">Negros</label>
 			<input type="radio" id="negros" value="negros" name="ojos" checked>
 			<label class="input-redit" for="azules">Azules</label>
@@ -102,7 +104,10 @@
 			<input type="radio" id="cafes" value="cafes" name="ojos">
 			<label class="input-redit" for="marron">Marron</label>
 			<input type="radio" id="marron" value="marron" name="ojos">
+			<br>
+			<br>
 
+			<!--
 			<div class="input-redit alert error">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.
 			</div>
@@ -110,7 +115,7 @@
 			<div class="input-redit alert success">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, voluptatem.
 			</div>
-	
+			-->
 			<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
 		
 

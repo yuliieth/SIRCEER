@@ -183,12 +183,12 @@ table,tr,td{
 form{
 	width: 86%;
 	margin: 20px 0;
-	padding: 10px;
+	padding: 27px;
 	background-color: rgb(255,255,255);
 	overflow: hidden;/*Para el efecto del boton ya que le pusimos loat:left*/
 	border-top: 4px solid rgba(227, 84, 96, 1);
 	box-shadow: 0 2px 3px grey;/*Creamos la sombra: primer parametro:,segundo parametro: grosor abajo,tercer parametro es el grosor*/
-	font-size: 2.2em;
+	font-size: 2.6em;
 }
 
 .table-formulario{
@@ -202,8 +202,15 @@ form{
 
 }
 
+.labels{
+	font-size: .5em;
+	font-weight: bolder;
+}
+
+
 
 /*-------estilos imput----------*/
+
 form input[type="text"],
 form input[type="number"],
 form input[type="email"],
@@ -228,7 +235,8 @@ form input[type="email"]:focus{
 
 
 .input-redit{
-	font-size: .5em;
+	font-size: .4em;
+	font-weight: normal;
 }
 
 .alert{
