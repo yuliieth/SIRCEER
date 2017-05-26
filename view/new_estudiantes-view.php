@@ -60,7 +60,9 @@
 
 	
 			<input type="email" size="30" name="email" placeholder="E-mail">
-			<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento*">
+			<!--<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento*">-->
+			<input type="date" name="fecha-naci" step="1" min="1950-01-01" max="2018-12-31" value="<?php echo date("Y-m-d");?>">
+
 		
 
 	
