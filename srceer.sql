@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2017 a las 04:20:37
+-- Tiempo de generación: 26-05-2017 a las 04:53:52
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -36,17 +36,6 @@ CREATE TABLE `contactos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `contacto_estudiante`
---
-
-CREATE TABLE `contacto_estudiante` (
-  `contacto_id` int(11) NOT NULL,
-  `estudiante_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `estudiantes`
 --
 
@@ -54,19 +43,33 @@ CREATE TABLE `estudiantes` (
   `id` int(11) NOT NULL,
   `documento` varchar(60) NOT NULL,
   `primer_nombre` varchar(60) NOT NULL,
+  `segundo_nombre` varchar(60) NOT NULL,
   `primer_apellido` varchar(60) NOT NULL,
   `segundo_apellido` varchar(60) NOT NULL,
-  `segundo_nombre` varchar(60) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  `tel_contacto` varchar(45) DEFAULT NULL,
   `cel_contacto` varchar(45) NOT NULL,
+  `tel_contacto` varchar(45) DEFAULT NULL,
   `email` varchar(70) DEFAULT NULL,
-  `descendencia` varchar(45) DEFAULT NULL,
+  `fecha_naci` date NOT NULL,
+  `lugar_naci` varchar(80) NOT NULL,
+  `direccion` varchar(45) DEFAULT NULL,
+  `municipio` varchar(45) DEFAULT NULL,
   `estrato` varchar(10) NOT NULL,
-  `ojos` varchar(45) DEFAULT NULL,
-  `condicion` varchar(45) DEFAULT NULL,
-  `descedencia` varchar(45) DEFAULT NULL
+  `desplazado` varchar(45) NOT NULL,
+  `afrodescendiente` varchar(45) NOT NULL,
+  `ojos` varchar(45) NOT NULL,
+  `genero` varchar(10) NOT NULL,
+  `fecha_registro` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estudiantes`
+--
+
+INSERT INTO `estudiantes` (`id`, `documento`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `cel_contacto`, `tel_contacto`, `email`, `fecha_naci`, `lugar_naci`, `direccion`, `municipio`, `estrato`, `desplazado`, `afrodescendiente`, `ojos`, `genero`, `fecha_registro`) VALUES
+(1, '', '', '', '', '', '', '', '', '0000-00-00', '', '', 'pereira', '', 'no', 'no', 'negros', 'masculino', 2017),
+(2, '1088264376', 'Cristhian', 'Alexis', 'Galeano', 'Ruiz', '3148273668', '3406243', 'cri@gmail.com', '1989-01-17', 'Pereira', 'cra28b#74-111', 'pereira', '1', 'no', 'no', 'negros', 'masculino', 2017),
+(10, '1088264375', 'Cristhian', 'Alexis', 'Galeano', 'Ruiz', '3117767484', '3406243', 'cri@gmail.com', '1989-01-17', 'Pereira', 'cra28b#74-111', 'pereira', '1', 'no', 'no', 'negros', 'masculino', 2017),
+(13, '00000000000', 'Cristhian', 'Alexis', 'Galeano', 'Ruiz', '555', '3406243', 'cri@gmail.com', '1989-01-17', 'Pereira', 'rrr', 'pereira', '1', 'no', 'no', 'negros', 'masculino', 2017);
 
 -- --------------------------------------------------------
 
@@ -83,10 +86,10 @@ CREATE TABLE `perfiles` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `plantel_educativo`
+-- Estructura de tabla para la tabla `planteles_educativos`
 --
 
-CREATE TABLE `plantel_educativo` (
+CREATE TABLE `planteles_educativos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `codigo` varchar(45) DEFAULT NULL,
@@ -106,8 +109,7 @@ CREATE TABLE `programas` (
   `codigo_snies` varchar(45) NOT NULL,
   `num_semestres` int(11) NOT NULL,
   `num_creditos` int(11) NOT NULL,
-  `nivel_academico` varchar(45) DEFAULT NULL,
-  `plantel_educativo_id` int(11) NOT NULL
+  `nivel_academico` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -173,20 +175,11 @@ ALTER TABLE `contactos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `contacto_estudiante`
---
-ALTER TABLE `contacto_estudiante`
-  ADD PRIMARY KEY (`contacto_id`,`estudiante_id`),
-  ADD KEY `fk_contacto_has_estudiante_estudiante1_idx` (`estudiante_id`),
-  ADD KEY `fk_contacto_has_estudiante_contacto_idx` (`contacto_id`);
-
---
 -- Indices de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `documento_UNIQUE` (`documento`),
-  ADD KEY `fk_estudiante_programa1_idx` (`programa_id`);
+  ADD UNIQUE KEY `documento_UNIQUE` (`documento`);
 
 --
 -- Indices de la tabla `perfiles`
@@ -195,9 +188,9 @@ ALTER TABLE `perfiles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `plantel_educativo`
+-- Indices de la tabla `planteles_educativos`
 --
-ALTER TABLE `plantel_educativo`
+ALTER TABLE `planteles_educativos`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_UNIQUE` (`id`),
   ADD UNIQUE KEY `codigo_UNIQUE` (`codigo`);
@@ -208,8 +201,7 @@ ALTER TABLE `plantel_educativo`
 ALTER TABLE `programas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_UNIQUE` (`id`),
-  ADD UNIQUE KEY `codigo_snies_UNIQUE` (`codigo_snies`),
-  ADD KEY `fk_programa_plantel_educativo1_idx` (`plantel_educativo_id`);
+  ADD UNIQUE KEY `codigo_snies_UNIQUE` (`codigo_snies`);
 
 --
 -- Indices de la tabla `recursos`
@@ -252,16 +244,16 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `plantel_educativo`
+-- AUTO_INCREMENT de la tabla `planteles_educativos`
 --
-ALTER TABLE `plantel_educativo`
+ALTER TABLE `planteles_educativos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `programas`
@@ -281,25 +273,6 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `contacto_estudiante`
---
-ALTER TABLE `contacto_estudiante`
-  ADD CONSTRAINT `fk_contacto_has_estudiante_contacto` FOREIGN KEY (`contacto_id`) REFERENCES `contactos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_contacto_has_estudiante_estudiante1` FOREIGN KEY (`estudiante_id`) REFERENCES `estudiantes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `estudiantes`
---
-ALTER TABLE `estudiantes`
-  ADD CONSTRAINT `fk_estudiante_programa1` FOREIGN KEY (`programa_id`) REFERENCES `programas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `programas`
---
-ALTER TABLE `programas`
-  ADD CONSTRAINT `fk_programa_plantel_educativo1` FOREIGN KEY (`plantel_educativo_id`) REFERENCES `plantel_educativo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `recursos_perfiles`

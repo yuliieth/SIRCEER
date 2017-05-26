@@ -11,7 +11,7 @@
 			$afro,$ojos,$genero,$fecha_registro
 			)
 		{
-			echo "Entro a registrar";
+			//echo "Entro a registrar";
 			
 			$conexion = getConexion();
 			if (!$conexion) {
@@ -19,7 +19,7 @@
 			}else{
 
 			try {
-			var_dump($conexion);
+			//var_dump($conexion);
 			$sql = ("INSERT INTO estudiantes  (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_naci, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_naci,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro)"
 				);
 
@@ -53,7 +53,7 @@
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	
 			}
-			echo "ejecuto el metodo";
+			//echo "ejecuto el metodo";
 		}
 	  
 	}
