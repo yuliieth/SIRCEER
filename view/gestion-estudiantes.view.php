@@ -60,6 +60,10 @@
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../admin/estadisticas-estudiantes.php">Estadisticas</a>
                 </li>
+                <li>
+                <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
+                <a href="#">Importar</a>
+                </li>
 			</ul>
 		</td>
 		<td id="pagina">
