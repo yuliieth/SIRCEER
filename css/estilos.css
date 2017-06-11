@@ -6,8 +6,8 @@
 body{
 	background-color: rgba(250, 248, 240, 1);
 	height: 900px;
-	font-family: 'Revalia', cursive;
-	font-size: .6em;
+	font-family: 'Revalia', 'Times New Roman' ,Arial;
+	font-size: .9em;
 }
 
 header{
@@ -272,13 +272,30 @@ form input[type="submit"]{
 form input[type="submit"]:hover{
 	background-color: #E64E19;
 }
-/**ESETILOS BUSCAR ALUMNO*/
+
+/**ESETILOS resultados BUSCAR ALUMNO*/
+
+/*estilos busqueda estudiante*/
+#estructura .contenedor-busqueda{
+	margin: auto;
+	width: 97%;
+}
+
+input[type="text"]{
+	width: 30%;
+	padding: 15px;
+	background: #ED572A;
+	color: black;
+	font-size: 1.3em;
+	border-radius: 2px;
+	border: none;	
+}
 
 #tabla_resultado .table {
-    width: 86%;
+    width: 95%;
 	max-width: 86%;
 	margin-bottom: 38px;
-	margin-left: 65px;
+	/*margin-left: 65px;*/
 }
 
 table {
