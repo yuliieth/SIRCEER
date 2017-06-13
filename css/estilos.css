@@ -280,11 +280,11 @@ form input[type="submit"]:hover{
 }
 
 #busqueda{
-	width: 30%;
+	width: 38%;
 	padding: 15px;
 	background: #ED572A;
-	color: black;
-	font-size: 1.3em;
+	color: #fff;
+	font-size: 1.5em;
 	border-radius: 2px;
 	border: none;	
 }
@@ -315,6 +315,7 @@ tbody {
 .bg-primary {
     color: #fff;
     background-color: #337ab7;
+    height: 31px;
 }
 
 
