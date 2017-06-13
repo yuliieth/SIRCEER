@@ -23,7 +23,14 @@
 		</td>
 		<td id="pagina">
 			
-			En construccion, aqui se ubicara el area de reportes de estudiantes
+			<?php 
+$last_line = shell_exec("java -jar C:\\xampp\htdocs\\DesarrolloWeb\\PracticaPHP\\SRCEER\\jar\\srceerJavaJar.jar");
+				#java -jar C:\Users\AlexisRuiz\Desktop\ejecutar\Ejecutar.jar
+				if ($last_line == null) {
+					echo "Ocurrio un error ejecutando el JAR";
+				}
+				echo $last_line;
+			 ?>
 							
 		</td>
 	</tr>

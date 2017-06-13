@@ -6,7 +6,7 @@
 body{
 	background-color: rgba(250, 248, 240, 1);
 	height: 900px;
-	font-family: 'Revalia', 'Times New Roman' ,Arial;
+	font-family: 'Revalia',Arial;
 	font-size: .9em;
 }
 
@@ -281,7 +281,7 @@ form input[type="submit"]:hover{
 	width: 97%;
 }
 
-input[type="text"]{
+#busqueda{
 	width: 30%;
 	padding: 15px;
 	background: #ED572A;
