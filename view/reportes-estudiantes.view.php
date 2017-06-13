@@ -22,7 +22,7 @@
 			</ul>
 		</td>
 		<td id="pagina">
-		
+		<a href="../php/reporteEstudiantes.php">Reporte</a>
 							
 		</td>
 	</tr>
