@@ -26,5 +26,5 @@
 							
 		</td>
 	</tr>
-</table>
+</table>sasqswewqewqewqe
 <?php require "piedepagina-admin.php"; ?>
