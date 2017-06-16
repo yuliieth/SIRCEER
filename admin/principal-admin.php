@@ -1,0 +1,1 @@
+<?php require '../view/principal-admin.view.php' ?>
