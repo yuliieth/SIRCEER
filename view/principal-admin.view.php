@@ -1,13 +1,3 @@
-<?php 
-	if (!$con) {
-		echo "Ocurrio un error en la Conexion";
-	}
-
-	$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON  perfiles.id=usuarios_perfiles.perfiles_id";
-	$sta = $con->query($sql);
-	
- ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +61,8 @@
 					<th>Tipo</th>
 				</tr>
 		<?php 
-			foreach ($sta as $valor) { ?>
+			 foreach ($statement as $valor) {
+			 	?>
 				<tr>
 					<td><?php echo $valor['id_usuarios']; ?></td>
 					<td><?php echo $valor['nombre_completo']; ?></td>
