@@ -5,6 +5,7 @@
 
 header,footer{
 	background-color: #1d9d74;
+	height: 120px;
 }
 
 body{
@@ -34,6 +35,7 @@ table{
 }
 
 table, th, td{
+	
 	border: 1px solid green;
 }
 
@@ -74,5 +76,26 @@ th, td{
 }
 
 .cerrar a{
-	color: red;
+	color: white;
+	text-decoration: none;
+}
+
+.descripcion{
+	margin: auto;
+	width: 100%;
+	height: 80px;
+	padding: 10px;
+	text-align: center;
+	background-color: rgb(225,61,25);
+	border-radius: 3px 3px;
+}
+
+.descripcion ul li{
+	list-style: none;
+}
+
+.descripcion ul li p{
+	padding: 5px;
+	margin-top: 5px;
+	color: white;
 }

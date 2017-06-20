@@ -1,3 +1,13 @@
+<?php 
+	if (!$con) {
+		echo "Ocurrio un error en la Conexion";
+	}
+
+	$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON  perfiles.id=usuarios_perfiles.perfiles_id";
+	$sta = $con->query($sql);
+	
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +31,8 @@
 		Este es el header
 	</header>
 	<section>
+
+	<!--VENTANA MODAL-->
 		<div class="ventana">
 			<div class="formulario">
 					<div class="cerrar">
@@ -28,68 +40,59 @@
 						</div>
 				<h3>Datos del nuevo usuario:</h3>
 				<hr>
-					<form action="">
-							<input type="text" placeholder="Nombre:"><br>
-							<input type="text" placeholder="Usuario:"><br>
-							<input type="password" placeholder="Contraseña:"><br>
-							<input type="password" placeholder="Email"><br>
-							<input type="submit" value="enviar">		
+					<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+							<input type="text" name="nombre" placeholder="Nombre:"><br>
+							<input type="text" name="usuario" placeholder="Usuario:"><br>
+							<input type="password" name="password" placeholder="Contraseña:"><br>
+							<input type="text" name="email" placeholder="Email"><br>
+							<select name="perfil" id="perfil">
+								<option value="1">Super usuario</option>
+								<option value="2">Usuario estandar</option>
+								<option value="3">Usuario externo</option>
+							</select>
+							<input type="submit" name="enviar" value="enviar">		
 					</form>
 				
 			
 					</div>
 		</div>
+
 		<div class="agregar">
 			<a href="javascript:openVentana();"><i class="fa fa-plus-square-o fa-3x" aria-hidden="true"></i></a>
 		</div>
 		<div class="contenido">
-		<!--<p><a href="javascript:openVentana();">Abrir ventana modal</a></p>-->
 			<table>
 				<tr>
 					<th>#</th>
+					<th>Nombre</th>
 					<th>Usuario</th>
 					<th>Password</th>
-					<th>Nombre</th>
 					<th>Email</th>
-					<th>Read</th>
-					<th>Write</th>
+					<th>Tipo</th>
 				</tr>
+		<?php 
+			foreach ($sta as $valor) { ?>
 				<tr>
-					<td>1</td>
-					<td>Cristhian</td>
-					<td>123</td>
-					<td>Cristhian Alexis</td>
-					<td>titiruizah@gmail.com</td>
-					<td>
-						<label><input type="checkbox" id="" value="si"></label>
-					</td>
-					<td>
-						<label><input type="checkbox" id="" value="si"></label>
-					</td>
+					<td><?php echo $valor['id_usuarios']; ?></td>
+					<td><?php echo $valor['nombre_completo']; ?></td>
+					<td><?php echo $valor['username']; ?></td>
+					<td><?php echo $valor['password']; ?></td>
+					<td><?php echo $valor['email']; ?></td>
+					<td><?php echo $valor['nombre']; ?></td>
+					<td><button>Editar</button></td>
+					<td><button>Eliminar</button></td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Alexis</td>
-					<td>456</td>
-					<td>Luis Alexis</td>
-					<td>ruizah@gmail.com</td>
-					<td>
-						<label><input type="checkbox" id="" value="si"></label>
-					</td>
-					<td>
-						<label><input type="checkbox" id="" value="si"></label>
-					</td>
-				</tr>
+			<?php } ?>
 			</table>
 			<article>
 				<h2>Recuerde:</h2>
 				<div class="descripcion">
 					<ul>
 						<li>
-							<p><strong>Read:</strong> los suarios con este atributo podran solo realizar consultas</p>
+							<p><strong>Read:</strong> Los usuarios con este atributo podran solo realizar consultas</p>
 						</li>
 						<li>
-							<p><strong>Write</strong>: Los usuarios con esta propiedad podran modificar datos</p>
+							<p><strong>Write:</strong> Los usuarios con esta propiedad podran modificar datos</p>
 						</li>
 					</ul>
 				</div>
