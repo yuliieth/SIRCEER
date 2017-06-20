@@ -16,5 +16,12 @@
 			return 	$con->query($sql);
 	#var_dump($sta);
 	}
+
+	function eliminarUsuario($con,$id)
+	{
+		$sql = "DELETE FROM usuarios WHERE id=$id";
+		$stm = $con->prepare($sql);
+		$stm->execute();
+	}
 	
  ?>
