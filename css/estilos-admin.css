@@ -58,7 +58,7 @@ th, td{
 
 .formulario{
 	width: 300px;
-	height: 200px;
+	height: 300px;
 	padding: 25px;
 	background-color: #1d9d74;
 	color: black;
@@ -67,6 +67,29 @@ th, td{
 	position: absolute;
 	margin-left: -175px;
 	margin-top: -175px;
+}
+
+select,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"]
+{
+	border: 1px solid #536DFE;
+	border-radius: 4px;
+	padding: 10px;
+	width: 65%;
+	display: inline-block;
+	margin-bottom: 3px;
+	font-size: .9em;
+	color: #141938;
+}
+
+
+input[type="text"]:focus,
+input[type="email"]:focus{
+	border: 2px solid rgba(227, 84, 96, 1);
+	padding: 7px;
 }
 
 .cerrar{
