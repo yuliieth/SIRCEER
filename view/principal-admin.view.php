@@ -70,8 +70,12 @@
 					<td><?php echo $valor['password']; ?></td>
 					<td><?php echo $valor['email']; ?></td>
 					<td><?php echo $valor['nombre']; ?></td>
-					<td><button>Editar</button></td>
-					<td><button>Eliminar</button></td>
+					<td>
+					<a href="javascript:openVentana();"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>
+					</td>
+					<td>
+					<a href="#"><i class="fa fa-minus-square fa-2x"" aria-hidden="true"></i></a>
+					</td>
 				</tr>
 			<?php } ?>
 			</table>
