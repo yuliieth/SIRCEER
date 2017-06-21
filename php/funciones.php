@@ -23,5 +23,15 @@
 		$stm = $con->prepare($sql);
 		$stm->execute();
 	}
-	
+
+
+	function validarErrores($parameter,$errores)
+	{
+	foreach ($parameter as $campo) {
+			if (!isset($_POST[$campo]) ||  empty($_POST[$campo])) {
+				$errores .= " Ingrese el campo " . $campo . "</br>";
+			}
+		}
+		return $errores;
+	}
  ?>
