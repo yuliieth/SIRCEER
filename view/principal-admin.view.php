@@ -14,6 +14,32 @@
 		function cerrar(){
 			$(".ventana").slideUp("fast");
 		}
+
+		function sugerencias(str)
+		{
+			var conexion;
+			if (str.length == 0) 
+			{
+				document.getElementById("myDiv").innerHTML="";
+				return;
+			}
+
+			if (window.XMLHttpRequest) 
+			{
+				conexion = new XMLHttpRequest();
+			}else
+			{
+				conexion = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			conexion.onreadystatechange=function(){
+				if (conexion.readyState==4 && conexion.status==200) 
+				{
+					document.getElementById("myDiv").innerHTML=conexion.responseText;
+				}
+			}
+			conexion.open("GET","validarUsuario.php?u="+str,true);
+			conexion.send();
+		}
 	</script>
 </head>
 <body>
@@ -32,7 +58,7 @@
 				<hr>
 					<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<input type="text" name="nombre" placeholder="Nombre:"><br>
-							<input type="text" name="usuario" placeholder="Usuario:"><br>
+							<input type="text" onkeyup="sugerencias(this.value)" name="usuario" placeholder="Usuario:" ><br>
 							<input type="password" name="password" placeholder="Contraseña:"><br>
 							<input type="text" name="email" placeholder="Email"><br>
 							<select name="perfil" id="perfil">
@@ -79,6 +105,9 @@
 				</tr>
 			<?php } ?>
 			</table>
+
+	<div id="miDiv"></div>
+
 			<article>
 				<h2>Recuerde:</h2>
 				<div class="descripcion">
