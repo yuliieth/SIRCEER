@@ -47,7 +47,7 @@
 </head>
 <body>
 	<header>
-		Este es el header
+		
 	</header>
 	<section>
 
@@ -82,18 +82,18 @@
 		</div>
 		<div class="contenido">
 			<table>
-				<tr>
+				<tr class="head">
 					<th>#</th>
 					<th>Nombre</th>
 					<th>Usuario</th>
-					<th>Password</th>
+					<th>Contraseña</th>
 					<th>Email</th>
 					<th>Tipo</th>
 				</tr>
 				<?php 
 				foreach ($statement as $valor) {
 					?>
-					<tr>
+					<tr class="cuerpo">
 						<td><?php echo $valor['id_usuarios']; ?></td>
 						<td><?php echo $valor['nombre_completo']; ?></td>
 						<td><?php echo $valor['username']; ?></td>
@@ -125,8 +125,8 @@
 				</article>
 			</div>
 		</section>
-		<footer>
-			Este es el footer
-		</footer>
+		<!--<footer>
+			
+		</footer>-->
 	</body>
 	</html>

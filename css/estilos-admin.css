@@ -18,9 +18,7 @@ section{
 }
 
 .agregar{
-	height: 78px;
-	padding: 20px;
-	width: 100%;
+	margin-left: 123px;
 }
 
 .contenido{
@@ -32,16 +30,22 @@ section{
 table{
 	margin: auto;
 	width: 80%;
+	text-align: center;
 }
 
-table, th, td{
-	
+tbody{
 	border: 1px solid green;
 }
 
+.head{
+	background-color: blue;
+	font-size: 1.2em;
+	color: white;
 
-th, td{
-	padding: 8px;
+}
+
+.cuerpo{
+	background-color: rgb(254,254,254);
 }
 
 .ventana{
@@ -121,7 +125,8 @@ input[type="email"]:focus{
 .descripcion{
 	margin: auto;
 	border: 1px solid green;
-	margin-bottom: 9px;
+	margin-bottom: 11px;
+	margin-top: 11px;
 	width: 30%;
 	height: 100px;
 	padding: 10px;
