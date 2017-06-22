@@ -15,7 +15,40 @@
 			$(".ventana").slideUp("fast");
 		}
 
+		function creaObjetoAjax () { //Mayoría de navegadores
+     var obj;
+     if (window.XMLHttpRequest) {
+        obj=new XMLHttpRequest();
+        }
+     else { //para IE 5 y IE 6
+        obj=new ActiveXObject(Microsoft.XMLHTTP);
+        }
+     return obj;
+     }
 
+
+     function eliminar(str)
+     {
+     	var xmlhttp;
+			
+			if (window.XMLHttpRequest)
+			{
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function()
+			{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				{
+					document.getElementById("miDiv").innerHTML=xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET","../php/eliminarUser.php?u="+str,true);
+			xmlhttp.send();
+     }
 
 		function sugerencias(str){
 			var xmlhttp;
@@ -101,10 +134,11 @@
 						<td><?php echo $valor['email']; ?></td>
 						<td><?php echo $valor['nombre']; ?></td>
 						<td>
-							<a href="javascript:openVentana();"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>
+							<!--<a href="javascript:openVentana();"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>-->
+														<button style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;" onclick="eliminar(this.'id_usuarios')">Editar</button>
 						</td>
 						<td>
-							<a href="#"><i class="fa fa-minus-square fa-2x"" aria-hidden="true"></i></a>
+							<button style="background-color: blue; padding: 4px; border: 1px solid blue; border-radius:3px; color: white;" onclick="eliminar(this.'id_usuarios')">Eliminar</button>
 						</td>
 					</tr>
 					<?php } ?>
