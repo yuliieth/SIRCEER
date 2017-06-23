@@ -13,7 +13,7 @@
 			$(".boton-borrar").click(function(){
 				var id = $(this).attr("id");
 				var dataString = 'id=' + id;
-				var parent = $(this).parent();
+				var parent = $(this).parent(".cuerpo");
 
 				$.ajax({
 					type: "POST",
