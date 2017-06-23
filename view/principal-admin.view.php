@@ -7,6 +7,35 @@
 	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript">
+
+
+		$(function(){
+			$(".boton-borrar").click(function(){
+				var id = $(this).attr("id");
+				var dataString = 'id=' + id;
+				var parent = $(this).parent();
+
+				$.ajax({
+					type: "POST",
+					url: "../php/eliminarUser.php",
+					data: dataString,
+					cache: false,
+					success: function()
+					{
+						if (id % 2) 
+						{
+							parent.fadeOut('slow',function(){this.remove();});
+						}else
+						{
+							parent.slideUp('slow',function(){this.remove();});
+						}
+					}
+				});
+				return false;
+			}); 
+		} );
+
+
 		function openVentana(){
 			$(".ventana").slideDown("slow");
 		}
@@ -27,28 +56,7 @@
      }
 
 
-     function eliminar(str)
-     {
-     	var xmlhttp;
-			
-			if (window.XMLHttpRequest)
-			{
-				xmlhttp=new XMLHttpRequest();
-			}
-			else
-			{
-				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange=function()
-			{
-				if (xmlhttp.readyState==4 && xmlhttp.status==200)
-				{
-					document.getElementById("miDiv").innerHTML=xmlhttp.responseText;
-				}
-			}
-			xmlhttp.open("GET","../php/eliminarUser.php?u="+str,true);
-			xmlhttp.send();
-     }
+    
 
 		function sugerencias(str){
 			var xmlhttp;
@@ -135,10 +143,10 @@
 						<td><?php echo $valor['nombre']; ?></td>
 						<td>
 							<!--<a href="javascript:openVentana();"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>-->
-														<button style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;" onclick="eliminar(this.'id_usuarios')">Editar</button>
+														<button style="background-color: blue; padding: 4px; border: 1px solid blue; border-radius:3px; color: white;" onclick="eliminar(this.'id_usuarios')">Editar</button>
 						</td>
 						<td>
-							<button style="background-color: blue; padding: 4px; border: 1px solid blue; border-radius:3px; color: white;" onclick="eliminar(this.'id_usuarios')">Eliminar</button>
+							<a href="#" class="boton-borrar" id="<?php echo $valor['id_usuarios'] ?>" style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;">Delete</a>
 						</td>
 					</tr>
 					<?php } ?>
