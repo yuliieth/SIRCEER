@@ -14,38 +14,37 @@
 	</header>
 	<section>
 
-			<div class="formulario-editar-user">
-				<h3>Esta modificando un usuario:</h3>
-				<hr>
-				<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-				<input type="hidden"  name="id" value="<?php echo $result['id']; ?>">
-				<label>Nombre completo:</label>
-				<input type="text" name="nombre" value="<?php echo $result['nombre_completo']; ?>" required="Campo requerido"><br>
-				<label>Usuarios:</label>
-					<input type="text" onkeyup="sugerencias(this.value)" name="usuario" value="<?php echo $result['username']; ?>" placeholder="Usuario:" required="" ><br>
-					<label>Contraseña:</label>
-					<input type="password" name="password" value="<?php echo $result['password']; ?>" required=""><br>
-					<label>E-mail:</label>
-					<input type="email" name="email" value="<?php echo $result['email']; ?>" required=""><br>
-					<label>Perfil</label>
-					<select name="perfil" id="perfil">
-						<option value="1">Super usuario</option>
-						<option value="2">Usuario estandar</option>
-						<option value="3">Usuario externo</option>
-					</select>
+		<div class="formulario-editar-user">
+			<h3>Esta modificando un usuario:</h3>
+			<hr>
+			<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+				<input type="hidden"  name="id" value="<?php echo $id_user; ?>">
+				<label>Nombre completo:</label><br>
+				<input type="text" name="nombre" value="<?php echo $result['nombre_completo']; ?>" required=""><br>
+				<label>Usuarios:</label><br>
+				<input type="text" onkeyup="sugerencias(this.value)" name="usuario" value="<?php echo $result['username']; ?>" required="" ><br>
+				<label>Contraseña:</label><br>
+				<input type="text" name="password" value="<?php echo $result['password']; ?>" required=""><br>
+				<label>E-mail:</label><br>
+				<input type="email" name="email" value="<?php echo $result['email']; ?>"><br>
+				<label>Perfil</label><br>
+				<select name="perfil" id="perfil">
+					<option value="1"<?php if ($result['id_perfil'] == 1){echo " selected";}?>>Super usuario</option>
+					<option value="2"<?php if ($result['id_perfil'] == 2){echo " selected";}?>>Usuario estandar</option>
+					<option value="3"<?php if ($result['id_perfil'] == 3){ echo " selected";}?>>Usuario externo</option>
+				</select>
+	
+				<input type="submit" name="enviar" value="Crear usuario">		
+			</form>
 
-					
-					<input type="submit" name="enviar" value="Crear usuario">		
-				</form>
-				
 
 			
 		</div>
 
 		
-		</section>
+	</section>
 		<!--<footer>
 			
-		</footer>-->
-	</body>
-	</html>
+	</footer>-->
+</body>
+</html>
