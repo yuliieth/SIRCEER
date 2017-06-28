@@ -20,6 +20,7 @@
 						<div class="envuelve-input">
 						<i class="fa fa-unlock-alt" aria-hidden="true"></i>
 						<input type="password" name="pass" placeholder="Contraseña">
+						
 						</div>
 						<br>
 						<input type="submit" class="btn" value="Entrar">

@@ -1,5 +1,5 @@
 <?php 
-	require_once '../control/config.php';
+	require_once '../admin/config.php';
 	
 		function getConexion(){
 			try{
