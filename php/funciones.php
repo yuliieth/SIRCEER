@@ -2,7 +2,7 @@
 	
 	function comprobarConexion($con)
 	{
-		global $con;
+		
 		if (!$con) {
 		echo "Ocurrio un error en la Conexion";
 	}
@@ -15,6 +15,26 @@
 		$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON  perfiles.id=usuarios_perfiles.perfiles_id";
 			return 	$con->query($sql);
 	#var_dump($sta);
+	}
+
+	function getAllSubjects($table,$con)
+	{
+		$sql = "SELECT * FROM $table";
+		$ps = $con->prepare($sql);
+		$ps->execute();
+		$resul = $ps->fetchAll();
+		return $resul;
+			
+	}
+
+	function getSubjectsById($table,$id,$con)
+	{
+		$sql = "SELECT * FROM $table WHERE id=$id LIMIT 1";
+		$ps = $con->prepare($sql);
+		$ps->execute();
+		$resul = $ps->fetch();
+		return $resul;
+			
 	}
 
 	function eliminarUsuario($con,$id)

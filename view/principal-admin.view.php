@@ -142,8 +142,8 @@
 						<td><?php echo $valor['email']; ?></td>
 						<td><?php echo $valor['nombre']; ?></td>
 						<td>
-							<!--<a href="javascript:openVentana();"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>-->
-														<button style="background-color: blue; padding: 4px; border: 1px solid blue; border-radius:3px; color: white;" onclick="eliminar(this.'id_usuarios')">Editar</button>
+							<a href="editar-user.php?id=<?php echo urlencode($valor['id_usuarios']) ?>"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>
+														
 						</td>
 						<td>
 							<a href="#" class="boton-borrar" id="<?php echo $valor['id_usuarios'] ?>" style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;">Delete</a>
