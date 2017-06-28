@@ -1,5 +1,14 @@
 <?php 
 	
+	function cleanData($data)
+	{
+		$data = trim($data);
+		$data = htmlspecialchars($data);
+		$data = stripcslashes($data);
+		return $data;
+	}
+
+
 	function comprobarConexion($con)
 	{
 		
@@ -9,9 +18,23 @@
 	}
 
 
+	
 
-	function traerUsuarios($con)
+	function getUserById($id,$con)
 	{
+		//Devuelve el user con sus relaciones
+		$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre,perfiles.id AS id_perfil FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON  perfiles.id=usuarios_perfiles.perfiles_id WHERE usuarios.id=$id";
+			$ps = $con->prepare($sql);
+		$ps->execute();
+		$resul = $ps->fetch();
+		return $resul;
+	
+	}
+
+
+	function getAllUsers($con)
+	{
+		//Devuelve todos los user con sus relaciones
 		$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON  perfiles.id=usuarios_perfiles.perfiles_id";
 			return 	$con->query($sql);
 	#var_dump($sta);

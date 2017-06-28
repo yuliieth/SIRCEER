@@ -5,7 +5,7 @@ $con = getConexion();
 
 
 comprobarConexion($con);
-$statement = traerUsuarios($con);
+$statement = getAllUsers($con);
 
 
 

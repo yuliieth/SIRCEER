@@ -9,12 +9,39 @@ comprobarConexion($cn);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
 	echo $_POST['id'];
-	echo $_POST['nombre'];
-	echo $_POST['usuario'];
-	echo $_POST['password'];
-	echo $_POST['email'];
-	echo $_POST['perfil'];
+	$id = cleanData($_POST['id']);
+	$nombre = cleanData($_POST['nombre']);
+	$usuario = cleanData($_POST['usuario']);
+	$password = cleanData($_POST['password']);
+	$email = cleanData($_POST['email']);
+	$perfil = cleanData($_POST['perfil']);
 	
+	echo $id;
+
+	$sqlUser = "UPDATE usuarios SET nombre_completo=:nombre, username=:usuario, password=:password, email=:email WHERE usuarios.id=:id";
+
+
+
+	$sqlUsuariosPerfiles = "UPDATE usuarios_perfiles SET perfiles_id=:perfil WHERE usuarios_id=:id";
+
+	$ps=$cn->prepare($sqlUser);
+	$ps->bindParam(":nombre",$nombre);
+	$ps->bindParam(":usuario",$usuario);
+	$ps->bindParam(":password",$password);
+	$ps->bindParam(":email",$email);
+	$ps->bindParam(":id",$id);
+	$ps->execute();
+
+	$ps=$cn->prepare($sqlUsuariosPerfiles);
+	$ps->bindParam(":perfil",$perfil);
+	$ps->bindParam(":id",$id);
+	$ps->execute();
+
+
+	// echo a message to say the UPDATE succeeded
+    #echo $ps->rowCount() . " records UPDATED successfully";
+
+    header("Location: principal-admin.php");
 }else
 {
 	#Crear funcion para limpiar id
@@ -22,9 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	if (empty($id_user)) {
 		header("Location:principal-admin.php");
 	}
-		$result = getSubjectsById("usuarios",$id_user,$cn);
+	$result = getUserById($id_user,$cn);
 		#var_dump($result);
-	
+
 }
 ?>
 
