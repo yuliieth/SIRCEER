@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SRCEER | Gobernaci&oacute;n</title>
-	<link rel="icon" href="../iconos/favicon.png">
+	<link rel="icon" href="../imagenes/favicon.png">
 	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
