@@ -7,19 +7,19 @@
 			<ul>
 				<li>
                 <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/new_estudiante.php">Nuevo</a>
+                <a href="../gestion/new_estudiante.php">Nuevo</a>
                 </li>
 				<li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/buscar_estudiantes.php">Buscar</a>
+                <a href="../gestion/buscar_estudiantes.php">Buscar</a>
                 </li>
 				<li>
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-                <a href="../admin/reportes-estudiantes.php">Reportes</a>
+                <a href="../gestion/reportes-estudiantes.php">Reportes</a>
                 </li>
 				<li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../admin/estadisticas-estudiantes.php">Estadisticas</a>
+                <a href="../gestion/estadisticas-estudiantes.php">Estadisticas</a>
                 </li>
 			</ul>
 		</td>
@@ -67,7 +67,7 @@
 
 	
 			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento*" required="">
-			<input type="number" size="30" min="1" max="5" name="estrato" placeholder="Estrato 1-5*">
+			<input type="number" size="30" min="1" max="5" name="estrato" placeholder="Estrato 1-5*" required="">
 			
 			<br>
 			<label class="labels">Desplazado*:</label>
@@ -121,7 +121,7 @@
 			
 
 				
-			
+			<input type="reset" name="">
 			<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
 		
 
