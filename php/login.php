@@ -8,7 +8,7 @@
 
 	/*Comprobamos methodo de envio*/
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$usuario = $_POST['usuario'];
+		$usuario = strtolower( $_POST['usuario']);
 		$pass = $_POST['pass'];
 	
 	

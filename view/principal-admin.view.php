@@ -88,7 +88,9 @@
 </head>
 <body>
 	<header>
-		
+		<div class="cerrar-sesion">
+			<a href="../php/cerrar-sesion.php">Finalizar</a>
+		</div>
 	</header>
 	<section>
 

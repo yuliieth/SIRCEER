@@ -1,7 +1,7 @@
+<?php session_start(); ?>
+<?php validateSession(); ?>
 <?php require '../php/Conexion.php' ?>
 <?php require '../php/funciones.php' ?>
-
-
 <?php
 $cn = getConexion();
 comprobarConexion($cn);

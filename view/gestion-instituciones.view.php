@@ -1,8 +1,4 @@
 <?php require 'cabecera-admin.php' ?>
-<?php /*Este require debe moverse a su archivo paralelo*/ require_once '../php/Conexion.php' ?>
-	
-
-
 	<?php 
 		/*
 		1 Number of Men
@@ -46,19 +42,19 @@
 			<ul>
 				<li>
                 <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/new_estudiante.php">Nuevo</a>
+                <a href="#">Nuevo</a>
                 </li>
 				<li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/buscar_estudiantes.php">Buscar</a>
+                <a href="#">Buscar</a>
                 </li>
 				<li>
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-                <a href="../admin/reportes-estudiantes.php">Reportes</a>
+                <a href="#">Reportes</a>
                 </li>
 				<li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../admin/estadisticas-estudiantes.php">Estadisticas</a>
+                <a href="#">Estadisticas</a>
                 </li>
 			</ul>
 		</td>

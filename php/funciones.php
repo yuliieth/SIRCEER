@@ -1,5 +1,12 @@
 <?php 
 
+function validateSession()
+{
+	if (!isset($_SESSION['usuario'])) {
+		header("Location: http://localhost/DesarrolloWeb/PracticaPHP/SRCEER/php/login.php");
+	}
+}
+
 function shearcPerfilUser($id_user,$con)
 {
 	$result = getUserById($id_user,$con);

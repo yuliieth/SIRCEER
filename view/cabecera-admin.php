@@ -1,8 +1,3 @@
-<?php session_start(); ?>
-<?php if (!isset($_SESSION['usuario'])) {
-		header("Location: login.php");
-	}
- ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +16,7 @@
 	<header>
 		<h1><a href="index.php">SRCEER</a></h1>
 		<div class="user">
-			<p><i class="fa fa-user-circle fa-4x" aria-hidden="true"></i><?php echo $_SESSION['usuario']; ?></p>
+			<i class="fa fa-user-circle fa-4x" aria-hidden="true"></i><a href="../php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
 		</div>
 	
 	</header>
