@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SRCEER | Gobernaci&oacute;n</title>
+	<link rel="stylesheet" href="../css/estilos.css">
 	<link rel="icon" href="../imagenes/favicon.png">
 	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<!--<script src="../js/peticion.js"></script> no hace falta ya lo incorpore desde google (arriba)-->
 	<!--<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">-->
-	<link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 <!--https://www.facebook.com/fyupanquia-->
