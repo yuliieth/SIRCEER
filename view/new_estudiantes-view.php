@@ -33,13 +33,13 @@
 <!--<table class="table-formulario">-->
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		
-			<input type="text" size="20" name="documento" placeholder="Documento*">
-			<input type="text" size="30" name="primer-nombre" placeholder="Primer nombre*">
-			<input type="text" size="30" name="segundo-nombre" placeholder="Segundo nombre*">
+			<input type="text" size="20" name="documento" placeholder="Documento*" required="">
+			<input type="text" size="30" name="primer-nombre" placeholder="Primer nombre*" required="">
+			<input type="text" size="30" name="segundo-nombre" placeholder="Segundo nombre*" required="">
 			
 	
-			<input type="text" size="30" name="primer-apellido" placeholder="Primer apellido*">
-			<input type="text" size="30" name="segundo-apellido" placeholder="Segundo apellido*">
+			<input type="text" size="30" name="primer-apellido" placeholder="Primer apellido*" required="">
+			<input type="text" size="30" name="segundo-apellido" placeholder="Segundo apellido*" required="">
 			<input type="text" size="30" name="direccion" placeholder="Direccion">
 			<br>
 			<select  name="municipio" id="municipio">
@@ -54,19 +54,19 @@
 			  </optgroup>
 			</select>		
 		
-			<input type="text" size="30" name="celular" placeholder="Celular*">
+			<input type="text" size="30" name="celular" placeholder="Celular*" required="">
 			<input type="text" size="30" name="telefono" placeholder="Telefono">
 		
 
 	
-			<input type="email" size="30" name="email" placeholder="E-mail">
+			<input type="email" size="30" name="email" placeholder="E-mail" required="">
 			<!--<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento*">-->
 			<input type="date" name="fecha-naci" step="1" min="1950-01-01" max="2018-12-31" value="<?php echo date("Y-m-d");?>">
 
 		
 
 	
-			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento*">
+			<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento*" required="">
 			<input type="number" size="30" min="1" max="5" name="estrato" placeholder="Estrato 1-5*">
 			
 			<br>
