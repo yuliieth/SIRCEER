@@ -11,6 +11,7 @@
 		<input type="text" size="30" name="nombre" placeholder="Nombre*" required>
 		<input type="text" size="30" name="codigo" placeholder="Codigo*" required="">
 		<input type="text" size="30" name="telefono" placeholder="Telefono">		
+		
 		<br>
 		<select  name="municipio" id="municipio">
 			<optgroup label="Risaralda">

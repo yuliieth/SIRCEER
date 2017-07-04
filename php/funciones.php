@@ -1,6 +1,4 @@
-<?php 
-
-function validateSession()
+<?php function validateSession()
 {
 	if (!isset($_SESSION['usuario'])) {
 		header("Location: http://localhost/DesarrolloWeb/PracticaPHP/SRCEER/php/login.php");
@@ -112,30 +110,23 @@ function validarErrores($parameter,$errores)
 
 function saveInstitu
 		(
-
 			$nombre,
 			$codigo,
 			$telefono,
 			$municipio,
 			$email,
 			$direccion
-
 			)
 		{
-			//echo "Entro a registrar";
-			
 			$conexion = getConexion();
 			if (!$conexion) {
 				echo "Error en conexion";
 			}else{
-
 			try {
 			//var_dump($conexion);
 			$sql = ("INSERT INTO planteles_educativos  (id, nombre,codigo,telefono,municipio,email,direccion) values(null,:nombre,:codigo,:telefono,:municipio,:email,:direccion)"
 				);
-
 			$statement = $conexion->prepare($sql);
-
 					 $statement->bindParam( ':nombre' , $nombre);
 					 $statement->bindParam( ':codigo' , $codigo);
 					 $statement->bindParam( ':telefono' , $telefono);
@@ -143,11 +134,9 @@ function saveInstitu
 					 $statement->bindParam( ':email' , $email);
 					 $statement->bindParam( ':direccion' , $direccion);
 			 $result= $statement->execute();
-			
 			if ($result !== null) {
-				//header("Location:new_estudiante.php");
+				header("Location: ../gestion/new-institucion.php");
 			}
-
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	
 			}
@@ -155,9 +144,6 @@ function saveInstitu
 		}
 	  
 	}
-
-
-
 function saveProgram
 		(
 			$nombre,
@@ -166,30 +152,26 @@ function saveProgram
 			$creditos,
 			$nivelAcademico
 			)
-		{
-			//echo "Entro a registrar";
-			
+		{	
 			$conexion = getConexion();
 			if (!$conexion) {
 				echo "Error en conexion";
 			}else{
-
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO programas  (id, nombre, codigo-snies,num_semestres,num_creditos,nivel_academico) values(null, :nombre, :codigo-snies,:num_semestres,:num_creditos,:nivel_academico)"
+			$sql = ("INSERT INTO programas  (id, nombre, codigo_snies,num_semestres,num_creditos,nivel_academico) values(null, :nombre, :codigosnies,:num_semestres,:num_creditos,:nivel_academico)"
 				);
-
 			$statement = $conexion->prepare($sql);
-
 					 $statement->bindParam( ':nombre' , $nombre);
-					 $statement->bindParam( ':codigo-snies' , $codigosnies);
+					 $statement->bindParam( ':codigosnies' , $codigosnies);
 					 $statement->bindParam( ':num_semestres' , $semestres);
 					 $statement->bindParam( ':num_creditos' , $creditos);
 					 $statement->bindParam( ':nivel_academico' , $nivelAcademico);
+					 
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				//header("Location:new_estudiante.php");
+				header("Location: ../gestion/new-programa.php");
 			}
 
 			} catch (Exception $e) {
@@ -250,7 +232,7 @@ function saveStudent
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				//header("Location:new_estudiante.php");
+				header("Location: ../gestion/new_estudiante.php");
 			}
 
 			} catch (Exception $e) {

@@ -8,7 +8,8 @@
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		<input type="text" size="30" name="nombre" placeholder="Nombre*" required>
 		<input type="text" size="30" name="codigosnies" placeholder="Codigo SNIES*" required>
-		<input type="text" size="30" name="semestres" placeholder="Semestres*">		
+		<input type="text" size="30" name="semestres" placeholder="Semestres*">	
+			
 		<br>
 		<input type="text" size="30" name="creditos" placeholder="Creditos*" required>	
 		<input type="text" size="30" name="nivel-academico" placeholder="Nivel academico">

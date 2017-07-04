@@ -1,8 +1,5 @@
 <?php session_start(); ?>
-    <?php
-    header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-    header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
-    ?>
+<?php  require_once '../php/Conexion.php';?>
 <?php  
 require_once '../php/funciones.php';
 validateSession();
@@ -44,4 +41,4 @@ saveProgram(
 
 }
 ?>
-<?php include '../view/new-institucion.view.php' ?>
+<?php include '../view/new-programa.view.php' ?>

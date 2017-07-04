@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php  
-require_once '../php/Consultas.php';
 require_once '../php/funciones.php';
+require_once '../php/Conexion.php';
 validateSession();
 
 $enviado = "";
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 		$genero = $_POST['genero'];
 		$fecha_registro = date("Y");
 
-registrarProductos(
+saveStudent(
 	$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro
 	);
 }
