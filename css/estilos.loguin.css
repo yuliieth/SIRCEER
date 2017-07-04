@@ -4,7 +4,7 @@
 }
 
 body{
-	background-color: rgba( 39, 55, 70 );
+	background-color: rgba( 205, 212, 294 );
 }
 
 .contenedor{
@@ -22,13 +22,15 @@ body{
 	margin: auto;
 	width: 40%;	
 	height: 242px;
+	border: 5px;
+	background-color: rgb( 254, 254, 254 );
+
 }
 
 .frm-login{
 	margin-top: 75px;
 	padding: 30Px 0px;
 	text-align: center;
-	background-color: rgb( 39, 55, 70 );
 }
 
 .envuelve-input{
@@ -39,11 +41,12 @@ body{
 	padding: 8px;
 	background: #ED572A;
 	color: #E1E9FA;
-	font-size: .4em;
+	font-size: .6em;
 	border-radius: 2px;
 	border: none;
 	float: right;
 	cursor: pointer;
+	margin-right: 50px;
 }
 
 form input[type="text"],

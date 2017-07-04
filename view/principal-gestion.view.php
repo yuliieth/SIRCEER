@@ -1,4 +1,3 @@
-
 <?php require'cabecera-admin.php' ?>
 		
 		<div class="charts admin">

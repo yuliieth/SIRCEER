@@ -12,15 +12,13 @@ body{
 
 header{
 	background-color: #42e599;
-	padding: 25px 135px;
-	padding-top: 40px;
 }
 
 header h1 a{
 	color: white;
-text-decoration: none;
-font-size: 1.5em;
-width: 80%;
+	text-decoration: none;
+	font-size: 1.5em;
+	width: 80%;
 }
 
 .nav-bar{
@@ -38,14 +36,14 @@ li{
 }
 
 header h1{
-width: 80%;
-display: inline-block;
+	width: 80%;
+	display: inline-block;
 }
 
 /****************/
 .user{
-float: right;
-font-size: 1.4em;
+	float: right;
+	font-size: 1.4em;
 
 }
 
@@ -98,7 +96,7 @@ font-size: 1.4em;
 	width: 37%;
 	height: 66px;
 	margin: auto;
-	}
+}
 
 .menu-bar ul{
 	display: inline-flex;
@@ -208,7 +206,8 @@ form{
 
 
 /*-------estilos imput----------*/
-
+form select,
+form input[type="date"],
 form input[type="text"],
 form input[type="number"],
 form input[type="email"],
@@ -290,32 +289,32 @@ form input[type="submit"]:hover{
 }
 
 #tabla_resultado .table {
-    width: 95%;
+	width: 95%;
 	max-width: 86%;
 	margin-bottom: 38px;
 	/*margin-left: 65px;*/
 }
 
 table {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 table {
-    border-spacing: 0;
-    border-collapse: collapse;
+	border-spacing: 0;
+	border-collapse: collapse;
 }
 
 
 tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
 }
 
 .bg-primary {
-    color: #fff;
-    background-color: #337ab7;
-    height: 31px;
+	color: #fff;
+	background-color: #337ab7;
+	height: 31px;
 }
 
 
@@ -336,9 +335,9 @@ footer{
 	padding: 40px;
 
 	margin-top:200px;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
-    border-top: 2px solid #000;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	border-top: 2px solid #000;
 
 }

@@ -1,4 +1,3 @@
-gestion<?php require "cabecera-admin.php"; ?>
 <table id="estructura">
 	<tr>
 		<td id="menu">&nbsp;
@@ -22,9 +21,3 @@ gestion<?php require "cabecera-admin.php"; ?>
 			</ul>
 		</td>
 		<td id="pagina">
-		<a href="../php/reporteEstudiantes.php">Reporte</a>
-							
-		</td>
-	</tr>
-</table>sasqswewqewqewqe
-<?php require "piedepagina-admin.php"; ?>
