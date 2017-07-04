@@ -51,7 +51,6 @@
 		<input type="radio" id="des_no" value="no" name="despla" checked>
 		
 		<br>
-		<br>
 		<label class="labels">Afrodescendiente*:</label>
 		<label class="input-redit" for="afro-si">Si</label>
 		<input type="radio" id="afro-si" value="si" name="afro">
@@ -61,7 +60,6 @@
 		
 
 		<br>
-		<br>
 		<label class="labels">Genero*:</label>
 		<label class="input-redit" for="femenino">Mujer</label>
 		<input type="radio" id="femenino" value="femenino" name="genero">
@@ -69,7 +67,6 @@
 		<input type="radio" id="masculino" value="masculino" name="genero" checked>
 		
 
-		<br>
 		<br>
 		<label class="labels">Color de ojos*:</label>
 		<label class="input-redit" for="negros">Negros</label>
@@ -108,4 +105,4 @@
 
 
 
-<?php require("piedepagina-admin.php") ?>
+<!--<?php require("piedepagina-admin.php") ?>-->

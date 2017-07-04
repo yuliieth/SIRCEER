@@ -18,7 +18,7 @@ $query="SELECT * FROM estudiantes ORDER BY id";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['alumnos']))
-{
+{                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['alumnos']);
 	$query="SELECT * FROM estudiantes WHERE 
 		id LIKE '%".$q."%' OR
