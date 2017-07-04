@@ -107,4 +107,162 @@ function validarErrores($parameter,$errores)
 	}
 	return $errores;
 }
+
+
+
+function saveInstitu
+		(
+
+			$nombre,
+			$codigo,
+			$telefono,
+			$municipio,
+			$email,
+			$direccion
+
+			)
+		{
+			//echo "Entro a registrar";
+			
+			$conexion = getConexion();
+			if (!$conexion) {
+				echo "Error en conexion";
+			}else{
+
+			try {
+			//var_dump($conexion);
+			$sql = ("INSERT INTO planteles_educativos  (id, nombre,codigo,telefono,municipio,email,direccion) values(null,:nombre,:codigo,:telefono,:municipio,:email,:direccion)"
+				);
+
+			$statement = $conexion->prepare($sql);
+
+					 $statement->bindParam( ':nombre' , $nombre);
+					 $statement->bindParam( ':codigo' , $codigo);
+					 $statement->bindParam( ':telefono' , $telefono);
+					 $statement->bindParam( ':municipio' , $municipio);
+					 $statement->bindParam( ':email' , $email);
+					 $statement->bindParam( ':direccion' , $direccion);
+			 $result= $statement->execute();
+			
+			if ($result !== null) {
+				//header("Location:new_estudiante.php");
+			}
+
+			} catch (Exception $e) {
+				echo "Linea de error: ".$e->getMessage();	
+			}
+			//echo "ejecuto el metodo";
+		}
+	  
+	}
+
+
+
+function saveProgram
+		(
+			$nombre,
+			$codigosnies,
+			$semestres,
+			$creditos,
+			$nivelAcademico
+			)
+		{
+			//echo "Entro a registrar";
+			
+			$conexion = getConexion();
+			if (!$conexion) {
+				echo "Error en conexion";
+			}else{
+
+			try {
+			//var_dump($conexion);
+			$sql = ("INSERT INTO programas  (id, nombre, codigo-snies,num_semestres,num_creditos,nivel_academico) values(null, :nombre, :codigo-snies,:num_semestres,:num_creditos,:nivel_academico)"
+				);
+
+			$statement = $conexion->prepare($sql);
+
+					 $statement->bindParam( ':nombre' , $nombre);
+					 $statement->bindParam( ':codigo-snies' , $codigosnies);
+					 $statement->bindParam( ':num_semestres' , $semestres);
+					 $statement->bindParam( ':num_creditos' , $creditos);
+					 $statement->bindParam( ':nivel_academico' , $nivelAcademico);
+			 $result= $statement->execute();
+			
+			if ($result !== null) {
+				//header("Location:new_estudiante.php");
+			}
+
+			} catch (Exception $e) {
+				echo "Linea de error: ".$e->getMessage();	
+			}
+			//echo "ejecuto el metodo";
+		}
+	  
+	}
+
+
+
+
+function saveStudent
+		(
+			$documento,$primerNombre,
+			$segundoNombre,$primerApellido,
+			$segundoApellido,$celular,
+			$telefono,$email,$fechaNaci,
+			$lugarNaci,$direccion,
+			$municipio,$estrato,$desplazado,
+			$afro,$ojos,$genero,$fecha_registro
+			)
+		{
+			//echo "Entro a registrar";
+			
+			$conexion = getConexion();
+			if (!$conexion) {
+				echo "Error en conexion";
+			}else{
+
+			try {
+			//var_dump($conexion);
+			$sql = ("INSERT INTO estudiantes  (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_naci, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_naci,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro)"
+				);
+
+			$statement = $conexion->prepare($sql);
+
+					 $statement->bindParam( ':documento' , $documento);
+					 $statement->bindParam( ':primer_nombre' , $primerNombre);
+					 $statement->bindParam( ':segundo_nombre' , $segundoNombre);
+					 $statement->bindParam( ':primer_apellido' , $primerApellido);
+					 $statement->bindParam( ':segundo_apellido' , $segundoApellido);
+					 $statement->bindParam( ':cel_contacto' , $celular);
+					 $statement->bindParam( ':tel_contacto' , $telefono);
+					 $statement->bindParam( ':email' , $email);
+					 $statement->bindParam( ':fecha_naci' , $fechaNaci);
+					 $statement->bindParam( ':lugar_naci' , $lugarNaci);
+					 $statement->bindParam( ':direccion' , $direccion);
+					 $statement->bindParam( ':municipio' , $municipio);
+					 $statement->bindParam( ':estrato' , $estrato);
+					 $statement->bindParam( ':desplazado' , $desplazado);
+					 $statement->bindParam( ':afrodescendiente' , $afro);
+					 $statement->bindParam( ':ojos' , $ojos);
+					 $statement->bindParam( ':genero' , $genero);
+					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
+
+			 $result= $statement->execute();
+			
+			if ($result !== null) {
+				//header("Location:new_estudiante.php");
+			}
+
+			} catch (Exception $e) {
+				echo "Linea de error: ".$e->getMessage();	
+			}
+			//echo "ejecuto el metodo";
+		}
+	  
+	}
+
+
+
+
+
 ?>

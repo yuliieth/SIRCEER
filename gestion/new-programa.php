@@ -1,6 +1,9 @@
 <?php session_start(); ?>
+    <?php
+    header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+    header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
+    ?>
 <?php  
-require_once '../php/Consultas.php';
 require_once '../php/funciones.php';
 validateSession();
 
@@ -9,7 +12,7 @@ if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"documento","primer-nombre","segundo-nombre","primer-apellido","segundo-apellido","direccion","municipio","celular","telefono","email","fecha-naci","lugar-naci","estrato","despla","afro","ojos","genero"
+		"nombre","codigosnies","semestres","creditos","nivel-academico"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -22,37 +25,18 @@ if (isset($_POST['submit'])) {
 
 
 
-		$documento = $_POST['documento'];
+		$nombre = $_POST['nombre'];
 		
-		$primerNombre = $_POST['primer-nombre'];
+		$codigosnies = $_POST['codigosnies'];
 		
-		$segundoNombre = $_POST['segundo-nombre'];
+		$semestres = $_POST['semestres'];
 
-		$primerApellido = $_POST['primer-apellido'];
+		$creditos = $_POST['creditos'];
 
-		$segundoApellido = $_POST['segundo-apellido'];
+		$nivelAcademico = $_POST['nivel-academico'];
 		
-		$direccion = $_POST['direccion'];
-		$municipio = $_POST['municipio'];
-	
-		$celular = $_POST['celular'];
-		$telefono = $_POST['telefono'];
-		
-		$email = $_POST['email'];
-		$fechaNaci = $_POST['fecha-naci'];
-
-		$lugarNaci = $_POST['lugar-naci'];
-	
-		$estrato = $_POST['estrato'];
-
-		$desplazado = $_POST['despla'];
-		$afrodescendiente = $_POST['afro'];
-		$ojos = $_POST['ojos'];
-		$genero = $_POST['genero'];
-		$fecha_registro = date("Y");
-
-registrarProductos(
-	$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro
+saveProgram(
+	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico
 	);
 }
 

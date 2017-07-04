@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="../css/estilos.css">
 	<link rel="icon" href="../imagenes/favicon.png">
 	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+	<!--La sgte libreria es inprescidinble para el buscador-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
 	<script src="../js/peticion.js"></script>
 	<script src="../js/jquery.js"></script>

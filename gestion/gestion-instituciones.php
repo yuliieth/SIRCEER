@@ -2,6 +2,7 @@
 <?php  
 require_once '../php/Consultas.php';
 require_once '../php/funciones.php';
+require_once '../php/Conexion.php';
 validateSession();
 ?>
 <?php require'../view/gestion-instituciones.view.php' ?>
