@@ -3,7 +3,7 @@ $(obtener_registros());
 function obtener_registros(alumnos)
 {
 	$.ajax({
-		url : '../php/consulta.php',
+		url : '../php/buscar-estudiante.php',
 		type : 'POST',
 		dataType : 'html',
 		data : { alumnos: alumnos },

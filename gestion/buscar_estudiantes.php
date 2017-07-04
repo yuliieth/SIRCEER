@@ -3,5 +3,5 @@
 require_once '../php/funciones.php';
 validateSession();
 ?>
-<?php require("../view/busqueda.php") ?>
+<?php require("../view/buscar-estudiante.view.php") ?>
 
