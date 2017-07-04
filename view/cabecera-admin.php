@@ -6,9 +6,10 @@
 	<link rel="stylesheet" href="../css/estilos.css">
 	<link rel="icon" href="../imagenes/favicon.png">
 	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<!--<script src="../js/peticion.js"></script> no hace falta ya lo incorpore desde google (arriba)-->
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
+	<script src="../js/peticion.js"></script>
+	<script src="../js/jquery.js"></script>
 	<!--<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">-->
 </head>
 <body>
@@ -26,11 +27,11 @@
 
 		<ul>
 			<li class="students"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
-<a href="gestion-estudiantes.php">Estudiantes</a></li>
+<a href="gestion-estudiantes.php?select=e">Estudiantes</a></li>
 			<li class="users"><i class="fa fa-university fa-2x" aria-hidden="true"></i>
-<a href="gestion-instituciones.php">Instituciones</a></li>
+<a href="gestion-instituciones.php?select=i">Instituciones</a></li>
 			<li class="chart"><i class="fa fa-tasks fa-2x" aria-hidden="true"></i>
-<a href="gestion-programas.php">Programas</a></li>
+<a href="gestion-programas.php?select=p">Programas</a></li>
 <!--<li class="reports"><i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
 <a href="reportes-estudiantes.php">Reportes</a></li>-->
 		</ul>
