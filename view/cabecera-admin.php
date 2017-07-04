@@ -16,7 +16,7 @@
 <body>
 <!--https://www.facebook.com/fyupanquia-->
 	<header>
-		<h1><a href="index.php">SRCEER</a></h1>
+		<h1><a href="principal-gestion.php">SRCEER</a></h1>
 		<div class="user">
 			<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="../php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
 		</div>
