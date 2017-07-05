@@ -8,7 +8,7 @@ comprobarConexion($cn);
 $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
-	echo $_POST['id'];
+	print_r($_POST);
 	$id = cleanData($_POST['id']);
 	$documento = cleanData($_POST['documento']);
 	$primer_nombre = cleanData($_POST['primer_nombre']);
@@ -49,13 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$ps->bindParam(":afrodescendiente",$afro);
 	$ps->bindParam(":ojos",$ojos);
 	$ps->bindParam(":genero",$genero);
+	$ps->bindParam(":id",$id);
 	$ps->execute();
 	
 
 	// echo a message to say the UPDATE succeeded
-    #echo $ps->rowCount() . " records UPDATED successfully";
+    echo $ps->rowCount() . " records UPDATED successfully";
 
-    #header("Location: principal-admin.php");
+    header("Location: buscar_estudiantes.php");
     $enviado = true;
 }else
 {
@@ -65,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		#header("Location:principal-admin.php");
 		echo "Id vacio";
 	}
-	$result = getSubjectsById("estudiantes",$id_estu,$cn);
+	$result = getSubjectById("estudiantes",$id_estu,$cn);
 		#var_dump($result);
 
 }

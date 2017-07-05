@@ -1,21 +1,21 @@
 <?php require 'cabecera-admin.php' ?>
 <div class="formulario-editar-user">
-	<h3>Esta modificando un usuario:</h3>
+	<h3>Esta modificando un estudiante:</h3>
 	<hr>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+		<input type="hidden" size="20" name="id" value="<?php echo $result['id']; ?>">
+		<input type="text" size="20" name="documento" value="<?php echo $result['documento']; ?>"  placeholder="Documento" required="">
+		<input type="text" size="30" name="primer_nombre"  value="<?php echo $result['primer_nombre']; ?>"  placeholder="Primer nombre" required="">
+		<input type="text" size="30" name="segundo_nombre" value="<?php echo $result['segundo_nombre']; ?>"  placeholder="Segun nombre" required="">
 		
-		<input type="text" size="20" name="documento" value="<?php echo $result['documento']; ?>" required="">
-		<input type="text" size="30" name="primer_nombre"  value="<?php echo $result['primer_nombre']; ?>" required="">
-		<input type="text" size="30" name="segundo_nombre" value="<?php echo $result['segundo_nombre']; ?>" required="">
 		
-		
-		<input type="text" size="30" name="primer_apellido" value="<?php echo $result['primer_apellido']; ?>" required="">
-		<input type="text" size="30" name="segundo_apellido" value="<?php echo $result['segundo_apellido']; ?>" required="">
-		<input type="text" size="30" name="direccion" value="<?php echo $result['direccion']; ?>"><br>
+		<input type="text" size="30" name="primer_apellido" value="<?php echo $result['primer_apellido']; ?>"  placeholder="Primer apellido" required="">
+		<input type="text" size="30" name="segundo_apellido" value="<?php echo $result['segundo_apellido']; ?>"  placeholder="Segundo apellido" required="">
+		<input type="text" size="30" name="direccion" value="<?php echo $result['direccion']; ?>" placeholder="Direccion" ><br>
 		<select  name="municipio" id="municipio">
 			<optgroup label="Risaralda">
 				<option value="pereira"<?php if ($result['municipio'] == 'pereira'){echo " selected";}?>>Pereira</option>
-				<option value="dosquebradas"<?php if ($result['municipio'] == 'dosquebradas'){echo " selected";}?>">D/Quebradas</option>
+				<option value="dosquebradas"<?php if ($result['municipio'] == 'dosquebradas'){echo " selected";}?>>D/Quebradas</option>
 				<option value="santa rosa"<?php if ($result['municipio'] == 'santa rosa'){echo " selected";}?>>Santa rosa</option>
 				<option value="apia"<?php if ($result['municipio'] == 'apia'){echo " selected";}?>>Apia</option>
 				<option value="mistrato"<?php if ($result['municipio'] == 'mistrato'){echo " selected";}?>>Mistrato</option>
@@ -24,55 +24,55 @@
 			</optgroup>
 		</select>		
 		
-		<input type="text" size="30" name="cel_contacto"  value="<?php echo $result['cel_contacto']; ?>" required="">
-		<input type="text" size="30" name="telefono" value="<?php echo $result['tel_contacto']; ?>" >
+		<input type="text" size="30" name="cel_contacto"  value="<?php echo $result['cel_contacto']; ?>"  placeholder="Celular de contacto" required="">
+		<input type="text" size="30" name="tel_contacto" value="<?php echo $result['tel_contacto']; ?>"  placeholder="Telefono de contacto" >
 		
 
 		
-		<input type="email" size="30" name="email"  value="<?php echo $result['email']; ?>" required="">
+		<input type="email" size="30" name="email"  value="<?php echo $result['email']; ?>"  placeholder="Email" required="">
 		<!--<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento*">-->
-		<input type="date" name="fecha-naci" step="1" min="1950-01-01" max="2018-12-31" value="<?php echo date("Y-m-d");?>">
+		<input type="date" name="fecha_naci" step="1" min="1950-01-01" max="2018-12-31" value="<?php echo date("Y-m-d");?>" placeholder="Fecha de nacimiento">
 
 		
 
 		
-		<input type="text" size="30" name="lugar-naci" value="<?php echo $result['lugar_naci']; ?>" required>
-		<input type="number" size="30" min="1" max="5" name="estrato" value="<?php echo $result['estrato']; ?>" required="">
+		<input type="text" size="30" name="lugar_naci" value="<?php echo $result['lugar_naci']; ?>"  placeholder="Lugar de nacimiento" required>
+		<input type="number" size="30" min="1" max="5" name="estrato" value="<?php echo $result['estrato'];?>" placeholder="Estrato" required="">
 		
 		<br>
 		<label class="labels">Desplazado*:</label>
 		<label class="input-redit" for="des_si">Si</label>
-		<input type="radio" id="des_si" value="si" name="despla">
+		<input type="radio" id="des_si" value="si" name="desplazado"<?php if ($result['desplazado'] == 'si'){echo "checked";}?>>
 		<label class="input-redit" for="des_no">No</label>
-		<input type="radio" id="des_no" value="no" name="despla" >
+		<input type="radio" id="des_no" value="no" name="desplazado"<?php if ($result['desplazado'] == 'no'){echo " checked";}?> >
 		
 		<br>
 		<label class="labels">Afrodescendiente*:</label>
 		<label class="input-redit" for="afro-si">Si</label>
-		<input type="radio" id="afro-si" value="si" name="afro">
+		<input type="radio" id="afro-si" value="si" name="afro"<?php if ($result['afrodescendiente'] == 'si'){echo " checked";}?>>
 		
 		<label class="input-redit" for="afro-no">No</label>
-		<input type="radio" id="afro-no" value="no" name="afro" >
+		<input type="radio" id="afro-no" value="no" name="afro"<?php if ($result['desplazado'] == 'no'){echo " checked";}?> >
 		
 
 		<br>
 		<label class="labels">Genero*:</label>
 		<label class="input-redit" for="femenino">Mujer</label>
-		<input type="radio" id="femenino" value="femenino" name="genero">
+		<input type="radio" id="femenino" value="femenino" name="genero"<?php if ($result['genero'] == 'femenino'){echo " checked";}?>>
 		<label class="input-redit" for="masculino">Hombre</label>
-		<input type="radio" id="masculino" value="masculino" name="genero">
+		<input type="radio" id="masculino" value="masculino" name="genero"<?php if ($result['genero'] == 'masculino'){echo " checked";}?>>
 		
 
 		<br>
 		<label class="labels">Color de ojos*:</label>
 		<label class="input-redit" for="negros">Negros</label>
-		<input type="radio" id="negros" value="negros" name="ojos">
+		<input type="radio" id="negros" value="negros" name="ojos"<?php if ($result['ojos'] == 'negros'){echo " checked";}?>>
 		<label class="input-redit" for="azules">Azules</label>
-		<input type="radio" id="azules" value="azules" name="ojos">
+		<input type="radio" id="azules" value="azules" name="ojos"<?php if ($result['ojos'] == 'azules'){echo " checked";}?>>
 		<label class="input-redit" for="cafes">Cafes</label>
-		<input type="radio" id="cafes" value="cafes" name="ojos">
+		<input type="radio" id="cafes" value="cafes" name="ojos"<?php if ($result['ojos'] == 'cafes'){echo " checked";}?>>
 		<label class="input-redit" for="marron">Marron</label>
-		<input type="radio" id="marron" value="marron" name="ojos">
+		<input type="radio" id="marron" value="marron" name="ojos"<?php if ($result['ojos'] == 'marron'){echo " checked";}?>>
 		<br>
 		<br>
 		

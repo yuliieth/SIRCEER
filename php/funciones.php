@@ -78,12 +78,13 @@ function getAllSubjects($table,$con)
 
 }
 
-function getSubjectsById($table,$id,$con)
+function getSubjectById($table,$id,$con)
 {
 	$sql = "SELECT * FROM $table WHERE id=$id LIMIT 1";
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$resul = $ps->fetch();
+	#var_dump($resul);
 	return $resul;
 
 }
