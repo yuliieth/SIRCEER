@@ -12,7 +12,11 @@
 			
 		<br>
 		<input type="text" size="30" name="creditos" placeholder="Creditos*" required>	
-		<input type="text" size="30" name="nivel-academico" placeholder="Nivel academico">
+		<select name="nivel-academico" id="nivel-academico">
+			<option value="tecnico">Tecnico</option>
+			<option value="tecnologo">Tecnologo</option>
+			<option value="ingenieria">Ingenieria</option>
+		</select>
 		<br>		
 		<?php if (!empty($errores)): ?>
 			<div class="input-redit alert error">
