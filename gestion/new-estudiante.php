@@ -60,5 +60,5 @@ saveStudent(
 
 }
 ?>
-<?php require("../view/new_estudiantes-view.php") ?>
+<?php require("../view/new-estudiante.view.php") ?>
 

@@ -9,19 +9,19 @@
                         <ul>
                                 <li>
                 <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/new_estudiante.php">Nuevo</a>
+                <a href="../gestion/new-estudiante.php?select=e">Nuevo</a>
                 </li>
                                 <li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/buscar_estudiantes.php">Buscar</a>
+                <a href="../gestion/buscar-estudiantes.php?select=e">Buscar</a>
                 </li>
                                 <li>
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/reportes-estudiantes.php">Reportes</a>
+                <a href="../gestion/reportes-estudiantes.php?select=e">Reportes</a>
                 </li>
                                 <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/estadisticas-estudiantes.php">Estadisticas</a>
+                <a href="../gestion/estadisticas-estudiantes.php?select=e">Estadisticas</a>
                 </li>
                         </ul>
                 </td>
@@ -39,19 +39,19 @@
                         <ul>
                                 <li>
                 <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/new-institucion.php">Nuevo</a>
+                <a href="../gestion/new-institucion.php?select=i">Nuevo</a>
                 </li>
                                 <li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/buscar-institucion.php">Buscar</a>
+                <a href="../gestion/buscar-institucion.php?select=i">Buscar</a>
                 </li>
                                 <li>
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/reportes-institucion.php">Reportes</a>
+                <a href="../gestion/reportes-institutos.php?select=i">Reportes</a>
                 </li>
                                 <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/estadisticas-institucion.php">Estadisticas</a>
+                <a href="../gestion/estadisticas-institutos.php?select=i">Estadisticas</a>
                 </li>
                         </ul>
                 </td>
@@ -71,19 +71,19 @@
                         <ul>
                                 <li>
                 <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/new-programa.php">Nuevo</a>
+                <a href="../gestion/new-programa.php?select=p">Nuevo</a>
                 </li>
                                 <li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/buscar-programa.php">Buscar</a>
+                <a href="../gestion/buscar-programa.php?select=p">Buscar</a>
                 </li>
                                 <li>
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/reportes-programa.php">Reportes</a>
+                <a href="../gestion/reportes-programas.php?select=p">Reportes</a>
                 </li>
                                 <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/estadisticas-programa.php">Estadisticas</a>
+                <a href="../gestion/estadisticas-programas.php?select=p">Estadisticas</a>
                 </li>
                         </ul>
                 </td>

@@ -1,4 +1,4 @@
-<?php require 'cabecera-admin.php' ?>
+<?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>
 				
 <div class="contenedor-busqueda">
@@ -14,14 +14,7 @@
 </tr>
 </table>
 
-
-
-
-
-
-
-	
-
+<?php require("footer-menu.view.php") ?>	
 <?php require 'piedepagina-admin.php' ?>
 
 

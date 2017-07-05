@@ -2,7 +2,7 @@
 <?php require("header-menu.view.php") ?>
 				
 
-Estadisticas en construccionx	
+Estadisticas en construccion	
 
 <?php require("footer-menu.view.php") ?>	
 <?php require 'piedepagina-admin.php' ?>
