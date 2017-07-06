@@ -62,7 +62,7 @@ if ($buscarAlumnos->num_rows > 0)
 			<td>'.$filaAlumnos['estrato'].'</td>
 			<td>'.$filaAlumnos['genero'].'</td>
 			<td> <a href="../gestion/editar-estudiante.php?id='. urlencode($filaAlumnos['id']).'">Editar</a> </td>
-			<td> <a href="#">Eliminar</a> </td>
+			<td> <a href="../php/eliminarEstudiante.php?id='. urlencode($filaAlumnos['id']).'">Eliminar</a></td>
 		 </tr>
 		';
 	}
