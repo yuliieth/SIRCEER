@@ -1,0 +1,1 @@
+<?php require_once '../view/error.view.php' ?>

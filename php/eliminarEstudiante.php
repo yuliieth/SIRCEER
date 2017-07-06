@@ -1,20 +1,24 @@
-<?php 	
+<?php 	session_start();
 require_once 'Conexion.php';
 require_once 'funciones.php';
+validateSession();
 $con = getConexion();
 comprobarConexion($con);
-$id = $_GET['id'];
+$id = cleanData($_GET['id']);
+if (empty($id)) {
+	header("Location: ../gestion/error.php");
+}
+else
+{
 $sql = "DELETE FROM estudiantes WHERE id=$id";
 $ps = $con->prepare($sql);
 $ps->execute();
 if (!$ps) {
-	echo "Error en usuarios_perfiles";
-}else{
-	echo("Usuario eliminado");
+	header("Location: ../gestion/error.php");
+}else
+{
+	header("Location: ../gestion/buscar-estudiantes.php");
 }
-header("Location: ../gestion/buscar-estudiantes.php")
-
-
-
-
+	
+}
 ?>
