@@ -1,12 +1,12 @@
 $(obtener_registros());
 
-function obtener_registros(alumnos)
+function obtener_registros(institucion)
 {
 	$.ajax({
-		url : '../php/buscar-estudiante.php',
+		url : '../php/buscar-institucion.php',
 		type : 'POST',
 		dataType : 'html',
-		data : { alumnos: alumnos },
+		data : { institucion: institucion },
 		})
 
 	.done(function(resultado){
@@ -14,7 +14,7 @@ function obtener_registros(alumnos)
 	})
 }
 
-$(document).on('keyup', '#busqueda', function()
+$(document).on('keyup', '#busqueda-institucion', function()
 {
 	var valorBusqueda=$(this).val();
 	if (valorBusqueda!="")

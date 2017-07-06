@@ -2,7 +2,9 @@
 <?php require("header-menu.view.php") ?>
 				
 
-Estadisticas en construccion	
+<p style="font-size: 3em; font-family: monospace, Helvetica, Verdana; color: green; font-weight: 900; text-align: center; margin-top: 200px;">
+	Aun en construccion
+</p>	
 
 <?php require("footer-menu.view.php") ?>	
 <?php require 'piedepagina-admin.php' ?>

@@ -41,7 +41,7 @@ if ($buscarAlumnos->num_rows > 0)
 	  	<th scope="colgroup" colspan="4">Listado de estudiantes</th>
 	  </tr>
 		<tr class="bg-primary">
-			<td>ID ALUMNO</td>
+			<td>ID</td>
 			<td>NOMBRES</td>
 			<td>APELLIDOS</td>
 			<td>EMAIL</td>

@@ -2,7 +2,7 @@
 <?php require("header-menu.view.php") ?>
 				
 <div class="contenedor-busqueda">
-		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar...">
+		<input type="text" name="busqueda-institucion" id="busqueda" placeholder="Buscar...">
 	</section>
 
 	<div id="tabla_resultado">
