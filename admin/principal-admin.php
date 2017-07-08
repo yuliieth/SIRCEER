@@ -1,8 +1,9 @@
 <?php session_start();
 require_once '../php/Conexion.php';
 require_once '../php/funciones.php';
+require_once '../admin/config.php';
 validateSession();
-$con = getConexion();
+$con = getConexion($bd_config);
 comprobarConexion($con);
 $statement = getAllUsers($con);
 

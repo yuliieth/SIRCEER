@@ -1,6 +1,7 @@
 <?php session_start();
 	require_once'../php/Conexion.php';
 	require_once'../php/funciones.php';
+	require_once '../admin/config.php';
 	if (isset($_SESSION['usuario'])) {
 		header("Location: ../gestion/principal-gestion.php");
 	}
@@ -12,16 +13,17 @@
 		$pass = $_POST['pass'];
 	
 	
-	$conexion = getConexion();
+	$conexion = getConexion($bd_config);
+	var_dump($conexion);
 	if (!$conexion) {
 		echo "Error en conexion";
-		header("Location:login.php");
+		#header("Location:login.php");
 	}
 
 
 		$result = shearcUserLogin($usuario,$pass,$conexion);
-		#echo "Valor de result:";
-		#var_dump($result);
+		echo "Valor de result:";
+		var_dump($result);
 		if ($result !== false) {
 			$_SESSION['usuario']['user'] = $usuario;
 
