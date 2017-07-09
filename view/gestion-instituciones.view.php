@@ -1,4 +1,5 @@
 <?php require 'cabecera-admin.php' ?>
+<?php require_once '../admin/config.php'; ?>
 	<?php 
 		/*
 		1 Number of Men
@@ -7,7 +8,7 @@
 		4 Find percent: Number man or womens divided total
 		*/
 
-		$conexion = getConexion();
+		$conexion = getConexion($bd_config);
 		if ($conexion == null) {
 			echo "Fallo la conexion";
 		}

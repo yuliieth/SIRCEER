@@ -3,7 +3,7 @@
 	require_once'../php/funciones.php';
 	require_once '../admin/config.php';
 	if (isset($_SESSION['usuario'])) {
-		header("Location: ../gestion/principal-gestion.php");
+		header("Location:".URL."gestion/principal-gestion.php");
 	}
 
 
@@ -11,8 +11,6 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$usuario = strtolower( $_POST['usuario']);
 		$pass = $_POST['pass'];
-	
-	
 	$conexion = getConexion($bd_config);
 	var_dump($conexion);
 	if (!$conexion) {
@@ -31,11 +29,11 @@
 			$_SESSION['usuario']['perfil'] = $perfil;
 			#var_dump($_SESSION);
 			if ($_SESSION['usuario']['perfil'] == 1 && $_SESSION['usuario']['user'] == "admin") {
-				header("Location: ../admin/principal-admin.php");
+				header("Location:".URL."admin/principal-admin.php");
 			}else
 			{
 				
-				header("Location: ../gestion/principal-gestion.php");
+				header("Location:".URL."gestion/principal-gestion.php");
 
 			}
 		}

@@ -1,4 +1,4 @@
-<?php
+<?php require '../admin/config.php';
 /////// CONEXIÓN A LA BASE DE DATOS /////////
 $host = 'localhost';
 $basededatos = 'srceer';
@@ -61,8 +61,8 @@ if ($buscarAlumnos->num_rows > 0)
 			<td>'.$filaAlumnos['ojos'].'</td>
 			<td>'.$filaAlumnos['estrato'].'</td>
 			<td>'.$filaAlumnos['genero'].'</td>
-			<td> <a href="../gestion/editar-estudiante.php?id='. urlencode($filaAlumnos['id']).'">Editar</a> </td>
-			<td> <a href="../php/eliminarEstudiante.php?id='. urlencode($filaAlumnos['id']).'">Eliminar</a></td>
+			<td> <a href="'.URL.'"gestion/editar-estudiante.php?id='. urlencode($filaAlumnos['id']).'">Editar</a> </td>
+			<td> <a href="'.URL.'php/eliminarEstudiante.php?id='. urlencode($filaAlumnos['id']).'">Eliminar</a></td>
 		 </tr>
 		';
 	}

@@ -1,4 +1,4 @@
-<?php require 'cabecera-admin.php' ?>
+<?php require URL.'cabecera-admin.php' ?>
 <div class="formulario-editar-user">
 	<h3>Esta modificando un estudiante:</h3>
 	<hr>
@@ -93,6 +93,6 @@
 
 	</form>
 </div>
-<?php require 'piedepagina-admin.php' ?>
+<?php require URL.'piedepagina-admin.php' ?>
 
 

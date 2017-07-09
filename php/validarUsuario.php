@@ -1,6 +1,7 @@
 <?php 
 include 'Conexion.php';
-$con = getConexion();
+include '../admin/config.php';
+$con = getConexion($bd_config);
 
 $sql = "SELECT * FROM usuarios";
 $ps = $con->prepare($sql);

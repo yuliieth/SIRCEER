@@ -1,4 +1,5 @@
 <?php
+require '../admin/config.php';
 /////// CONEXIÓN A LA BASE DE DATOS /////////
 $host = 'localhost';
 $basededatos = 'srceer';
@@ -60,10 +61,10 @@ if ($buscarInstitutos->num_rows > 0)
 			<td>'.$filaInstitutos['email'].'</td>
 			<td>'.$filaInstitutos['direccion'].'</td>
 			<td>
-			 <a href="../gestion/editar-institucion.php?id='. urlencode($filaInstitutos['id']).'">Editar</a> 
+			 <a href="'.URL.'gestion/editar-institucion.php?id='. urlencode($filaInstitutos['id']).'">Editar</a> 
 			</td>
 			<td>
-			 <a href="../php/eliminarInstitucion.php?id='. urlencode($filaInstitutos['id']).'">Eliminar</a>
+			 <a href="'.URL.'php/eliminarInstitucion.php?id='. urlencode($filaInstitutos['id']).'">Eliminar</a>
 			</td>
 		 </tr>
 		';

@@ -1,9 +1,10 @@
 <?php 	
 require_once 'Conexion.php';
 require_once 'funciones.php';
-$con = getConexion();
+#include '../admin/config.php';
+$con = getConexion($bd_config);
 comprobarConexion($con);
-$id = $_POST['id'];
+$id = $_GET['id'];
 
 
 $sql3 ="SELECT perfiles_id FROM usuarios_perfiles WHERE usuarios_perfiles.usuarios_id=$id";
@@ -24,7 +25,8 @@ $ps->execute();
 if (!$ps) {
 	echo "Error en usuarios_perfiles";
 }else{
-	echo("Usuario eliminado");
+	header("Location:".URL."admin/principal-admin.php");
+	#echo("Usuario eliminado");
 }
 var_dump($ps);
 
@@ -35,12 +37,6 @@ if (!$ps) {
 }else{
 	echo("Usuario eliminado");
 }
-
-
-
 var_dump($ps);
-
-
-
 
 ?>

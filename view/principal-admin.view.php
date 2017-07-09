@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>srceer | Administracion</title>
-	<link rel="stylesheet" href="../css/estilos-admin.css">
-	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>css/estilos-admin.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>font-awesome/css/font-awesome.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
@@ -80,7 +80,7 @@
 					document.getElementById("miDiv").innerHTML=xmlhttp.responseText;
 				}
 			}
-			xmlhttp.open("GET","../php/validarUsuario.php?u="+str,true);
+			xmlhttp.open("GET","<?php echo URL; ?>php/validarUsuario.php?u="+str,true);
 			xmlhttp.send();
 		}
 		
@@ -89,7 +89,7 @@
 <body>
 	<header>
 		<div class="cerrar-sesion">
-			<a href="../php/cerrar-sesion.php">Finalizar</a>
+			<a href="<?php echo URL; ?>php/cerrar-sesion.php">Finalizar</a>
 		</div>
 	</header>
 	<section>
@@ -148,7 +148,7 @@
 														
 						</td>
 						<td>
-							<a href="#" class="boton-borrar" id="<?php echo $valor['id_usuarios'] ?>" style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;">Delete</a>
+							<a href="../php/eliminarUser.php?id=<?php echo urlencode($valor['id_usuarios']) ?>" style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;">Deletes</a>
 						</td>
 					</tr>
 					<?php } ?>

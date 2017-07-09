@@ -187,5 +187,5 @@ Highcharts.chart('instituciones', {
 
 
 
-<?php require'piedepagina-admin.php' ?>
+<?php require 'piedepagina-admin.php' ?>
 	

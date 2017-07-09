@@ -1,9 +1,10 @@
 <?php session_start(); ?>
+<?php require '../php/funciones.php' ?>
 <?php validateSession(); ?>
 <?php require '../php/Conexion.php' ?>
-<?php require '../php/funciones.php' ?>
+<?php #require 'config.php' ?>
 <?php
-$cn = getConexion();
+$cn = getConexion($bd_config);
 comprobarConexion($cn);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
@@ -41,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	// echo a message to say the UPDATE succeeded
     #echo $ps->rowCount() . " records UPDATED successfully";
 
-    header("Location: principal-admin.php");
+    header("Location:".URL."principal-admin.php");
 }else
 {
 	#Crear funcion para limpiar id
 	$id_user = $_GET['id'];
 	if (empty($id_user)) {
-		header("Location:principal-admin.php");
+		header("Location:".URL."principal-admin.php");
 	}
 	$result = getUserById($id_user,$cn);
 		#var_dump($result);
@@ -55,4 +56,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 ?>
 
-<?php require '../view/editar-user.view.php' ?>
+<?php require "../view/editar-user.view.php" ?>

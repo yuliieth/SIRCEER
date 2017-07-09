@@ -1,7 +1,9 @@
-<?php function validateSession()
+<?php 
+require '../admin/config.php';
+function validateSession()
 {
 	if (!isset($_SESSION['usuario'])) {
-		header("Location: http://localhost/DesarrolloWeb/PracticaPHP/SRCEER/php/login.php");
+		header("Location: ".URL."php/login.php");
 	}
 }
 
@@ -119,7 +121,7 @@ function saveInstitu
 			$direccion
 			)
 		{
-			$conexion = getConexion();
+			$conexion = getConexion($bd_config);
 			if (!$conexion) {
 				echo "Error en conexion";
 			}else{
@@ -136,7 +138,7 @@ function saveInstitu
 					 $statement->bindParam( ':direccion' , $direccion);
 			 $result= $statement->execute();
 			if ($result !== null) {
-				header("Location: ../gestion/new-institucion.php");
+				header('Location: '.URL.'gestion/new-institucion.php?select=i');
 			}
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	
@@ -154,7 +156,7 @@ function saveProgram
 			$nivelAcademico
 			)
 		{	
-			$conexion = getConexion();
+			$conexion = getConexion($bd_config);
 			if (!$conexion) {
 				echo "Error en conexion";
 			}else{
@@ -172,7 +174,7 @@ function saveProgram
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				header("Location: ../gestion/new-programa.php");
+				header("Location:".URL."gestion/new-programa.php?select=p");
 			}
 
 			} catch (Exception $e) {
@@ -199,7 +201,7 @@ function saveStudent
 		{
 			//echo "Entro a registrar";
 			
-			$conexion = getConexion();
+			$conexion = getConexion($bd_config);
 			if (!$conexion) {
 				echo "Error en conexion";
 			}else{
@@ -233,7 +235,7 @@ function saveStudent
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				header("Location: ../gestion/new_estudiante.php");
+				header("Location:".URL."gestion/new_estudiante.php?select=e");
 			}
 
 			} catch (Exception $e) {

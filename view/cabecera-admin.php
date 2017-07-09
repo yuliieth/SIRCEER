@@ -3,16 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SRCEER | Gobernaci&oacute;n</title>
-	<link rel="stylesheet" href="../css/estilos.css">
-	<link rel="icon" href="../imagenes/favicon.png">
-	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>css/estilos.css">
+	<link rel="icon" href="<?php echo URL; ?>imagenes/favicon.png">
+	<link rel="stylesheet" href="<?php echo URL; ?>font-awesome/css/font-awesome.css">
 	<!--La sgte libreria es inprescidinble para el buscador-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
-	<script src="../js/buscar-estudiante.js"></script>
-	<script src="../js/buscar-institucion.js"></script>
-	<script src="../js/buscar-programa.js"></script>
-	<script src="../js/jquery.js"></script>
+	<script src="<?php echo URL; ?>js/buscar-estudiante.js"></script>
+	<script src="<?php echo URL; ?>js/buscar-institucion.js"></script>
+	<script src="<?php echo URL; ?>js/buscar-programa.js"></script>
+	<script src="<?php echo URL; ?>js/jquery.js"></script>
 	<!--<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">-->
 </head>
 <body>
@@ -20,7 +20,7 @@
 	<header>
 		<h1><a href="principal-gestion.php">SRCEER</a></h1>
 		<div class="user">
-			<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="../php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
+			<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="<?php echo URL; ?>php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
 		</div>
 	
 	</header>
