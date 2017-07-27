@@ -1,6 +1,6 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>
-				
+<script src="../js/buscar-programa.js"></script>
 <div class="contenedor-busqueda">
 		<input type="text" name="busqueda-programa" id="busqueda" placeholder="Buscar...">
 	</section>
