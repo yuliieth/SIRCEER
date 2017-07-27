@@ -1,5 +1,6 @@
 <?php session_start(); ?>
-<?php  require_once '../php/funciones.php';
+<?php 	require_once '../admin/config.php';
+require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
 validateSession();
 $enviado = "";
@@ -50,7 +51,7 @@ if (isset($_POST['submit'])) {
 		$fecha_registro = date("Y");
 
 saveStudent(
-	$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro
+	$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro,$bd_config
 	);
 }
 

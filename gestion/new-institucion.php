@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php  
+<?php 	require_once '../admin/config.php';
 require_once '../php/Conexion.php';
 require_once '../php/funciones.php';
 validateSession();
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 		$direccion = $_POST['direccion'];
 		
 saveInstitu(
-	$nombre,$codigo,$telefono,$municipio,$email,$direccion
+	$nombre,$codigo,$telefono,$municipio,$email,$direccion,$bd_config
 	);
 }
 

@@ -1,3 +1,4 @@
+
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
@@ -34,4 +35,4 @@
 	<!--</table>-->
 </div>
 <!--END CONTENIDO-->				
-<!--<?php require("piedepagina-admin.php") ?>-->
+<?php require("piedepagina-admin.php") ?>

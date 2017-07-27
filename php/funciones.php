@@ -1,5 +1,5 @@
 <?php 
-require '../admin/config.php';
+
 function validateSession()
 {
 	if (!isset($_SESSION['usuario'])) {
@@ -118,7 +118,8 @@ function saveInstitu
 			$telefono,
 			$municipio,
 			$email,
-			$direccion
+			$direccion,
+			$bd_config
 			)
 		{
 			$conexion = getConexion($bd_config);
@@ -153,7 +154,8 @@ function saveProgram
 			$codigosnies,
 			$semestres,
 			$creditos,
-			$nivelAcademico
+			$nivelAcademico,
+			$bd_config
 			)
 		{	
 			$conexion = getConexion($bd_config);
@@ -196,7 +198,8 @@ function saveStudent
 			$telefono,$email,$fechaNaci,
 			$lugarNaci,$direccion,
 			$municipio,$estrato,$desplazado,
-			$afro,$ojos,$genero,$fecha_registro
+			$afro,$ojos,$genero,$fecha_registro,
+			$bd_config
 			)
 		{
 			//echo "Entro a registrar";
@@ -235,7 +238,7 @@ function saveStudent
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				header("Location:".URL."gestion/new_estudiante.php?select=e");
+				header("Location:".URL."gestion/new-estudiante.php?select=e");
 			}
 
 			} catch (Exception $e) {

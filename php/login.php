@@ -30,10 +30,13 @@
 			#var_dump($_SESSION);
 			if ($_SESSION['usuario']['perfil'] == 1 && $_SESSION['usuario']['user'] == "admin") {
 				header("Location:".URL."admin/principal-admin.php");
-			}else
-			{
-				
+			}elseif (($_SESSION['usuario']['perfil'] == 2 || 
+				$_SESSION['usuario']['perfil'] == 2 && $_SESSION['usuario']['user'] != "admin")) {
 				header("Location:".URL."gestion/principal-gestion.php");
+			}
+			else
+			{
+			header("Location:".URL."gestion/error.php");	
 
 			}
 		}

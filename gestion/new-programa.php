@@ -1,7 +1,7 @@
 <?php session_start(); ?>
+<?php 	require_once '../admin/config.php';?>
 <?php  require_once '../php/Conexion.php';?>
-<?php  
-require_once '../php/funciones.php';
+<?php  require_once '../php/funciones.php';
 validateSession();
 
 $enviado = "";
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
 		$nivelAcademico = $_POST['nivel-academico'];
 		
 saveProgram(
-	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico
+	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$bd_config
 	);
 }
 
