@@ -28,6 +28,7 @@
 			</optgroup>
 		</select>		
 		
+
 		<input type="text" size="30" name="celular" placeholder="Celular*" required="">
 		<input type="text" size="30" name="telefono" placeholder="Telefono">
 		
@@ -43,6 +44,14 @@
 		<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento*" required="">
 		<input type="number" size="30" min="1" max="5" name="estrato" placeholder="Estrato 1-5*" required="">
 		
+		<select name="institute" id="select_institucion">
+		<?php foreach ($allInstitutes as $values) {?>
+			<option value="<?php echo $values['id'] ?>"><?php echo $values['nombre'];?></option>
+			<?php
+			}
+		 ?>
+		</select>
+
 		<br>
 		<label class="labels">Desplazado*:</label>
 		<label class="input-redit" for="des_si">Si</label>

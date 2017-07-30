@@ -3,6 +3,8 @@
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
 validateSession();
+$allInstitutes = getAllEntity("planteles_educativos",$bd_config);
+$numInstitutes = getTotalObjects($bd_config);
 $enviado = "";
 if (isset($_POST['submit'])) {
 
@@ -48,10 +50,11 @@ if (isset($_POST['submit'])) {
 		$afrodescendiente = $_POST['afro'];
 		$ojos = $_POST['ojos'];
 		$genero = $_POST['genero'];
+		$institute = $_POST['institute'];
 		$fecha_registro = date("Y");
 
 saveStudent(
-	$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro,$bd_config
+	$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro,$institute,$bd_config
 	);
 }
 

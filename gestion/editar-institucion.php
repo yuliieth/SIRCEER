@@ -1,9 +1,10 @@
 <?php session_start(); ?>
 <?php require '../php/Conexion.php' ?>
 <?php require '../php/funciones.php' ?>
+<?php require '../admin/config.php' ?>
 <?php validateSession(); ?>
 <?php
-$cn = getConexion();
+$cn = getConexion($bd_config);
 comprobarConexion($cn);
 $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 

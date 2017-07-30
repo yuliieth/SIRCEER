@@ -1,4 +1,4 @@
-<?php require URL.'cabecera-admin.php' ?>
+<?php require 'cabecera-admin.php' ?>
 <div class="formulario-editar-user">
 	<h3>Esta modificando un estudiante:</h3>
 	<hr>
@@ -38,6 +38,37 @@
 		
 		<input type="text" size="30" name="lugar_naci" value="<?php echo $result['lugar_naci']; ?>"  placeholder="Lugar de nacimiento" required>
 		<input type="number" size="30" min="1" max="5" name="estrato" value="<?php echo $result['estrato'];?>" placeholder="Estrato" required="">
+
+		<!--Necesidad:
+		Crear itemns hasta el total de valores encontrados en la BD
+		Datos: 1. Numero de regisrtros 2. Todos los registros and yours Forein keys
+		Ciclo: Un for
+		-->
+		<?php #var_dump($totalInsti); ?>
+		<select name="institucion" id="select_institucion">
+		<?php foreach ($institutes as $values) {?>
+			<option value="<?php echo $values['id'] ?>"><?php echo $values['nombre'];?></option>
+			<?php
+			}
+		 ?>
+		</select>
+
+		<select name="programa" id="select_programa">
+		<?php foreach ($programs as $values) {?>
+			<option value="<?php echo $values['id'] ?>"><?php echo $values['nombre'];?></option>
+			<?php
+			}
+		 ?>
+		</select>
+		<br>
+		
+		<br>
+		<label class="labels">Estado*:</label>
+		<label class="input-redit" for="activo">Si</label>
+		<input type="radio" id="activo" value="1" name="estado"<?php if ($result['estado'] == 1){echo "checked";}?>>
+		<label class="input-redit" for="inactivo">No</label>
+		<input type="radio" id="inactivo" value="0" name="estado"<?php if ($result['estado'] == 0){echo " checked";}?> >
+		
 		
 		<br>
 		<label class="labels">Desplazado*:</label>
@@ -74,8 +105,7 @@
 		<label class="input-redit" for="marron">Marron</label>
 		<input type="radio" id="marron" value="marron" name="ojos"<?php if ($result['ojos'] == 'marron'){echo " checked";}?>>
 		<br>
-		<br>
-		
+
 		<?php if (!empty($errores)): ?>
 			<div class="input-redit alert error">
 				<?php echo $errores;?>
@@ -93,6 +123,6 @@
 
 	</form>
 </div>
-<?php require URL.'piedepagina-admin.php' ?>
+<?php require 'piedepagina-admin.php' ?>
 
 

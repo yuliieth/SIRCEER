@@ -1,9 +1,10 @@
 <?php session_start(); ?>
 <?php require '../php/Conexion.php' ?>
 <?php require '../php/funciones.php' ?>
+<?php require '../admin/config.php' ?>
 <?php validateSession(); ?>
 <?php
-$cn = getConexion();
+$cn = getConexion($bd_config);
 comprobarConexion($cn);
 $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
@@ -27,10 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$afro = cleanData($_POST['afro']);
 	$ojos = cleanData($_POST['ojos']);
 	$genero = cleanData($_POST['genero']);
+	$estado = cleanData($_POST['estado']);
 
 	$sqlEstu = 
 	"UPDATE 
-	estudiantes SET documento=:documento,primer_nombre=:primer_nombre,segundo_nombre=:segundo_nombre,primer_apellido=:primer_apellido,segundo_apellido=:segundo_apellido,cel_contacto=:cel_contacto,tel_contacto=:tel_contacto,email=:email,fecha_naci=:fecha_naci,lugar_naci=:lugar_naci,direccion=:direccion,municipio=:municipio,estrato=:estrato,desplazado=:desplazado,afrodescendiente=:afrodescendiente,ojos=:ojos,genero=:genero WHERE id=:id";
+	estudiantes SET documento=:documento,primer_nombre=:primer_nombre,segundo_nombre=:segundo_nombre,primer_apellido=:primer_apellido,segundo_apellido=:segundo_apellido,cel_contacto=:cel_contacto,tel_contacto=:tel_contacto,email=:email,fecha_naci=:fecha_naci,lugar_naci=:lugar_naci,direccion=:direccion,municipio=:municipio,estrato=:estrato,desplazado=:desplazado,afrodescendiente=:afrodescendiente,ojos=:ojos,genero=:genero,estado=:estado WHERE id=:id";
 	$ps=$cn->prepare($sqlEstu);
 	$ps->bindParam(":documento",$documento);
 	$ps->bindParam(":primer_nombre",$primer_nombre);
@@ -49,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$ps->bindParam(":afrodescendiente",$afro);
 	$ps->bindParam(":ojos",$ojos);
 	$ps->bindParam(":genero",$genero);
+	$ps->bindParam(":estado",$estado);
 	$ps->bindParam(":id",$id);
 	$ps->execute();
 	
@@ -56,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	// echo a message to say the UPDATE succeeded
     echo $ps->rowCount() . " records UPDATED successfully";
 
-    header("Location: buscar_estudiantes.php");
+    #header("Location: buscar_estudiantes.php");
     $enviado = true;
 }else
 {
@@ -67,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		echo "Id vacio";
 	}
 	$result = getSubjectById("estudiantes",$id_estu,$cn);
+	$institutes = getAllEntity("planteles_educativos",$cn);
+	$programs = getAllEntity("programas",$cn);
 		#var_dump($result);
 
 }

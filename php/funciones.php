@@ -1,5 +1,25 @@
 <?php 
 
+function getAllEntity($entity,$con)
+{
+	$con= getConexion($con);
+	$sql="SELECT SQL_CALC_FOUND_ROWS id,nombre FROM $entity";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$ps = $ps->fetchAll();
+	return $ps;
+}
+
+function getTotalObjects($con)
+{
+	$con= getConexion($con);
+	$sql="SELECT FOUND_ROWS() AS total";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$ps = $ps->fetch()['total'];
+	return $ps;
+}
+
 function validateSession()
 {
 	if (!isset($_SESSION['usuario'])) {
@@ -198,7 +218,7 @@ function saveStudent
 			$telefono,$email,$fechaNaci,
 			$lugarNaci,$direccion,
 			$municipio,$estrato,$desplazado,
-			$afro,$ojos,$genero,$fecha_registro,
+			$afro,$ojos,$genero,$fecha_registro,$institute,
 			$bd_config
 			)
 		{
@@ -211,7 +231,7 @@ function saveStudent
 
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO estudiantes  (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_naci, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_naci,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro)"
+			$sql = ("INSERT INTO estudiantes  (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_naci, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro,estado,planteles_educativos_id) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_naci,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro,0,:institute)"
 				);
 
 			$statement = $conexion->prepare($sql);
@@ -234,11 +254,12 @@ function saveStudent
 					 $statement->bindParam( ':ojos' , $ojos);
 					 $statement->bindParam( ':genero' , $genero);
 					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
+					 $statement->bindParam( ':institute' , $institute);
 
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				header("Location:".URL."gestion/new-estudiante.php?select=e");
+				#header("Location:".URL."gestion/new-estudiante.php?select=e");
 			}
 
 			} catch (Exception $e) {

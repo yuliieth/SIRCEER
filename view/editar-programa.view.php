@@ -9,6 +9,9 @@
 		<input type="text" size="30" name="codigo_snies"  value="<?php echo $result['codigo_snies']; ?>"  placeholder="Codigo SNIES" required="">
 		<input type="text" size="30" name="num_semestres" value="<?php echo $result['num_semestres']; ?>"  placeholder="Semestres" required="">
 		<input type="text" size="30" name="num_creditos" value="<?php echo $result['num_creditos']; ?>"  placeholder="Creditos" required="">
+
+		
+		
 		<select  name="nivel_academico" id="nivel_academico">
 			<optgroup label="nivel_academico">
 				<option value="Tecnico"<?php if ($result['nivel_academico'] == 'Tecnico'){echo " selected";}?>>Tecnico</option>

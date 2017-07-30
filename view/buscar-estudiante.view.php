@@ -15,14 +15,6 @@
 </tr>
 </table>
 
-
-
-
-
-
-
-	
-
 <?php require 'piedepagina-admin.php' ?>
 
 
