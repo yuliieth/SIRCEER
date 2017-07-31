@@ -1,5 +1,19 @@
 <?php 
 
+function getStudentsInsitutesAndprogramns($con)
+{
+	$con= getConexion($con);
+	$sql="SELECT estudiantes.id AS idestudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.email,estudiantes.ojos,estudiantes.estrato,estudiantes.genero,planteles_educativos.nombre AS nameInstitute,estudiantes.estado,programas.nombre AS namePrograma,semestres.periodo AS nameSemestre,semestre_programas.programas_id AS idprograma FROM estudiantes INNER JOIN planteles_educativos ON estudiantes.planteles_educativos_id=planteles_educativos.id INNER JOIN programas ON planteles_educativos.id=programas.planteles_educativos_id INNER JOIN semestre_programas ON programas.id=semestre_programas.programas_id INNER JOIN semestres ON semestres.id=semestre_programas.semestre_id";
+	#INNER JOIN semestres ON semestres.id=semestres_programas.semestres_id
+	#AND semestres_programas.programas_planteles_educativos_id=programas.planteles_educativos_id
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$ps = $ps->fetchAll();
+	#var_dump($ps);
+	return $ps;
+}
+
 function getAllEntity($entity,$con)
 {
 	$con= getConexion($con);
