@@ -4,28 +4,28 @@
 		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar...">
 	</section>
 
-	<div id="tabla_resultado">
-	<table class="table">
+	<div id="wraper_resultado">
+	<table class="tabla_resultados">
 	  <tr>
-	  	<th scope="colgroup" colspan="4">Listado de estudiantes</th>
+	  	<th scope="colgroup" colspan="4" style="background-color: grey;">Listado de estudiantes</th>
 	  </tr>
-	<tr class="bg-primary">
-			<td>NOMBRES</td>
-			<td>APELLIDOS</td>
-			<td>EMAIL</td>
-			<td>OJOS</td>
-			<td>ESTRATO</td>
-			<td>GENERO</td>
-			<td>INSTITUTO</td>
-			<td>PROGRAMA</td>
-			<td>SEMESTRE</td>
-			<td>ESTADO</td>
+	<tr class="row-primary">
+			<td class="cell">NOMBRES</td>
+			<td class="cell">APELLIDOS</td>
+			<td class="cell">EMAIL</td>
+			<td class="cell">OJOS</td>
+			<td class="cell">ESTRATO</td>
+			<td class="cell">GENERO</td>
+			<td class="cell">INSTITUTO</td>
+			<td class="cell">PROGRAMA</td>
+			<td class="cell">SEMESTRE</td>
+			<td class="cell">ESTADO</td>
 	</tr>
 
 		<?php foreach ($allEntitys as $filaAlumnos) {?>
 			
 
-		<tr>
+		<tr class="row-secundaria">
 			<td> <?php echo  $filaAlumnos['primer_nombre']." ".$filaAlumnos['segundo_nombre']?></td>
 			<td> <?php echo  $filaAlumnos['primer_apellido']." ".$filaAlumnos['segundo_apellido']?></td>
 			<td> <?php echo  $filaAlumnos['email']?></td>

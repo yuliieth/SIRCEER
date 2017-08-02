@@ -288,35 +288,34 @@ form input[type="submit"]:hover{
 	border: none;	
 }
 
-#tabla_resultado .table {
-	width: 95%;
-	max-width: 86%;
+#wraper_resultado {
+	width: 100%;
+	/*max-width: 86%;*/
 	margin-bottom: 38px;
 	/*margin-left: 65px;*/
 }
 
-table {
-	background-color: transparent;
-}
-
-table {
-	border-spacing: 0;
-	border-collapse: collapse;
+.tabla_resultados{
+	margin: 25px;
 }
 
 
-tbody {
-	display: table-row-group;
-	vertical-align: middle;
-	border-color: inherit;
-}
-
-.bg-primary {
+.row-primary {
 	color: #fff;
+	padding: 4px;
 	background-color: #337ab7;
 	height: 31px;
+	font-weight: 800;
+	text-align: center;
 }
 
+.row-secundaria{
+	text-align: center;
+}
+
+.cell{
+	padding: 3px;
+}
 
 
 /**ESETILOS BUSCAR ALUMNO END*/
