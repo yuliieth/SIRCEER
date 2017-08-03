@@ -3,7 +3,9 @@
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
 validateSession();
-$allInstitutes = getAllEntity("planteles_educativos",$bd_config);
+$cn = getConexion($bd_config);
+comprobarConexion($cn);
+$allInstitutes = getAllEntity("planteles_educativos",$cn);
 $numInstitutes = getTotalObjects($bd_config);
 $enviado = "";
 if (isset($_POST['submit'])) {

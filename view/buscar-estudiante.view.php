@@ -37,9 +37,9 @@
 			<td> <?php echo  $filaAlumnos['nameSemestre']?></td>
 			<td> <?php echo  $filaAlumnos['estado']?></td>
 			<td> <?php echo  $filaAlumnos['idprograma']?></td>
-			<td> <a href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['id'])?>">Editar</a></td>
-			<td> <a href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($filaAlumnos['id'])?>">Eliminar</a></td>
-			<td> <a href="<?php echo URL ?>gestion/ver-estudiante.php?id='<?php echo urlencode($filaAlumnos['id'])?>">Ver</a></td>
+			<td> <a href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['idestudiante'])?>">Editar</a></td>
+			<td> <a href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($filaAlumnos['idestudiante'])?>">Eliminar</a></td>
+			<td> <a href="<?php echo URL ?>gestion/ver-estudiante.php?id='<?php echo urlencode($filaAlumnos['idestudiante'])?>">Ver</a></td>
 		 </tr>
 
 

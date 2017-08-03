@@ -16,7 +16,7 @@ function getStudentsInsitutesAndprogramns($con)
 
 function getAllEntity($entity,$con)
 {
-	$con= getConexion($con);
+	
 	$sql="SELECT SQL_CALC_FOUND_ROWS id,nombre FROM $entity";
 	$ps = $con->prepare($sql);
 	$ps->execute();
