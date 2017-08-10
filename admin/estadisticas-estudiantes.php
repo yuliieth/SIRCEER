@@ -1,1 +1,0 @@
-<?php require("../view/estadisticas-estudiantes.view.php") ?>

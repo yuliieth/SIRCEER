@@ -1,4 +1,5 @@
 <!-- http://ProgramarEnPHP.wordpress.com -->
+<!--Considerar la aplicacion del otro framework : Chart-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>:: Importar de Excel a la Base de Datos ::</title>
@@ -15,6 +16,7 @@
     <!-- CARGA LA MISMA PAGINA MANDANDO LA VARIABLE upload -->
     <?php
         //extract($_POST);
+    #si existe la varible entonces obtiene los datos
     if (isset($_POST['upload'])) {
 
         //cargamos el archivo al servidor con el mismo nombre

@@ -1,8 +1,5 @@
 <?php require 'cabecera-admin.php' ?>
-<?php /*Este require debe moverse a su archivo paralelo*/ require_once '../php/Conexion.php' ?>
-	
-
-
+<?php require_once '../admin/config.php'; ?>
 	<?php 
 		/*
 		1 Number of Men
@@ -11,7 +8,7 @@
 		4 Find percent: Number man or womens divided total
 		*/
 
-		$conexion = getConexion();
+		$conexion = getConexion($bd_config);
 		if ($conexion == null) {
 			echo "Fallo la conexion";
 		}
@@ -40,35 +37,11 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 	
-<table id="estructura">
-	<tr>
-		<td id="menu">&nbsp;
-			<ul>
-				<li>
-                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/new_estudiante.php">Nuevo</a>
-                </li>
-				<li>
-                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/buscar_estudiantes.php">Buscar</a>
-                </li>
-				<li>
-                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-                <a href="../admin/reportes-estudiantes.php">Reportes</a>
-                </li>
-				<li>
-                <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../admin/estadisticas-estudiantes.php">Estadisticas</a>
-                </li>
-			</ul>
-		</td>
-		<td id="pagina">
+<?php require("header-menu.view.php") ?>
 			
-GESTION INSTITUCIONES
+
 <div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>							
-		</td>
-	</tr>
-</table>
+	<?php require("footer-menu.view.php") ?>
 
 
 <script type="text/javascript">

@@ -1,23 +1,25 @@
-<?php session_start(); ?>
+<?php 	require_once '../admin/config.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>SRCEER | Gobernaci&oacute;n</title>
-	<link rel="icon" href="../iconos/favicon.png">
-	<link rel="stylesheet" href="../font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>css/estilos.css">
+	<link rel="icon" href="<?php echo URL; ?>imagenes/favicon.png">
+	<link rel="stylesheet" href="<?php echo URL; ?>font-awesome/css/font-awesome.css">
+	<!--La sgte libreria es inprescidinble para el buscador-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="../js/peticion.js"></script>
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
+	<script src="<?php echo URL; ?>js/jquery.js"></script>
+	<script src="../js/jquery.js"></script>
 	<!--<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">-->
-	<link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 <!--https://www.facebook.com/fyupanquia-->
 	<header>
-		<h1><a href="index.php">SRCEER</a></h1>
+		<h1><a href="principal-gestion.php">SRCEER</a></h1>
 		<div class="user">
-			<p><i class="fa fa-user-circle fa-4x" aria-hidden="true"></i><?php echo $_SESSION['usuario']; ?></p>
+			<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="<?php echo URL; ?>php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
 		</div>
 	
 	</header>
@@ -27,11 +29,11 @@
 
 		<ul>
 			<li class="students"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
-<a href="gestion-estudiantes.php">Estudiantes</a></li>
+<a href="gestion-estudiantes.php?select=e">Estudiantes</a></li>
 			<li class="users"><i class="fa fa-university fa-2x" aria-hidden="true"></i>
-<a href="gestion-instituciones.php">Instituciones</a></li>
+<a href="gestion-instituciones.php?select=i">Instituciones</a></li>
 			<li class="chart"><i class="fa fa-tasks fa-2x" aria-hidden="true"></i>
-<a href="gestion-programas.php">Programas</a></li>
+<a href="gestion-programas.php?select=p">Programas</a></li>
 <!--<li class="reports"><i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
 <a href="reportes-estudiantes.php">Reportes</a></li>-->
 		</ul>

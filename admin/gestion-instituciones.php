@@ -1,1 +1,0 @@
-<?php require'../view/gestion-instituciones.view.php' ?>

@@ -1,1 +1,0 @@
-<?php require '../view/index_admin.view.php' ?>

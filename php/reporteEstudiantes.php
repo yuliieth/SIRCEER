@@ -111,4 +111,3 @@ $pdf->AddPage();
 $pdf->FancyTable($header,$data);
 $pdf->Output();
 ?>
->>>>>>> 7d11848ab81a012e3ed5bf92bdd14d4bc7235d9d

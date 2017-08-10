@@ -1,31 +1,11 @@
-<?php require "cabecera-admin.php"; ?>
-<table id="estructura">
-	<tr>
-		<td id="menu">&nbsp;
-			<ul>
-				<li>
-                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/new_estudiante.php">Nuevo</a>
-                </li>
-				<li>
-                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../admin/buscar_estudiantes.php">Buscar</a>
-                </li>
-				<li>
-                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
-                <a href="../admin/reportes-estudiantes.php">Reportes</a>
-                </li>
-				<li>
-                <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../admin/estadisticas-estudiantes.php">Estadisticas</a>
-                </li>
-			</ul>
-		</td>
-		<td id="pagina">
-			
-En construccion, aqui se ubicara el area de estadisticas de estudiantes
-						
-		</td>
-	</tr>
-</table>
-<?php require "piedepagina-admin.php"; ?>
+<?php require("cabecera-admin.php") ?>
+<?php require("header-menu.view.php") ?>
+				
+<p style="font-size: 3em; font-family: monospace, Helvetica, Verdana; color: green; font-weight: 900; text-align: center; margin-top: 200px;">
+	Aun en construccion
+</p>	
+
+<?php require("footer-menu.view.php") ?>	
+<?php require 'piedepagina-admin.php' ?>
+
+
