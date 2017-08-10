@@ -3,14 +3,9 @@
 	<h3>Esta modificando un estudiante:</h3>
 	<hr>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-		<input type="hidden" size="20" name="id" value="<?php echo $result['id']; ?>">
-		<input type="text" size="20" name="documento" value="<?php echo $result['documento']; ?>"  placeholder="Documento" required="">
-		<input type="text" size="30" name="primer_nombre"  value="<?php echo $result['primer_nombre']; ?>"  placeholder="Primer nombre" required="">
-		<input type="text" size="30" name="segundo_nombre" value="<?php echo $result['segundo_nombre']; ?>"  placeholder="Segun nombre" required="">
-		
-		
-		<input type="text" size="30" name="primer_apellido" value="<?php echo $result['primer_apellido']; ?>"  placeholder="Primer apellido" required="">
-		<input type="text" size="30" name="segundo_apellido" value="<?php echo $result['segundo_apellido']; ?>"  placeholder="Segundo apellido" required="">
+		<input type="hidden" size="20" name="documento" value="<?php echo $result['documento']; ?>">
+		<input type="text" size="30" name="primer_nombre"  value="<?php echo $result['nombres']; ?>"  placeholder="Primer nombre" required="">		
+		<input type="text" size="30" name="apellidos" value="<?php echo $result['apellidos']; ?>"  placeholder="Primer apellido" required="">
 		<input type="text" size="30" name="direccion" value="<?php echo $result['direccion']; ?>" placeholder="Direccion" ><br>
 		<select  name="municipio" id="municipio">
 			<optgroup label="Risaralda">

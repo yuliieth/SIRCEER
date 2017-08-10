@@ -7,7 +7,7 @@ require_once '../admin/config.php'; ?>
 		3 Number peoples
 		4 Find percent: Number man or womens divided total
 		*/
-
+/*
 		$conexion = getConexion($bd_config);
 		if ($conexion == null) {
 			echo "Fallo la conexion";
@@ -30,7 +30,7 @@ require_once '../admin/config.php'; ?>
 
 		$numMen = $numStudent - $numWomen;
 		//echo "{$numMen}";
-
+*/
       ?>
 
       <script src="https://code.highcharts.com/highcharts.js"></script>

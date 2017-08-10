@@ -5,14 +5,14 @@ require_once '../php/Conexion.php';
 validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
-$allInstitutes = getAllEntity("planteles_educativos",$cn);
+$allInstitutes = getAllEntity("instituto",$cn);
 $numInstitutes = getTotalObjects($bd_config);
 $enviado = "";
 if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"documento","primer-nombre","segundo-nombre","primer-apellido","segundo-apellido","direccion","municipio","celular","telefono","email","fecha-naci","lugar-naci","estrato","despla","afro","ojos","genero"
+		"documento","nombres","apellidos","direccion","municipio","celular","telefono","email","fecha-naci","edad","lugar-naci","estrato","despla","afro","ojos","genero","tipo_documento"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -27,13 +27,9 @@ if (isset($_POST['submit'])) {
 
 		$documento = $_POST['documento'];
 		
-		$primerNombre = $_POST['primer-nombre'];
-		
-		$segundoNombre = $_POST['segundo-nombre'];
+		$nombres = $_POST['nombres'];
 
-		$primerApellido = $_POST['primer-apellido'];
-
-		$segundoApellido = $_POST['segundo-apellido'];
+		$apellidos = $_POST['apellidos'];
 		
 		$direccion = $_POST['direccion'];
 		$municipio = $_POST['municipio'];
@@ -43,7 +39,7 @@ if (isset($_POST['submit'])) {
 		
 		$email = $_POST['email'];
 		$fechaNaci = $_POST['fecha-naci'];
-
+		$edad = $_POST['edad'];
 		$lugarNaci = $_POST['lugar-naci'];
 	
 		$estrato = $_POST['estrato'];
@@ -52,11 +48,11 @@ if (isset($_POST['submit'])) {
 		$afrodescendiente = $_POST['afro'];
 		$ojos = $_POST['ojos'];
 		$genero = $_POST['genero'];
-		$institute = $_POST['institute'];
 		$fecha_registro = date("Y");
+		$tipo_documento = $_POST['tipo_documento'];
 
 saveStudent(
-	$documento,$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$celular,$telefono,$email,$fechaNaci,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro,$institute,$bd_config
+	$documento,$nombres,$apellidos,$celular,$telefono,$email,$fechaNaci,$edad,$lugarNaci,$direccion,$municipio,$estrato,$desplazado,$afrodescendiente,$ojos,$genero, $fecha_registro,$tipo_documento,$bd_config
 	);
 }
 

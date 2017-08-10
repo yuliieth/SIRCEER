@@ -64,14 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }else
 {
 	#Crear funcion para limpiar id
-	$id_estu = $_GET['id'];
-	if (empty($id_estu)) {
+	$doc_estu = $_GET['id'];
+	if (empty($doc_estu)) {
 		#header("Location:principal-admin.php");
 		echo "Id vacio";
 	}
-	$result = getSubjectById("estudiantes",$id_estu,$cn);
-	$institutes = getAllEntity("planteles_educativos",$cn);
-	$programs = getAllEntity("programas",$cn);
+	$result = getSubjectById("estudiante",$doc_estu,$cn);
+	$institutes = getAllEntity("institucion",$cn);
+	$programs = getAllEntity("programa",$cn);
 		#var_dump($result);
 
 }

@@ -11,35 +11,42 @@
 	  </tr>
 	<tr class="row-primary">
 			<td class="cell">NOMBRES</td>
-			<td class="cell">APELLIDOS</td>
+			<td class="cell">EDAD</td>
 			<td class="cell">EMAIL</td>
 			<td class="cell">OJOS</td>
 			<td class="cell">ESTRATO</td>
 			<td class="cell">GENERO</td>
-			<td class="cell">INSTITUTO</td>
+			<!--<td class="cell">INSTITUTO</td>
 			<td class="cell">PROGRAMA</td>
-			<td class="cell">SEMESTRE</td>
+			<td class="cell">SEMESTRE</td>-->
 			<td class="cell">ESTADO</td>
 	</tr>
 
 		<?php foreach ($allEntitys as $filaAlumnos) {?>
 			
 
-		<tr class="row-secundaria">
-			<td> <?php echo  $filaAlumnos['primer_nombre']." ".$filaAlumnos['segundo_nombre']?></td>
-			<td> <?php echo  $filaAlumnos['primer_apellido']." ".$filaAlumnos['segundo_apellido']?></td>
+		<tr class="row-secundaria"<?php 
+			if ($filaAlumnos['estado'] == 0) {
+				echo " style='background-color:red;'";
+			}elseif($filaAlumnos['estado'] == 1){
+				echo " style='background-color:green;'";
+			}
+		 ?>>
+			<td> <?php echo  $filaAlumnos['nombres'].$filaAlumnos['apellidos']?></td>
+			<td> <?php echo  $filaAlumnos['edad']?></td>
 			<td> <?php echo  $filaAlumnos['email']?></td>
 			<td> <?php echo  $filaAlumnos['ojos']?></td>
 			<td> <?php echo  $filaAlumnos['estrato']?></td>
 			<td> <?php echo  $filaAlumnos['genero']?></td>
-			<td> <?php echo  $filaAlumnos['nameInstitute']?></td>
-			<td> <?php echo  $filaAlumnos['namePrograma']?></td>
-			<td> <?php echo  $filaAlumnos['nameSemestre']?></td>
 			<td> <?php echo  $filaAlumnos['estado']?></td>
-			<td> <?php echo  $filaAlumnos['idprograma']?></td>
-			<td> <a href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['idestudiante'])?>">Editar</a></td>
-			<td> <a href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($filaAlumnos['idestudiante'])?>">Eliminar</a></td>
-			<td> <a href="<?php echo URL ?>gestion/ver-estudiante.php?id='<?php echo urlencode($filaAlumnos['idestudiante'])?>">Ver</a></td>
+			<!--<td> <?php echo  $filaAlumnos['nameInstitute']?></td>
+			<td> <?php echo  $filaAlumnos['namePrograma']?></td>
+			<td> <?php echo  $filaAlumnos['periodo']?></td>
+			<td> <?php echo  $filaAlumnos['documento']?></td>-->
+			<td> <a href="<?php echo URL ?>gestion/gestionar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Gestionar</a></td>
+			<td> <a href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Editar</a></td>
+			<td> <a href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Eliminar</a></td>
+			<td> <a href="<?php echo URL ?>gestion/ver-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Ver</a></td>
 		 </tr>
 
 

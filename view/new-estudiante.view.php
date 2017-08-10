@@ -6,16 +6,16 @@
 
 	<!--<table class="table-formulario">-->
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-		
+		<select name="tipo_documento" id="tipo_documento">
+			<option value="1">Cedula</option>
+			<option value="2">Tarjeta de identidad</option>
+			<option value="3">Contraseña</option>
+		</select>
 		<input type="text" size="20" name="documento" placeholder="Documento*" required="">
-		<input type="text" size="30" name="primer-nombre" placeholder="Primer nombre*" required="">
-		<input type="text" size="30" name="segundo-nombre" placeholder="Segundo nombre*" required="">
+		<input type="text" size="30" name="nombres" placeholder="Nombres*" required="">
+		<input type="text" size="30" name="apellidos" placeholder="Apellidos*" required="">
 		
-		
-		<input type="text" size="30" name="primer-apellido" placeholder="Primer apellido*" required="">
-		<input type="text" size="30" name="segundo-apellido" placeholder="Segundo apellido*" required="">
 		<input type="text" size="30" name="direccion" placeholder="Direccion">
-		<br>
 		<select  name="municipio" id="municipio">
 			<optgroup label="Risaralda">
 				<option value="pereira">Pereira</option>
@@ -38,19 +38,10 @@
 		<!--<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento*">-->
 		<input type="date" name="fecha-naci" step="1" min="1950-01-01" max="2018-12-31" value="<?php echo date("Y-m-d");?>">
 
-		
-
-		
+		<input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="">
 		<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento*" required="">
 		<input type="number" size="30" min="1" max="5" name="estrato" placeholder="Estrato 1-5*" required="">
 		
-		<select name="institute" id="select_institucion">
-		<?php foreach ($allInstitutes as $values) {?>
-			<option value="<?php echo $values['id'] ?>"><?php echo $values['nombre'];?></option>
-			<?php
-			}
-		 ?>
-		</select>
 
 		<br>
 		<label class="labels">Desplazado*:</label>

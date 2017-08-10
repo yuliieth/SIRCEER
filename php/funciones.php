@@ -2,15 +2,14 @@
 
 function getStudentsInsitutesAndprogramns($con)
 {
+	#Esta funcion sera utilizada cuando este gestionado el student
 	$con= getConexion($con);
-	$sql="SELECT estudiantes.id AS idestudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.email,estudiantes.ojos,estudiantes.estrato,estudiantes.genero,planteles_educativos.nombre AS nameInstitute,estudiantes.estado,programas.nombre AS namePrograma,semestres.periodo AS nameSemestre,semestre_programas.programas_id AS idprograma FROM estudiantes INNER JOIN planteles_educativos ON estudiantes.planteles_educativos_id=planteles_educativos.id INNER JOIN programas ON planteles_educativos.id=programas.planteles_educativos_id INNER JOIN semestre_programas ON programas.id=semestre_programas.programas_id AND programas.planteles_educativos_id=semestre_programas.programas_planteles_educativos_id INNER JOIN semestres ON semestres.id=semestre_programas.semestre_id";
-	#INNER JOIN semestres ON semestres.id=semestres_programas.semestres_id
-	#AND semestres_programas.programas_planteles_educativos_id=programas.planteles_educativos_id
+	$sql="SELECT estudiante.documento AS doc_estudiante,estudiante.nombres,estudiante.apellidos,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado, programa.nombre AS namePrograma, semestre.periodo,semestre.promedio_anterior,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN evaluacion_semestral ON estudiante.documento=evaluacion_semestral.estudiante_documento INNER JOIN programa ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN semestre ON semestre.id=evaluacion_semestral.semestre_id INNER JOIN institucion ON institucion.id=programa.institucion_id";
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	#var_dump($ps);
 	$ps = $ps->fetchAll();
-	var_dump($ps);
+	#var_dump($ps);
 	return $ps;
 }
 
@@ -110,13 +109,15 @@ function getAllSubjects($table,$con)
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$resul = $ps->fetchAll();
+	#var_dump($resul);
 	return $resul;
 
 }
 
-function getSubjectById($table,$id,$con)
+function getSubjectById($table,$doc,$con)
 {
-	$sql = "SELECT * FROM $table WHERE id=$id LIMIT 1";
+	#Used by Estudiante
+	$sql = "SELECT * FROM $table WHERE documento=$doc LIMIT 1";
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$resul = $ps->fetch();
@@ -226,14 +227,13 @@ function saveProgram
 
 function saveStudent
 		(
-			$documento,$primerNombre,
-			$segundoNombre,$primerApellido,
-			$segundoApellido,$celular,
+			$documento,$nombres,
+			$apellidos,$celular,
 			$telefono,$email,$fechaNaci,
-			$lugarNaci,$direccion,
+			$edad,$lugarNaci,$direccion,
 			$municipio,$estrato,$desplazado,
-			$afro,$ojos,$genero,$fecha_registro,$institute,
-			$bd_config
+			$afro,$ojos,$genero,$fecha_registro,
+			$tipo_documento,$bd_config
 			)
 		{
 			//echo "Entro a registrar";
@@ -245,20 +245,19 @@ function saveStudent
 
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO estudiantes  (id, documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cel_contacto, tel_contacto, email, fecha_naci, lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro,estado,planteles_educativos_id) values(null,:documento,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:cel_contacto,:tel_contacto,:email,:fecha_naci,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro,0,:institute)"
+			$sql = ("INSERT INTO estudiante (documento, nombres, apellidos, cel_contacto, tel_contacto, email, fecha_naci,edad,lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro,estado,tipo_documento_id) values(:documento,:nombres,:apellidos,:cel_contacto,:tel_contacto,:email,:fecha_naci,:edad,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro,0,:tipo_documento)"
 				);
 
 			$statement = $conexion->prepare($sql);
 
 					 $statement->bindParam( ':documento' , $documento);
-					 $statement->bindParam( ':primer_nombre' , $primerNombre);
-					 $statement->bindParam( ':segundo_nombre' , $segundoNombre);
-					 $statement->bindParam( ':primer_apellido' , $primerApellido);
-					 $statement->bindParam( ':segundo_apellido' , $segundoApellido);
+					 $statement->bindParam( ':nombres' , $nombres);
+					 $statement->bindParam( ':apellidos' , $apellidos);
 					 $statement->bindParam( ':cel_contacto' , $celular);
 					 $statement->bindParam( ':tel_contacto' , $telefono);
 					 $statement->bindParam( ':email' , $email);
 					 $statement->bindParam( ':fecha_naci' , $fechaNaci);
+					 $statement->bindParam( ':edad' , $edad);
 					 $statement->bindParam( ':lugar_naci' , $lugarNaci);
 					 $statement->bindParam( ':direccion' , $direccion);
 					 $statement->bindParam( ':municipio' , $municipio);
@@ -268,12 +267,12 @@ function saveStudent
 					 $statement->bindParam( ':ojos' , $ojos);
 					 $statement->bindParam( ':genero' , $genero);
 					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
-					 $statement->bindParam( ':institute' , $institute);
+					 $statement->bindParam( ':tipo_documento' , $tipo_documento);
 
 			 $result= $statement->execute();
 			
 			if ($result !== null) {
-				#header("Location:".URL."gestion/new-estudiante.php?select=e");
+				header("Location:".URL."gestion/new-estudiante.php?select=e");
 			}
 
 			} catch (Exception $e) {
