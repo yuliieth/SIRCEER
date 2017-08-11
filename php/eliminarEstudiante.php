@@ -11,8 +11,13 @@ if (empty($id)) {
 }
 else
 {
-$sql = "DELETE FROM estudiantes WHERE id=$id";
+$sql="DELETE FROM evaluacion_semestral WHERE estudiante_documento=$id";
 $ps = $con->prepare($sql);
+$ps->execute();
+$sql = "DELETE FROM estudiante WHERE documento=$id";
+var_dump($sql);
+$ps = $con->prepare($sql);
+#var_dump($ps);
 $ps->execute();
 if (!$ps) {
 	header("Location: ".URL."gestion/error.php");
