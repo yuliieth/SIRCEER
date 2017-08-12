@@ -10,10 +10,10 @@ $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
 	print_r($_POST);
-	$id = cleanData($_POST['documento']);
+	$documento = cleanData($_POST['documento']);
 	#$documento = cleanData($_POST['documento']);
-	$primer_nombre = cleanData($_POST['nombres']);
-	$primer_apellido = cleanData($_POST['apellidos']);
+	$nombres = cleanData($_POST['nombres']);
+	$apellidos = cleanData($_POST['apellidos']);
 	$cel_contacto = cleanData($_POST['cel_contacto']);
 	$tel_contacto = cleanData($_POST['tel_contacto']);
 	$email = cleanData($_POST['email']);
@@ -27,13 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$afro = cleanData($_POST['afro']);
 	$ojos = cleanData($_POST['ojos']);
 	$genero = cleanData($_POST['genero']);
-	$estado = cleanData($_POST['estado']);
+	#$tipo_doc = cleanData($_POST['tipo_doc']);
 
 	$sqlEstu = 
 	"UPDATE 
-	estudiante SET documento=:documento,nombres=:nombres,apellidos=:apellidos,cel_contacto=:cel_contacto,tel_contacto=:tel_contacto,email=:email,fecha_naci=:fecha_naci,edad=:edad,lugar_naci=:lugar_naci,direccion=:direccion,municipio=:municipio,estrato=:estrato,desplazado=:desplazado,afrodescendiente=:afrodescendiente,ojos=:ojos,genero=:genero,estado=:estado WHERE documento=:id";
+	estudiante SET nombres=:nombres,apellidos=:apellidos,cel_contacto=:cel_contacto,tel_contacto=:tel_contacto,email=:email,fecha_naci=:fecha_naci,edad=:edad,lugar_naci=:lugar_naci,direccion=:direccion,municipio=:municipio,estrato=:estrato,desplazado=:desplazado,afrodescendiente=:afrodescendiente,ojos=:ojos,genero=:genero WHERE documento=:documento";
 	$ps=$cn->prepare($sqlEstu);
-	$ps->bindParam(":documento",$documento);
+	$ps->bindParam(":documento",$id);
 	$ps->bindParam(":nombres",$nombres);
 	$ps->bindParam(":apellidos",$apellidos);
 	$ps->bindParam(":cel_contacto",$cel_contacto);
@@ -49,8 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$ps->bindParam(":afrodescendiente",$afro);
 	$ps->bindParam(":ojos",$ojos);
 	$ps->bindParam(":genero",$genero);
-	$ps->bindParam(":estado",$estado);
-	$ps->bindParam(":id",$id);
+	$ps->bindParam(":documento",$documento);
 	$ps->execute();
 	
 

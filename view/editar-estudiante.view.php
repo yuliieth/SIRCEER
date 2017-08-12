@@ -35,12 +35,13 @@
 		<input type="number" size="30" min="1" max="5" name="estrato" value="<?php echo $result['estrato'];?>" placeholder="Estrato" required="">
 
 		<br>
+		<!--
 		<label class="labels">Estado*:</label>
 		<label class="input-redit" for="activo">Si</label>
 		<input type="radio" id="activo" value="1" name="estado"<?php if ($result['estado'] == 1){echo "checked";}?>>
 		<label class="input-redit" for="inactivo">No</label>
 		<input type="radio" id="inactivo" value="0" name="estado"<?php if ($result['estado'] == 0){echo " checked";}?> >
-		
+		-->
 		
 		<br>
 		<label class="labels">Desplazado*:</label>

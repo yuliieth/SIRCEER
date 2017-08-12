@@ -33,7 +33,7 @@
 				echo " style='background-color:rgb(132,242,127);'";
 			}
 		 ?>>
-			<td class="cell"> <?php echo  $filaAlumnos['nombres'].$filaAlumnos['apellidos']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['nombres']." ".$filaAlumnos['apellidos']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['edad']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['email']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['ojos']?></td>
