@@ -56,15 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	// echo a message to say the UPDATE succeeded
     echo $ps->rowCount() . " records UPDATED successfully";
 
-    #header("Location: buscar_estudiantes.php");
+    header("Location: buscar-estudiantes.php?select=e");
     $enviado = true;
 }else
 {
 	#Crear funcion para limpiar id
 	$doc_estu = $_GET['id'];
 	if (empty($doc_estu)) {
-		#header("Location:principal-admin.php");
-		echo "Id vacio";
+		header("Location:principal-admin.php");
+		#echo "Id vacio";
 	}
 	$result = getSubjectById("estudiante",$doc_estu,$cn);
 	#$institutes = getAllEntity("institucion",$cn);

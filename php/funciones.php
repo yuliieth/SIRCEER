@@ -103,8 +103,9 @@ function getAllUsers($con)
 	#var_dump($sta);
 }
 
-function getAllSubjects($table,$con)
+function getAllSubject($table,$con)
 {
+	#utilizada para traer el rpograma en gestionar-estudiante.php
 	$sql = "SELECT * FROM $table";
 	$ps = $con->prepare($sql);
 	$ps->execute();
