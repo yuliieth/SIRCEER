@@ -1,12 +1,12 @@
 <?php require 'cabecera-admin.php';?>
 <?php require("header-menu.view.php") ?>
 <div class="contenedor">
-<form action="" method="POST">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<div class="wraper-e">
 		<p><strong>Estudiante</strong></p>
-		<label for="documento">Documento</label>
-		<input type="text" value="<?php echo $estudiante['documento']; ?>" name="documento" disabled="">
-		<label for="nombreEstudiante">Nombre estudiante</label>
+		<label for="documento">Documento</label><br>
+		<input type="text" value="<?php echo $estudiante['documento']; ?>" name="documento" disabled=""><br>
+		<label for="nombreEstudiante">Nombre estudiante</label><br>
 		<input type="text" value="<?php echo $estudiante['nombres']." ".$estudiante['apellidos'];?>" name="nombreEstudiante" disabled="">
 	</div>
 
@@ -22,8 +22,8 @@
 
 	</div>
 	<div>
-		<p>Institucion academica</p>
-		<p id="wraper-i"><strong></strong></p>
+		<strong><p>Institucion academica</p></strong>
+		<p id="wraper-i"></p>
 		
 	</div>
 	<div class="wraper-f">

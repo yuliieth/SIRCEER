@@ -8,6 +8,9 @@ validateSession();
 <?php 
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	var_dump($_POST);
+}else{
 #Necesidades:
 /*
 1. El estudiante a mostrar (Ya esta seleccionado).
@@ -19,6 +22,11 @@ $documento = cleanData($_GET['id']);
 $estudiante = getSubjectById("estudiante",$documento,$cn);
 $programas = getAllSubject("programa",$cn);
 #var_dump($programas);
+
+}
+
+
+
 ?>
 
 <script type=text/javascript>
