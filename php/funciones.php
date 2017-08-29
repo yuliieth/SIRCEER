@@ -1,5 +1,17 @@
 <?php 
 
+function buscarEstudianteSIMAT($documento,$con)
+{
+
+	$sql="SELECT * FROM estudiante WHERE numero=$documento LIMIT 1";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$ps = $ps->fetch();
+	#var_dump($ps);
+	return $ps;
+}
+
 function getStudentsInsitutesAndprogramns($con)
 {
 	#Esta funcion sera utilizada cuando este gestionado el student
@@ -103,8 +115,9 @@ function getAllUsers($con)
 	#var_dump($sta);
 }
 
-function getAllSubjects($table,$con)
+function getAllSubject($table,$con)
 {
+	#utilizada para traer el rpograma en gestionar-estudiante.php
 	$sql = "SELECT * FROM $table";
 	$ps = $con->prepare($sql);
 	$ps->execute();

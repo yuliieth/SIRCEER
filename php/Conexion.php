@@ -10,6 +10,17 @@
 		}
 			return $conexion;
 		}
+
+		function getConexionSIMAT($bd_config)
+		{
+			try{
+			$conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['nameBDSIMAT'],$bd_config['userNameSIMAT'],$bd_config['passSIMAT']);
+
+		}catch(PDOException $e){
+			echo "Error " . $e->getMessage();
+		}
+			return $conexion;	
+		}
 		
 
  ?>

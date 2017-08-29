@@ -8,6 +8,7 @@
                 <td id="menu">&nbsp;
                         <ul>
                                 <li>
+
                 <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/new-estudiante.php?select=e">Nuevo</a>
                 </li>
@@ -22,7 +23,11 @@
                                 <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-estudiantes.php?select=e">Estadisticas</a>
-                </li>
+                                </li>
+                <li>
+                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/simat-estudiantes.php?select=e">Consultar SIMAT</a>
+                                </li>
                         </ul>
                 </td>
                 <td id="pagina">
@@ -52,6 +57,11 @@
                                 <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-institutos.php?select=i">Estadisticas</a>
+                </li>
+
+                                <li>
+                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/simat-institutos.php?select=i">Consultar SIMAT</a>
                 </li>
                         </ul>
                 </td>
@@ -84,6 +94,10 @@
                                 <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-programas.php?select=p">Estadisticas</a>
+                </li>
+                                <li>
+                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/simat-programas.php?select=p">Consultar SIMAT</a>
                 </li>
                         </ul>
                 </td>

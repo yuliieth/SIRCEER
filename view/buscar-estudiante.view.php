@@ -6,9 +6,6 @@
 
 	<div id="wraper_resultado">
 	<table class="tabla_resultados">
-	  <tr>
-	  	<th scope="colgroup" colspan="4" style="background-color: grey;">Listado de estudiantes</th>
-	  </tr>
 	<tr class="row-primary">
 			<td class="cell">NOMBRES</td>
 			<td class="cell">EDAD</td>
@@ -20,6 +17,10 @@
 			<td class="cell">PROGRAMA</td>
 			<td class="cell">SEMESTRE</td>-->
 			<td class="cell">ESTADO</td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
 	</tr>
 
 		<?php foreach ($allEntitys as $filaAlumnos) {?>
@@ -27,26 +28,26 @@
 
 		<tr class="row-secundaria"<?php 
 			if ($filaAlumnos['estado'] == 0) {
-				echo " style='background-color:red;'";
+				echo " style='background-color: rgb(232,64,68);'";
 			}elseif($filaAlumnos['estado'] == 1){
-				echo " style='background-color:green;'";
+				echo " style='background-color:rgb(132,242,127);'";
 			}
 		 ?>>
-			<td> <?php echo  $filaAlumnos['nombres'].$filaAlumnos['apellidos']?></td>
-			<td> <?php echo  $filaAlumnos['edad']?></td>
-			<td> <?php echo  $filaAlumnos['email']?></td>
-			<td> <?php echo  $filaAlumnos['ojos']?></td>
-			<td> <?php echo  $filaAlumnos['estrato']?></td>
-			<td> <?php echo  $filaAlumnos['genero']?></td>
-			<td> <?php echo  $filaAlumnos['estado']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['nombres']." ".$filaAlumnos['apellidos']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['edad']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['email']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['ojos']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['estrato']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['genero']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['estado']?></td>
 			<!--<td> <?php echo  $filaAlumnos['nameInstitute']?></td>
 			<td> <?php echo  $filaAlumnos['namePrograma']?></td>
 			<td> <?php echo  $filaAlumnos['periodo']?></td>
 			<td> <?php echo  $filaAlumnos['documento']?></td>-->
-			<td> <a href="<?php echo URL ?>gestion/gestionar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Gestionar</a></td>
-			<td> <a href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Editar</a></td>
-			<td> <a href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Eliminar</a></td>
-			<td> <a href="<?php echo URL ?>gestion/ver-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Ver</a></td>
+			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>gestion/gestionar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Gestionar</a></td>
+			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Editar</a></td>
+			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Eliminar</a></td>
+			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>gestion/ver-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Ver</a></td>
 		 </tr>
 
 
