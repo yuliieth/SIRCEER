@@ -236,7 +236,7 @@ function saveStudent
 			$tipo_documento,$bd_config
 			)
 		{
-			//echo "Entro a registrar";
+			echo "Entro a registrar";
 			
 			$conexion = getConexion($bd_config);
 			if (!$conexion) {
@@ -270,9 +270,9 @@ function saveStudent
 					 $statement->bindParam( ':tipo_documento' , $tipo_documento);
 
 			 $result= $statement->execute();
-			
-			if ($result !== null) {
-				header("Location:".URL."gestion/new-estudiante.php?select=e");
+			#var_dump($result);
+			if ($result !== false) {
+				#header("Location:".URL."gestion/new-estudiante.php?select=e");
 			}
 
 			} catch (Exception $e) {
