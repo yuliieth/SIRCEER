@@ -12,22 +12,23 @@
 	</div>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		
-		<input type="text" size="20" name="documento" placeholder="Documento" required="" disabled="">
-		<input type="text" size="30" name="primer_nombre" placeholder="Primer nombre"  required="" disabled="">
-		<input type="text" size="30" name="segundo_nombre" placeholder="Segundo nombre"  disabled="">
-		<input type="text" size="30" name="primer_apellido" placeholder="Primer apellido"  required="" disabled="">
-		<input type="text" size="30" name="segundo_apellido" placeholder="Segundo apellido"  disabled="">
+		<input type="text" size="20" name="documento" placeholder="Documento" value="<?php echo $result['numero'] ?>" required="" disabled="">
+		<input type="text" size="30" name="primer_nombre" value="<?php echo $result['primer_nombre'] ?>" placeholder="Primer nombre"  required="" disabled="">
+		<input type="text" size="30" name="segundo_nombre" value="<?php echo $result['segundo_nombre'] ?>" placeholder="Segundo nombre"  disabled="">
+		<input type="text" size="30" name="primer_apellido" value="<?php echo $result['primer_apellido'] ?>" placeholder="Primer apellido"  required="" disabled="">
+		<input type="text" size="30" name="segundo_apellido" value="<?php echo $result['segundo_apellido'] ?>" placeholder="Segundo apellido"  disabled="">
 		
-		<input type="text" size="30" name="direccion" placeholder="Direccion" disabled="">
-		<input type="text" size="30" name="barrio" placeholder="Barrio" disabled="">
+		<input type="text" size="30" name="direccion" placeholder="Direccion" value="<?php echo $result['direccion'] ?>" disabled="">
+		<input type="text" size="30" name="barrio" placeholder="Barrio" value="<?php echo $result['barrio'] ?>" disabled="">
 		<input type="text" size="30" name="lugar-resi" placeholder="Municipio de residencia" required="" disabled="">
-		<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento" required="" disabled="">
+		<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento" value="<?php echo $result['fecha_naci'] ?>" required="" disabled="">
 		<input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="" disabled="">
-		<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento" required="" disabled="">
-		<input type="text" size="30" name="genero" placeholder="Genero"  required="" disabled="">
+		<input type="text" size="30" name="lugar-naci" placeholder="Lugar de nacimiento" value="<?php echo $result['muni_naci'] ?>" required="" disabled="">
+		<input type="text" size="30" name="genero" placeholder="Genero" value="<?php echo $result['genero'] ?>" required="" disabled="">
 		<input type="text" size="30" name="telefono" placeholder="Telefono" disabled="">
-		<input type="text" size="30" name="victima_conflicto" placeholder="Victima del conflicto" disabled="">
-		<input type="email" size="30" name="email" placeholder="E-mail" required="" disabled="">
+		<input type="text" size="30" name="victima_conflicto" placeholder="Victima del conflicto" value="<?php echo $result['victima_conflicto'] ?>" disabled="">
+		<input type="email" size="30" name="situacion_anio_anterior" placeholder="E-mail" value="<?php echo $result['situacion_academica_anio_anterior'] ?>" required="" disabled="">
+		<input type="email" size="30" name="situacion_anio_anterior" placeholder="E-mail" value="<?php echo $result['discapacidades'] ?>" required="" disabled="">
 		
 
 		<?php //if (!empty($errores)): ?>

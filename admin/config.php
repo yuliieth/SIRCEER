@@ -9,7 +9,11 @@
 		'nameBD' => 'srceer',
 		'host' => 'localhost',
 		'userName' => 'root',
-		'pass' => '' 
+		'pass' => '',
+		'nameBDSIMAT' => 'simat',
+		'hostSIMAT' => 'localhost',
+		'userNameSIMAT' => 'root',
+		'passSIMAT' => ''
 
 		);
 

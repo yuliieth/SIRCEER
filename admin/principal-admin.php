@@ -20,7 +20,7 @@ if (isset($_POST['enviar'])) {
 		#inser on usuarios, and usuarios_perfiles
 		#no vamos a utilizar query sino preparedStatement para aplicar seguridad
 	$sql = "INSERT INTO usuarios (id,nombre_completo,username,password,email) values(null,:nombre,:usuario,:pass,:email)";
-	$sql2 = "INSERT INTO usuarios_perfiles values (:usuarios_id,:perfiles_id)";
+	$sql2 = "INSERT INTO usuarios_perfiles values (:perfiles_id,:usuarios_id)";
 	$sql3 = "SELECT id FROM usuarios ORDER BY id DESC LIMIT 1";
 
 	$preparedStatement = $con->prepare($sql);
@@ -45,8 +45,8 @@ if (isset($_POST['enviar'])) {
 	$preparedStatement1 = $con->prepare($sql2);
 	$preparedStatement1->execute(
 		array(
-			':usuarios_id' => $usuarios_id, 
-			':perfiles_id' => $perfiles_id
+			':perfiles_id' => $perfiles_id,
+			':usuarios_id' => $usuarios_id 
 			)
 		);
 

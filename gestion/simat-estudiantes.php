@@ -6,11 +6,13 @@ require_once '../php/Conexion.php';
 validateSession();
 ?>
 <?php 
-$cn = getConexion($bd_config);
+$cn = getConexionSIMAT($bd_config);
 comprobarConexion($cn);
 #var_dump($_POST);
 if ( isset( $_POST['buscar'])) {
-	echo "Entro" . $_POST['busqueda'];
+	$busqueda = $_POST['busqueda'];
+	$result=buscarEstudianteSIMAT($busqueda,$cn);
+	#var_dump($result);
 }
 
 require '../view/simat-estudiantes.view.php';
