@@ -184,7 +184,7 @@ form{
 	overflow: hidden;/*Para el efecto del boton ya que le pusimos loat:left*/
 	border-top: 4px solid rgba(227, 84, 96, 1);
 	box-shadow: 0 2px 3px grey;/*Creamos la sombra: primer parametro:,segundo parametro: grosor abajo,tercer parametro es el grosor*/
-	font-size: 2.6em;
+	font-size: 1.9em;
 }
 
 .table-formulario{
@@ -216,10 +216,10 @@ form input[type="select"]{
 	border: 1px solid #536DFE;
 	border-radius: 4px;
 	padding: 10px;
-	width: 25%;
+	width: 22%;
 	display: inline-block;
 	margin-bottom: 9px;
-	font-size: .4em;
+	font-size: 1.2em;
 	color: #141938;
 }
 

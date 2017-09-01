@@ -4,6 +4,7 @@ require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
 validateSession();
+$estado = false;
 ?>
 <?php 
 $cn = getConexionSIMAT($bd_config);
@@ -13,6 +14,7 @@ if ( isset( $_POST['buscar'])) {
 	$busqueda = $_POST['busqueda'];
 	$result=buscarEstudianteSIMAT($busqueda,$cn);
 	#var_dump($result);
+	$estado = true;
 }
 
 require '../view/simat-estudiantes.view.php';
