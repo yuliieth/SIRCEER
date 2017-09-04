@@ -35,7 +35,7 @@
 			}
 			else
 			{
-			header("Location:".URL."view/login.view.php");	
+			#header("Location:".URL."view/login.view.php");	
 
 			}
 		}
