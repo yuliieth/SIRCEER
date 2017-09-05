@@ -28,9 +28,9 @@
 			$perfil = shearcPerfilUser($result['id'],$conexion);
 			$_SESSION['usuario']['perfil'] = $perfil;
 			#var_dump($_SESSION);
-			if ($_SESSION['usuario']['perfil'] == "admin" && $_SESSION['usuario']['user'] == "admin") {
+			if ($_SESSION['usuario']['perfil'] == "superusuario" && $_SESSION['usuario']['user'] == "admin") {
 				header("Location:".URL."admin/principal-admin.php");
-			}elseif (($_SESSION['usuario']['perfil'] == "interno_estandar" && $_SESSION['usuario']['user'] != "admin")) {
+			}elseif (($_SESSION['usuario']['perfil'] == "estandar" && $_SESSION['usuario']['user'] != "superusuario")) {
 				header("Location:".URL."gestion/principal-gestion.php");
 			}
 			else

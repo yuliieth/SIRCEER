@@ -56,6 +56,7 @@ function shearcPerfilUser($id_user,$con)
 {
 	#devuelve el nombre del perfil
 	$result = getUserById($id_user,$con);
+	var_dump($result);
 	$nombre_perfil = $result['nombre_perfil'];
 	return $nombre_perfil;
 }
@@ -99,7 +100,7 @@ function comprobarConexion($con)
 function getUserById($id,$con)
 {
 		//Devuelve el user con sus relaciones
-	$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre,perfiles.id AS id_perfil,perfiles.nombre AS nombre_perfil FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON  perfiles.id=usuarios_perfiles.perfiles_id WHERE usuarios.id=$id";
+	$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre,perfiles.id AS id_perfil,perfiles.nombre AS nombre_perfil FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON perfiles.id=usuarios_perfiles.perfiles_id WHERE usuarios.id=$id";
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$resul = $ps->fetch();
