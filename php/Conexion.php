@@ -21,6 +21,11 @@
 		}
 			return $conexion;	
 		}
+
+		function closeConexion($con)
+		{
+			return $con = null;
+		}
 		
 
  ?>

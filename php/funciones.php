@@ -1,5 +1,25 @@
 <?php 
 
+function getTiposDocumentos($con)
+{
+	$sql = "SELECT * FROM tipo_documento";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$result = $ps->fetchAll();
+	return $result;
+}
+
+function getInstituciones($con)
+{
+	$sql = "SELECT * FROM institucion";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
+}
+
 function buscarEstudianteSIMAT($documento,$con)
 {
 

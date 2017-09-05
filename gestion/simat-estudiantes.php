@@ -16,6 +16,10 @@ if ( isset( $_POST['buscar'])) {
 	#var_dump($result);
 	$estado = true;
 }
-
+closeConexion($cn);
+$cn = getConexion($bd_config);
+comprobarConexion($cn);
+$instituciones = getInstituciones($cn);
+$tipoDocumento = getTiposDocumentos($cn);
 require '../view/simat-estudiantes.view.php';
 ?>

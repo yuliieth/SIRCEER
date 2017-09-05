@@ -21,7 +21,7 @@
 			<td>
 				<select name="tipoDocumento" id="">
 				<?php foreach ($tipoDocumento as $tipoDocumento): ?>
-					<option value="<?php echo $tipoDocumento['idDocumento'] ?>"><?php echo $tipoDocumento['nombreDocumento'] ?></option>
+					<option value="<?php echo $tipoDocumento['id'] ?>"><?php echo $tipoDocumento['tipo'] ?></option>
 				<?php endforeach ?>
 				</select>
 			<td>
@@ -137,7 +137,7 @@
 			<td>
 				<select  name="institucion" id="">
 		<?php foreach ($instituciones as $result): ?>
-				<option value="<?php echo $result['idInstitucion'];?>"><?php echo $result['nombreInstitucion'];?></option>
+				<option value="<?php echo $result['id'];?>"><?php echo $result['nombre'];?></option>
 		<?php endforeach ?>
 		</select>
 			</td>
