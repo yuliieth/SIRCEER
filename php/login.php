@@ -30,7 +30,7 @@
 			#var_dump($_SESSION);
 			if ($_SESSION['usuario']['perfil'] == "superusuario" && $_SESSION['usuario']['user'] == "admin") {
 				header("Location:".URL."admin/principal-admin.php");
-			}elseif (($_SESSION['usuario']['perfil'] == "estandar" && $_SESSION['usuario']['user'] != "superusuario")) {
+			}elseif (($_SESSION['usuario']['perfil'] == "estandar" && $_SESSION['usuario']['user'] != "admin")) {
 				header("Location:".URL."gestion/principal-gestion.php");
 			}
 			else
