@@ -1,34 +1,38 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
-
+<h2>Nueva institucion</h2>
 <div class="wrap-formulario">
 
-	<!--<table class="table-formulario">-->
-	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">	
+	<table>
+		<tr>
+			<td><input type="text" size="30" name="nombre" placeholder="Nombre*" required></td>
+			<td><input type="text" size="30" name="telefono" placeholder="Telefono"></td>
+		</tr>
+	
+		<tr>
+			<td>
+				<select  name="municipio" id="municipio">
+			<?php foreach ($municipios as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>
+			</td>
+			<td><input type="email" size="30" name="email" placeholder="E-mail*" required=""></td>
+		</tr>
 		
+		<!--<input type="text" size="30" name="codigo" placeholder="Codigo*" required="">-->
 		
-		<input type="text" size="30" name="nombre" placeholder="Nombre*" required>
-		<input type="text" size="30" name="codigo" placeholder="Codigo*" required="">
-		<input type="text" size="30" name="telefono" placeholder="Telefono">		
+		<tr>
+			<td><input type="text" size="30" name="direccion" placeholder="Direccion"></td>
+		</tr>
+
+		<tr>
+			<td><input type="reset" name=""></td>
+			<td><input type="submit" name="submit" class="btn btn-primary" value="Guardar"></td>
+		</tr>
 		
-		<br>
-		<select  name="municipio" id="municipio">
-			<optgroup label="Risaralda">
-				<option value="pereira">Pereira</option>
-				<option value="dosquebradas">D/Quebradas</option>
-				<option value="santa rosa">Santa rosa</option>
-				<option value="apia">Apia</option>
-				<option value="mistrato">Mistrato</option>
-				<option value="belen de umbria">Belen de umbria</option>
-				<option value="chinchina">Chinchina</option>
-			</optgroup>
-		</select>		
-		<input type="email" size="30" name="email" placeholder="E-mail*" required="">	
-		<input type="text" size="30" name="direccion" placeholder="Direccion">
-		
-		
-		<br>
 		
 		
 		<?php if (!empty($errores)): ?>
@@ -40,14 +44,10 @@
 				<p>Datos enviados correctamente</p>
 			</div>
 		<?php endif ?>
+	</table>
 		
-
-		
-		<input type="reset" name="">
-		<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
 
 	</form>
-	<!--</table>-->
 </div>
 
 <!--END CONTENIDO-->				
