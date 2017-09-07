@@ -11,6 +11,19 @@ function getId($tabla,$con)
 
 }
 
+
+function getNivelesAcademicos($con)
+{
+	$sql = "SELECT * FROM nivel_academico";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
+}
+
+
 function getMunicipios($con)
 {
 	$sql = "SELECT * FROM municipio";
@@ -251,23 +264,22 @@ function saveProgram
 			$semestres,
 			$creditos,
 			$nivelAcademico,
-			$bd_config
+			$institucion,
+			$cn
 			)
 		{	
-			$conexion = getConexion($bd_config);
-			if (!$conexion) {
-				echo "Error en conexion";
-			}else{
+			
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO programas  (id, nombre, codigo_snies,num_semestres,num_creditos,nivel_academico) values(null, :nombre, :codigosnies,:num_semestres,:num_creditos,:nivel_academico)"
+			$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico,nivel_academico_id,institucion_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,1,:nivel_academico_id,:institucion_id)"
 				);
-			$statement = $conexion->prepare($sql);
+			$statement = $cn->prepare($sql);
+					 $statement->bindParam( ':snies' , $codigosnies);
 					 $statement->bindParam( ':nombre' , $nombre);
-					 $statement->bindParam( ':codigosnies' , $codigosnies);
 					 $statement->bindParam( ':num_semestres' , $semestres);
 					 $statement->bindParam( ':num_creditos' , $creditos);
-					 $statement->bindParam( ':nivel_academico' , $nivelAcademico);
+					 $statement->bindParam( ':nivel_academico_id' , $nivelAcademico);
+					 $statement->bindParam( ':institucion_id' , $institucion);
 					 
 			 $result= $statement->execute();
 			
@@ -279,7 +291,7 @@ function saveProgram
 				echo "Linea de error: ".$e->getMessage();	
 			}
 			//echo "ejecuto el metodo";
-		}
+		
 	  
 	}
 
