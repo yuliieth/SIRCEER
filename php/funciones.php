@@ -1,5 +1,17 @@
 <?php 
 
+
+function getTiposSangre($con)
+{
+	$sql = "SELECT * FROM tipo_sangre ORDER BY id DESC";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
+
+}
+
 function getId($tabla,$con)
 {
 	$sql = "SELECT id FROM $tabla ORDER BY id DESC LIMIT 1";
@@ -55,6 +67,7 @@ function getInstituciones($con)
 	return $result;
 }
 
+#SIMAT
 function buscarEstudianteSIMAT($documento,$con)
 {
 
@@ -297,50 +310,59 @@ function saveProgram
 
 
 
-
+#Registro del estudiante en la BD
 function saveStudent
 		(
-			$documento,$nombres,
-			$apellidos,$celular,
-			$telefono,$email,$fechaNaci,
-			$edad,$lugarNaci,$direccion,
-			$municipio,$estrato,$desplazado,
-			$afro,$ojos,$genero,$fecha_registro,
-			$tipo_documento,$bd_config
+			$tipo_documento,$documento,$tipo_sangre,
+			$primer_nombre,$segundo_nombre,$primer_apellido,
+			$segundo_apellido,$telefono,$email,
+			$fecha_naci,$edad,$muni_naci,
+			$dire_resi,$barrio_resi,$muni_resi,
+			$estrato,$zona,	$eps,
+			$desplazado,$afro,$ojos,
+			$genero,$victima_conflicto,$discapacidades,
+			$situacion_periodo_anterior,$grado,$estado,
+			$observacion,$cn
 			)
 		{
 			echo "Entro a registrar";
-			
-			$conexion = getConexion($bd_config);
-			if (!$conexion) {
-				echo "Error en conexion";
-			}else{
-
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO estudiante (documento, nombres, apellidos, cel_contacto, tel_contacto, email, fecha_naci,edad,lugar_naci, direccion, municipio, estrato, desplazado, afrodescendiente, ojos, genero, fecha_registro,estado,tipo_documento_id) values(:documento,:nombres,:apellidos,:cel_contacto,:tel_contacto,:email,:fecha_naci,:edad,:lugar_naci,:direccion,:municipio,:estrato,:desplazado,:afrodescendiente,:ojos,:genero,:fecha_registro,0,:tipo_documento)"
-				);
+			$sql = "INSERT INTO estudiante(documento, tipo_documento_id, tipo_sangre_id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_contacto, email, fecha_naci, edad, municipio_naci_id, direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado, fecha_registro, fecha_cambio_estado, observaciones) VALUES 
+				':documento',':tipo_documento_id',':tipo_sangre_id',':primer_nombre',':segundo_nombre',':primer_apellido',':segundo_apellido',tel_contacto,':email',':fecha_naci','edad',':municipio_naci_id',':direccion_residencia',':barrio_residencia',':municipio_resi_id',':estrato',':zona',':EPS',':desplazado',':afrodescendiente',':ojos',':genero',':victima_conflicto',':discapacidades',':situacion_periodo_anterior',':grado',':estado',':observaciones'";
 
-			$statement = $conexion->prepare($sql);
-
+			$statement = $cn->prepare($sql);
+			#var_dump($statement);
 					 $statement->bindParam( ':documento' , $documento);
-					 $statement->bindParam( ':nombres' , $nombres);
-					 $statement->bindParam( ':apellidos' , $apellidos);
-					 $statement->bindParam( ':cel_contacto' , $celular);
+					 $statement->bindParam( ':tipo_documento_id' , $tipo_documento);
+					 $statement->bindParam( ':tipo_sangre_id' , $tipo_sangre);
+					 $statement->bindParam( ':primer_nombre' , $primer_nombre);
+					 $statement->bindParam( ':segundo_nombre' , $segundo_nombre);
+					 $statement->bindParam( ':primer_apellido' , $primer_apellido);
+					 $statement->bindParam( ':segundo_apellido' , $segundo_apellido);
 					 $statement->bindParam( ':tel_contacto' , $telefono);
 					 $statement->bindParam( ':email' , $email);
-					 $statement->bindParam( ':fecha_naci' , $fechaNaci);
+					 $statement->bindParam( ':fecha_naci' , $fecha_naci);
 					 $statement->bindParam( ':edad' , $edad);
-					 $statement->bindParam( ':lugar_naci' , $lugarNaci);
-					 $statement->bindParam( ':direccion' , $direccion);
-					 $statement->bindParam( ':municipio' , $municipio);
+					 $statement->bindParam( ':municipio_naci_id' , $muni_naci);
+					 $statement->bindParam( ':direccion_residencia' , $dire_resi);
+					 $statement->bindParam( ':barrio_residencia' , $barrio_resi);
+					 $statement->bindParam( ':municipio_resi_id' , $muni_resi);
 					 $statement->bindParam( ':estrato' , $estrato);
+					 $statement->bindParam( ':zona' , $zona);
+					 $statement->bindParam( ':EPS' , $eps);
 					 $statement->bindParam( ':desplazado' , $desplazado);
 					 $statement->bindParam( ':afrodescendiente' , $afro);
 					 $statement->bindParam( ':ojos' , $ojos);
 					 $statement->bindParam( ':genero' , $genero);
-					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
-					 $statement->bindParam( ':tipo_documento' , $tipo_documento);
+					 $statement->bindParam( ':victima_conflicto' , $victima_conflicto);
+					 $statement->bindParam( ':discapacidades' , $discapacidades);
+					 $statement->bindParam( ':situacion_periodo_anterior' , $situacion_periodo_anterior);
+					 $statement->bindParam( ':grado' , $grado);
+					 $statement->bindParam( ':estado' , $estado);
+					 #$statement->bindParam( ':fecha_registro' , $fecha_registro);
+					 #$statement->bindParam( ':fecha_cambio_estado' , $fecha_cambio_estado);
+					 $statement->bindParam( ':observaciones' , $observaciones);
 
 			 $result= $statement->execute();
 			#var_dump($result);
@@ -351,8 +373,7 @@ function saveStudent
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	
 			}
-			//echo "ejecuto el metodo";
-		}
+			echo "ejecuto el metodo";
 	  
 	}
 

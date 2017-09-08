@@ -9,10 +9,10 @@
 	<table width="100%">
 		<tr>
 			<td>
-			<label for="tipoDocumento">Tipo de documento:</label>
+			<label for="tipo_documento">Tipo de documento:</label>
 			</td>
 			<td>
-				<select name="tipoDocumento" id="">
+				<select name="tipo_documento" id="">
 				<?php foreach ($tipoDocumento as $tipoDocumento): ?>
 					<option value="<?php echo $tipoDocumento['id'] ?>"><?php echo $tipoDocumento['tipo'] ?></option>
 				<?php endforeach ?>
@@ -45,14 +45,21 @@
 
 		<tr>
 			<td><label for="fecha-naci">Fecha de nacimiento:</label></td>
-			<td><input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento"required=""></td>
+			<td><input type="text" size="30" name="fecha_naci" placeholder="fecha de nacimiento"required=""></td>
 			<td><label for="edad">Edad:</label></td>
 			<td><input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="" ></td>
 		</tr>
 
 		<tr>
 			<td><label for="muni_naci">Municipio de nacimiento:</label></td>
-			<td><input type="text" size="30" name="muni_naci" placeholder="Municipio de nacimiento" required=""></td>			
+			<td>
+			<select name="muni_naci" id="">
+				<?php foreach ($munis_naci as $muni): ?>
+					<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+				<?php endforeach ?>
+				
+			</select>
+			</td>			
 			<td><label for="dire_resi">Direccion de residencia:</label></td>
 			<td><input type="text" size="30" name="dire_resi" placeholder="Direccion"></td>
 		</tr>
@@ -60,7 +67,14 @@
 			<td><label for="barrio_resi">Barrio de residencia:</label></td>
 			<td><input type="text" size="30" name="barrio_resi" placeholder="Barrio"></td>
 			<td><label for="muni_resi">Municipio de residencia:</label></td>
-			<td><input type="text" size="30" name="lugar-resi" placeholder="Municipio de residencia" required="" ></td>
+			<td>
+			<select name="muni_resi" id="">
+				<?php foreach ($munis_resi as $muni): ?>
+					<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+				<?php endforeach ?>
+				
+			</select>
+			</td>
 		</tr>
 		
 		<tr>
@@ -118,11 +132,11 @@
 			<td><label for="situacion_periodo_anterior">Situacion periodo anterior:</label></td>
 			<td>
 				<select name="situacion_periodo_anterior" id="">
-					<option value="matriculado">Matriculado</option>
-					<option value="matriculado">Promovido</option>
-					<option value="matriculado">Cancelado</option>
-					<option value="matriculado">Trasladado</option>
-					<option value="matriculado">Suspendido</option>
+					<option value="Matriculado">Matriculado</option>
+					<option value="Promovido">Promovido</option>
+					<option value="Cancelado">Cancelado</option>
+					<option value="Trasladado">Trasladado</option>
+					<option value="Suspendido">Suspendido</option>
 				</select>
 			</td>
 		</tr>
@@ -130,6 +144,15 @@
 		<tr>
 			<td><label for="grado"></label>Grado que cursa:</td>
 			<td><input type="number" name="grado" min="6" max="12" placeholder="Grado" required=""></td>
+			<td><label for="tipo_sangre">Tipo sangre:</label></td>
+			<td><select name="tipo_sangre" id="">
+				<?php foreach ($tipos_sangre as $tipo): ?>
+					<option value="<?php echo $tipo['id'] ?>"><?php echo $tipo['tipo'] ?></option>
+				<?php endforeach ?>
+			</select></td>
+		</tr>
+
+		<tr>
 			<td><label for="observacion:">Observación:</label></td>
 			<td><textarea name="observacion" id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
 		</tr>
