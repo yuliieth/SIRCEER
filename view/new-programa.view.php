@@ -2,7 +2,7 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
-
+<h2> <strong> Nuevo programa </strong></h2>
 <div class="wrap-formulario">
 
 	<!--<table class="table-formulario">-->
@@ -14,10 +14,18 @@
 		<br>
 		<input type="text" size="30" name="creditos" placeholder="Creditos*" required>	
 		<select name="nivel-academico" id="nivel-academico">
-			<option value="tecnico">Tecnico</option>
-			<option value="tecnologo">Tecnologo</option>
-			<option value="ingenieria">Ingenieria</option>
+			<?php foreach ($niveles as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['tipo'] ?></option>
+			<?php endforeach ?>
 		</select>
+
+		<br>
+		<select name="institucion" id="">
+			<?php foreach ($instituciones as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>		
+
 		<br>		
 		<?php if (!empty($errores)): ?>
 			<div class="input-redit alert error">

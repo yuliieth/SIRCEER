@@ -1,5 +1,40 @@
 <?php 
 
+function getId($tabla,$con)
+{
+	$sql = "SELECT id FROM $tabla ORDER BY id DESC LIMIT 1";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$result = $ps->fetch()['id'];
+	var_dump($result);
+	return $result;
+
+}
+
+
+function getNivelesAcademicos($con)
+{
+	$sql = "SELECT * FROM nivel_academico";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
+}
+
+
+function getMunicipios($con)
+{
+	$sql = "SELECT * FROM municipio";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
+}
+
 function getTiposDocumentos($con)
 {
 	$sql = "SELECT * FROM tipo_documento";
@@ -184,7 +219,6 @@ function validarErrores($parameter,$errores)
 function saveInstitu
 		(
 			$nombre,
-			$codigo,
 			$telefono,
 			$municipio,
 			$email,
@@ -198,17 +232,22 @@ function saveInstitu
 			}else{
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO planteles_educativos  (id, nombre,codigo,telefono,municipio,email,direccion) values(null,:nombre,:codigo,:telefono,:municipio,:email,:direccion)"
+			$sql = ("INSERT INTO institucion  (id, nombre,telefono,email,direccion) values(null,:nombre,:telefono,:email,:direccion)"
 				);
 			$statement = $conexion->prepare($sql);
 					 $statement->bindParam( ':nombre' , $nombre);
-					 $statement->bindParam( ':codigo' , $codigo);
 					 $statement->bindParam( ':telefono' , $telefono);
-					 $statement->bindParam( ':municipio' , $municipio);
 					 $statement->bindParam( ':email' , $email);
 					 $statement->bindParam( ':direccion' , $direccion);
 			 $result= $statement->execute();
-			if ($result !== null) {
+		//Enlazar institucion con municipio por medio de la tabla institucion_municipio
+			 $institucion_id = getId("institucion",$conexion);
+		$sql = "INSERT INTO institucion_municipio (institucion_id, municipio_id) VALUES (:institucion,:municipio)";
+	  	$statement = $conexion->prepare($sql);
+	  	$statement->bindParam(':institucion',$institucion_id);
+	  	$statement->bindParam(':municipio',$municipio);
+	  	$resultInsti = $statement->execute();
+			if ($result !== null && $resultInsti != null) {
 				header('Location: '.URL.'gestion/new-institucion.php?select=i');
 			}
 			} catch (Exception $e) {
@@ -216,7 +255,7 @@ function saveInstitu
 			}
 			//echo "ejecuto el metodo";
 		}
-	  
+
 	}
 function saveProgram
 		(
@@ -225,23 +264,22 @@ function saveProgram
 			$semestres,
 			$creditos,
 			$nivelAcademico,
-			$bd_config
+			$institucion,
+			$cn
 			)
 		{	
-			$conexion = getConexion($bd_config);
-			if (!$conexion) {
-				echo "Error en conexion";
-			}else{
+			
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO programas  (id, nombre, codigo_snies,num_semestres,num_creditos,nivel_academico) values(null, :nombre, :codigosnies,:num_semestres,:num_creditos,:nivel_academico)"
+			$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico,nivel_academico_id,institucion_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,1,:nivel_academico_id,:institucion_id)"
 				);
-			$statement = $conexion->prepare($sql);
+			$statement = $cn->prepare($sql);
+					 $statement->bindParam( ':snies' , $codigosnies);
 					 $statement->bindParam( ':nombre' , $nombre);
-					 $statement->bindParam( ':codigosnies' , $codigosnies);
 					 $statement->bindParam( ':num_semestres' , $semestres);
 					 $statement->bindParam( ':num_creditos' , $creditos);
-					 $statement->bindParam( ':nivel_academico' , $nivelAcademico);
+					 $statement->bindParam( ':nivel_academico_id' , $nivelAcademico);
+					 $statement->bindParam( ':institucion_id' , $institucion);
 					 
 			 $result= $statement->execute();
 			
@@ -253,7 +291,7 @@ function saveProgram
 				echo "Linea de error: ".$e->getMessage();	
 			}
 			//echo "ejecuto el metodo";
-		}
+		
 	  
 	}
 

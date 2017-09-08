@@ -3,13 +3,15 @@
 require_once '../php/Conexion.php';
 require_once '../php/funciones.php';
 validateSession();
-
+$cn = getConexion($bd_config);
+comprobarConexion($cn);
+$municipios = getMunicipios($cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"nombre","codigo","telefono","municipio","email","direccion"
+		"nombre","telefono","municipio","email","direccion"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -21,14 +23,14 @@ if (isset($_POST['submit'])) {
 		$enviado = true;
 		
 		$nombre = $_POST['nombre'];
-		$codigo = $_POST['codigo'];
+		#$codigo = $_POST['codigo'];
 		$telefono = $_POST['telefono'];
 		$municipio = $_POST['municipio'];
 		$email = $_POST['email'];
 		$direccion = $_POST['direccion'];
 		
 saveInstitu(
-	$nombre,$codigo,$telefono,$municipio,$email,$direccion,$bd_config
+	$nombre,$telefono,$municipio,$email,$direccion,$bd_config
 	);
 }
 

@@ -26,7 +26,7 @@
 
 		$sql ="SELECT  COUNT(genero)  FROM estudiantes WHERE genero='femenino'";
 		$numWomen = $conexion->query($sql);
-		$numWomen = $numWomen->fetchColumn();
+		#$numWomen = $numWomen->fetchColumn();
 		//echo "{$numWomen}";
 
 		$numMen = $numStudent - $numWomen;

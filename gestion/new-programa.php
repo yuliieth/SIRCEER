@@ -3,7 +3,10 @@
 <?php  require_once '../php/Conexion.php';?>
 <?php  require_once '../php/funciones.php';
 validateSession();
-
+$cn = getConexion($bd_config);
+comprobarConexion($cn);
+$niveles = getNivelesAcademicos($cn);
+$instituciones = getInstituciones($cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
 
@@ -31,9 +34,10 @@ if (isset($_POST['submit'])) {
 		$creditos = $_POST['creditos'];
 
 		$nivelAcademico = $_POST['nivel-academico'];
+		$institucion = $_POST['institucion'];
 		
 saveProgram(
-	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$bd_config
+	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$institucion,$cn
 	);
 }
 
