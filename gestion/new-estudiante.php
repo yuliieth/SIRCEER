@@ -7,6 +7,9 @@ $cn = getConexion($bd_config);
 comprobarConexion($cn);
 $allInstitutes = getAllEntity("instituto",$cn);
 $numInstitutes = getTotalObjects($bd_config);
+$instituciones = getInstituciones($cn);
+$tipoDocumento = getTiposDocumentos($cn);
+
 $enviado = "";
 if (isset($_POST['submit'])) {
 
