@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"documento","nombres","apellidos","direccion","municipio","celular","telefono","email","fecha-naci","edad","lugar-naci","estrato","despla","afro","ojos","genero","tipo_documento"
+		"tipoDocumento","documento","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","email","fecha-naci","edad","muni_naci","dire_resi","barrio_resi","muni_resi","estrato","zona","eps","desplazado","afro","ojos","genero","victima_conflicto","discapacidades","situacion_periodo_anterior","grado","observacion"
 		);
 	#var_dump($parameters);
 	#echo "string";

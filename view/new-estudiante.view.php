@@ -17,55 +17,62 @@
 					<option value="<?php echo $tipoDocumento['id'] ?>"><?php echo $tipoDocumento['tipo'] ?></option>
 				<?php endforeach ?>
 				</select>
-			<td>
+			</td>
+			<td><label for="documento">Documento:</label></td>
+			<td><input type="text" size="20" name="documento" placeholder="Documento" required="" ></td>
 		</tr>	
+
 		<tr>
-			<td>
-			<label for="documento">Documento:</label>
-			</td>
-			<td>
-			<input type="text" size="20" name="documento" placeholder="Documento" required="" >
-			</td>
 			<td><label for="primer_nombre">Primer nombre:</label></td>
 			<td><input type="text" size="30" name="primer_nombre" placeholder="Primer nombre"  required="" ></td>
+			<td><label for="segundo_nombre">Segundo nombre:</label></td>
+			<td><input type="text" size="30" name="segundo_nombre" placeholder="Segundo nombre"></td>
 		</tr>
 
 		<tr>
-			<td>
-				<label for="segundo_nombre">Segundo nombre:</label>
-			</td>
-			<td>
-			<input type="text" size="30" name="segundo_nombre" placeholder="Segundo nombre"  >
-			</td>
 			<td><label for="primer_apellido">Primer apellido:</label></td>
 			<td><input type="text" size="30" name="primer_apellido" placeholder="Primer apellido"  required="" ></td>
+			<td><label for="segundo_apellido">Segundo apellido:</label></td>
+			<td><input type="text" size="30" name="segundo_apellido" placeholder="Segundo apellido"></td>
 		</tr>
 
 		<tr>
-			<td>
-				<label for="segundo_apellido">Segundo apellido:</label>
-			</td>
-			<td>
-			<input type="text" size="30" name="segundo_apellido" placeholder="Segundo apellido"  >
-			</td>
-			<td><label for="direccion-resi">Direccion de residencia:</label></td>
-			<td><input type="text" size="30" name="direccion-resi" placeholder="Direccion" ></td>
+			<td><label for="telefono">Telefono:</label></td>
+			<td><input type="text" size="30" name="telefono" placeholder="Telefono"></td>
+			<td><label for="email">Email:</label></td>
+			<td><input type="email" size="30" name="email" placeholder="Email"></td>
 		</tr>
 
 		<tr>
-			<td>
-				<label for="barrio-resi">Barrio de residencia:</label>
-			</td>
-			<td>
-			<input type="text" size="30" name="barrio-resi" placeholder="Barrio" >
-			</td>
-			<td><label for="municipio-resi">Municipio de residencia:</label>		</td>
+			<td><label for="fecha-naci">Fecha de nacimiento:</label></td>
+			<td><input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento"required=""></td>
+			<td><label for="edad">Edad:</label></td>
+			<td><input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="" ></td>
+		</tr>
+
+		<tr>
+			<td><label for="muni_naci">Municipio de nacimiento:</label></td>
+			<td><input type="text" size="30" name="muni_naci" placeholder="Municipio de nacimiento" required=""></td>			
+			<td><label for="dire_resi">Direccion de residencia:</label></td>
+			<td><input type="text" size="30" name="dire_resi" placeholder="Direccion"></td>
+		</tr>
+		<tr>
+			<td><label for="barrio_resi">Barrio de residencia:</label></td>
+			<td><input type="text" size="30" name="barrio_resi" placeholder="Barrio"></td>
+			<td><label for="muni_resi">Municipio de residencia:</label></td>
 			<td><input type="text" size="30" name="lugar-resi" placeholder="Municipio de residencia" required="" ></td>
 		</tr>
 		
 		<tr>
-			<td>Estrato:</td>
+			<td><label for="estrato">Estrato:</label></td>
 			<td><input type="number" size="30" min="1" max="6" name="estrato" placeholder="Estrato"></td>
+			<td><label for="zona">Zona:</label></td>
+			<td><input type="text" size="30" name="zona" placeholder="Zona"></td>
+		</tr>
+
+		<tr>
+			<td><label for="eps">EPS:</label></td>
+			<td><input type="text" name="eps" placeholder="EPS" required=""></td>
 			<td><label for="desplazado">Desplazado:</label></td>
 			<td>
 				<select name="desplazado" id="">
@@ -75,58 +82,38 @@
 			</td>
 		</tr>
 
+		
+
 		<tr>
 			<td><label for="afro">Afrodescendiente:</label></td>
 			<td><select name="afro" id="">
 					<option value="si">Si</option>
 					<option value="no">No</option>
 				</select></td>
+			<td><label for="ojos">Ojos:</label></td>
+			<td><input type="text" name="ojos" placeholder="Ojos"></td>
 		</tr>
 
-		<tr>
-			<td>
-				<label for="fecha-naci">Fecha de nacimiento:</label>
-			</td>
-			<td>
-			<input type="text" size="30" name="fecha-naci" placeholder="fecha de nacimiento" required="" >
-			</td>
-			<td><label for="edad">Edad:</label></td>
-			<td><input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="" ></td>
-		</tr>
 
 		<tr>
-			<td>
-				<label for="muni_naci">Municipio de nacimiento:</label>
-			</td>
-			<td>
-			<input type="text" size="30" name="muni_naci" placeholder="Municipio de nacimiento" required="" >
-			</td>
 			<td><label for="genero">Genero</label></td>
 			<td><select name="genero" id="">
 					<option value="F">Mujer</option>
 					<option value="M">Hombre</option>
 				</select></td>
-		</tr>
-
-		<tr>
-			<td>
-				<label for="telefono">Telefono:</label>
-			</td>
-			<td>
-		<input type="text" size="30" name="telefono" placeholder="Telefono" </td>
-			<td><label for="email">Email:</label></td>
-			<td><input type="email" size="30" name="email" placeholder="Email" >
-		</tr>
-
-		<tr>
-			<td>
-				<label for="victima_conflicto">Victima del conflicto:</label>
-			</td>
+			<td><label for="victima_conflicto">Victima del conflicto:</label></td>
 			<td>
 				<select name="victima_conflicto" id="">
 					<option value="si">Si</option>
 					<option value="no">No</option>
 				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td><label for="discapacidades">Discapacidades:</label></td>
+			<td>
+				<input type="text" rows="2" cols="20" size="30" name="discapacidades" placeholder="Discapacidades" required="" >	
 			</td>
 			<td><label for="situacion_periodo_anterior">Situacion periodo anterior:</label></td>
 			<td>
@@ -141,26 +128,9 @@
 		</tr>
 
 		<tr>
-			<td>
-				<label for="discapacidades">Discapacidades:</label>
-			</td>
-			<td>
-				<input type="text" rows="2" cols="20" size="30" name="discapacidades" placeholder="Discapacidades" required="" >	
-			</td>
-			<td>Institucion:</td>
-			<td>
-				<select  name="institucion" id="">
-		<?php foreach ($instituciones as $result): ?>
-				<option echo $result['id'];?><?php echo $result['nombre'];?></option>
-		<?php endforeach ?>
-		</select>
-			</td>
-		</tr>
-
-		<tr>
-			<td>Grado que cursa:</td>
-			<td><input type="number" min="6" max="12" placeholder="Grado" required=""></td>
-			<td>Observación:</td>
+			<td><label for="grado"></label>Grado que cursa:</td>
+			<td><input type="number" name="grado" min="6" max="12" placeholder="Grado" required=""></td>
+			<td><label for="observacion:">Observación:</label></td>
 			<td><textarea name="observacion" id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
 		</tr>
 
