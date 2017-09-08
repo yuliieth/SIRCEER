@@ -271,7 +271,7 @@ function saveProgram
 			
 			try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico,nivel_academico_id,institucion_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,1,:nivel_academico_id,:institucion_id)"
+			$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico_id,institucion_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,:nivel_academico_id,:institucion_id)"
 				);
 			$statement = $cn->prepare($sql);
 					 $statement->bindParam( ':snies' , $codigosnies);
