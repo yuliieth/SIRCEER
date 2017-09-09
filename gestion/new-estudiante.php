@@ -50,13 +50,13 @@ if (isset($_POST['submit'])) {
 		$discapacidades = $_POST['discapacidades'];
 		$situacion_periodo_anterior = $_POST['situacion_periodo_anterior'];
 		$grado = $_POST['grado'];
-		$estado = 0;
+		$estado = "0";
 		$observacion = $_POST['observacion'];
 		#28 parametros
-		var_dump($estado);
-		var_dump($victima_conflicto);
+		#var_dump($estado);
+		#var_dump($victima_conflicto);
 saveStudent(
-	$tipo_documento,$tipo_sangre,$documento,$primer_nombre,
+	$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
 	$segundo_nombre,$primer_apellido,$segundo_apellido,
 	$telefono,$email,$fecha_naci,
 	$edad,$muni_naci,$dire_resi,

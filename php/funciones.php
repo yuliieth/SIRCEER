@@ -313,23 +313,25 @@ function saveProgram
 #Registro del estudiante en la BD
 function saveStudent
 		(
-			$tipo_documento,$documento,$tipo_sangre,
-			$primer_nombre,$segundo_nombre,$primer_apellido,
-			$segundo_apellido,$telefono,$email,
-			$fecha_naci,$edad,$muni_naci,
-			$dire_resi,$barrio_resi,$muni_resi,
-			$estrato,$zona,	$eps,
-			$desplazado,$afro,$ojos,
-			$genero,$victima_conflicto,$discapacidades,
-			$situacion_periodo_anterior,$grado,$estado,
-			$observacion,$cn
+			$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
+	$segundo_nombre,$primer_apellido,$segundo_apellido,
+	$telefono,$email,$fecha_naci,
+	$edad,$muni_naci,$dire_resi,
+	$barrio_resi,$muni_resi,$estrato,
+	$zona,$eps,$desplazado,
+	$afro,$ojos,$genero,
+	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
+	$grado,$estado,$observacion,
+	$cn
 			)
 		{
+			$fecha_registro = "2017-08-01";
+			$fecha_cambio_estado = "2017-08-01";
 			echo "Entro a registrar";
 			try {
-			//var_dump($conexion);
-			$sql = "INSERT INTO estudiante(documento, tipo_documento_id, tipo_sangre_id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_contacto, email, fecha_naci, edad, municipio_naci_id, direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado, fecha_registro, fecha_cambio_estado, observaciones) VALUES 
-				':documento',':tipo_documento_id',':tipo_sangre_id',':primer_nombre',':segundo_nombre',':primer_apellido',':segundo_apellido',tel_contacto,':email',':fecha_naci','edad',':municipio_naci_id',':direccion_residencia',':barrio_residencia',':municipio_resi_id',':estrato',':zona',':EPS',':desplazado',':afrodescendiente',':ojos',':genero',':victima_conflicto',':discapacidades',':situacion_periodo_anterior',':grado',':estado',':observaciones'";
+			#var_dump($cn);
+			$sql = "INSERT INTO estudiante(documento, tipo_documento_id, tipo_sangre_id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_contacto, email, fecha_naci, edad, municipio_naci_id, direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones) VALUES (
+	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,fecha_cambio_estado,:observaciones)";	
 
 			$statement = $cn->prepare($sql);
 			#var_dump($statement);
@@ -357,15 +359,15 @@ function saveStudent
 					 $statement->bindParam( ':genero' , $genero);
 					 $statement->bindParam( ':victima_conflicto' , $victima_conflicto);
 					 $statement->bindParam( ':discapacidades' , $discapacidades);
-					 $statement->bindParam( ':situacion_periodo_anterior' , $situacion_periodo_anterior);
+					 $statement->bindParam( ':situacion_periodo_anterior', $ituacion_periodo_anterior);
 					 $statement->bindParam( ':grado' , $grado);
 					 $statement->bindParam( ':estado' , $estado);
-					 #$statement->bindParam( ':fecha_registro' , $fecha_registro);
-					 #$statement->bindParam( ':fecha_cambio_estado' , $fecha_cambio_estado);
-					 $statement->bindParam( ':observaciones' , $observaciones);
+					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
+					 $statement->bindParam( ':fecha_cambio_estado' , $fecha_cambio_estado);
+					 $statement->bindParam( ':observaciones' , $observacion);
 
 			 $result= $statement->execute();
-			#var_dump($result);
+			var_dump($result);
 			if ($result !== false) {
 				#header("Location:".URL."gestion/new-estudiante.php?select=e");
 			}
