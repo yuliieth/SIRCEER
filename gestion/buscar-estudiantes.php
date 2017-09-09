@@ -7,7 +7,7 @@ validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 #$allEntitys = getStudentsInsitutesAndprogramns($bd_config);
-$allEntitys = getAllSubject("estudiante",$cn);
+$estudiantes = getAllSubject("estudiante",$cn);
 #var_dump($allEntitys);
 ?>
 <?php require("../view/buscar-estudiante.view.php") ?>

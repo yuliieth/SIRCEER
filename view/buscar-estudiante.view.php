@@ -23,7 +23,7 @@
 			<td class="cell"></td>
 	</tr>
 
-		<?php foreach ($allEntitys as $filaAlumnos) {?>
+		<?php foreach ($estudiantes as $filaAlumnos) {?>
 			
 
 		<tr class="row-secundaria"<?php 

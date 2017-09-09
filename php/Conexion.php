@@ -11,7 +11,7 @@
 			return $conexion;
 		}
 
-		function getConexionSIMAT($bd_config)
+		/*function getConexionSIMAT($bd_config)
 		{
 			try{
 			$conexion = new PDO('mysql:host=localhost;dbname='.$bd_config['nameBDSIMAT'],$bd_config['userNameSIMAT'],$bd_config['passSIMAT']);
@@ -21,7 +21,7 @@
 		}
 			return $conexion;	
 		}
-
+*/
 		function closeConexion($con)
 		{
 			return $con = null;

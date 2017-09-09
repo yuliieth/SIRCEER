@@ -24,7 +24,7 @@
 		$numStudent = $numStudent->fetch()['total'];
 		//echo " el es : {$numStudent}";
 
-		$sql ="SELECT  COUNT(genero)  FROM estudiantes WHERE genero='femenino'";
+		$sql ="SELECT  COUNT(genero)  FROM estudiante WHERE genero='femenino'";
 		$numWomen = $conexion->query($sql);
 		#$numWomen = $numWomen->fetchColumn();
 		//echo "{$numWomen}";

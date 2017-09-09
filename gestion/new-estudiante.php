@@ -11,7 +11,7 @@ $munis_naci = getMunicipios($cn);
 $munis_resi = getMunicipios($cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
-	var_dump($_POST);
+	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
 		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","email","fecha_naci","edad","muni_naci","dire_resi","barrio_resi","muni_resi","estrato","zona","eps","desplazado","afro","ojos","genero","victima_conflicto","discapacidades","situacion_periodo_anterior","grado"

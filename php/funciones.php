@@ -313,7 +313,7 @@ function saveProgram
 #Registro del estudiante en la BD
 function saveStudent
 		(
-			$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
+	$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
 	$segundo_nombre,$primer_apellido,$segundo_apellido,
 	$telefono,$email,$fecha_naci,
 	$edad,$muni_naci,$dire_resi,
@@ -327,14 +327,57 @@ function saveStudent
 		{
 			$fecha_registro = "2017-08-01";
 			$fecha_cambio_estado = "2017-08-01";
-			echo "Entro a registrar";
 			try {
 			#var_dump($cn);
-			$sql = "INSERT INTO estudiante(documento, tipo_documento_id, tipo_sangre_id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_contacto, email, fecha_naci, edad, municipio_naci_id, direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones) VALUES (
-	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,fecha_cambio_estado,:observaciones)";	
+			$sql = ("INSERT INTO estudiantes (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
+
+			/*
+	(documento, tipo_documento_id, tipo_sangre_id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_contacto, email, fecha_naci, edad, municipio_naci_id, direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)
+
+			*/
+
+/*
+:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)"
+*/
 
 			$statement = $cn->prepare($sql);
 			#var_dump($statement);
+			#Devuelve false en caso de ocurrir algun error
+			$result=$statement->execute(
+				array(
+					':documento' => $documento , 
+					':tipo_documento_id' => $tipo_documento , 
+					':tipo_sangre_id' => $tipo_sangre, 
+					':primer_nombre' => $primer_nombre, 
+					':segundo_nombre' => $segundo_nombre , 
+					':primer_apellido' => $primer_apellido , 
+					':segundo_apellido' => $segundo_apellido , 
+					':tel_contacto' => $telefono , 
+					':email' => $email, 
+					':fecha_naci' => $fecha_naci , 
+					':edad' => $edad , 
+					':municipio_naci_id' => $muni_naci,
+					':direccion_residencia' => $dire_resi , 
+					':barrio_residencia' => $barrio_resi , 
+					':municipio_resi_id' => $muni_resi,
+					':estrato' => $estrato , 
+					':zona' => $zona , 
+					':EPS' => $eps , 
+					':desplazado' => $desplazado, 
+					':afrodescendiente' => $afro , 
+					':ojos' => $ojos, 
+					':genero' => $genero, 
+					':victima_conflicto' => $victima_conflicto , 
+					':discapacidades' => $discapacidades, 
+					':situacion_periodo_anterior' => $situacion_periodo_anterior, 
+					':grado' => $grado , 
+					':estado' => $estado, 
+					':fecha_registro' => $fecha_registro, 
+					':fecha_cambio_estado' => $fecha_cambio_estado, 
+					':observaciones' => $observacion
+					));
+
+			/*
 					 $statement->bindParam( ':documento' , $documento);
 					 $statement->bindParam( ':tipo_documento_id' , $tipo_documento);
 					 $statement->bindParam( ':tipo_sangre_id' , $tipo_sangre);
@@ -365,11 +408,11 @@ function saveStudent
 					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
 					 $statement->bindParam( ':fecha_cambio_estado' , $fecha_cambio_estado);
 					 $statement->bindParam( ':observaciones' , $observacion);
-
 			 $result= $statement->execute();
-			var_dump($result);
+*/
+			#var_dump($result);
 			if ($result !== false) {
-				#header("Location:".URL."gestion/new-estudiante.php?select=e");
+				header("Location:".URL."gestion/new-estudiante.php?select=e");
 			}
 
 			} catch (Exception $e) {
@@ -377,6 +420,9 @@ function saveStudent
 			}
 			echo "ejecuto el metodo";
 	  
+
+
+
 	}
 
 
