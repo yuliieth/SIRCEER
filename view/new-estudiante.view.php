@@ -81,7 +81,12 @@
 			<td><label for="estrato">Estrato:</label></td>
 			<td><input type="number" size="30" min="1" max="6" name="estrato" placeholder="Estrato"></td>
 			<td><label for="zona">Zona:</label></td>
-			<td><input type="text" size="30" name="zona" placeholder="Zona"></td>
+			<td>
+				<select name="zona" id="">
+					<option value="Urbana">Urbana</option>
+					<option value="Rural">Rural</option>
+				</select>
+			</td>
 		</tr>
 
 		<tr>
@@ -105,7 +110,13 @@
 					<option value="no">No</option>
 				</select></td>
 			<td><label for="ojos">Ojos:</label></td>
-			<td><input type="text" name="ojos" placeholder="Ojos"></td>
+			<td>
+				<select name="ojos" id="">
+					<option value="Negros">Negros</option>
+					<option value="Cafes">Cafes</option>
+					<option value="Azules">Azules</option>
+				</select>
+			</td>
 		</tr>
 
 
@@ -152,10 +163,31 @@
 			</select></td>
 		</tr>
 
+		<th><strong>Datos del programa</strong></th>
+		<tr>
+		<td><label for="programa">Programa:</label></td>
+		<td>
+		<select name="programa" id="">
+			<option value="">Tecnologia en desarrollo de software</option>
+		</select>
+		</td>
+		<td><label for="snies">SNIES</label></td>
+		<td><input type="text" name="snies" placeholder="snies" required=""></td>
+		</tr>
+
+		<th><strong>Datos semestres</strong></th>
+		<tr>
+			<td><label for="periodo">Periodo:</label></td>
+			<td><input type="text" name="periodo" placeholder="Periodo" required=""></td>
+			<td><label for="promedio_anterior">Promedio anterior:</label></td>
+			<td><input type="text" name="promedio_anterior" placeholder="Promedio anterior"></td>
+		</tr>
+
 		<tr>
 			<td><label for="observacion:">Observación:</label></td>
 			<td><textarea name="observacion" id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
 		</tr>
+
 
 	</table>	
 

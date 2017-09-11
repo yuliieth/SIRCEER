@@ -9,16 +9,15 @@
 	<tr class="row-primary">
 			<td class="cell">NOMBRES</td>
 			<td class="cell">EDAD</td>
-			<td class="cell">EMAIL</td>
 			<td class="cell">OJOS</td>
 			<td class="cell">ESTRATO</td>
 			<td class="cell">GENERO</td>
 			<!--<td class="cell">INSTITUTO</td>
 			<td class="cell">PROGRAMA</td>
 			<td class="cell">SEMESTRE</td>-->
+			<td class="cell">DESPLAZADO</td>
+			<td class="cell">AFRO</td>
 			<td class="cell">ESTADO</td>
-			<td class="cell"></td>
-			<td class="cell"></td>
 			<td class="cell"></td>
 			<td class="cell"></td>
 	</tr>
@@ -33,12 +32,13 @@
 				echo " style='background-color:rgb(132,242,127);'";
 			}
 		 ?>>
-			<td class="cell"> <?php echo  $filaAlumnos['nombres']." ".$filaAlumnos['apellidos']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['primer_nombre']." ".$filaAlumnos['primer_apellido']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['edad']?></td>
-			<td class="cell"> <?php echo  $filaAlumnos['email']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['ojos']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['estrato']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['genero']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['desplazado']?></td>
+			<td class="cell"> <?php echo  $filaAlumnos['afrodescendiente']?></td>
 			<td class="cell"> <?php echo  $filaAlumnos['estado']?></td>
 			<!--<td> <?php echo  $filaAlumnos['nameInstitute']?></td>
 			<td> <?php echo  $filaAlumnos['namePrograma']?></td>
