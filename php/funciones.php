@@ -23,6 +23,17 @@ function getId($tabla,$con)
 
 }
 
+function getProgramas($con)
+{
+	$sql = "SELECT * FROM programa";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
+}
+
 
 function getNivelesAcademicos($con)
 {

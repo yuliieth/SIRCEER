@@ -1,16 +1,18 @@
 <?php session_start(); ?>
 <?php  
 require_once '../php/funciones.php';
-require_once '../MPDF57/mpdf.php';
+require_once '../MPDF60/mpdf.php';
 validateSession();
-
-$html = '<header class="clearfix">
+#https://www.youtube.com/watch?v=RjtZVCm5fhc&t=202s
+$html = '
+<header>
       <div id="logo">
-        <img src="logo.png">
+        <img src="../mpdf60/examples/bg.jpg">
       </div>
       <h1>INVOICE 3-2-1</h1>
-      <div id="company" class="clearfix">
-        <div>Company Name</div>
+      <div style = "background: red;">
+        <div >Company Name</div>
+        <p style = "font-family: monospace; color: red;">Cristhian Galeano</p>
         <div>455 Foggy Heights,<br /> AZ 85004, US</div>
         <div>(602) 519-0450</div>
         <div><a href="mailto:company@example.com">company@example.com</a></div>
@@ -25,20 +27,23 @@ $html = '<header class="clearfix">
       </div>
     </header>
     <main>
-      <table>
+      <table style = width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;>
         <thead>
           <tr>
-            <th class="service">SERVICE</th>
-            <th class="desc">DESCRIPTION</th>
-            <th>PRICE</th>
-            <th>QTY</th>
-            <th>TOTAL</th>
+            <th style = "font-family: monospace; color: red;">SERVICE</th>
+            <th style = "font-family: monospace; color: red;">DESCRIPTION</th>
+            <th style = "font-family: monospace; color: red;" >PRICE</th>
+            <th style = "font-family: monospace; color: red;" >QTY</th>
+            <th style = "font-family: monospace; color: red;" >TOTAL</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="service">Design</td>
-            <td class="desc">Creating a recognizable design solution based on the companys existing visual identity</td>
+            <td style = text-align: center;>Design</td>
+            <td style = text-align: center;>Creating a recognizable design solution based on the companys existing visual identity</td>
             <td class="unit">$40.00</td>
             <td class="qty">26</td>
             <td class="total">$1,040.00</td>
@@ -84,9 +89,9 @@ $html = '<header class="clearfix">
       </div>
     </main>';
 $mpdf = new mPDF('c','A4');
-$css = file_get_contents('../css/style.pdf.css');
-$mpdf->writeHTML($css,1);
-$mpdf->writeHTML($html);
+#$css = file_get_contents('../css/estilos.css');
+#$mpdf->writeHTML($css);
+$mpdf->writeHTML($html,2);
 $mpdf->Output('ReporteEstudiante','I');
 ?>
 <?php #require("../view/reportes-estudiantes.view.php") ?>

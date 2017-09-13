@@ -167,20 +167,23 @@
 		<tr>
 		<td><label for="programa">Programa:</label></td>
 		<td>
-		<select name="programa" id="">
-			<option value="">Tecnologia en desarrollo de software</option>
+		<select name="programa" id="" onchange="ejecutar(this.value)">
+			<option value="">Seleccione una opcion</option>
+		<?php foreach ($programas as $programa): ?>
+			<option  value="<?php echo $programa['snies']?>"><?php echo $programa['nombre']?></option>
+		<?php endforeach ?>
 		</select>
 		</td>
-		<td><label for="snies">SNIES</label></td>
-		<td><input type="text" name="snies" placeholder="snies" required=""></td>
+		<td></td>
+		<td id="snies"></td>
 		</tr>
 
 		<th><strong>Datos semestres</strong></th>
 		<tr>
 			<td><label for="periodo">Periodo:</label></td>
-			<td><input type="text" name="periodo" placeholder="Periodo" required=""></td>
+			<td><input type="text" name="periodo" placeholder="Ejemplo: 2017-2" required=""></td>
 			<td><label for="promedio_anterior">Promedio anterior:</label></td>
-			<td><input type="text" name="promedio_anterior" placeholder="Promedio anterior"></td>
+			<td><input type="text" name="promedio_anterior" placeholder="Ejemplo: 4.5"></td>
 		</tr>
 
 		<tr>
