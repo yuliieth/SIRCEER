@@ -18,7 +18,7 @@ function getId($tabla,$con)
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$result = $ps->fetch()['id'];
-	var_dump($result);
+	#var_dump($result);
 	return $result;
 
 }
@@ -334,6 +334,7 @@ function saveStudent
 	$afro,$ojos,$genero,
 	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
 	$grado,$estado,$observacion,
+	$programa,$periodo,$promedio_anterior,
 	$cn
 			)
 		{
@@ -422,15 +423,41 @@ function saveStudent
 					 $statement->bindParam( ':observaciones' , $observacion);
 			 $result= $statement->execute();
 */
+			 $sql = "INSERT INTO semestre(id, periodo, promedio_anterior) VALUES 
+			 (null,:periodo,:promedio_anterior)";
+			 $statement = $cn->prepare($sql);
+			#var_dump($statement);
+			#Devuelve false en caso de ocurrir algun error
+			
+				$statement->bindParam(':periodo',$periodo);
+				$statement->bindParam(':promedio_anterior',$promedio_anterior);
+			$resultSemestre = $statement->execute();
 			#var_dump($result);
-			if ($result !== false) {
+
+			//Obtener el documento (ya esta)
+			//Obtener ID del semestre
+			$semestre_id = getId("semestre",$cn);
+
+			//Insertar tabla evaluacion_semestral
+			$sql = "INSERT INTO evaluacion_semestral(estudiante_documento, semestre_id, programa_snies) VALUES (:estudiante_documento,:semestre_id,:programa_snies)";
+			 $statement = $cn->prepare($sql);
+			#var_dump($statement);
+			#Devuelve false en caso de ocurrir algun error
+			
+				$statement->bindParam(':estudiante_documento',$documento);
+				$statement->bindParam(':semestre_id',$semestre_id);
+				$statement->bindParam(':programa_snies',$programa);
+			$resultEvaluacion = $statement->execute();
+			#var_dump($result);			
+
+			if ($result !== false && $resultSemestre !== false && $resultEvaluacion !== false) {
 				header("Location:".URL."gestion/new-estudiante.php?select=e");
-			}
+			}else{echo "Ocurrio un error";}
 
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	
 			}
-			echo "ejecuto el metodo";
+			#echo "ejecuto el metodo";
 	  
 
 

@@ -174,7 +174,7 @@
 		<?php endforeach ?>
 		</select>
 		</td>
-		<td></td>
+		<td>Institucion/SNIES:</td>
 		<td id="snies"></td>
 		</tr>
 
