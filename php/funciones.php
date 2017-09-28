@@ -201,6 +201,7 @@ function getAllSubject($table,$con)
 	#utilizada para traer el rpograma en gestionar-estudiante.php
 	#Utilizada para traer todos los estudiantes
 	$sql = "SELECT * FROM $table";
+	#var_dump($sql);
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$resul = $ps->fetchAll();

@@ -1,97 +1,72 @@
 <?php session_start(); ?>
 <?php  
+require_once '../admin/config.php';
 require_once '../php/funciones.php';
-require_once '../MPDF60/mpdf.php';
+require_once '../php/Conexion.php';
+require_once '../mpdf60/mpdf.php';
 validateSession();
-#https://www.youtube.com/watch?v=RjtZVCm5fhc&t=202s
+$cn = getConexion($bd_config);
+comprobarConexion($cn);
+$estudiantes = getAllSubject("estudiante",$cn);
+#var_dump($estudiantes);
 $html = '
 <header>
       <div id="logo">
-        <img src="../mpdf60/examples/bg.jpg">
+        <img src="../imagenes/gobernacion1.jpg">
       </div>
-      <h1>INVOICE 3-2-1</h1>
-      <div style = "background: red;">
-        <div >Company Name</div>
-        <p style = "font-family: monospace; color: red;">Cristhian Galeano</p>
-        <div>455 Foggy Heights,<br /> AZ 85004, US</div>
-        <div>(602) 519-0450</div>
+      <h1><strong>GOBERNACION DE RISARALDA</strong></h1>
+      <div style = "background: #fff;">
+        <div >Secretaria de eduacion de Risaralda</div>
+        <p style = "font-family: monospace; color: blue;">Lugar:</p>
+        <div>Dirección: Calle 19 No 13-17-Código Postal 660004 - PEREIRA - RISARALDA - COLOMBIA NIT: 891.480.085-7</div>
+        <div>telefono</div>
         <div><a href="mailto:company@example.com">company@example.com</a></div>
       </div>
-      <div id="project">
-        <div><span>PROJECT</span> Website development</div>
-        <div><span>CLIENT</span> John Doe</div>
-        <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
-        <div><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
-        <div><span>DATE</span> August 17, 2015</div>
-        <div><span>DUE DATE</span> September 17, 2015</div>
-      </div>
+      
     </header>
     <main>
       <table style = width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 20px;>
+
+  <!--Encabezados-->
         <thead>
           <tr>
-            <th style = "font-family: monospace; color: red;">SERVICE</th>
-            <th style = "font-family: monospace; color: red;">DESCRIPTION</th>
-            <th style = "font-family: monospace; color: red;" >PRICE</th>
-            <th style = "font-family: monospace; color: red;" >QTY</th>
-            <th style = "font-family: monospace; color: red;" >TOTAL</th>
+            <th style = "font-family: monospace; color: red;">Primer nombre</th>
+            <th style = "font-family: monospace; color: red;">Segundo nombre</th>
+            <th style = "font-family: monospace; color: red;" >Primer apellido</th>
+            <th style = "font-family: monospace; color: red;" >Segundo apellido</th>
+            <th style = "font-family: monospace; color: red;" >Edad</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody>';
+
+        foreach ($estudiantes as $value) {
+        $html .= ' 
           <tr>
-            <td style = text-align: center;>Design</td>
-            <td style = text-align: center;>Creating a recognizable design solution based on the companys existing visual identity</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">26</td>
-            <td class="total">$1,040.00</td>
-          </tr>
-          <tr>
-            <td class="service">Development</td>
-            <td class="desc">Developing a Content Management System-based Website</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">80</td>
-            <td class="total">$3,200.00</td>
-          </tr>
-          <tr>
-            <td class="service">SEO</td>
-            <td class="desc">Optimize the site for search engines (SEO)</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">20</td>
-            <td class="total">$800.00</td>
-          </tr>
-          <tr>
-            <td class="service">Training</td>
-            <td class="desc">Initial training sessions for staff responsible for uploading web content</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">4</td>
-            <td class="total">$160.00</td>
-          </tr>
-          <tr>
-            <td colspan="4">SUBTOTAL</td>
-            <td class="total">$5,200.00</td>
-          </tr>
-          <tr>
-            <td colspan="4">TAX 25%</td>
-            <td class="total">$1,300.00</td>
-          </tr>
-          <tr>
-            <td colspan="4" class="grand total">GRAND TOTAL</td>
-            <td class="grand total">$6,500.00</td>
-          </tr>
+            <td style = text-align: center;>'.$value['primer_nombre'].'</td>
+            <td style = text-align: center;>'.$value['segundo_nombre'].'</td>
+            <td class="unit">'.$value['primer_apellido'].'</td>
+            <td class="qty">'.$value['segundo_apellido'].'</td>
+            <td class="total">'.$value['edad'].'</td>
+          </tr>';
+              }
+          $html .= '
         </tbody>
       </table>
       <div id="notices">
+      <br>
+      <br>
+      <br>
         <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        <div class="notice">Escribir una leyenda</div>
       </div>
     </main>';
 $mpdf = new mPDF('c','A4');
 #$css = file_get_contents('../css/estilos.css');
 #$mpdf->writeHTML($css);
-$mpdf->writeHTML($html,2);
+$mpdf->writeHTML($html);
 $mpdf->Output('ReporteEstudiante','I');
 ?>
 <?php #require("../view/reportes-estudiantes.view.php") ?>
