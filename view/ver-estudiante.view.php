@@ -1,79 +1,64 @@
 <?php 
-#https://www.youtube.com/watch?v=RjtZVCm5fhc&t=202s
 $html = '
 <header>
       <div id="logo">
         <img src="../imagenes/gobernacion1.jpg">
       </div>
-      <div style = "">
-        <p style = "font-family: monospace; color: red;">Gobernacion de Risaralda</p>
-        <div>Calle 22 # 11<br/> Pereira, Risaralda</div>
-        <div>xxxxxxxxx</div>
-        <div><a href="mailto:company@example.com">correo de la gobernacion</a></div>
+      <h1><strong>GOBERNACION DE RISARALDA</strong></h1>
+      <div style = "background: #fff;">
+        <div >Secretaria de eduacion de Risaralda</div>
+        <p style = "font-family: monospace; color: blue;">Lugar:</p>
+        <div>Dirección: Calle 19 No 13-17-Código Postal 660004 - PEREIRA - RISARALDA - COLOMBIA NIT: 891.480.085-7</div>
+        <div>telefono</div>
+        <div><a href="mailto:company@example.com">company@example.com</a></div>
       </div>
-      <div id="project">
-      <h1>Datos del estudiante</h1>
+      
     </header>
     <main>
       <table style = width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 20px;>
+
+  <!--Encabezados-->
         <thead>
           <tr>
-            <th style = "font-family: monospace; color: red;">SERVICE</th>
-            <th style = "font-family: monospace; color: red;">DESCRIPTION</th>
-            <th style = "font-family: monospace; color: red;" >PRICE</th>
-            <th style = "font-family: monospace; color: red;" >QTY</th>
-            <th style = "font-family: monospace; color: red;" >TOTAL</th>
+            <th style = "font-family: monospace; color: red;">Primer nombre</th>
+            <th style = "font-family: monospace; color: red;">Segundo nombre</th>
+            <th style = "font-family: monospace; color: red;" >Primer apellido</th>
+            <th style = "font-family: monospace; color: red;" >Segundo apellido</th>
+            <th style = "font-family: monospace; color: red;" >Email</th>
+            <th style = "font-family: monospace; color: red;" >Fecha de nacimiento</th>
+            <th style = "font-family: monospace; color: red;" >Edad</th>
+            <th style = "font-family: monospace; color: red;" >Estrato</th>
+            <th style = "font-family: monospace; color: red;" >Zona</th>
+            <th style = "font-family: monospace; color: red;" >Desplazado</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody>';
+
+        $html .= ' 
           <tr>
-            <td style = text-align: center;>Design</td>
-            <td style = text-align: center;>Creating a recognizable design solution based on the companys existing visual identity</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">26</td>
-            <td class="total">$1,040.00</td>
-          </tr>
-          <tr>
-            <td class="service">Development</td>
-            <td class="desc">Developing a Content Management System-based Website</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">80</td>
-            <td class="total">$3,200.00</td>
-          </tr>
-          <tr>
-            <td class="service">SEO</td>
-            <td class="desc">Optimize the site for search engines (SEO)</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">20</td>
-            <td class="total">$800.00</td>
-          </tr>
-          <tr>
-            <td class="service">Training</td>
-            <td class="desc">Initial training sessions for staff responsible for uploading web content</td>
-            <td class="unit">$40.00</td>
-            <td class="qty">4</td>
-            <td class="total">$160.00</td>
-          </tr>
-          <tr>
-            <td colspan="4">SUBTOTAL</td>
-            <td class="total">$5,200.00</td>
-          </tr>
-          <tr>
-            <td colspan="4">TAX 25%</td>
-            <td class="total">$1,300.00</td>
-          </tr>
-          <tr>
-            <td colspan="4" class="grand total">GRAND TOTAL</td>
-            <td class="grand total">$6,500.00</td>
-          </tr>
+            <td style = text-align: center;>'.$estudiante['primer_nombre'].'</td>
+            <td style = text-align: center;>'.$estudiante['segundo_nombre'].'</td>
+            <td class="unit">'.$estudiante['primer_apellido'].'</td>
+            <td class="qty">'.$estudiante['segundo_apellido'].'</td>
+            <td class="qty">'.$estudiante['email'].'</td>
+            <td class="qty">'.$estudiante['fecha_naci'].'</td>
+            <td class="total">'.$estudiante['edad'].'</td>
+            <td class="total">'.$estudiante['estrato'].'</td>
+            <td class="total">'.$estudiante['zona'].'</td>
+            <td class="total">'.$estudiante['desplazado'].'</td>
+          </tr>';
+          $html .= '
         </tbody>
       </table>
       <div id="notices">
+      <br>
+      <br>
+      <br>
         <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        <div class="notice">Escribir una leyenda</div>
       </div>
     </main>';
 $mpdf = new mPDF('c','A4');

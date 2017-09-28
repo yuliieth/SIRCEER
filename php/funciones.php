@@ -213,6 +213,7 @@ function getAllSubject($table,$con)
 function getSubjectById($table,$doc,$con)
 {
 	#Used by Estudiante
+	#used by Ver estudiante
 	$sql = "SELECT * FROM $table WHERE documento=$doc LIMIT 1";
 	$ps = $con->prepare($sql);
 	$ps->execute();
