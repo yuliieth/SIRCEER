@@ -1,15 +1,23 @@
-<?php require("cabecera-admin.php") ?>
-<?php require("header-menu.view.php") ?>
-	
 <?php   
  /* Include all the classes */ 
 
-include("../pChart2.0/class/pDraw.class.php"); 
+include("../class/pDraw.class.php"); 
 
-include("../pChart2.0/class/pImage.class.php"); 
+include("../class/pImage.class.php"); 
 
-include("../pChart2.0/class/pData.class.php");
-
+include("../class/pData.class.php");?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chart</title>
+</head>
+<body>
+	
+</body>
+</html>
+	
+<?php
  
 
 /* Create and populate the pData object */
@@ -23,7 +31,7 @@ include("../pChart2.0/class/pData.class.php");
  $myPicture = new pImage(500,220,$MyData);
 
  /* Write the chart title */ 
- $myPicture->setFontProperties(array("FontName"=>"fonts/Forgotte.ttf","FontSize"=>15));
+ $myPicture->setFontProperties(array("FontName"=>"../fonts/Forgotte.ttf","FontSize"=>15));
  $myPicture->drawText(20,34,"Q: Flexibility is a key point of this library",array("FontSize"=>20));
 
  /* Define the default font */ 
@@ -44,8 +52,7 @@ include("../pChart2.0/class/pData.class.php");
  $myPicture->drawBarChart(array("DisplayValues"=>TRUE,"DisplayShadow"=>TRUE,"DisplayPos"=>LABEL_POS_INSIDE,"Rounded"=>TRUE,"Surrounding"=>30));
 
  /* Render the picture (choose the best way) */
- #$myPicture->autoOutput("../imagenes/example.drawBarChart.poll.png");
- $myPicture->Stroke();
+ $myPicture->autoOutput("pictures/example.drawBarChart.poll.png");
 ?>
 <?php require("footer-menu.view.php") ?>	
 <?php require 'piedepagina-admin.php' ?>
