@@ -11,7 +11,7 @@ body{
 }
 
 header{
-	background-color: #42e599;
+	background-color: #009E35;
 }
 
 header h1 a{
@@ -89,7 +89,7 @@ header h1{
 	position: relative;
 	width: 100%;
 	height: 77px;
-	background-color: rgb(2,28,52);
+	background-color: #0098C9;
 }
 
 .menu-bar{
@@ -113,7 +113,7 @@ header h1{
 
 /*Mejorar el codigo para estos tres elementos*/
 .users{
-	background-color: red;
+	background-color: #EBBD27;
 	margin-left: 13px;
 	width: 188px;
 	padding: 12px;
@@ -121,7 +121,7 @@ header h1{
 
 
 .students{
-	background-color: blue;
+	background-color: #EBBD27;
 	margin-left: 13px;
 	width: 188px;
 	padding: 12px;
@@ -129,14 +129,14 @@ header h1{
 
 
 .chart{
-	background-color: green;
+	background-color: #EBBD27;
 	margin-left: 13px;
 	width: 188px;
 	padding: 12px;
 }
 
 .reports{
-	background-color: yellow;
+	background-color: #EBBD27;
 	margin-left: 13px;
 }
 
@@ -336,7 +336,7 @@ footer{
 	width: 100%;
 	margin: auto;
 	height: 110px;
-	background-color: #42e599;
+	background-color: #009E35;
 	text-align: center;
 	font-size: .9em;
 	font-family: "Times New Roman", Georgia, Serif;
