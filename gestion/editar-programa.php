@@ -10,23 +10,21 @@ $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
 	#print_r($_POST);
-	$id = cleanData($_POST['id']);
+	$snies = cleanData($_POST['snies']);
 	$nombre = cleanData($_POST['nombre']);
-	$codigo_snies = cleanData($_POST['codigo_snies']);
 	$num_semestres = cleanData($_POST['num_semestres']);
 	$num_creditos = cleanData($_POST['num_creditos']);
 	$nivel_academico = cleanData($_POST['nivel_academico']);
 
 	$sql = 
 	"UPDATE 
-	programas SET nombre=:nombre,codigo_snies=:codigo_snies,num_semestres=:num_semestres,num_creditos=:num_creditos,nivel_academico=:nivel_academico WHERE id=:id";
+	programa SET nombre=:nombre,num_semestres=:num_semestres,num_creditos=:num_creditos,nivel_academico_id=:nivel_academico WHERE snies=:snies";
 	$ps=$cn->prepare($sql);
 	$ps->bindParam(":nombre",$nombre);
-	$ps->bindParam(":codigo_snies",$codigo_snies);
 	$ps->bindParam(":num_semestres",$num_semestres);
 	$ps->bindParam(":num_creditos",$num_creditos);
 	$ps->bindParam(":nivel_academico",$nivel_academico);
-	$ps->bindParam(":id",$id);
+	$ps->bindParam(":snies",$snies);
 	$ps->execute();
 	
 
@@ -42,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	if (empty($id_pro)) {
 		header("Location:error.php");
 	}
-	$result = getSubjectById("programas",$id_pro,$cn);
+	$result = getSubjectById("programa",$id_pro,'snies',$cn);
 		#var_dump($result);
 
 }
