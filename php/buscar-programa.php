@@ -14,13 +14,13 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT * FROM programas ORDER BY id";
+$query="SELECT * FROM programa ORDER BY id";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-if(isset($_POST['programas']))
+if(isset($_POST['busqueda-programa']))
 {                  #Por seguridad
-	$q=$conexion->real_escape_string($_POST['programas']);
-	$query="SELECT * FROM programas WHERE 
+	$q=$conexion->real_escape_string($_POST['busqueda-programa']);
+	$query="SELECT * FROM programa WHERE 
 		id LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
 		codigo_snies LIKE '%".$q."%' OR

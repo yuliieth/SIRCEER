@@ -4,10 +4,12 @@
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<div class="wraper-e">
 		<p><strong>Estudiante</strong></p>
+
 		<label for="documento">Documento</label><br>
 		<input type="text" value="<?php echo $estudiante['documento']; ?>" name="documento" disabled=""><br>
-		<label for="nombreEstudiante">Nombre estudiante</label><br>
-		<input type="text" value="<?php echo $estudiante['nombres']." ".$estudiante['apellidos'];?>" name="nombreEstudiante" disabled="">
+
+		<label for="documento">Nombre estudiante</label>
+		<input type="text" value="<?php echo $estudiante['primer_nombre']." ".$estudiante['segundo_nombre'] ." ".$estudiante['primer_apellido'];?>" name="nombre" disabled="">
 	</div>
 
 	<div class="wraper-p">

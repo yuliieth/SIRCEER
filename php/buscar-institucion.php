@@ -15,18 +15,16 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT * FROM planteles_educativos ORDER BY id";
+$query="SELECT * FROM institucion ORDER BY id";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-if(isset($_POST['institutos']))
+if(isset($_POST['institucion']))
 {                  #Por seguridad
-	$q=$conexion->real_escape_string($_POST['institutos']);
-	$query="SELECT * FROM estudiantes WHERE 
+	$q=$conexion->real_escape_string($_POST['institucion']);
+	$query="SELECT * FROM institucion WHERE 
 		id LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
-		codigo LIKE '%".$q."%' OR
 		telefono LIKE '%".$q."%' OR
-		municipio LIKE '%".$q."%' OR
 		email LIKE '%".$q."%' OR
 		direccion LIKE '%".$q."%'";
 }
@@ -42,9 +40,7 @@ if ($buscarInstitutos->num_rows > 0)
 		<tr class="bg-primary">
 			<td>ID</td>
 			<td>INSTITUTO</td>
-			<td>CODIGO</td>
 			<td>TELEFONO</td>
-			<td>MUNICIPIO</td>
 			<td>EMAIL</td>
 			<td>DIRECCION</td>
 		</tr>';
@@ -55,9 +51,7 @@ if ($buscarInstitutos->num_rows > 0)
 		'<tr class="color">
 			<td>'.$filaInstitutos['id'].'</td>
 			<td>'.$filaInstitutos['nombre'].'</td>
-			<td>'.$filaInstitutos['codigo'].'</td>
 			<td>'.$filaInstitutos['telefono'].'</td>
-			<td>'.$filaInstitutos['municipio'].'</td>
 			<td>'.$filaInstitutos['email'].'</td>
 			<td>'.$filaInstitutos['direccion'].'</td>
 			<td>

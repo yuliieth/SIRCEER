@@ -14,7 +14,7 @@
 			echo "Fallo la conexion";
 		}
 
-		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM estudiantes";
+		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM programa";
 		$num = $conexion->prepare($sql);
 		$num->execute();
 		$num = $num->fetchAll();
@@ -24,7 +24,7 @@
 		$numStudent = $numStudent->fetch()['total'];
 		//echo " el es : {$numStudent}";
 
-		$sql ="SELECT  COUNT(genero)  FROM estudiante WHERE genero='femenino'";
+		$sql ="SELECT  COUNT(genero)  FROM programa WHERE genero='femenino'";
 		$numWomen = $conexion->query($sql);
 		#$numWomen = $numWomen->fetchColumn();
 		//echo "{$numWomen}";
