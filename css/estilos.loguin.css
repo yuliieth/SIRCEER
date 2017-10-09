@@ -5,8 +5,11 @@
 
 body{
 	
-	/*background-repeat: no-repeat;*/
-	/*background-color: rgba( 205, 212, 294 );*/
+	background: url(../imagenes/logo-gobernacion.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .contenedor{

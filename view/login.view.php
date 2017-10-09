@@ -9,7 +9,6 @@
 	
 </head>
 <body>
-<img id="estirada" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index:-50;" src="../imagenes/logo-gobernacion.jpg" />
 	<div class="contenedor">
 		<div class="contenedor-login">
 				
