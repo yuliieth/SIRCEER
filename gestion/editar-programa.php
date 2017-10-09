@@ -48,4 +48,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 ?>
 
-<?php require '../view/editar-programa.view.php?select=p' ?>
+<?php require '../view/editar-programa.view.php' ?>

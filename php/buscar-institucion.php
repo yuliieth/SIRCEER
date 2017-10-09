@@ -55,10 +55,10 @@ if ($buscarInstitutos->num_rows > 0)
 			<td>'.$filaInstitutos['email'].'</td>
 			<td>'.$filaInstitutos['direccion'].'</td>
 			<td>
-			 <a href="'.URL.'gestion/editar-institucion.php?id='. urlencode($filaInstitutos['id']).'">Editar</a> 
+			 <a href="'.URL.'gestion/editar-institucion.php?id='. urlencode($filaInstitutos['id']).'&select=i">Editar</a> 
 			</td>
 			<td>
-			 <a href="'.URL.'php/eliminarInstitucion.php?id='. urlencode($filaInstitutos['id']).'">Eliminar</a>
+			 <a href="'.URL.'php/eliminarInstitucion.php?id='. urlencode($filaInstitutos['id']).'&select=i">Eliminar</a>
 			</td>
 		 </tr>
 		';

@@ -1,5 +1,5 @@
 <?php require 'cabecera-admin.php' ?>
-<?php require("header-menu.view.php") ?>
+<?php require("header-menu.view.php") #Aun falta recibir el parametro?>
 <div class="formulario-editar-user">
 	<h3>Esta modificando una institucion:</h3>
 	<hr>

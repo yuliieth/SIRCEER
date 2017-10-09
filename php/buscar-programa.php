@@ -50,8 +50,8 @@ if ($buscarProgramas->num_rows > 0)
 			<td>'.$filaProgramas['nombre'].'</td>
 			<td>'.$filaProgramas['num_semestres'].'</td>
 			<td>'.$filaProgramas['num_creditos'].'</td>
-			<td> <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'">Editar</a> </td>
-			<td> <a href="'.URL.'php/eliminarPrograma.php?id='. urlencode($filaProgramas['snies']).'">Eliminar</a></td>
+			<td> <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'&select=p">Editar</a> </td>
+			<td> <a href="'.URL.'php/eliminarPrograma.php?id='. urlencode($filaProgramas['snies']).'&select=p">Eliminar</a></td>
 		 </tr>
 		';
 	}
