@@ -206,7 +206,7 @@ form{
 
 
 /*-------estilos imput----------*/
-form select,
+.wrap-formulario form select,
 form input[type="date"],
 form input[type="text"],
 form input[type="number"],
@@ -216,13 +216,22 @@ form input[type="select"]{
 	border: 1px solid #536DFE;
 	border-radius: 4px;
 	padding: 10px;
-	width: 18%;
+	width: 45%;
 	display: inline-block;
 	margin-bottom: 9px;
 	font-size: .9em;
 	color: #141938;
 }
 
+
+.formulario-editar-user form input[type="text"],
+.formulario-editar-user form input[type="number"],
+.formulario-editar-user form input[type="email"],
+.formulario-editar-user form input[type="date"],
+.formulario-editar-user form input[type="select"]{
+ width: 14%;
+ font-size: .6em;
+}
 
 form input[type="text"]:focus,
 form input[type="email"]:focus{

@@ -14,7 +14,7 @@ function obtener_registros(institucion)
 	})
 }
 
-$(document).on('keyup', '#busqueda-institucion', function()
+$(document).on('keyup', '#busqueda', function()
 {
 	var valorBusqueda=$(this).val();
 	if (valorBusqueda!="")

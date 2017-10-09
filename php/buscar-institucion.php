@@ -21,7 +21,7 @@ $query="SELECT * FROM institucion ORDER BY id";
 if(isset($_POST['institucion']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['institucion']);
-	$query="SELECT * FROM institucion WHERE 
+	$query="SELECT * FROM institucion WHERE
 		id LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
 		telefono LIKE '%".$q."%' OR

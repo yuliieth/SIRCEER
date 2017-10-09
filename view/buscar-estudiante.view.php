@@ -45,7 +45,7 @@
 			<td> <?php echo  $filaAlumnos['periodo']?></td>
 			<td> <?php echo  $filaAlumnos['documento']?></td>-->
 			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>gestion/gestionar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Gestionar</a></td>
-			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Editar</a></td>
+			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>gestion/editar-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>&select=e">Editar</a></td>
 			<td class="cell"> <a class="links-crud" href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Eliminar</a></td>
 			<td class="cell"> <a class="links-crud" target="_blank" href="<?php echo URL ?>gestion/ver-estudiante.php?id=<?php echo urlencode($filaAlumnos['documento'])?>">Ver</a></td>
 		 </tr>

@@ -5,7 +5,7 @@
 <div class="wrap-formulario">
 	<h1>Nuevo estudiante</h1>
 		
-	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
 		<tr>
 			<td>

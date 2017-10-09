@@ -9,6 +9,7 @@
 		<input type="text" size="30" name="segundo_nombre"  value="<?php echo $result['segundo_nombre']; ?>"  placeholder="Primer nombre" required="">		
 		<input type="text" size="30" name="primer_apellido" value="<?php echo $result['primer_apellido']; ?>"  placeholder="Primer apellido" required="">
 		<input type="text" size="30" name="segundo_apellido" value="<?php echo $result['segundo_apellido']; ?>"  placeholder="Primer apellido" required="">
+		<br>
 		<input type="text" size="30" name="dire_resi" value="<?php echo $result['direccion_residencia']; ?>" placeholder="Direccion" >
 		<select  name="muni_resi" id="municipio">
 			<?php foreach ($municipios as $muni): ?>
