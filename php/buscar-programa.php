@@ -14,19 +14,17 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT * FROM programa ORDER BY id";
+$query="SELECT * FROM programa ORDER BY snies";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-if(isset($_POST['busqueda-programa']))
+if(isset($_POST['programa']))
 {                  #Por seguridad
-	$q=$conexion->real_escape_string($_POST['busqueda-programa']);
+	$q=$conexion->real_escape_string($_POST['programa']);
 	$query="SELECT * FROM programa WHERE 
-		id LIKE '%".$q."%' OR
+		snies LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
-		codigo_snies LIKE '%".$q."%' OR
 		num_semestres LIKE '%".$q."%' OR
-		num_creditos LIKE '%".$q."%' OR
-		nivel_academico LIKE '%".$q."%'";
+		num_creditos LIKE '%".$q."%'";
 }
 
 $buscarProgramas=$conexion->query($query);
@@ -38,26 +36,22 @@ if ($buscarProgramas->num_rows > 0)
 	  	<th scope="colgroup" colspan="4">Listado de programas</th>
 	  </tr>
 		<tr class="bg-primary">
-			<td>ID</td>
+			<td>SNIES</td>
 			<td>PROGRAMA</td>
-			<td>CODIGO SNIES</td>
 			<td>SEMESTRES</td>
 			<td>CREDITOS</td>
-			<td>NIVEL ACADEMICO</td>
 		</tr>';
 
 	while($filaProgramas= $buscarProgramas->fetch_assoc())
 	{
 		$tabla.=
 		'<tr class="color">
-			<td>'.$filaProgramas['id'].'</td>
+			<td>'.$filaProgramas['snies'].'</td>
 			<td>'.$filaProgramas['nombre'].'</td>
-			<td>'.$filaProgramas['codigo_snies'].'</td>
 			<td>'.$filaProgramas['num_semestres'].'</td>
 			<td>'.$filaProgramas['num_creditos'].'</td>
-			<td>'.$filaProgramas['nivel_academico'].'</td>
-			<td> <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['id']).'">Editar</a> </td>
-			<td> <a href="'.URL.'php/eliminarPrograma.php?id='. urlencode($filaProgramas['id']).'">Eliminar</a></td>
+			<td> <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'">Editar</a> </td>
+			<td> <a href="'.URL.'php/eliminarPrograma.php?id='. urlencode($filaProgramas['snies']).'">Eliminar</a></td>
 		 </tr>
 		';
 	}
