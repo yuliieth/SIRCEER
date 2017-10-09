@@ -6,26 +6,24 @@
 <?php
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
+
+
 $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
 	print_r($_POST);
 	$id = cleanData($_POST['id']);
 	$nombre = cleanData($_POST['nombre']);
-	$codigo = cleanData($_POST['codigo']);
 	$telefono = cleanData($_POST['telefono']);
-	$municipio = cleanData($_POST['municipio']);
 	$email = cleanData($_POST['email']);
 	$direccion = cleanData($_POST['direccion']);
 
 	$sql = 
 	"UPDATE 
-	planteles_educativos SET nombre=:nombre,codigo=:codigo,telefono=:telefono,municipio=:municipio,email=:email,direccion=:direccion WHERE id=:id";
+	institucion SET nombre=:nombre,telefono=:telefono,email=:email,direccion=:direccion WHERE id=:id";
 	$ps=$cn->prepare($sql);
 	$ps->bindParam(":nombre",$nombre);
-	$ps->bindParam(":codigo",$codigo);
 	$ps->bindParam(":telefono",$telefono);
-	$ps->bindParam(":municipio",$municipio);
 	$ps->bindParam(":email",$email);
 	$ps->bindParam(":direccion",$direccion);
 	$ps->bindParam(":id",$id);
@@ -44,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	if (empty($id_insti)) {
 		header("Location:error.php");
 	}
-	$result = getSubjectById("planteles_educativos",$id_insti,$cn);
+	#echo $id_insti;
+	$result = getSubjectById("institucion",$id_insti,'id',$cn);
 		#var_dump($result);
 
 }

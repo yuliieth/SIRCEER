@@ -58,7 +58,7 @@ if ($buscarInstitutos->num_rows > 0)
 			 <a href="'.URL.'gestion/editar-institucion.php?id='. urlencode($filaInstitutos['id']).'&select=i">Editar</a> 
 			</td>
 			<td>
-			 <a href="'.URL.'php/eliminarInstitucion.php?id='. urlencode($filaInstitutos['id']).'&select=i">Eliminar</a>
+			 <a href="'.URL.'php/eliminarInstitucion.php?id='. urlencode($filaInstitutos['id']).'">Eliminar</a>
 			</td>
 		 </tr>
 		';

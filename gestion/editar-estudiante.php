@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		header("Location:principal-admin.php");
 		#echo "Id vacio";
 	}
-	$result = getSubjectById("estudiante",$doc_estu,$cn);
+	$result = getSubjectById("estudiante",$doc_estu,'documento',$cn);
 	#$institutes = getAllEntity("institucion",$cn);
 	#$programs = getAllEntity("programa",$cn);
 		#var_dump($result);
