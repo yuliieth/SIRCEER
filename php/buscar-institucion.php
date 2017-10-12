@@ -33,27 +33,30 @@ $buscarInstitutos=$conexion->query($query);
 if ($buscarInstitutos->num_rows > 0)
 {
 	$tabla.= 
-	'<table class="table">
+	'<table style="margin:auto; background-color: #FFF;">
 	  <tr>
 	  	<th scope="colgroup" colspan="4">Listado de instituciones</th>
 	  </tr>
-		<tr class="bg-primary">
+		<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
+	font-weight: bold; text-align: center;">
 			<td>ID</td>
 			<td>INSTITUTO</td>
 			<td>TELEFONO</td>
 			<td>EMAIL</td>
 			<td>DIRECCION</td>
+			<td></td>
+			<td></td>
 		</tr>';
 
 	while($filaInstitutos= $buscarInstitutos->fetch_assoc())
 	{
 		$tabla.=
-		'<tr class="color">
-			<td>'.$filaInstitutos['id'].'</td>
-			<td>'.$filaInstitutos['nombre'].'</td>
-			<td>'.$filaInstitutos['telefono'].'</td>
-			<td>'.$filaInstitutos['email'].'</td>
-			<td>'.$filaInstitutos['direccion'].'</td>
+		'<tr style="text-align: center;">
+			<td style="padding: 3px;">'.$filaInstitutos['id'].'</td>
+			<td style="padding: 3px;">'.$filaInstitutos['nombre'].'</td>
+			<td style="padding: 3px;">'.$filaInstitutos['telefono'].'</td>
+			<td style="padding: 3px;">'.$filaInstitutos['email'].'</td>
+			<td style="padding: 3px;">'.$filaInstitutos['direccion'].'</td>
 			<td>
 			 <a href="'.URL.'gestion/editar-institucion.php?id='. urlencode($filaInstitutos['id']).'&select=i">Editar</a> 
 			</td>
@@ -67,7 +70,7 @@ if ($buscarInstitutos->num_rows > 0)
 	$tabla.='</table>';
 } else
 	{
-		$tabla="No se encontraron coincidencias con sus criterios de búsqueda.";
+		$tabla="<div style='background-color:#333438; margin-top: 150px; color:#FFF; width:100%; height:90px; text-align:center;'><p style='font-size: 2em; padding-top:33px; font-weight:bold;'>No se encontraron coincidencias con sus criterios de búsqueda.<p></div>";
 	}
 
 

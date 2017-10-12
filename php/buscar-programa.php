@@ -31,11 +31,12 @@ $buscarProgramas=$conexion->query($query);
 if ($buscarProgramas->num_rows > 0)
 {
 	$tabla.= 
-	'<table class="table">
+	'<table style="margin:auto; background-color: #FFF;">
 	  <tr>
 	  	<th scope="colgroup" colspan="4">Listado de programas</th>
 	  </tr>
-		<tr class="bg-primary">
+		<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
+	font-weight: bold; text-align: center;">
 			<td>SNIES</td>
 			<td>PROGRAMA</td>
 			<td>SEMESTRES</td>
@@ -45,12 +46,12 @@ if ($buscarProgramas->num_rows > 0)
 	while($filaProgramas= $buscarProgramas->fetch_assoc())
 	{
 		$tabla.=
-		'<tr class="color">
-			<td>'.$filaProgramas['snies'].'</td>
-			<td>'.$filaProgramas['nombre'].'</td>
-			<td>'.$filaProgramas['num_semestres'].'</td>
-			<td>'.$filaProgramas['num_creditos'].'</td>
-			<td> <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'&select=p">Editar</a> </td>
+		'<tr style="text-align: center;">
+			<td style="padding: 3px; >'.$filaProgramas['snies'].'</td>
+			<td style="padding: 3px; >'.$filaProgramas['nombre'].'</td>
+			<td style="padding: 3px; >'.$filaProgramas['num_semestres'].'</td>
+			<td style="padding: 3px; >'.$filaProgramas['num_creditos'].'</td>
+			<td style="padding: 3px; > <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'&select=p">Editar</a> </td>
 			<td> <a href="'.URL.'php/eliminarPrograma.php?id='. urlencode($filaProgramas['snies']).'&select=p">Eliminar</a></td>
 		 </tr>
 		';
@@ -59,7 +60,7 @@ if ($buscarProgramas->num_rows > 0)
 	$tabla.='</table>';
 } else
 	{
-		$tabla="No se encontraron coincidencias con sus criterios de búsqueda.";
+		$tabla="<div style='background-color:#333438; margin-top: 150px; color:#FFF; width:100%; height:90px; text-align:center;'><p style='font-size: 2em; padding-top:33px; font-weight:bold;'>No se encontraron coincidencias con sus criterios de búsqueda.<p></div>";
 	}
 
 
