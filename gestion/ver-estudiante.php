@@ -10,7 +10,7 @@ comprobarConexion($cn);
 
 $documento = $_GET['id'];
 
-$estudiante = getSubjectById("estudiante",$documento,$cn);
+$estudiante = getSubjectById("estudiante",$documento,"documento",$cn);
 #var_dump($estudiante);
 ?>
 <?php require("../view/ver-estudiante.view.php") ?>

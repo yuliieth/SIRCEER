@@ -20,6 +20,8 @@
 			<td class="cell">ESTADO</td>
 			<td class="cell"></td>
 			<td class="cell"></td>
+			<td class="cell"></td>
+			<td class="cell"></td>
 	</tr>
 
 		<?php foreach ($estudiantes as $filaAlumnos) {?>
