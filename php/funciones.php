@@ -336,7 +336,7 @@ function saveStudent
 	$afro,$ojos,$genero,
 	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
 	$grado,$estado,$observacion,
-	$programa,$periodo,$promedio_anterior,
+	$programa,$periodo,
 	$cn
 			)
 		{
@@ -425,14 +425,14 @@ function saveStudent
 					 $statement->bindParam( ':observaciones' , $observacion);
 			 $result= $statement->execute();
 */
-			 $sql = "INSERT INTO semestre(id, periodo, promedio_anterior) VALUES 
-			 (null,:periodo,:promedio_anterior)";
+			 $sql = "INSERT INTO semestre(id, periodo) VALUES 
+			 (null,:periodo)";
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
 			
 				$statement->bindParam(':periodo',$periodo);
-				$statement->bindParam(':promedio_anterior',$promedio_anterior);
+				#$statement->bindParam(':promedio_anterior',$promedio_anterior);
 			$resultSemestre = $statement->execute();
 			#var_dump($result);
 

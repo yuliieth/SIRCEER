@@ -181,14 +181,26 @@
 		<th><strong>Datos semestres</strong></th>
 		<tr>
 			<td><label for="periodo">Periodo:</label></td>
-			<td><input type="text" name="periodo" placeholder="Ejemplo: 2017-2" required=""></td>
-			<td><label for="promedio_anterior">Promedio anterior:</label></td>
-			<td><input type="text" name="promedio_anterior" placeholder="Ejemplo: 4.5"></td>
+			<td><select name="periodo" id="periodo">
+				<option value="2017">2017</option>
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+				<option value="2020">2020</option>
+				<option value="2021">2021</option>
+				<option value="2022">2022</option>
+				<option value="2023">2023</option>
+			</select>
+			<select name="indicador-periodo" id="indicador-periodo">
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select></td>
+			<!--<td><label for="promedio_anterior">Promedio anterior:</label></td>
+			<td><input type="text" name="promedio_anterior" placeholder="Ejemplo: 4.5"></td>-->
 		</tr>
 
 		<tr>
 			<td><label for="observacion:">Observación:</label></td>
-			<td><textarea name="observacion" id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
+			<td><textarea name="observacion" placeholder="Observaciones para el estudiante..." id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
 		</tr>
 
 
