@@ -13,7 +13,7 @@
 			echo "Fallo la conexion";
 		}
 
-		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM estudiantes";
+		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM estudiante";
 		$num = $conexion->prepare($sql);
 		$num->execute();
 		$num = $num->fetchAll();
