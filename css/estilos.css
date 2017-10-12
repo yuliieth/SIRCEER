@@ -207,12 +207,12 @@ form{
 
 /*-------estilos imput----------*/
 .wrap-formulario form select,
-form input[type="date"],
-form input[type="text"],
-form input[type="number"],
-form input[type="email"],
-form input[type="checkbox"],
-form input[type="select"]{
+.wrap-formulario form input[type="date"],
+.wrap-formulario form input[type="text"],
+.wrap-formulario form input[type="number"],
+.wrap-formulario form input[type="email"],
+.wrap-formulario form input[type="checkbox"],
+.wrap-formulario form input[type="select"]{
 	border: 1px solid #536DFE;
 	border-radius: 4px;
 	padding: 10px;
@@ -336,6 +336,11 @@ form input[type="submit"]:hover{
 	background-color: white;
 }
 
+
+.wraper-p form input[type="text"]{
+{
+	width: 10%;
+}
 
 /**ESETILOS BUSCAR ALUMNO END*/
 

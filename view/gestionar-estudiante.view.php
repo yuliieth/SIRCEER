@@ -14,27 +14,32 @@
 
 	<div class="wraper-p">
 		<p><strong>Programa</strong></p>
-		<label for="nombre">Nombre</label>
-		<select name="programa" id="" onchange="ejecutar(this.value)" >
-			<option value="">Seleccione una opcion</option>
-		<?php foreach ($programas as $programa): ?>
-			<option  value="<?php echo $programa['snies']?>"><?php echo $programa['nombre']?></option>
-		<?php endforeach ?>
-		</select>
-
+		<label for="nombre">Nombre:</label>
+		<?php foreach ($programa as $valor) {?>
+			
+		<input type="text" disabled="" value="<?php echo $valor['nombre_programa'] ?>">
+		<label for="nombre">SNIES:</label>
+		<input type="text" value="<?php echo $valor['codigo_snies'] ?>">
+		<?php } ?>
 	</div>
-	<div>
+
+	<div class="wraper-i">
 		<strong><p>Institucion academica</p></strong>
-		<p id="wraper-i"></p>
+		<?php foreach ($programa as $valor) {?>
+		<p id="wraper-i"><?php echo $valor['nombre_institucion']; ?></p>
+		<?php } ?>
 		
 	</div>
-	<div class="wraper-f">
-			<label for="nota">Promedio</label>
-			<input type="text" value="3.5" name="nota">
-			<label for="periodo">Periodo</label>
-			<input type="text" value="2017-2" name="periodo">
-			<label for="notaAnterior">Promedio anterior</label>
-			<input type="text" value="4.6" name="notaAnterior">
+	<div class="wraper-pe">
+
+			<!--<label for="periodo">Periodo:</label>
+			<input type="text" value="2017-2" name="periodo">-->
+
+			<label for="nota">Promedio:</label>
+			<input type="text"  name="nota" placeholder="Nota">
+
+			<label for="notaAnterior">Promedio anterior:</label>
+			<input type="text" name="nota_anterior" placeholder="Nota periodo anterior">
 		
 	</div>
 	<input type="submit" value="enviar">

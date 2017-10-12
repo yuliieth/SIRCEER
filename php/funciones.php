@@ -1,5 +1,14 @@
 <?php 
 
+function getProgramaOfEstudiante($documento,$con)
+{
+	$sql = "SELECT programa.nombre AS nombre_programa,programa.snies AS codigo_snies, institucion.nombre AS nombre_institucion FROM programa INNER JOIN evaluacion_semestral ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN institucion ON institucion.id=programa.institucion_id WHERE evaluacion_semestral.estudiante_documento=$documento LIMIT 1";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;	
+}
 
 function getTiposSangre($con)
 {
