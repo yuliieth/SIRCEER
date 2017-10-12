@@ -41,17 +41,19 @@ if ($buscarProgramas->num_rows > 0)
 			<td>PROGRAMA</td>
 			<td>SEMESTRES</td>
 			<td>CREDITOS</td>
+			<td></td>
+			<td></td>
 		</tr>';
 
 	while($filaProgramas= $buscarProgramas->fetch_assoc())
 	{
 		$tabla.=
 		'<tr style="text-align: center;">
-			<td style="padding: 3px; >'.$filaProgramas['snies'].'</td>
-			<td style="padding: 3px; >'.$filaProgramas['nombre'].'</td>
-			<td style="padding: 3px; >'.$filaProgramas['num_semestres'].'</td>
-			<td style="padding: 3px; >'.$filaProgramas['num_creditos'].'</td>
-			<td style="padding: 3px; > <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'&select=p">Editar</a> </td>
+			<td style="padding: 3px;">'.$filaProgramas['snies'].'</td>
+			<td style="padding: 3px;">'.$filaProgramas['nombre'].'</td>
+			<td style="padding: 3px;">'.$filaProgramas['num_semestres'].'</td>
+			<td style="padding: 3px;">'.$filaProgramas['num_creditos'].'</td>
+			<td style="padding: 3px;"> <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'&select=p">Editar</a> </td>
 			<td> <a href="'.URL.'php/eliminarPrograma.php?id='. urlencode($filaProgramas['snies']).'&select=p">Eliminar</a></td>
 		 </tr>
 		';
