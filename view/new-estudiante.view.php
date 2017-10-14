@@ -2,7 +2,7 @@
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
 
-<div class="wrap-formulario">
+<div class="wrap-formulario-new-estudiante">
 	<h1>Nuevo estudiante</h1>
 		
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">

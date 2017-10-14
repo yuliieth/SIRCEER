@@ -2,7 +2,7 @@
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
 <h2>Nueva institucion</h2>
-<div class="wrap-formulario">
+<div class="wrap-formulario-institucion">
 
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">	
 	<table>

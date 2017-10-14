@@ -145,6 +145,7 @@ header h1{
 /********TABLE GENERAL***********/
 table,tr,td{
 	border-collapse: collapse;
+	padding-left: 25px;
 	vertical-align: top;
 	font-size: 13px;
 	line-height: 15px;
@@ -205,22 +206,34 @@ form{
 
 
 
-/*-------estilos imput----------*/
-.wrap-formulario form select,
-.wrap-formulario form input[type="date"],
-.wrap-formulario form input[type="text"],
-.wrap-formulario form input[type="number"],
-.wrap-formulario form input[type="email"],
-.wrap-formulario form input[type="checkbox"],
-.wrap-formulario form input[type="select"]{
+/*-------estilos input----------*/
+form input[type="date"],
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="checkbox"],
+form input[type="select"],
+form input[type="button"]
+select{
 	border: 1px solid #536DFE;
 	border-radius: 4px;
-	padding: 10px;
-	width: 45%;
 	display: inline-block;
 	margin-bottom: 9px;
 	font-size: .9em;
 	color: #141938;
+}
+
+.wrap-formulario-new-estudiante, .wrap-formulario-institucion form input[type="date"],
+.wrap-formulario-new-estudiante, .wrap-formulario-institucion form input[type="text"],
+.wrap-formulario-new-estudiante, .wrap-formulario-institucion form input[type="number"],
+.wrap-formulario-new-estudiante, .wrap-formulario-institucion form input[type="email"],
+.wrap-formulario-new-estudiante, .wrap-formulario-institucion form input[type="checkbox"],
+.wrap-formulario-new-estudiante, .wrap-formulario-institucion form input[type="select"],
+.wrap-formulario-new-estudiante, .wrap-formulario-institucion select
+{
+	padding: 10px;
+	width: 59%;
+	font-size: .9em;
 }
 
 
@@ -229,8 +242,14 @@ form{
 .formulario-editar-user form input[type="email"],
 .formulario-editar-user form input[type="date"],
 .formulario-editar-user form input[type="select"]{
- width: 14%;
- font-size: .6em;
+ border: 1px solid #536DFE;
+	border-radius: 4px;
+	padding: 10px;
+	width: 18%;
+	display: inline-block;
+	margin-bottom: 9px;
+	font-size: .6em;
+	color: #141938;
 }
 
 form input[type="text"]:focus,
