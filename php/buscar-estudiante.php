@@ -21,19 +21,20 @@ $query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,e
 if(isset($_POST['estudiantes']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['estudiantes']);
-	$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma FROM estudiante,programa WHERE
-		documento LIKE '%".$q."%' OR
-		primer_nombre LIKE '%".$q."%' OR
-		segundo_nombre LIKE '%".$q."%' OR
-		primer_apellido LIKE '%".$q."%' OR
-		segundo_apellido LIKE '%".$q."%' OR
-		email LIKE '%".$q."%' OR
-		estrato LIKE '%".$q."%' OR
-		genero LIKE '%".$q."%' OR
-		desplazado LIKE '%".$q."%' OR
-		afrodescendiente LIKE '%".$q."%' OR
-		estado LIKE '%".$q."%' OR
-		edad LIKE '%".$q."%'";
+	$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma, semestre.periodo,semestre.promedio_anterior,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN evaluacion_semestral ON estudiante.documento=evaluacion_semestral.estudiante_documento INNER JOIN programa ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN semestre ON semestre.id=evaluacion_semestral.semestre_id INNER JOIN institucion ON institucion.id=programa.institucion_id WHERE
+		estudiante.documento LIKE '%".$q."%' OR
+		estudiante.primer_nombre LIKE '%".$q."%' OR
+		estudiante.segundo_nombre LIKE '%".$q."%' OR
+		estudiante.primer_apellido LIKE '%".$q."%' OR
+		estudiante.segundo_apellido LIKE '%".$q."%' OR
+		estudiante.email LIKE '%".$q."%' OR
+		estudiante.estrato LIKE '%".$q."%' OR
+		estudiante.genero LIKE '%".$q."%' OR
+		estudiante.desplazado LIKE '%".$q."%' OR
+		estudiante.afrodescendiente LIKE '%".$q."%' OR
+		estudiante.estado LIKE '%".$q."%' OR
+		estudiante.edad LIKE '%".$q."%' OR
+        programa.nombre LIKE '%".$q."%'";
 }
 
 $buscarEstudiantes=$conexion->query($query);
@@ -84,8 +85,8 @@ if ($buscarEstudiantes->num_rows > 0)
 			<td></td>
 			<td> <a  href="' . URL .'gestion/gestionar-estudiante.php?id='. urlencode($filaEstudiantes['doc_estudiante']).'&select=e">Gestionar</a></td>
 			<td> <a  href="' . URL .'gestion/editar-estudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'&select=e">Editar</a></td>
-			<td> <a  href="'.  URL .'"../php/eliminarEstudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'">Eliminar</a></td>
-			<td> <a  target="_blank" href="' . URL .'"gestion/ver-estudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'">Ver</a></td>
+			<td> <a  href="'.  URL .'php/eliminarEstudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'">Eliminar</a></td>
+			<td> <a  target="_blank" href="' . URL .'gestion/ver-estudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'">Ver</a></td>
 		 </tr>';
 	}
 
