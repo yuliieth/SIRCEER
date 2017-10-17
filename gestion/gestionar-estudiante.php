@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 4. Finalmente con estos datos hacer un insert para "evaluacion_semestral"
 */
 $documento = cleanData($_GET['id']);
-<<<<<<< HEAD
+
 $estudiante = getSubjectById("estudiante",$documento,"documento",$cn);
 $programa = getProgramaOfEstudiante($documento,$cn);
-=======
+
 $estudiante = getSubjectById("estudiante","documento",$documento,$cn);
 $programas = getAllSubject("programa",$cn);
->>>>>>> fdfbfa533ba3cb81e74dbdceee0689e08105ea2f
+
 #var_dump($programas);
 
 }
