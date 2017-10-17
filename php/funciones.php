@@ -463,7 +463,9 @@ function saveStudent
 
 			if ($result !== false && $resultSemestre !== false && $resultEvaluacion !== false) {
 				header("Location:".URL."gestion/new-estudiante.php?select=e");
-			}else{echo "Ocurrio un error";}
+			}else{
+				echo "Ocurrio un error";
+			}
 
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	

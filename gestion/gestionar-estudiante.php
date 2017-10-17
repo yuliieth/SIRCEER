@@ -10,6 +10,27 @@ $cn = getConexion($bd_config);
 comprobarConexion($cn);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	var_dump($_POST);
+
+/*
+NECESIDADES: REGISTRAR LA NOTA INGRESADA EN LA TABLA EVALUACION_SEMESTRAL DONDE EL DOCUMENTO SEA IGUAL
+A ......
+Parametros recibidos por $_POST : documento y nota 
+validar parametros
+*/
+
+$documento = $_POST['documento'];
+$nota = (double) $_POST['nota'];
+
+$sql ="UPDATE evaluacion_semestral SET nota=:nota WHERE estudiante_documento = :documento";
+$ps = $cn->prepare($sql);
+	$ps->bindParam(':nota',$nota);
+	$ps->bindParam(':documento',$documento);
+$ps->execute();
+
+
+if ($ps!=false) {
+	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
+}
 }else{
 #Necesidades:
 /*

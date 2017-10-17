@@ -42,7 +42,7 @@ if ($buscarEstudiantes->num_rows > 0)
 {
 	$tabla.= 
 	'<table class="tabla_resultados">
-	<tr class="row-primary">
+	<tr>
 			<td>DOCUMENTO</td>
 			<td>NOMBRE</td>
 			<td>EDAD</td>
@@ -66,7 +66,9 @@ if ($buscarEstudiantes->num_rows > 0)
 	while($filaEstudiantes= $buscarEstudiantes->fetch_assoc())
 	{
 		$tabla.=
-		'<tr>
+		'<tr ';if ($filaEstudiantes['estado']!=0) {
+			$tabla.='style="background-color: green;"';
+		};$tabla.='>
 			<td> '. $filaEstudiantes['doc_estudiante'].'</td>
 			<td> '. $filaEstudiantes['primer_nombre'].' '.$filaEstudiantes['primer_apellido'].'</td>
 			<td> '. $filaEstudiantes['edad'].'</td>

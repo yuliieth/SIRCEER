@@ -6,7 +6,7 @@
 		<th><p><strong>Estudiante</strong></p></th>
 	<tr>
 		<td><label for="documento">Documento</label></td>
-		<td><input type="text" value="<?php echo $estudiante['documento']; ?>" name="documento" disabled=""><br></td>
+		<td><input type="text" readonly="" value="<?php echo $estudiante['documento']; ?>" name="documento" ><br></td>
 		<td><label for="documento">Nombre estudiante</label></td>
 		<td><input type="text" value="<?php echo $estudiante['primer_nombre']." ".$estudiante['segundo_nombre'] ." ".$estudiante['primer_apellido'];?>" name="nombre" disabled=""></td>
 	</tr>
@@ -17,7 +17,7 @@
 		<?php foreach ($programa as $valor) {?>
 		<td><input type="text" disabled="" value="<?php echo $valor['nombre_programa'] ?>"></td>
 		<td><label for="nombre">SNIES:</label></td>
-		<td><input type="text" value="<?php echo $valor['codigo_snies'] ?>"></td>
+		<td><input type="text" disabled="" value="<?php echo $valor['codigo_snies'] ?>"></td>
 	</tr>
 		<?php } ?>
 		
@@ -33,7 +33,7 @@
 			<th><strong>Nota del semestre en curso</strong></th>
 		<tr>
 			<td><label for="nota">Promedio:</label></td>
-			<td><input type="text"  name="nota" placeholder="Nota"></td>
+			<td><input type="text" required="" name="nota" placeholder="Nota"></td>
 			<!--<td><label for="notaAnterior">Promedio anterior:</label></td>
 			<td><input type="text" name="nota_anterior" placeholder="Nota periodo anterior"></td>-->
 		</tr>
