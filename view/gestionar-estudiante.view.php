@@ -2,47 +2,50 @@
 <?php require("header-menu.view.php") ?>
 <div class="contenedor">
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-	<div class="wraper-e">
-		<p><strong>Estudiante</strong></p>
+	<table>
+		<th><p><strong>Estudiante</strong></p></th>
+	<tr>
+		<td><label for="documento">Documento</label></td>
+		<td><input type="text" value="<?php echo $estudiante['documento']; ?>" name="documento" disabled=""><br></td>
+		<td><label for="documento">Nombre estudiante</label></td>
+		<td><input type="text" value="<?php echo $estudiante['primer_nombre']." ".$estudiante['segundo_nombre'] ." ".$estudiante['primer_apellido'];?>" name="nombre" disabled=""></td>
+	</tr>
 
-		<label for="documento">Documento</label><br>
-		<input type="text" value="<?php echo $estudiante['documento']; ?>" name="documento" disabled=""><br>
-
-		<label for="documento">Nombre estudiante</label>
-		<input type="text" value="<?php echo $estudiante['primer_nombre']." ".$estudiante['segundo_nombre'] ." ".$estudiante['primer_apellido'];?>" name="nombre" disabled="">
-	</div>
-
-	<div class="wraper-p">
-		<p><strong>Programa</strong></p>
-		<label for="nombre">Nombre:</label>
+		<th><p><strong>Programa</strong></p></th>
+	<tr>
+		<td><label for="nombre">Nombre:</label></td>
 		<?php foreach ($programa as $valor) {?>
-			
-		<input type="text" disabled="" value="<?php echo $valor['nombre_programa'] ?>">
-		<label for="nombre">SNIES:</label>
-		<input type="text" value="<?php echo $valor['codigo_snies'] ?>">
-		<?php } ?>
-	</div>
-
-	<div class="wraper-i">
-		<strong><p>Institucion academica</p></strong>
-		<?php foreach ($programa as $valor) {?>
-		<p id="wraper-i"><?php echo $valor['nombre_institucion']; ?></p>
+		<td><input type="text" disabled="" value="<?php echo $valor['nombre_programa'] ?>"></td>
+		<td><label for="nombre">SNIES:</label></td>
+		<td><input type="text" value="<?php echo $valor['codigo_snies'] ?>"></td>
+	</tr>
 		<?php } ?>
 		
-	</div>
-	<div class="wraper-pe">
-
-			<!--<label for="periodo">Periodo:</label>
-			<input type="text" value="2017-2" name="periodo">-->
-
-			<label for="nota">Promedio:</label>
-			<input type="text"  name="nota" placeholder="Nota">
-
-			<label for="notaAnterior">Promedio anterior:</label>
-			<input type="text" name="nota_anterior" placeholder="Nota periodo anterior">
+			<th><strong><p>Institucion academica</p></strong></th>
+		<tr>
+			<td>Insitucion:</td>
+			<?php foreach ($programa as $valor) {?>
+			<td><p id="wraper-i"><?php echo $valor['nombre_institucion']; ?></p></td>
+			<?php } ?>
+		</tr>
 		
-	</div>
-	<input type="submit" value="enviar">
+		
+			<th><strong>Nota del semestre en curso</strong></th>
+		<tr>
+			<td><label for="nota">Promedio:</label></td>
+			<td><input type="text"  name="nota" placeholder="Nota"></td>
+			<!--<td><label for="notaAnterior">Promedio anterior:</label></td>
+			<td><input type="text" name="nota_anterior" placeholder="Nota periodo anterior"></td>-->
+		</tr>
+
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><input type="submit" value="enviar"></td>
+		</tr>
+	
+	</table>
 	</form>
 </div>
 <?php require("footer-menu.view.php") ?>

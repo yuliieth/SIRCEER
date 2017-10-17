@@ -227,7 +227,7 @@
 
 <!--END CONTENIDO-->
 <?php require("footer-menu.view.php") ?>					
-<!--<?php require("piedepagina-admin.php") ?>-->
+<?php require("piedepagina-admin.php") ?>
 
 <script type=text/javascript>
 	function validarForm(formulario)

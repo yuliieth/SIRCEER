@@ -93,5 +93,5 @@ require_once '../admin/config.php'; ?>
         });
     </script>
 
-    <?php require'piedepagina-admin.php' ?>
+    <?php require 'piedepagina-admin.php'; ?>
 

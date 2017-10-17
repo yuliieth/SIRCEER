@@ -213,10 +213,11 @@ form input[type="number"],
 form input[type="email"],
 form input[type="checkbox"],
 form input[type="select"],
-form input[type="button"]
+form input[type="button"],
 select{
 	border: 1px solid #536DFE;
 	border-radius: 4px;
+	padding: 11px;
 	display: inline-block;
 	margin-bottom: 9px;
 	font-size: .9em;
@@ -231,8 +232,8 @@ select{
 .wrap-formulario-new-estudiante, .wrap-formulario-institucion form input[type="select"],
 .wrap-formulario-new-estudiante, .wrap-formulario-institucion select
 {
-	padding: 10px;
-	width: 59%;
+	/*padding: 106%;*/
+	width: 90%;
 	font-size: .9em;
 }
 
@@ -356,7 +357,7 @@ form input[type="submit"]:hover{
 }
 
 
-.wraper-p form input[type="text"]{
+.wraper-p form input[type="text"]
 {
 	width: 10%;
 }
@@ -367,6 +368,7 @@ form input[type="submit"]:hover{
 /*******************/
 
 footer{
+
 	width: 100%;
 	margin: auto;
 	height: 110px;
