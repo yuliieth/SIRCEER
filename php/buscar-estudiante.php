@@ -41,8 +41,12 @@ $buscarEstudiantes=$conexion->query($query);
 if ($buscarEstudiantes->num_rows > 0)
 {
 	$tabla.= 
-	'<table class="tabla_resultados">
+	'<table style="margin:auto; background-color: #FFF;">
 	<tr>
+	  	<th scope="colgroup" colspan="4">Listado de instituciones</th>
+	  </tr>
+	<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
+	font-weight: bold; text-align: center;">
 			<td>DOCUMENTO</td>
 			<td>NOMBRE</td>
 			<td>EDAD</td>
@@ -67,22 +71,22 @@ if ($buscarEstudiantes->num_rows > 0)
 	{
 		$tabla.=
 		'<tr ';if ($filaEstudiantes['estado']!=0) {
-			$tabla.='style="background-color: green;"';
+			$tabla.='style="background-color: #CEE3F6;"';
 		};$tabla.='>
-			<td> '. $filaEstudiantes['doc_estudiante'].'</td>
-			<td> '. $filaEstudiantes['primer_nombre'].' '.$filaEstudiantes['primer_apellido'].'</td>
-			<td> '. $filaEstudiantes['edad'].'</td>
-			<td> '. $filaEstudiantes['ojos'].'</td>
-			<td> '. $filaEstudiantes['estrato'].'</td>
-			<td> '. $filaEstudiantes['genero'].'</td>
-			<td> '. $filaEstudiantes['zona'].'</td>
-			<td> '. $filaEstudiantes['afrodescendiente'].'</td>
-			<td> '. $filaEstudiantes['estado'].'</td>
-			<td> '. $filaEstudiantes['nameInstitute'].'</td>
-			<td> '. $filaEstudiantes['namePrograma'].'</td>
-			<td> '. $filaEstudiantes['periodo'].'</td>
-			<td> '. $filaEstudiantes['grado'].'</td>
-			<td> '. $filaEstudiantes['desplazado'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['doc_estudiante'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['primer_nombre'].' '.$filaEstudiantes['primer_apellido'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['edad'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['ojos'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['estrato'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['genero'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['zona'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['afrodescendiente'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['estado'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['nameInstitute'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['namePrograma'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['periodo'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['grado'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['desplazado'].'</td>
 			<td></td>
 			<td></td>
 			<td> <a  href="' . URL .'gestion/gestionar-estudiante.php?id='. urlencode($filaEstudiantes['doc_estudiante']).'&select=e">Gestionar</a></td>
