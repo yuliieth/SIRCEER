@@ -1,5 +1,18 @@
 <?php 
 
+function getAllStudentRelations($documento,$con)
+{
+	#Trae todos los campos de todas las tablas que tienen relacion con el estudiante con documento = ...
+	#Utilizada por ver-estudiante
+	$sql="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado,estudiante.fecha_naci,estudiante.fecha_registro,estudiante.discapacidades,estudiante.victima_conflicto,estudiante.direccion_residencia,estudiante.barrio_residencia,municipio.nombre AS nameMuniNaci,municipio.nombre AS nameMuniResi, tipo_documento.tipo AS tipo_docu,tipo_sangre.tipo AS tipo_sangre,estudiante.observaciones, programa.nombre AS namePrograma, semestre.periodo,semestre.promedio_anterior,evaluacion_semestral.nota,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN evaluacion_semestral ON estudiante.documento=evaluacion_semestral.estudiante_documento INNER JOIN programa ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN semestre ON semestre.id=evaluacion_semestral.semestre_id INNER JOIN institucion ON institucion.id=programa.institucion_id INNER JOIN municipio ON municipio.id=estudiante.municipio_naci_id INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id INNER JOIN tipo_sangre ON estudiante.tipo_sangre_id=tipo_sangre.id WHERE documento=$documento";
+
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$result = $ps->fetch();
+	#var_dump($result);
+	return $result;	
+}
+
 function getProgramaOfEstudiante($documento,$con)
 {
 	$sql = "SELECT programa.nombre AS nombre_programa,programa.snies AS codigo_snies, institucion.nombre AS nombre_institucion FROM programa INNER JOIN evaluacion_semestral ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN institucion ON institucion.id=programa.institucion_id WHERE evaluacion_semestral.estudiante_documento=$documento LIMIT 1";
