@@ -54,13 +54,13 @@ if ($buscarEstudiantes->num_rows > 0)
 			<td>ESTRATO</td>
 			<td>GENERO</td>
 			<td>ZONA</td>
-			<td>AFRO</td>
-			<td>ESTADO</td>
-			<td>INSTITUTO</td>
+			<!--<td>AFRO</td>-->
+			<!--<td>ESTADO</td>-->
+			<!--<td>INSTITUTO</td>-->
 			<td>PROGRAMA</td>
-			<td>SEMESTRE</td>
+			<!--<td>SEMESTRE</td>-->
 			<td>GRADO</td>
-			<td>DESPLAZADO</td>
+			<!--<td>DESPLAZADO</td>-->
 			<td></td>
 			<td></td>
 			<td></td>
@@ -80,15 +80,14 @@ if ($buscarEstudiantes->num_rows > 0)
 			<td style="padding: 3px;"> '. $filaEstudiantes['estrato'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['genero'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['zona'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['afrodescendiente'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['estado'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['nameInstitute'].'</td>
+			<!--<td style="padding: 3px;"> '. $filaEstudiantes['afrodescendiente'].'</td>-->
+			<!--<td style="padding: 3px;"> '. $filaEstudiantes['estado'].'</td>-->
+			<!--<td style="padding: 3px;"> '. $filaEstudiantes['nameInstitute'].'</td>-->
 			<td style="padding: 3px;"> '. $filaEstudiantes['namePrograma'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['periodo'].'</td>
+			<!--<td style="padding: 3px;"> '. $filaEstudiantes['periodo'].'</td>-->
 			<td style="padding: 3px;"> '. $filaEstudiantes['grado'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['desplazado'].'</td>
-			<td></td>
-			<td></td>
+			<!--<td style="padding: 3px;"> '. $filaEstudiantes['desplazado'].'</td>-->
+
 			<td> <a  href="' . URL .'gestion/gestionar-estudiante.php?id='. urlencode($filaEstudiantes['doc_estudiante']).'&select=e">Gestionar</a></td>
 			<td> <a  href="' . URL .'gestion/editar-estudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'&select=e">Editar</a></td>
 			<td> <a  href="'.  URL .'php/eliminarEstudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'">Eliminar</a></td>
