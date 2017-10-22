@@ -7,12 +7,14 @@ $cn = getConexion($bd_config);
 comprobarConexion($cn);
 $niveles = getNivelesAcademicos($cn);
 $instituciones = getInstituciones($cn);
+#las anteriores pueden ser reemplazadas por esta
+$alianzas = getAllSubject('alianza',$cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"nombre","codigosnies","semestres","creditos","nivel-academico"
+		"nombre","codigosnies","semestres","creditos","nivel-academico","alianza"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -35,9 +37,10 @@ if (isset($_POST['submit'])) {
 
 		$nivelAcademico = $_POST['nivel-academico'];
 		$institucion = $_POST['institucion'];
+		$alianza = $_POST['alianza'];
 		
 saveProgram(
-	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$institucion,$cn
+	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$institucion,$alianza,$cn
 	);
 }
 

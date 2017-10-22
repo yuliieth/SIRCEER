@@ -24,6 +24,13 @@
 			<?php foreach ($instituciones as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>
+		</select>	
+
+		<br>
+		<select name="alianza" id="">
+			<?php foreach ($alianzas as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
 		</select>		
 
 		<br>		
