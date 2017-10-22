@@ -20,15 +20,22 @@ validar parametros
 
 $documento = $_POST['documento'];
 $nota = (double) $_POST['nota'];
+$estado = 1;
 
 $sql ="UPDATE evaluacion_semestral SET nota=:nota WHERE estudiante_documento = :documento";
 $ps = $cn->prepare($sql);
-	$ps->bindParam(':nota',$nota);
-	$ps->bindParam(':documento',$documento);
+$ps->bindParam(':nota',$nota);
+$ps->bindParam(':documento',$documento);
 $ps->execute();
 
 
 if ($ps!=false) {
+	$sql ="UPDATE estudiante SET estado=:estado WHERE documento = :documento";
+	$ps = $cn->prepare($sql);
+	$ps->bindParam(':estado',$estado);
+	$ps->bindParam(':documento',$documento);
+	$ps->execute();
+
 	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
 }
 }else{
