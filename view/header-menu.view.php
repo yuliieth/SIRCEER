@@ -106,6 +106,39 @@
 
 <?php
                                         break;
+
+
+        case 'a':
+                                        
+?>
+
+<table id="estructura">
+        <tr>
+                <td id="menu">&nbsp;
+                        <ul>
+                                <li>
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/new-alianza.php?select=a">Nuevo</a>
+                </li>
+                                <li>
+                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/buscar-alianza.php?select=a">Buscar</a>
+                </li>
+                                <li>
+                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/reportes-alianzas.php?select=a">Reportes</a>
+                </li>
+                                <li>
+                <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/estadisticas-alianzas.php?select=a">Estadisticas</a>
+                </li>
+                        </ul>
+                </td>
+                <td id="pagina">
+
+
+<?php
+                                        break;
                                 
                                 default:
                                         echo "Error de menu";

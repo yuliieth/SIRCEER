@@ -43,7 +43,7 @@ if ($buscarEstudiantes->num_rows > 0)
 	$tabla.= 
 	'<table style="margin:auto; background-color: #FFF;">
 	<tr>
-	  	<th scope="colgroup" colspan="4">Listado de instituciones</th>
+	  	<th scope="colgroup" colspan="4">Listado de estudiantes</th>
 	  </tr>
 	<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
 	font-weight: bold; text-align: center;">

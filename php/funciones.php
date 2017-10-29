@@ -1,5 +1,48 @@
 <?php 
 
+
+
+function saveAlianza(
+	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
+			)
+		{	
+			
+			try {
+			//var_dump($conexion);
+			$sql = ("INSERT INTO alianza (nombre,fecha_inicio,fecha_final,cupos) VALUES(  :nombre,:fecha_ini,:fecha_fina,:cupos)"
+				);
+			$statement = $cn->prepare($sql);
+					 $statement->bindParam( ':nombre' , $nombre);
+					 $statement->bindParam( ':fecha_ini' , $fecha_ini);
+					 $statement->bindParam( ':fecha_fina' , $fecha_fina);
+					 $statement->bindParam( ':cupos' , $cupos);
+					 
+			 $result= $statement->execute();
+			
+			if ($result !== null) {
+				header("Location:".URL."gestion/new-alianza.php?select=a");
+			}
+
+			} catch (Exception $e) {
+				echo "Linea de error: ".$e->getMessage();	
+			}
+			//echo "ejecuto el metodo";
+}
+
+
+function getAllAlianzaRelations($id,$con)
+{
+	#Trae todos los campos de todas las tablas que tienen relacion con la alianza por medio de id = ...
+	#Utilizada por ver-alianza
+	$sql="SELECT alianza.id AS id_alianza, alianza.nombre AS nombreAlianza,alianza.fecha_inicio,alianza.fecha_final, alianza.cupos, institucion.id AS id_institucion, institucion.nombre AS nombre_institucion,institucion.email AS email_institucion FROM alianza INNER JOIN institucion ON alianza.id=institucion.alianza_id WHERE alianza.id=$id";
+
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;	
+}
+
 function getAllStudentRelations($documento,$con)
 {
 	#Trae todos los campos de todas las tablas que tienen relacion con el estudiante con documento = ...
