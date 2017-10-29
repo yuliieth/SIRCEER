@@ -1,6 +1,70 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>      
 <!--CONTENIDO-->
+
+  <div class="wraper">
+    <div class="encabezado">
+      <h1>Reportes de estudiantes</h1>
+    </div>
+    <div class="wraper-contenido">
+      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+
+
+        <label for="Edad">Edad:</label>
+        <input type="number" name="edad" min="0" max="25" >
+
+        <label for="zona">Zona:</label>
+        <select name="zona" id="zona">
+          <option value="0">No aplica</option>
+          <option value="Urbana">Urbana</option>
+          <option value="Rural">Rural</option>
+        </select>
+
+        <label for="afro">Afro:</label>
+        <select name="afro" id="afro">
+          <option value="0">No aplica</option>
+          <option value="si">Si</option>
+        </select>
+
+        <label for="estrato">Estrato:</label>
+        <select name="estrato" id="estrato">
+          <option value="0">No aplica</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <br>
+        
+
+        <label for="desplazado">Desplazado:</label>
+        <select name="desplazado" id="desplazado">
+          <option value="0">No aplica</option>
+          <option value="si">Si</option>
+        </select>
+
+
+        <label for="ojos">Ojos:</label>
+        <select name="ojos" id="estrato">
+          <option value="0">No aplica</option>
+          <option value="Negros">Negros</option>
+          <option value="Cafes">Cafes</option>
+          <option value="Verdes">Verdes</option>
+          <option value="Azules">Azules</option>
+        </select>
+
+
+        <label for="victima_conflicto">Victima del conflicto:</label>
+        <select name="victima_conflicto" id="estrato">
+          <option value="0">No aplica</option>
+          <option value="Si">Si</option>
+        </select>
+
+        <input type="submit" name="generar" value="Generar">
+      </form>
+    </div>
+  </div>
               
   <!--END CONTENIDO-->
 <?php require("footer-menu.view.php") ?>          
