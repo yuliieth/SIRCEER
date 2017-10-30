@@ -285,7 +285,7 @@ function getSubjectById($table,$doc,$campo,$con)
 	$ps->execute();
 	#var_dump($ps);
 	$resul = $ps->fetch();
-		#var_dump($result);
+	#var_dump($result);
 	
 	return $resul;
 
