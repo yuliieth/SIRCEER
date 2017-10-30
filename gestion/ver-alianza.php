@@ -10,7 +10,10 @@ comprobarConexion($cn);
 
 $id = $_GET['id'];
 
-$alianza = getAllAlianzaRelations($id,$cn);
-var_dump($alianza);
+$alianza = getSubjectById('alianza',$id,'id',$cn);
+$instituciones = getAllSubjectById('institucion',$id,'alianza_id',$cn);
+
+#var_dump($alianza);
+#var_dump($instituciones);
 ?>
-<?php #require("../view/ver-alianza.view.php") ?>
+<?php require("../view/ver-alianza.view.php") ?>

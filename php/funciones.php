@@ -4,28 +4,28 @@
 
 function saveAlianza(
 	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
-			)
-		{	
-			
-			try {
+)
+{	
+	
+	try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO alianza (nombre,fecha_inicio,fecha_final,cupos) VALUES(  :nombre,:fecha_ini,:fecha_fina,:cupos)"
-				);
-			$statement = $cn->prepare($sql);
-					 $statement->bindParam( ':nombre' , $nombre);
-					 $statement->bindParam( ':fecha_ini' , $fecha_ini);
-					 $statement->bindParam( ':fecha_fina' , $fecha_fina);
-					 $statement->bindParam( ':cupos' , $cupos);
-					 
-			 $result= $statement->execute();
-			
-			if ($result !== null) {
-				header("Location:".URL."gestion/new-alianza.php?select=a");
-			}
+		$sql = ("INSERT INTO alianza (nombre,fecha_inicio,fecha_final,cupos) VALUES(  :nombre,:fecha_ini,:fecha_fina,:cupos)"
+	);
+		$statement = $cn->prepare($sql);
+		$statement->bindParam( ':nombre' , $nombre);
+		$statement->bindParam( ':fecha_ini' , $fecha_ini);
+		$statement->bindParam( ':fecha_fina' , $fecha_fina);
+		$statement->bindParam( ':cupos' , $cupos);
+		
+		$result= $statement->execute();
+		
+		if ($result !== null) {
+			header("Location:".URL."gestion/new-alianza.php?select=a");
+		}
 
-			} catch (Exception $e) {
-				echo "Linea de error: ".$e->getMessage();	
-			}
+	} catch (Exception $e) {
+		echo "Linea de error: ".$e->getMessage();	
+	}
 			//echo "ejecuto el metodo";
 }
 
@@ -214,7 +214,7 @@ function shearcUserLogin($usuario,$pass,$conexion)
 		array(
 			':usuario' => $usuario,
 			':password' => $pass 
-			));
+		));
 	$result= $statement->fetch();
 	#var_dump($result);
 	return $result;
@@ -279,12 +279,36 @@ function getSubjectById($table,$doc,$campo,$con)
 {
 	#Used by Estudiante
 	#used by Ver estudiante
-	$sql = "SELECT * FROM $table WHERE $campo=$doc LIMIT 1";
+	$sql = "SELECT * FROM $table WHERE $campo=$doc";
 	$ps = $con->prepare($sql);
+	#var_dump($campo);
 	$ps->execute();
+	#var_dump($ps);
 	$resul = $ps->fetch();
-	#var_dump($resul);
+		#var_dump($result);
+	
 	return $resul;
+
+	
+
+}
+
+
+function getAllSubjectById($table,$doc,$campo,$con)
+{
+	#Used by Estudiante
+	#used by Ver estudiante
+	$sql = "SELECT * FROM $table WHERE $campo=$doc";
+	$ps = $con->prepare($sql);
+	#var_dump($campo);
+	$ps->execute();
+	#var_dump($ps);
+	$resul = $ps->fetchAll();
+		#var_dump($result);
+	
+	return $resul;
+
+	
 
 }
 
@@ -309,91 +333,91 @@ function validarErrores($parameter,$errores)
 
 
 function saveInstitu
-		(
-			$nombre,
-			$telefono,
-			$municipio,
-			$email,
-			$direccion,
-			$bd_config
-			)
-		{
-			$conexion = getConexion($bd_config);
-			if (!$conexion) {
-				echo "Error en conexion";
-			}else{
-			try {
+(
+	$nombre,
+	$telefono,
+	$municipio,
+	$email,
+	$direccion,
+	$bd_config
+)
+{
+	$conexion = getConexion($bd_config);
+	if (!$conexion) {
+		echo "Error en conexion";
+	}else{
+		try {
 			//var_dump($conexion);
 			$sql = ("INSERT INTO institucion  (id, nombre,telefono,email,direccion) values(null,:nombre,:telefono,:email,:direccion)"
-				);
+		);
 			$statement = $conexion->prepare($sql);
-					 $statement->bindParam( ':nombre' , $nombre);
-					 $statement->bindParam( ':telefono' , $telefono);
-					 $statement->bindParam( ':email' , $email);
-					 $statement->bindParam( ':direccion' , $direccion);
-			 $result= $statement->execute();
+			$statement->bindParam( ':nombre' , $nombre);
+			$statement->bindParam( ':telefono' , $telefono);
+			$statement->bindParam( ':email' , $email);
+			$statement->bindParam( ':direccion' , $direccion);
+			$result= $statement->execute();
 		//Enlazar institucion con municipio por medio de la tabla institucion_municipio
-			 $institucion_id = getId("institucion",$conexion);
-		$sql = "INSERT INTO institucion_municipio (institucion_id, municipio_id) VALUES (:institucion,:municipio)";
-	  	$statement = $conexion->prepare($sql);
-	  	$statement->bindParam(':institucion',$institucion_id);
-	  	$statement->bindParam(':municipio',$municipio);
-	  	$resultInsti = $statement->execute();
+			$institucion_id = getId("institucion",$conexion);
+			$sql = "INSERT INTO institucion_municipio (institucion_id, municipio_id) VALUES (:institucion,:municipio)";
+			$statement = $conexion->prepare($sql);
+			$statement->bindParam(':institucion',$institucion_id);
+			$statement->bindParam(':municipio',$municipio);
+			$resultInsti = $statement->execute();
 			if ($result !== null && $resultInsti != null) {
 				header('Location: '.URL.'gestion/new-institucion.php?select=i');
 			}
-			} catch (Exception $e) {
-				echo "Linea de error: ".$e->getMessage();	
-			}
+		} catch (Exception $e) {
+			echo "Linea de error: ".$e->getMessage();	
+		}
 			//echo "ejecuto el metodo";
+	}
+
+}
+function saveProgram
+(
+	$nombre,
+	$codigosnies,
+	$semestres,
+	$creditos,
+	$nivelAcademico,
+	$institucion,
+	$alianza,
+	$cn
+)
+{	
+	
+	try {
+			//var_dump($conexion);
+		$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico_id,institucion_id,alianza_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,:nivel_academico_id,:institucion_id,:alianza_id)"
+	);
+		$statement = $cn->prepare($sql);
+		$statement->bindParam( ':snies' , $codigosnies);
+		$statement->bindParam( ':nombre' , $nombre);
+		$statement->bindParam( ':num_semestres' , $semestres);
+		$statement->bindParam( ':num_creditos' , $creditos);
+		$statement->bindParam( ':nivel_academico_id' , $nivelAcademico);
+		$statement->bindParam( ':institucion_id' , $institucion);
+		$statement->bindParam( ':alianza_id' , $alianza);
+		
+		$result= $statement->execute();
+		
+		if ($result !== null) {
+			header("Location:".URL."gestion/new-programa.php?select=p");
 		}
 
+	} catch (Exception $e) {
+		echo "Linea de error: ".$e->getMessage();	
 	}
-function saveProgram
-		(
-			$nombre,
-			$codigosnies,
-			$semestres,
-			$creditos,
-			$nivelAcademico,
-			$institucion,
-			$alianza,
-			$cn
-			)
-		{	
-			
-			try {
-			//var_dump($conexion);
-			$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico_id,institucion_id,alianza_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,:nivel_academico_id,:institucion_id,:alianza_id)"
-				);
-			$statement = $cn->prepare($sql);
-					 $statement->bindParam( ':snies' , $codigosnies);
-					 $statement->bindParam( ':nombre' , $nombre);
-					 $statement->bindParam( ':num_semestres' , $semestres);
-					 $statement->bindParam( ':num_creditos' , $creditos);
-					 $statement->bindParam( ':nivel_academico_id' , $nivelAcademico);
-					 $statement->bindParam( ':institucion_id' , $institucion);
-					 $statement->bindParam( ':alianza_id' , $alianza);
-					 
-			 $result= $statement->execute();
-			
-			if ($result !== null) {
-				header("Location:".URL."gestion/new-programa.php?select=p");
-			}
-
-			} catch (Exception $e) {
-				echo "Linea de error: ".$e->getMessage();	
-			}
 			//echo "ejecuto el metodo";
-		
-	  
-	}
+	
+	
+}
 
 
 
 #Registro del estudiante en la BD
 function saveStudent
-		(
+(
 	$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
 	$segundo_nombre,$primer_apellido,$segundo_apellido,
 	$telefono,$email,$fecha_naci,
@@ -405,13 +429,13 @@ function saveStudent
 	$grado,$estado,$observacion,
 	$programa,$periodo,
 	$cn
-			)
-		{
-			$fecha_registro = "2017-08-01";
-			$fecha_cambio_estado = "2017-08-01";
-			try {
+)
+{
+	$fecha_registro = "2017-08-01";
+	$fecha_cambio_estado = "2017-08-01";
+	try {
 			#var_dump($cn);
-			$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
+		$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
 
 			/*
 	(documento, tipo_documento_id, tipo_sangre_id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_contacto, email, fecha_naci, edad, municipio_naci_id, direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)
@@ -422,42 +446,42 @@ function saveStudent
 :documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)"
 */
 
-			$statement = $cn->prepare($sql);
+$statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
-			$result=$statement->execute(
-				array(
-					':documento' => $documento , 
-					':tipo_documento_id' => $tipo_documento , 
-					':tipo_sangre_id' => $tipo_sangre, 
-					':primer_nombre' => $primer_nombre, 
-					':segundo_nombre' => $segundo_nombre , 
-					':primer_apellido' => $primer_apellido , 
-					':segundo_apellido' => $segundo_apellido , 
-					':tel_contacto' => $telefono , 
-					':email' => $email, 
-					':fecha_naci' => $fecha_naci , 
-					':edad' => $edad , 
-					':municipio_naci_id' => $muni_naci,
-					':direccion_residencia' => $dire_resi , 
-					':barrio_residencia' => $barrio_resi , 
-					':municipio_resi_id' => $muni_resi,
-					':estrato' => $estrato , 
-					':zona' => $zona , 
-					':EPS' => $eps , 
-					':desplazado' => $desplazado, 
-					':afrodescendiente' => $afro , 
-					':ojos' => $ojos, 
-					':genero' => $genero, 
-					':victima_conflicto' => $victima_conflicto , 
-					':discapacidades' => $discapacidades, 
-					':situacion_periodo_anterior' => $situacion_periodo_anterior, 
-					':grado' => $grado , 
-					':estado' => $estado, 
-					':fecha_registro' => $fecha_registro, 
-					':fecha_cambio_estado' => $fecha_cambio_estado, 
-					':observaciones' => $observacion
-					));
+$result=$statement->execute(
+	array(
+		':documento' => $documento , 
+		':tipo_documento_id' => $tipo_documento , 
+		':tipo_sangre_id' => $tipo_sangre, 
+		':primer_nombre' => $primer_nombre, 
+		':segundo_nombre' => $segundo_nombre , 
+		':primer_apellido' => $primer_apellido , 
+		':segundo_apellido' => $segundo_apellido , 
+		':tel_contacto' => $telefono , 
+		':email' => $email, 
+		':fecha_naci' => $fecha_naci , 
+		':edad' => $edad , 
+		':municipio_naci_id' => $muni_naci,
+		':direccion_residencia' => $dire_resi , 
+		':barrio_residencia' => $barrio_resi , 
+		':municipio_resi_id' => $muni_resi,
+		':estrato' => $estrato , 
+		':zona' => $zona , 
+		':EPS' => $eps , 
+		':desplazado' => $desplazado, 
+		':afrodescendiente' => $afro , 
+		':ojos' => $ojos, 
+		':genero' => $genero, 
+		':victima_conflicto' => $victima_conflicto , 
+		':discapacidades' => $discapacidades, 
+		':situacion_periodo_anterior' => $situacion_periodo_anterior, 
+		':grado' => $grado , 
+		':estado' => $estado, 
+		':fecha_registro' => $fecha_registro, 
+		':fecha_cambio_estado' => $fecha_cambio_estado, 
+		':observaciones' => $observacion
+	));
 
 			/*
 					 $statement->bindParam( ':documento' , $documento);
@@ -497,46 +521,46 @@ function saveStudent
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
-			
-				$statement->bindParam(':periodo',$periodo);
+			 
+			 $statement->bindParam(':periodo',$periodo);
 				#$statement->bindParam(':promedio_anterior',$promedio_anterior);
-			$resultSemestre = $statement->execute();
+			 $resultSemestre = $statement->execute();
 			#var_dump($result);
 
 			//Obtener el documento (ya esta)
 			//Obtener ID del semestre
-			$semestre_id = getId("semestre",$cn);
+			 $semestre_id = getId("semestre",$cn);
 
 			//Insertar tabla evaluacion_semestral
-			$sql = "INSERT INTO evaluacion_semestral(estudiante_documento, semestre_id, programa_snies) VALUES (:estudiante_documento,:semestre_id,:programa_snies)";
+			 $sql = "INSERT INTO evaluacion_semestral(estudiante_documento, semestre_id, programa_snies) VALUES (:estudiante_documento,:semestre_id,:programa_snies)";
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
-			
-				$statement->bindParam(':estudiante_documento',$documento);
-				$statement->bindParam(':semestre_id',$semestre_id);
-				$statement->bindParam(':programa_snies',$programa);
-			$resultEvaluacion = $statement->execute();
+			 
+			 $statement->bindParam(':estudiante_documento',$documento);
+			 $statement->bindParam(':semestre_id',$semestre_id);
+			 $statement->bindParam(':programa_snies',$programa);
+			 $resultEvaluacion = $statement->execute();
 			#var_dump($result);			
 
-			if ($result !== false && $resultSemestre !== false && $resultEvaluacion !== false) {
-				header("Location:".URL."gestion/new-estudiante.php?select=e");
-			}else{
-				echo "Ocurrio un error";
-			}
+			 if ($result !== false && $resultSemestre !== false && $resultEvaluacion !== false) {
+			 	header("Location:".URL."gestion/new-estudiante.php?select=e");
+			 }else{
+			 	echo "Ocurrio un error";
+			 }
 
 			} catch (Exception $e) {
 				echo "Linea de error: ".$e->getMessage();	
 			}
 			#echo "ejecuto el metodo";
-	  
+			
 
 
 
-	}
+		}
 
 
 
 
 
-?>
+		?>

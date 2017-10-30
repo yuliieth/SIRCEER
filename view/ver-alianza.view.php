@@ -12,30 +12,23 @@ $html = '
 
 
       <div style="background-color: white; width: 100%;">
-      <!--INFORMACION PERSONAL-->
-            <p style="font-size: 1.5em; font-family: Arial;">Informacion de la alianza</p>
+            <p style="font-size: 1.5em; font-family: Arial;">DATOS DE LA ALIANZA</p>
             <table>
 
             <tr>
-              <td><strong>ID:</strong></td>
-              <td>'.$alianza['id_alianza'].'</td>
-              <td><strong>Nombre:</strong></td>
-              <td>'.$alianza['nombreAlianza'].'</td>
+              <td>ID</td>
+              <td><strong>Nombre</strong></td>
+              <td><strong>Fecha de inicio</strong></td>
+              <td><strong>Fecha terminacion</strong></td>
+              <td><strong>Numero de cupos</strong></td>
             </tr>
-
             <tr>
-              <td><strong>Fecha de inicio:</strong></td>
-              <td>'.$alianza['fecha_inicio'].'</td>
-              <td><strong>Fecha final:</strong></td>
-              <td>'.$alianza['fecha_final'].'</td>
+            <td>'.$alianza['id'].'</td>
+            <td>'.$alianza['nombre'].'</td>
+            <td>'.$alianza['fecha_inicio'].'</td>
+            <td>'.$alianza['fecha_final'].'</td>
+            <td>'.$alianza['cupos'].'</td>
             </tr>
-
-            <tr>
-              <td><strong>Cupos:</strong></td>
-              <td>'.$alianza['cupos'].'</td>
-            </tr>
-
-           
 
             </table>
       
@@ -47,16 +40,19 @@ $html = '
             <p style="font-size: 1.5em; font-family: Arial;">INSTITUCIONES PERTENECIENTES A LA ALIANZA</p>
             <table>
             <tr>
-             
-            </tr>
+            <td><strong>Nombre</strong></td>
+            <td><strong>Email</strong></td>
+            <td><strong>Telefono</strong></td>
+            </tr>';
+              foreach ($instituciones as $value) {
+             $html .='<tr>
+                <td>'.$value['nombre'].'</td>
+                <td>'.$value['email'].'</td>
+                <td>'.$value['telefono'].'</td>
+                </tr>';
+              }
 
-            <tr>
-              
-            </tr>
-
-            <tr>
-              
-            </tr>
+         $html .='
             </table>
             </div>
           ';
