@@ -7,7 +7,7 @@
 	<tr>
 		<td><label for="id">ID</label></td>
 		<td><input type="text" readonly="" value="<?php echo $alianza['id']; ?>" name="id" ><br></td>
-		<td><label for="documento">Nombre</label></td>
+		<td><label for="nombre">Nombre</label></td>
 		<td><input type="text" value="<?php echo $alianza['nombre']?>" name="nombre" disabled=""></td>
 	</tr>
 	
@@ -15,17 +15,28 @@
 	<tr>
 		<td>Seleccione las instutuciones</td>
 		<td>
-			<select name="institucion" id="institucion">
-				<option value="ucp">Universidad Catolica</option>
-				<option value="utp">Universidad Tecnologica</option>
-			</select>
+			<select name="institucion" id="">
+			<?php foreach ($instituciones as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>	
 		</td>
+		<td>
+			<select name="institucion" id="">
+			<?php foreach ($instituciones as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>
+		</td>
+	</tr>
+		<tr>
 		<td></td>
 		<td>
-			<select name="institucion" id="institucion">
-				<option value="ucp">Universidad Catolica</option>
-				<option value="utp">Universidad Tecnologica</option>
-			</select>
+		<select name="institucion" id="">
+			<?php foreach ($instituciones as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>
 		</td>
 	</tr>
 	

@@ -52,11 +52,10 @@ $graph->AddY2($y2bplot);
 $graph->Stroke();
 ?>
 	
-=======
+
 	
 <?php   
  /* Include all the classes */ 
->>>>>>> 5d58a9dbdd4a166612e160e5599148d8bede4faf
 
 include("../pChart2.0/class/pDraw.class.php"); 
 
