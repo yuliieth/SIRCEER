@@ -14,18 +14,12 @@ $instituciones = getInstituciones($cn);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	var_dump($_POST);
 
-
+	//1. Id de alianza. 2. Id institucion(3)
+$sql = "INSERT INTO alianzas_instituciones VALUES (:alianza_id,institucion:id,:fecha_vinculacion)";
+$ps = $cn->execute();
 	#header("Location: ".URL. "gestion/buscar-alianza.php?select=a");
 
 }else{
-#Necesidades:
-/*
-1. El estudiante a mostrar (Ya esta seleccionado).
-2. Frm para diligencias la tabla semestre.
-3. Traer el programa y la institucion a la que pertenece el estudiante
-4. Finalmente con estos datos hacer un insert para "evaluacion_semestral"
-*/
-
 
 #var_dump($programas);
 
