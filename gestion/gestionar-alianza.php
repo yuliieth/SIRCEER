@@ -16,7 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$alianza_id = $_POST['id'];
 	$institucion_id = $_POST['institucion'];
 	$fecha_vinculacion = '2017-11-05';
-	print_r($institucion_id);
+	#print_r($institucion_id);
+
+	#Descatar empty
+	foreach ($institucion_id as $value) {
+		if ($value == 'No aplica') {
+			unset($value);
+		}
+	}
+	var_dump($institucion_id);
 
 	//1. Id de alianza y Id institucion(3)
 	#2. Validar repetidos
