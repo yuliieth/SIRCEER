@@ -1,60 +1,51 @@
-<?php   
- /* Include all the classes */ 
+<?php 		
+/* CAT:Bar Chart */ 
 
-include("../class/pDraw.class.php"); 
+ /* pChart library inclusions */ 
+ include("../class/pData.class.php"); 
+ include("../class/pDraw.class.php"); 
+ include("../class/pImage.class.php"); 
 
-include("../class/pImage.class.php"); 
+ /* Create and populate the pData object */ 
+ $MyData = new pData();   
+ $MyData->addPoints(array(13251,4118,3087,1460,1248,156,26,9,8),"Hits"); 
+ $MyData->setAxisName(0,"Hits"); 
+ $MyData->addPoints(array("Firefox","Chrome","Internet Explorer","Opera","Safari","Mozilla","SeaMonkey","Camino","Lunascape"),"Browsers"); 
+ $MyData->setSerieDescription("Browsers","Browsers"); 
+ $MyData->setAbscissa("Browsers"); 
+ $MyData->setAbscissaName("Browsers"); 
 
-include("../class/pData.class.php");?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Chart</title>
-</head>
-<body>
-	
-</body>
-</html>
-	
-<?php
- 
+ /* Create the pChart object */ 
+ $myPicture = new pImage(500,500,$MyData); 
+ $myPicture->drawGradientArea(0,0,500,500,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100)); 
+ $myPicture->drawGradientArea(0,0,500,500,DIRECTION_HORIZONTAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>20)); 
+ $myPicture->setFontProperties(array("FontName"=>"../fonts/pf_arma_five.ttf","FontSize"=>6)); 
 
-/* Create and populate the pData object */
- $MyData = new pData();  
- $MyData->addPoints(array(60,30,10),"Answers");
- $MyData->setAxisName(0,"Answers (%)");
- $MyData->addPoints(array("I do agree  ","I disagree  ","No opinion  "),"Options");
- $MyData->setAbscissa("Options");
+ /* Draw the chart scale */  
+ $myPicture->setGraphArea(100,30,480,480); 
+ $myPicture->drawScale(array("CycleBackground"=>TRUE,"DrawSubTicks"=>TRUE,"GridR"=>0,"GridG"=>0,"GridB"=>0,"GridAlpha"=>10,"Pos"=>SCALE_POS_TOPBOTTOM)); 
 
- /* Create the pChart object */
- $myPicture = new pImage(500,220,$MyData);
+ /* Turn on shadow computing */  
+ $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10)); 
 
- /* Write the chart title */ 
- $myPicture->setFontProperties(array("FontName"=>"../fonts/Forgotte.ttf","FontSize"=>15));
- $myPicture->drawText(20,34,"Q: Flexibility is a key point of this library",array("FontSize"=>20));
+ /* Create the per bar palette */ 
+ $Palette = array("0"=>array("R"=>188,"G"=>224,"B"=>46,"Alpha"=>100), 
+                  "1"=>array("R"=>224,"G"=>100,"B"=>46,"Alpha"=>100), 
+                  "2"=>array("R"=>224,"G"=>214,"B"=>46,"Alpha"=>100), 
+                  "3"=>array("R"=>46,"G"=>151,"B"=>224,"Alpha"=>100), 
+                  "4"=>array("R"=>176,"G"=>46,"B"=>224,"Alpha"=>100), 
+                  "5"=>array("R"=>224,"G"=>46,"B"=>117,"Alpha"=>100), 
+                  "6"=>array("R"=>92,"G"=>224,"B"=>46,"Alpha"=>100), 
+                  "7"=>array("R"=>224,"G"=>176,"B"=>46,"Alpha"=>100)); 
 
- /* Define the default font */ 
- $myPicture->setFontProperties(array("FontName"=>"../fonts/pf_arma_five.ttf","FontSize"=>6));
+ /* Draw the chart */  
+ $myPicture->drawBarChart(array("DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE,"Rounded"=>TRUE,"Surrounding"=>30,"OverrideColors"=>$Palette)); 
 
- /* Set the graph area */ 
- $myPicture->setGraphArea(70,60,480,200);
- $myPicture->drawGradientArea(70,60,480,200,DIRECTION_HORIZONTAL,array("StartR"=>200,"StartG"=>200,"StartB"=>200,"EndR"=>255,"EndG"=>255,"EndB"=>255,"Alpha"=>30));
+ /* Write the legend */  
+ $myPicture->drawLegend(570,215,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL)); 
 
- /* Draw the chart scale */ 
- $scaleSettings = array("AxisAlpha"=>10,"TickAlpha"=>10,"DrawXLines"=>FALSE,"Mode"=>SCALE_MODE_START0,"GridR"=>0,"GridG"=>0,"GridB"=>0,"GridAlpha"=>10,"Pos"=>SCALE_POS_TOPBOTTOM);
- $myPicture->drawScale($scaleSettings); 
-
- /* Turn on shadow computing */ 
- $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
-
- /* Draw the chart */ 
- $myPicture->drawBarChart(array("DisplayValues"=>TRUE,"DisplayShadow"=>TRUE,"DisplayPos"=>LABEL_POS_INSIDE,"Rounded"=>TRUE,"Surrounding"=>30));
-
- /* Render the picture (choose the best way) */
- $myPicture->autoOutput("pictures/example.drawBarChart.poll.png");
+ /* Render the picture (choose the best way) */ 
+ $myPicture->autoOutput("pictures/example.drawBarChart.palette.png");
+ echo "string";
+ $myPicture->autoOutput("pictures/example.drawBarChart.palette.png");
 ?>
-<?php require("footer-menu.view.php") ?>	
-<?php require 'piedepagina-admin.php' ?>
-
-

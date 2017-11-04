@@ -1,9 +1,8 @@
 <?php // content="text/plain; charset=utf-8"
 // $Id: barintex1.php,v 1.3 2002/07/11 23:27:28 aditus Exp $
-require_once ('jpgraph/jpgraph.php');
-require_once ('jpgraph/jpgraph_bar.php');
 
-// Some data
+require_once '../jpgraph.php';
+require_once '../jpgraph_bar.php';
 $datay=array(1,1,0.5);
 
 // Create the graph and setup the basic parameters
@@ -42,8 +41,20 @@ $bplot->value->SetFont(FF_ARIAL,FS_BOLD);
 $bplot->value->SetAngle(45);
 // Black color for positive values and darkred for negative values
 $bplot->value->SetColor("black","darkred");
-$graph->Add($bplot);
+$graph->Add($bplot);?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<?php
+// Some data
+
 
 // Finally stroke the graph
 $graph->Stroke();
 ?>
+
+</body>
+</html>
