@@ -294,6 +294,23 @@ function getSubjectById($table,$doc,$campo,$con)
 }
 
 
+
+function getInstitucionesOfAlianzaById($id,$con)
+{
+	#Used by Estudiante
+	#used by Ver estudiante
+	$sql = "SELECT * FROM alianzas_instituciones,institucion WHERE institucion.id=alianzas_instituciones.institucion_id AND alianzas_instituciones.alianza_id=$id";
+	$ps = $con->prepare($sql);
+	#var_dump($campo);
+	$ps->execute();
+	#var_dump($ps);
+	$resul = $ps->fetchAll();
+		#var_dump($result);
+	
+	return $resul;
+}
+
+
 function getAllSubjectById($table,$doc,$campo,$con)
 {
 	#Used by Estudiante

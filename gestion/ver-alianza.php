@@ -11,7 +11,7 @@ comprobarConexion($cn);
 $id = $_GET['id'];
 
 $alianza = getSubjectById('alianza',$id,'id',$cn);
-$instituciones = getAllSubjectById('institucion',$id,'alianza_id',$cn);
+$instituciones = getInstitucionesOfAlianzaById($id,$cn);
 
 #var_dump($alianza);
 #var_dump($instituciones);
