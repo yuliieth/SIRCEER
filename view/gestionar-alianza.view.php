@@ -15,14 +15,16 @@
 	<tr>
 		<td>Seleccione las instutuciones</td>
 		<td>
-			<select name="institucion" id="">
+			<select name="institucion[]" id="">
+				<option value="No">No aplica</option>
 			<?php foreach ($instituciones as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>
 		</select>	
 		</td>
 		<td>
-			<select name="institucion" id="">
+			<select name="institucion[]" id="">
+				<option value="No">No aplica</option>
 			<?php foreach ($instituciones as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>
@@ -32,7 +34,8 @@
 		<tr>
 		<td></td>
 		<td>
-		<select name="institucion" id="">
+		<select name="institucion[]" id="">
+			<option value="No">No aplica</option>
 			<?php foreach ($instituciones as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>
