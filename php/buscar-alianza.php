@@ -18,9 +18,9 @@ $tabla="";
 $query="SELECT * FROM alianza";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-if(isset($_POST['alianza']))
+if(isset($_POST['alianzas']))
 {                  #Por seguridad
-	$q=$conexion->real_escape_string($_POST['estudiantes']);
+	$q=$conexion->real_escape_string($_POST['alianzas']);
 	$query="SELECT * FROM alianza WHERE 
 		id LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
