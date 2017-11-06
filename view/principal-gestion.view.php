@@ -2,13 +2,13 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-		<div id="administrador" class="charts">
+		<div style="width:40%; height:200px; float: left;"  id="administrador">
 			charts estudiantes
 		</div>
-		<div id="instituciones" class="charts">
+		<div style="width:40%; height:200px; float: left;" id="instituciones">
 			charts instituciones
 		</div>
-		<div id="programas" class="charts">
+		<div style="width:40%; height:200px; float: left;" id="programas">
 			charts programas
 		</div>
 
@@ -18,8 +18,8 @@
 
 Highcharts.chart('administrador', {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
         plotShadow: false,
         type: 'pie'
     },
@@ -46,25 +46,13 @@ Highcharts.chart('administrador', {
         name: 'Brands',
         colorByPoint: true,
         data: [{
-            name: 'Microsoft Internet Explorer',
+            name: 'Masculino',
             y: 56.33
         }, {
-            name: 'Chrome',
+            name: 'Femenino',
             y: 24.03,
             sliced: true,
             selected: true
-        }, {
-            name: 'Firefox',
-            y: 10.38
-        }, {
-            name: 'Safari',
-            y: 4.77
-        }, {
-            name: 'Opera',
-            y: 0.91
-        }, {
-            name: 'Proprietary or Undetectable',
-            y: 0.2
         }]
     }]
 });
@@ -75,7 +63,7 @@ Highcharts.chart('administrador', {
 
 Highcharts.chart('programas', {
     chart: {
-        plotBackgroundColor: null,
+        plotBackgroundColor: "#009E35",
         plotBorderWidth: null,
         plotShadow: false,
         type: 'pie'
@@ -131,7 +119,7 @@ Highcharts.chart('programas', {
 
 Highcharts.chart('instituciones', {
     chart: {
-        plotBackgroundColor: null,
+        plotBackgroundColor: "#009E35",
         plotBorderWidth: null,
         plotShadow: false,
         type: 'pie'

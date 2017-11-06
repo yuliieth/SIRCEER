@@ -12,7 +12,7 @@ $html = '
 
 
       <div style="background-color: white; width: 100%;">
-            <p style="font-size: 1.5em; font-family: Arial;">DATOS DE LA ALIANZA</p>
+            <p style="font-size: 1.5em; font-family: Arial;">Alianzas registradas a la fecha</p>
             <table>
             <tr>
             <td><strong>ID</strong></td>
