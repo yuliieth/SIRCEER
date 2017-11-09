@@ -1,22 +1,25 @@
 <?php require'cabecera-admin.php' ?>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <div class="wraper-charts">
+        
 
-		<div style="width:40%; height:200px; float: left;"  id="administrador">
-			charts estudiantes
-		</div>
-		<div style="width:40%; height:200px; float: left;" id="instituciones">
-			charts instituciones
-		</div>
-		<div style="width:40%; height:200px; float: left;" id="programas">
-			charts programas
-		</div>
+        <div style="width:50%; height:200px; float: left;"  id="estudiantes">
+            charts estudiantes
+        </div>
+        <div style="width:50%; height:200px; float: left;" id="instituciones">
+            charts instituciones
+        </div>
+        <div style="width:50%; height:200px; float: left;" id="programas">
+            charts programas
+        </div>
+    </div>
 
 
 <!--CODIGOS-->
 <script type="text/javascript">
 
-Highcharts.chart('administrador', {
+Highcharts.chart('estudiantes', {
     chart: {
         plotBackgroundColor: "#009E35",
         plotBorderWidth: 0,

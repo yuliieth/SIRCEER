@@ -364,7 +364,11 @@ form input[type="submit"]:hover{
 
 /**ESETILOS BUSCAR ALUMNO END*/
 
-
+/*Estilo contenedor de los charts en principal*/
+.wraper-charts{
+	margin: auto;
+	width: 90%;
+}
 /*******************/
 
 footer{
