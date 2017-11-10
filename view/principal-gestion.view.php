@@ -50,10 +50,10 @@ Highcharts.chart('estudiantes', {
         colorByPoint: true,
         data: [{
             name: 'Masculino',
-            y: 56.33
+            y: <?php echo $porceM ?>
         }, {
             name: 'Femenino',
-            y: 24.03,
+            y: <?php echo $porceF ?> ,
             sliced: true,
             selected: true
         }]

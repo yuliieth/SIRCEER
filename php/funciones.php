@@ -1,6 +1,26 @@
 <?php 
 
+function countEntityWithWhere($tabla,$criterio,$valor,$cn){
+	$sql = "SELECT COUNT($criterio) AS total FROM estudiante WHERE $criterio='$valor'";
+	#var_dump($sql);
+	$ps=$cn->prepare($sql);
+	$ps->execute();
+	$result=$ps->fetch()['total'];
+	$result = (integer) $result;
+	#var_dump($result);
+	return $result;
+}
 
+function countEntityWithOutWhere($tabla,$cn){
+	$sql = "SELECT COUNT(*) AS total FROM $tabla";
+	$ps=$cn->prepare($sql);
+	$ps->execute();
+	$result=$ps->fetch()['total'];
+	#var_dump($result);
+	$result = (integer) $result;
+	#var_dump($result);
+	return (int)$result;
+}
 
 function saveAlianza(
 	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
