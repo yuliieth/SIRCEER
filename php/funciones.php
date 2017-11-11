@@ -418,14 +418,13 @@ function saveProgram
 	$creditos,
 	$nivelAcademico,
 	$institucion,
-	$alianza,
 	$cn
 )
 {	
 	
 	try {
 			//var_dump($conexion);
-		$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico_id,institucion_id,alianza_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,:nivel_academico_id,:institucion_id,:alianza_id)"
+		$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico_id,institucion_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,:nivel_academico_id,:institucion_id)"
 	);
 		$statement = $cn->prepare($sql);
 		$statement->bindParam( ':snies' , $codigosnies);
@@ -434,7 +433,6 @@ function saveProgram
 		$statement->bindParam( ':num_creditos' , $creditos);
 		$statement->bindParam( ':nivel_academico_id' , $nivelAcademico);
 		$statement->bindParam( ':institucion_id' , $institucion);
-		$statement->bindParam( ':alianza_id' , $alianza);
 		
 		$result= $statement->execute();
 		

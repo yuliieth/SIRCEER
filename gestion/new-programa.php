@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"nombre","codigosnies","semestres","creditos","nivel-academico","alianza"
+		"nombre","codigosnies","semestres","creditos","nivel-academico"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -37,10 +37,10 @@ if (isset($_POST['submit'])) {
 
 		$nivelAcademico = $_POST['nivel-academico'];
 		$institucion = $_POST['institucion'];
-		$alianza = $_POST['alianza'];
+		
 		
 saveProgram(
-	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$institucion,$alianza,$cn
+	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$institucion,$cn
 	);
 }
 
