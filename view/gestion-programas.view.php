@@ -8,7 +8,8 @@
     <div class="wraper-charts">
         <div style="width:100%; height:250px;"  id="programas"></div>
     </div>
-
+    
+    <div></div>
 
 <!--CODIGOS-->
 <script type="text/javascript">
@@ -43,16 +44,16 @@ Highcharts.chart('programas', {
         name: 'Brands',
         colorByPoint: true,
         data: [{
-            name: 'Tecnico',
-            y: <?php echo $porceM ?>
+            name: 'Ingeniería',
+            y: <?php echo $porceI ?>
         }, {
-            name: 'Tecnologo',
-            y: <?php echo $porceF ?> ,
+            name: 'Tecnología',
+            y: <?php echo $porceTo ?> ,
             sliced: true,
             selected: true
         }, {
-            name: 'Ingenieria',
-            y: <?php echo $porceF ?> ,
+            name: 'Tecnico',
+            y: <?php echo $porceTi ?> ,
             sliced: true,
             selected: true
         }

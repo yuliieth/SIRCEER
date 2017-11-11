@@ -2,9 +2,7 @@
 	require_once'../php/Conexion.php';
 	require_once'../php/funciones.php';
 	require_once '../admin/config.php';
-	if (isset($_SESSION['usuario'])) {
-		header("Location:".URL."gestion/principal-gestion.php");
-	}
+	
 
 
 	/*Comprobamos methodo de envio*/
@@ -26,19 +24,18 @@
 			$_SESSION['usuario']['user'] = $usuario;
 
 			$perfil = shearcPerfilUser($result['id'],$conexion);
+			#var_dump($perfil);
 			$_SESSION['usuario']['perfil'] = $perfil;
 			#var_dump($_SESSION);
-			if ($_SESSION['usuario']['perfil'] == "superusuario" && $_SESSION['usuario']['user'] == "admin") {
+			if ($_SESSION['usuario']['perfil'] == "superusuario") {
 				header("Location:".URL."admin/principal-admin.php");
-			}elseif (($_SESSION['usuario']['perfil'] == "estandar" && $_SESSION['usuario']['user'] != "admin")) {
+			}elseif (($_SESSION['usuario']['perfil'] == "estandar")) {
 				header("Location:".URL."gestion/principal-gestion.php");
 			}
-			else
-			{
-			#header("Location:".URL."view/login.view.php");	
-
-			}
+			echo "Valor del array session\n";
+			var_dump($_SESSION);
 		}
+		echo "No hay concidencias";
 	}
 
  ?>

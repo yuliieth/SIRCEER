@@ -1,7 +1,7 @@
 <?php 
 
 function countEntityWithWhere($tabla,$criterio,$valor,$cn){
-	$sql = "SELECT COUNT($criterio) AS total FROM estudiante WHERE $criterio='$valor'";
+	$sql = "SELECT COUNT($criterio) AS total FROM $tabla WHERE $criterio='$valor'";
 	#var_dump($sql);
 	$ps=$cn->prepare($sql);
 	$ps->execute();

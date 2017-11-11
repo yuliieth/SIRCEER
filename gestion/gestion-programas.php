@@ -5,18 +5,18 @@ require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
 validateSession();
 $cn = getConexion($bd_config);
-$totalE=countEntityWithOutWhere("estudiante",$cn);
-$totalM=countEntityWithWhere("estudiante","genero",'M',$cn);
-$totalF=countEntityWithWhere("estudiante","genero",'F',$cn);
+$totalP=countEntityWithOutWhere("estudiante",$cn);
+$totalI=countEntityWithWhere("programa","nivel_academico_id",'3',$cn);
+$totalTo=countEntityWithWhere("programa","nivel_academico_id",'2',$cn);
+$totalTi=countEntityWithWhere("programa","nivel_academico_id",'1',$cn);
 #$leyenda = "";
 #var_dump($totalM);
 #var_dump($totalF);
 #var_dump($totalE);
 #realizando operaciones
-$porceM = 0;
-$porceF = 0;
-$porceM=($totalM / $totalE)*100;
-$porceF=($totalF / $totalE)*100;
+$porceI=($totalI / $totalP)*100;
+$porceTo=($totalTo / $totalP)*100;
+$porceTi= ($totalTi / $totalP)*100;
 
 ?>
 <?php require'../view/gestion-programas.view.php' ?>
