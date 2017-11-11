@@ -20,14 +20,14 @@
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/reportes-estudiantes.php?select=e">Reportes</a>
                 </li>
-                                <li>
+                                <!--<li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-estudiantes.php?select=e">Estadisticas</a>
-                                </li>
-                <li>
+                                </li>-->
+                <!--<li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/simat-estudiantes.php?select=e">Consultar SIMAT</a>
-                                </li>
+                                </li>-->
                         </ul>
                 </td>
                 <td id="pagina">
@@ -54,15 +54,15 @@
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/reportes-institutos.php?select=i">Reportes</a>
                 </li>
-                                <li>
+                               <!-- <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-institutos.php?select=i">Estadisticas</a>
                 </li>
-
-                                <li>
+-->
+                                <!--<li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/simat-institutos.php?select=i">Consultar SIMAT</a>
-                </li>
+                </li>-->
                         </ul>
                 </td>
                 <td id="pagina">
@@ -91,14 +91,14 @@
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/reportes-programas.php?select=p">Reportes</a>
                 </li>
-                                <li>
+                                <!--<li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-programas.php?select=p">Estadisticas</a>
                 </li>
-                                <li>
+-->                                <!--<li>
                 <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/simat-programas.php?select=p">Consultar SIMAT</a>
-                </li>
+                </li>-->
                         </ul>
                 </td>
                 <td id="pagina">
@@ -128,11 +128,11 @@
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/reportes-alianzas.php?select=a">Reportes</a>
                 </li>
-                                <li>
+                                <!--<li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-alianzas.php?select=a">Estadisticas</a>
                 </li>
-                        </ul>
+-->                        </ul>
                 </td>
                 <td id="pagina">
 
