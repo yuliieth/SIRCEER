@@ -1,99 +1,65 @@
-<?php require 'cabecera-admin.php' ?>
-<?php require_once '../admin/config.php'; ?>
-<?php require_once '../php/Conexion.php' ?>
-<?php 
-		/*
-		1 Number of Men
-		2 Number of women
-		3 Number peoples
-		4 Find percent: Number man or womens divided total
-		*/
+<?php require 'cabecera-admin.php';?>
+<?php require("header-menu.view.php") ?>
+      
 
-		$conexion = getConexion($bd_config);
-		if ($conexion == null) {
-			echo "Fallo la conexion";
-		}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM programa";
-		$num = $conexion->prepare($sql);
-		$num->execute();
-		$num = $num->fetchAll();
-		//var_dump($num);
-
-		$numStudent = $conexion->query("SELECT FOUND_ROWS() AS total");
-		$numStudent = $numStudent->fetch()['total'];
-		//echo " el es : {$numStudent}";
-
-		$sql ="SELECT  COUNT(genero)  FROM programa WHERE genero='femenino'";
-		$numWomen = $conexion->query($sql);
-		#$numWomen = $numWomen->fetchColumn();
-		//echo "{$numWomen}";
-
-		$numMen = $numStudent - $numWomen;
-		//echo "{$numMen}";
-
-      ?>
-
-      <script src="https://code.highcharts.com/highcharts.js"></script>
-      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <div class="wraper-charts">
+        <div style="width:100%; height:250px;"  id="programas"></div>
+    </div>
 
 
-      <?php require("header-menu.view.php") ?>
+<!--CODIGOS-->
+<script type="text/javascript">
 
-     
-      <div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto">
-
-      </div>			
+Highcharts.chart('programas', {
+    chart: {
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text:  "Programas registrados a la fecha"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Tecnico',
+            y: <?php echo $porceM ?>
+        }, {
+            name: 'Tecnologo',
+            y: <?php echo $porceF ?> ,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Ingenieria',
+            y: <?php echo $porceF ?> ,
+            sliced: true,
+            selected: true
+        }
+        ]
+    }]
+});
+        </script>   
       <?php require("footer-menu.view.php") ?>
-
-      <script type="text/javascript">
-
-        Highcharts.chart('container', {
-            chart: {
-                type: 'area'
-            },
-            title: {
-                text: 'Historico y estimacion de programas por especialidad'
-            },
-            subtitle: {
-                text: 'Source: Gobernacion de Risaralda'
-            },
-            xAxis: {
-                categories: ['2011', '2012', '2013', '2014', '2015', '2016', '2017'],
-                tickmarkPlacement: 'on',
-                title: {
-                    enabled: false
-                }
-            },
-            yAxis: {
-                title: {
-                    text: 'Percent'
-                }
-            },
-            tooltip: {
-                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} Miles)<br/>',
-                split: true
-            },
-            plotOptions: {
-                area: {
-                    stacking: 'percent',
-                    lineColor: '#ffffff',
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: '#ffffff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Men',
-                data: [502, 635, 809, 947, 1402, 3634, <?php echo $numMen ?> ]
-            }, {
-                name: 'Women',
-                data: [106, 107, 111, 133, 221, 767, <?php echo $numWomen ?> ]
-            }]
-        });
-    </script>
-
-    <?php require'piedepagina-admin.php' ?>
+    <?php require 'piedepagina-admin.php'; ?>
 
