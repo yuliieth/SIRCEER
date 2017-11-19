@@ -242,14 +242,17 @@ select{
 .formulario-editar-user form input[type="number"],
 .formulario-editar-user form input[type="email"],
 .formulario-editar-user form input[type="date"],
-.formulario-editar-user form input[type="select"]{
+.formulario-editar-user form input[type="select"],
+.formulario-editar-user form input[type="submit"],
+.formulario-editar-user form input[type="reset"],
+.formulario-editar-user form input[type="radio"]{
  border: 1px solid #536DFE;
 	border-radius: 4px;
 	padding: 10px;
-	width: 18%;
+	width: 54%;
 	display: inline-block;
 	margin-bottom: 9px;
-	font-size: .6em;
+	font-size: .9em;
 	color: #141938;
 }
 
@@ -373,19 +376,15 @@ form input[type="submit"]:hover{
 
 footer{
 
-	width: 100%;
-	margin: auto;
-	height: 110px;
-	background-color: #009E35;
-	text-align: center;
+  position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background-color: #009E35;
+   text-align: center;
 	font-size: .9em;
 	font-family: "Times New Roman", Georgia, Serif;
 	padding: 40px;
-
-	margin-top:200px;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	box-sizing:border-box;
-	border-top: 2px solid #000;
 
 }
