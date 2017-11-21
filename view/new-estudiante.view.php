@@ -129,8 +129,8 @@
 			<td><label for="victima_conflicto">Victima del conflicto:</label></td>
 			<td>
 				<select name="victima_conflicto" id="">
-					<option value="si">Si</option>
-					<option value="no">No</option>
+					<option value="Si">Si</option>
+					<option value="No">No</option>
 				</select>
 			</td>
 		</tr>
