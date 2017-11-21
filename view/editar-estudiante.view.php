@@ -70,28 +70,38 @@
 		</tr>
 		
 		<tr>
-			<td><label >Desplazado*:</label></td>
+			<th><label >Desplazado*:</label></th>
+		</th>
+		<tr>
 			<td><label  for="des_si">Si</label></td>
-		<td><input type="radio" id="des_si" value="si" name="desplazado"<?php if ($result['desplazado'] == 'si'){echo "checked";}?>></td>
+		<td>
+			<input type="radio" id="des_si" value="Si" name="desplazado"<?php if ($result['desplazado'] == 'Si'){echo " checked";}?>>
+		</td>
 		<td><label  for="des_no">No</label></td>
-		<td><input type="radio" id="des_no" value="no" name="desplazado"<?php if ($result['desplazado'] == 'no'){echo " checked";}?> ></td>
+		<td><input type="radio" id="des_no" value="No" name="desplazado"<?php if ($result['desplazado'] == 'No'){echo " checked";}?> ></td>
 		</tr>
 
 		<tr>
-		<td><label>Afrodescendiente*:</label></td>
+		<th><label>Afrodescendiente*:</label></th>
+		</tr>
+		<tr>
 		<td><label for="afro-si">Si</label></td>
-		<td><input type="radio" id="afro-si" value="si" name="afro"<?php if ($result['afrodescendiente'] == 'si'){echo " checked";}?>></td>
+		<td><input type="radio" id="afro-si" value="Si" name="afro"<?php if ($result['afrodescendiente'] == 'Si'){echo " checked";}?>></td>
 		<td><label for="afro-no">No</label></td>
-		<td><input type="radio" id="afro-no" value="no" name="afro"<?php if ($result['afrodescendiente'] == 'no'){echo " checked";}?> ></td>
+		<td><input type="radio" id="afro-no" value="No" name="afro"<?php if ($result['afrodescendiente'] == 'No'){echo " checked";}?> ></td>
 		</tr>
 		
 		
 		<tr>
-		<td><label >Color de ojos*:</label></td>
+		<th><label >Color de ojos*:</label></th>
+		</tr>
+		<tr>
 		<td><label for="negros">Negros</label></td>
 		<td><input type="radio" id="negros" value="Negros" name="ojos"<?php if ($result['ojos'] == 'Negros'){echo " checked";}?>></td>
 		<td><label for="azules">Azules</label></td>
 		<td><input type="radio" id="azules" value="Azules" name="ojos"<?php if ($result['ojos'] == 'Azules'){echo " checked";}?>></td>
+		</tr>
+		<tr>
 		<td><label for="cafes">Cafes</label></td>
 		<td><input type="radio" id="cafes" value="Cafes" name="ojos"<?php if ($result['ojos'] == 'Cafes'){echo " checked";}?>></td>
 		<td><label for="marron">Marron</label></td>
