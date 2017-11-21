@@ -90,9 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		#echo "Id vacio";
 	}
 	$result = getSubjectById("estudiante",$doc_estu,'documento',$cn);
-	#$institutes = getAllEntity("institucion",$cn);
-	#$programs = getAllEntity("programa",$cn);
-		#var_dump($result);
+	#var_dump($result);
 
 }
 ?>

@@ -7,7 +7,7 @@
 		<table>
 		<tr>
 			<td><label>Documento</label></td>
-			<td><input type="text" size="20" name="documento" value="<?php echo $result['documento']; ?>"></td>
+			<td><input type="text" readonly="readonly" size="20" name="documento" value="<?php echo $result['documento']; ?>"></td>
 			<td><label>Primer nombre</label></td>
 			<td><input type="text" size="30" name="primer_nombre"  value="<?php echo $result['primer_nombre']; ?>"  placeholder="Primer nombre" required=""></td>
 		</tr>
@@ -30,7 +30,9 @@
 			<td><label>Municipio de residencia</label></td>
 			<td><select  name="muni_resi" id="municipio">
 			<?php foreach ($municipios as $muni): ?>
-					<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+					<option value="<?php echo $muni['id'] ?>" <?php if ($result['municipio_resi_id'] == $muni['id']): ?>
+						<?php echo 'selected' ?>
+					<?php endif ?>><?php echo $muni['nombre'] ?></option>
 				<?php endforeach ?>
 		</select></td>
 			<td><label>Estrato</label>	</td>
@@ -46,7 +48,7 @@
 
 		<tr>
 			<td><label>Fecha de nacimiento</label></td>
-			<td><input type="date" name="fecha_naci" step="1" min="1950-01-01" max="2018-12-31" value="<?php echo date("Y-m-d");?>" placeholder="Fecha de nacimiento"></td>
+			<td><input type="date" name="fecha_naci" step="1" min="1980-01-01" max="2018-12-31" value="<?php echo $result['fecha_naci'];?>" placeholder="Fecha de nacimiento"></td>
 			<td><label>Edad</label></td>
 			<td><input type="number" name="edad" placeholder="Edad: 10-25" required="" value="<?php echo $result['edad'];?>"></td>
 		</tr>
@@ -55,17 +57,20 @@
 			<td><label>Municipio de nacimiento</label></td>
 			<td><select  name="muni_naci" id="municipio">
 			<?php foreach ($municipios as $muni): ?>
-					<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+					<option value="<?php echo $muni['id'] ?>" <?php if ($result['municipio_naci_id'] == $muni['id']): ?>
+						<?php echo 'selected' ?>
+					<?php endif ?>><?php echo $muni['nombre'] ?></option>
 				<?php endforeach ?>
 		</select></td>
+
 			<td><label>Zona</label></td>
 			<td><select  name="zona" id="zona">
 					<option value="Urbana" <?php if ($result['zona'] == 'Urbana'): ?>
 						 <?php echo "selected" ?> 
-					<?php endif ?>> <?php echo $result['zona'] ?> </option>
+					<?php endif ?>>Urbana</option>
 					<option value="Rural" <?php if ($result['zona'] == 'Rural'): ?>
 						 <?php echo "selected" ?> 
-					<?php endif ?>> <?php echo $result['zona'] ?> </option>
+					<?php endif ?>>Rural</option>
 		</select></td>
 		</tr>
 		
