@@ -34,7 +34,7 @@
 				<?php endforeach ?>
 		</select></td>
 			<td><label>Estrato</label>	</td>
-			<td><input type="text" size="30" name="estrato"  value="<?php echo $result['estrato']; ?>"  placeholder="Estrato" required=""></td>
+			<td><input type="number" size="30" name="estrato"  value="<?php echo $result['estrato']; ?>"  placeholder="Estrato" required=""></td>
 		</tr>
 
 		<tr>
@@ -59,7 +59,14 @@
 				<?php endforeach ?>
 		</select></td>
 			<td><label>Zona</label></td>
-			<td><input type="text" size="30" min="1" max="5" name="zona" value="<?php echo $result['zona'];?>" placeholder="Zona" required=""></td>
+			<td><select  name="zona" id="zona">
+					<option value="Urbana" <?php if ($result['zona'] == 'Urbana'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>> <?php echo $result['zona'] ?> </option>
+					<option value="Rural" <?php if ($result['zona'] == 'Rural'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>> <?php echo $result['zona'] ?> </option>
+		</select></td>
 		</tr>
 		
 		<tr>
@@ -82,13 +89,13 @@
 		<tr>
 		<td><label >Color de ojos*:</label></td>
 		<td><label for="negros">Negros</label></td>
-		<td><input type="radio" id="negros" value="negros" name="ojos"<?php if ($result['ojos'] == 'Negros'){echo " checked";}?>></td>
+		<td><input type="radio" id="negros" value="Negros" name="ojos"<?php if ($result['ojos'] == 'Negros'){echo " checked";}?>></td>
 		<td><label for="azules">Azules</label></td>
-		<td><input type="radio" id="azules" value="azules" name="ojos"<?php if ($result['ojos'] == 'Azules'){echo " checked";}?>></td>
+		<td><input type="radio" id="azules" value="Azules" name="ojos"<?php if ($result['ojos'] == 'Azules'){echo " checked";}?>></td>
 		<td><label for="cafes">Cafes</label></td>
-		<td><input type="radio" id="cafes" value="cafes" name="ojos"<?php if ($result['ojos'] == 'Cafes'){echo " checked";}?>></td>
+		<td><input type="radio" id="cafes" value="Cafes" name="ojos"<?php if ($result['ojos'] == 'Cafes'){echo " checked";}?>></td>
 		<td><label for="marron">Marron</label></td>
-		<td><input type="radio" id="marron" value="marron" name="ojos"<?php if ($result['ojos'] == 'Marron'){echo " checked";}?>></td>
+		<td><input type="radio" id="marron" value="Marron" name="ojos"<?php if ($result['ojos'] == 'Marron'){echo " checked";}?>></td>
 		</tr>
 
 		<?php if (!empty($errores)): ?>
