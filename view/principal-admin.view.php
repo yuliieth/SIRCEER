@@ -88,8 +88,11 @@
 </head>
 <body>
 	<header>
+		<div class="usuario_sesion">
+			<i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+		</div>
 		<div class="cerrar-sesion">
-			<a href="<?php echo URL; ?>php/cerrar-sesion.php">Finalizar</a>
+			<a href="<?php echo URL; ?>php/cerrar-sesion.php">Salir</a>
 		</div>
 	</header>
 	<section>
@@ -154,7 +157,7 @@
 					<?php } ?>
 				</table>
 
-
+<!--
 				<article>
 					<div class="descripcion">
 						<ul>
@@ -166,7 +169,7 @@
 							</li>
 						</ul>
 					</div>
-				</article>
+				</article>-->
 			</div>
 		</section>
 		<!--<footer>

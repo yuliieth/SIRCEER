@@ -144,3 +144,22 @@ input[type="email"]:focus{
 	margin-top: 5px;
 	color: #1d9d74;
 }
+
+.cerrar-sesion{
+	display: block;
+	width: 30%;
+	padding: 10px;
+	height: 71%;
+	float: right;
+	text-align: right;
+	font-size: 1.5em;
+	color: white;
+}
+
+.usuario_sesion{
+	display: block;
+	height: 35%;
+	width: 30%;
+	padding: 10px;
+	float: left;
+}

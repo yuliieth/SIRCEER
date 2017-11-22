@@ -1,7 +1,7 @@
 <?php 	
 require_once 'Conexion.php';
 require_once 'funciones.php';
-#include '../admin/config.php';
+include '../admin/config.php';
 $con = getConexion($bd_config);
 comprobarConexion($con);
 $id = $_GET['id'];

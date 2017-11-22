@@ -2,7 +2,7 @@
 <?php require '../php/funciones.php' ?>
 <?php validateSession(); ?>
 <?php require '../php/Conexion.php' ?>
-<?php #require 'config.php' ?>
+<?php require 'config.php' ?>
 <?php
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	// echo a message to say the UPDATE succeeded
     #echo $ps->rowCount() . " records UPDATED successfully";
 
-    header("Location:".URL."principal-admin.php");
+    header("Location:".URL."admin/principal-admin.php");
 }else
 {
 	#Crear funcion para limpiar id
 	$id_user = $_GET['id'];
 	if (empty($id_user)) {
-		header("Location:".URL."principal-admin.php");
+		header("Location:".URL."admin/principal-admin.php");
 	}
 	$result = getUserById($id_user,$cn);
 		#var_dump($result);
