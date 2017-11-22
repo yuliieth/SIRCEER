@@ -19,7 +19,10 @@
 				</select>
 			</td>
 			<td><label for="documento">Documento:</label></td>
-			<td><input type="text" size="20" name="documento" placeholder="Documento" required="" ></td>
+			<td><input type="text" onkeyup="sugerencias(this.value)" size="20" name="documento" placeholder="Documento" required="" >
+				<div id="miDiv"></div>
+			</td>
+				
 		</tr>	
 
 		<tr>
@@ -205,6 +208,7 @@
 
 
 	</table>	
+
 
 		<?php //if (!empty($errores)): ?>
 			<!--<div class="input-redit alert error">

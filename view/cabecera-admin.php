@@ -11,6 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
 	<script src="<?php echo URL; ?>js/jquery.js"></script>
+	<script src="<?php echo URL; ?>js/javascript.js"></script>
 	<script src="../js/jquery.js"></script>
 	<!--<link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">-->
 </head>

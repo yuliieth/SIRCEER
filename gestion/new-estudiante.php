@@ -122,7 +122,4 @@ saveStudent(
 		conexion.send();
 		}
 	</script>
-
-
-
 <?php require("../view/new-estudiante.view.php") ?>
