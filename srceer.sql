@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2017 a las 23:18:21
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 7.1.1
+-- Tiempo de generación: 22-11-2017 a las 23:53:31
+-- Versión del servidor: 10.1.22-MariaDB
+-- Versión de PHP: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,36 +41,8 @@ CREATE TABLE `alianza` (
 --
 
 INSERT INTO `alianza` (`id`, `nombre`, `fecha_inicio`, `fecha_final`, `cupos`) VALUES
-(1, 'catolica', '2017-10-01', '2017-12-01', 250),
-(3, 'Economica Cafetera', '2017-10-02', '2018-12-01', 500),
-(4, 'arquitecto', '2017-11-05', '2018-11-05', 128);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `alianzas_instituciones`
---
-
-CREATE TABLE `alianzas_instituciones` (
-  `id` int(11) NOT NULL,
-  `alianza_id` int(11) NOT NULL,
-  `institucion_id` int(11) NOT NULL,
-  `fecha_vinculacion` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `alianzas_instituciones`
---
-
-INSERT INTO `alianzas_instituciones` (`id`, `alianza_id`, `institucion_id`, `fecha_vinculacion`) VALUES
-(1, 1, 1, '2017-11-05'),
-(2, 1, 2, '2017-11-05'),
-(3, 1, 1, '2017-11-05'),
-(4, 3, 3, '2017-11-05'),
-(5, 3, 4, '2017-11-05'),
-(6, 3, 4, '2017-11-05'),
-(7, 4, 1, '2017-11-05'),
-(9, 4, 2, '2017-11-05');
+(1, 'catolicas', '2017-10-02', '2017-12-02', 252),
+(2, 'CIAF', '2017-10-19', '2017-11-25', 326);
 
 -- --------------------------------------------------------
 
@@ -119,7 +93,7 @@ CREATE TABLE `estudiante` (
   `afrodescendiente` varchar(45) NOT NULL,
   `ojos` varchar(45) NOT NULL,
   `genero` varchar(10) NOT NULL,
-  `victima_conflicto` tinyint(4) DEFAULT NULL,
+  `victima_conflicto` varchar(4) DEFAULT NULL,
   `discapacidades` varchar(255) DEFAULT NULL,
   `situacion_periodo_anterior` varchar(45) DEFAULT NULL,
   `grado` varchar(45) NOT NULL,
@@ -134,8 +108,9 @@ CREATE TABLE `estudiante` (
 --
 
 INSERT INTO `estudiante` (`documento`, `tipo_documento_id`, `tipo_sangre_id`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `tel_contacto`, `email`, `fecha_naci`, `edad`, `municipio_naci_id`, `direccion_residencia`, `barrio_residencia`, `municipio_resi_id`, `estrato`, `zona`, `EPS`, `desplazado`, `afrodescendiente`, `ojos`, `genero`, `victima_conflicto`, `discapacidades`, `situacion_periodo_anterior`, `grado`, `estado`, `fecha_registro`, `fecha_cambio_estado`, `observaciones`) VALUES
-('1088264375', 1, 1, 'Cristhians', 'Alexi', 'Galeanos', 'Rui', '3406244', 'titiruizah4@gmail.com', '2017-11-15', 26, 1, 'Cra 28 #74-11', 'Cuba', 1, '3', 'Rural', 'Sisben', 'no', 'no', 'marron', 'M', 0, 'Ninguna', 'Matriculado', '12', 1, '2017-08-01 00:00:00.000000', '2017-08-01', ''),
-('1088264376', 1, 1, 'Cristy', 'Estefania', 'Marin', 'Morales', '3406243', 'rtefa@gmail.com', '2017-10-02', 19, 1, 'Cra 28 #74-111', 'Cuba', 1, '1', 'Urbana', 'Sisben', 'no', 'no', 'Negros', 'F', 0, 'Ninguna', 'Matriculado', '9', 1, '2017-08-01 00:00:00.000000', '2017-08-01', '');
+('1088264375', 1, 1, 'Cristhian', 'Alexis', 'Galeano', 'Ruiz', '3117767484', 'titiruizah@gmail.com', '2017-11-09', 28, 5, 'Cra 28 # 74 -111', 'Cuba', 4, '3', 'Rural', 'Sisben', 'No', 'No', 'Azules', 'M', 'Si', 'Ninguna', 'Matriculado', '12', 1, '2017-08-01 00:00:00.000000', '2017-08-01', 'Nada'),
+('1088264376', 1, 1, 'Cristy', 'Estefania', 'Morales', 'Marin', '3406243', 'retefa@gmail.com', '1989-01-17', 19, 1, 'Cra 28 # 74 -111', 'Cuba', 1, '1', 'Urbana', 'Sisben', 'no', 'no', 'Negros', 'F', '0', 'Ninguna', 'Matriculado', '9', 0, '2017-08-01 00:00:00.000000', '2017-08-01', 'Ninguna'),
+('1088287578', 1, 1, 'Luisa', 'Fernanda', 'Galeano', 'Ruiz', '3117767484', 'alispaola968@gmail.com', '1989-01-17', 26, 1, 'Cra 28 # 74 -111', 'Cuba', 1, '1', 'Urbana', 'Sisben', 'no', 'no', 'Negros', 'F', '0', 'Ninguna', 'Matriculado', '12', 0, '2017-08-01 00:00:00.000000', '2017-08-01', 'hermana');
 
 -- --------------------------------------------------------
 
@@ -156,8 +131,9 @@ CREATE TABLE `evaluacion_semestral` (
 --
 
 INSERT INTO `evaluacion_semestral` (`id`, `nota`, `estudiante_documento`, `semestre_id`, `programa_snies`) VALUES
-(3, 3.5, '1088264375', 3, '123'),
-(4, 3.5, '1088264376', 4, '456123');
+(1, 4.5, '1088264375', 6, '123'),
+(2, 0, '1088264376', 7, '456123'),
+(3, 0, '1088287578', 8, '456123');
 
 --
 -- Disparadores `evaluacion_semestral`
@@ -181,18 +157,17 @@ CREATE TABLE `institucion` (
   `nombre` varchar(45) NOT NULL,
   `telefono` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `direccion` varchar(45) DEFAULT NULL
+  `direccion` varchar(45) DEFAULT NULL,
+  `alianza_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `institucion`
 --
 
-INSERT INTO `institucion` (`id`, `nombre`, `telefono`, `email`, `direccion`) VALUES
-(1, 'Universida Catolica de Pereira', '3406243', 'ucp@ucp.edu.co', 'Av La independencia'),
-(2, 'Universidad Tecnologica de pereira', '3117767484', 'rtefa@gmail.com', 'Av La independencia'),
-(3, 'SENA', '3245648', 'sena@sena.co', 'Dosquebradas'),
-(4, 'CIAF', '3265487', 'ciaf@ciaf.edu.co', 'Cra 8 # 19-23');
+INSERT INTO `institucion` (`id`, `nombre`, `telefono`, `email`, `direccion`, `alianza_id`) VALUES
+(1, 'Universidad Catolica de Pereira', '3406244', 'ucpw@ucp.edu.co', 'Av La independencÃ­a', 1),
+(2, 'Universidad Tecnologica de pereira', '3117767484', 'rtefa@gmail.com', 'Av La independencia', 1);
 
 -- --------------------------------------------------------
 
@@ -210,9 +185,7 @@ CREATE TABLE `institucion_municipio` (
 --
 
 INSERT INTO `institucion_municipio` (`institucion_id`, `municipio_id`) VALUES
-(2, 1),
-(3, 2),
-(4, 1);
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -232,7 +205,10 @@ CREATE TABLE `municipio` (
 
 INSERT INTO `municipio` (`id`, `nombre`, `departamento_id`) VALUES
 (1, 'Pereira', 1),
-(2, 'Dosquebradas', 1);
+(2, 'Cali', 3),
+(3, 'Armenia', 2),
+(4, 'Dosquebradas', 1),
+(5, 'Mistrato', 1);
 
 -- --------------------------------------------------------
 
@@ -250,7 +226,6 @@ CREATE TABLE `nivel_academico` (
 --
 
 INSERT INTO `nivel_academico` (`id`, `tipo`) VALUES
-(3, 'Ingenieria'),
 (1, 'Tecnico'),
 (2, 'Tecnologia');
 
@@ -294,11 +269,8 @@ CREATE TABLE `programa` (
 --
 
 INSERT INTO `programa` (`snies`, `nombre`, `num_semestres`, `num_creditos`, `nivel_academico_id`, `institucion_id`) VALUES
-('123', 'Tecnologia en Desarrollo de Software', 6, 24, 2, 1),
-('123456789', 'Desarrollo Movil', 3, 11, 1, 2),
-('456123', 'Tecnico en mercadeo', 10, 45, 1, 2),
-('4569', 'Ingenieria de Sistemas y Telecomunicaciones', 10, 48, 3, 1),
-('888', 'Salud Oral', 4, 12, 1, 1);
+('123', 'TecnologÃ­a en Desarrollo de Software', 5, 23, 2, 1),
+('456123', 'Tecnico en mercadeo', 10, 45, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -337,7 +309,9 @@ INSERT INTO `semestre` (`id`, `periodo`, `promedio_anterior`) VALUES
 (3, '2017-2', '0'),
 (4, '2017-2', '0'),
 (5, '2017-2', '0'),
-(6, '2017-2', '0');
+(6, '2017-2', '0'),
+(7, '2017-2', '0'),
+(8, '2017-2', '0');
 
 -- --------------------------------------------------------
 
@@ -398,8 +372,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre_completo`, `username`, `password`, `email`, `fecha_registro`) VALUES
-(1, 'estandar', 'estandar', '123', 'titiruizah@gmail.com', '0000-00-00 00:00:00.00'),
-(2, 'admin', 'admin', '123', 'titiruizah@gmail.com', '0000-00-00 00:00:00.00');
+(1, 'Luisa Galeanos', 'luigui', '1234', 'luigui@gmail.com', '2017-11-22 22:15:36.84'),
+(10, 'hildara lopez', 'hilduara', '123', 'hilduara@gov.co', '2017-11-22 22:00:01.62'),
+(16, 'Cristhian Alexis Galeano Ruiz', 'cristhian', '123', 'titiruizah@gmail.com', '2017-11-22 22:31:04.86'),
+(17, 'Cristy Estefania', 'cristy', '123', 'niafabio@hotmail.com', '2017-11-22 22:31:28.38');
 
 -- --------------------------------------------------------
 
@@ -408,6 +384,7 @@ INSERT INTO `usuarios` (`id`, `nombre_completo`, `username`, `password`, `email`
 --
 
 CREATE TABLE `usuarios_perfiles` (
+  `id` int(11) NOT NULL,
   `perfiles_id` int(11) NOT NULL,
   `usuarios_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -416,9 +393,11 @@ CREATE TABLE `usuarios_perfiles` (
 -- Volcado de datos para la tabla `usuarios_perfiles`
 --
 
-INSERT INTO `usuarios_perfiles` (`perfiles_id`, `usuarios_id`) VALUES
-(1, 2),
-(2, 1);
+INSERT INTO `usuarios_perfiles` (`id`, `perfiles_id`, `usuarios_id`) VALUES
+(2, 1, 1),
+(5, 1, 10),
+(6, 2, 16),
+(7, 2, 17);
 
 --
 -- Índices para tablas volcadas
@@ -430,14 +409,6 @@ INSERT INTO `usuarios_perfiles` (`perfiles_id`, `usuarios_id`) VALUES
 ALTER TABLE `alianza`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_UNIQUE` (`id`);
-
---
--- Indices de la tabla `alianzas_instituciones`
---
-ALTER TABLE `alianzas_instituciones`
-  ADD PRIMARY KEY (`id`,`alianza_id`,`institucion_id`),
-  ADD KEY `fk_alianza_has_institucion_institucion1_idx` (`institucion_id`),
-  ADD KEY `fk_alianza_has_institucion_alianza1_idx` (`alianza_id`);
 
 --
 -- Indices de la tabla `departamento`
@@ -471,7 +442,8 @@ ALTER TABLE `evaluacion_semestral`
 --
 ALTER TABLE `institucion`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_UNIQUE` (`id`);
+  ADD UNIQUE KEY `id_UNIQUE` (`id`),
+  ADD KEY `fk_institucion_alianza1_idx` (`alianza_id`);
 
 --
 -- Indices de la tabla `institucion_municipio`
@@ -546,6 +518,8 @@ ALTER TABLE `usuarios`
 -- Indices de la tabla `usuarios_perfiles`
 --
 ALTER TABLE `usuarios_perfiles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
   ADD KEY `fk_usuarios_perfiles_perfiles1_idx` (`perfiles_id`),
   ADD KEY `fk_usuarios_perfiles_usuarios1_idx` (`usuarios_id`);
 
@@ -557,12 +531,7 @@ ALTER TABLE `usuarios_perfiles`
 -- AUTO_INCREMENT de la tabla `alianza`
 --
 ALTER TABLE `alianza`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `alianzas_instituciones`
---
-ALTER TABLE `alianzas_instituciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `departamento`
 --
@@ -572,22 +541,22 @@ ALTER TABLE `departamento`
 -- AUTO_INCREMENT de la tabla `evaluacion_semestral`
 --
 ALTER TABLE `evaluacion_semestral`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `institucion`
 --
 ALTER TABLE `institucion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `municipio`
 --
 ALTER TABLE `municipio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `nivel_academico`
 --
 ALTER TABLE `nivel_academico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
@@ -597,7 +566,7 @@ ALTER TABLE `perfiles`
 -- AUTO_INCREMENT de la tabla `semestre`
 --
 ALTER TABLE `semestre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tipo_documento`
 --
@@ -612,17 +581,15 @@ ALTER TABLE `tipo_sangre`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT de la tabla `usuarios_perfiles`
+--
+ALTER TABLE `usuarios_perfiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `alianzas_instituciones`
---
-ALTER TABLE `alianzas_instituciones`
-  ADD CONSTRAINT `fk_alianza_has_institucion_alianza1` FOREIGN KEY (`alianza_id`) REFERENCES `alianza` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_alianza_has_institucion_institucion1` FOREIGN KEY (`institucion_id`) REFERENCES `institucion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `estudiante`
@@ -640,6 +607,12 @@ ALTER TABLE `evaluacion_semestral`
   ADD CONSTRAINT `fk_evaluacion_semestral_estudiante1` FOREIGN KEY (`estudiante_documento`) REFERENCES `estudiante` (`documento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_evaluacion_semestral_programa1` FOREIGN KEY (`programa_snies`) REFERENCES `programa` (`snies`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_evaluacion_semestral_semestre1` FOREIGN KEY (`semestre_id`) REFERENCES `semestre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `institucion`
+--
+ALTER TABLE `institucion`
+  ADD CONSTRAINT `fk_institucion_alianza1` FOREIGN KEY (`alianza_id`) REFERENCES `alianza` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `institucion_municipio`
@@ -673,6 +646,7 @@ ALTER TABLE `recursos_perfiles`
 ALTER TABLE `usuarios_perfiles`
   ADD CONSTRAINT `fk_usuarios_perfiles_perfiles1` FOREIGN KEY (`perfiles_id`) REFERENCES `perfiles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_usuarios_perfiles_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
