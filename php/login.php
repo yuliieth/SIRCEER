@@ -31,11 +31,14 @@
 				header("Location:".URL."admin/principal-admin.php");
 			}elseif (($_SESSION['usuario']['perfil'] == "estandar")) {
 				header("Location:".URL."gestion/principal-gestion.php");
+			}else {
+				header("Location: ".URL."gestion/errorOut.php");
 			}
-			echo "Valor del array session\n";
-			var_dump($_SESSION);
+			
+		}else{
+			header("Location: ".URL."gestion/errorOut.php");
 		}
-		echo "No hay concidencias";
+		
 	}
 
  ?>
