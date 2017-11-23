@@ -48,7 +48,7 @@
 
 		<tr>
 			<td><label for="fecha-naci">Fecha de nacimiento:</label></td>
-			<td><input type="text" size="30" name="fecha_naci" placeholder="fecha de nacimiento"required=""></td>
+			<td><input type="date" name="fecha_naci" step="1" min="1980-01-01" max="2018-12-31" value="" placeholder="Fecha de nacimiento"></td>
 			<td><label for="edad">Edad:</label></td>
 			<td><input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="" ></td>
 		</tr>

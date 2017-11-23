@@ -11,20 +11,16 @@
 			<td>
 			<label for="nombre">Nombre:</label>
 			</td>
-			<td>
-			<td><input type="text" size="20" name="nombre" placeholder="Nombre alianza" required="" ></td>	
-			</td>
+			<td><input type="text" size="20" name="nombre" placeholder="Nombre alianza" required="" ></td>
 			<td><label for="fecha_ini">Fecha de inicio:</label></td>
-			<td><input type="text" size="30" name="fecha_ini" placeholder="Fecha de inicio" required="required"></td>
+			<td><input type="date" name="fecha_ini" step="1" min="1980-01-01" max="2018-12-31" value=""></td>
 		</tr>
 
 		<tr>
 			<td>
 			<label for="fecha_fina">Fecha final:</label>
 			</td>
-			<td>
-			<td><input type="text" size="20" name="fecha_fina" placeholder="Fecha de finalizacion" required="" ></td>	
-			</td>
+			<td><input type="date" name="fecha_final" step="1" min="1980-01-01" max="2018-12-31" value=""></td>
 			<td><label for="cupos">Cupos:</label></td>
 			<td><input type="text" size="30" name="cupos" placeholder="cupos" required="required"></td>
 		</tr>	
