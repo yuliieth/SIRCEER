@@ -5,9 +5,13 @@
 	<table>
 		<th><p><strong>Alianza</strong></p></th>
 	<tr>
+		<td></td>
 		<td><label for="id">ID</label></td>
-		<td><input type="text" readonly="" value="<?php echo $alianza['id']; ?>" name="id" ><br></td>
 		<td><label for="nombre">Nombre</label></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="text" readonly="" value="<?php echo $alianza['id']; ?>" name="id" ><br></td>
 		<td><input type="text" value="<?php echo $alianza['nombre']?>" name="nombre" disabled=""></td>
 	</tr>
 	
