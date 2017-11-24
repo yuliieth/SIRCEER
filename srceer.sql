@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2017 a las 23:53:31
+-- Tiempo de generación: 24-11-2017 a las 18:17:15
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.1.4
 
@@ -41,8 +41,32 @@ CREATE TABLE `alianza` (
 --
 
 INSERT INTO `alianza` (`id`, `nombre`, `fecha_inicio`, `fecha_final`, `cupos`) VALUES
-(1, 'catolicas', '2017-10-02', '2017-12-02', 252),
-(2, 'CIAF', '2017-10-19', '2017-11-25', 326);
+(1, 'catolicas3', '2017-10-03', '2017-12-03', 253),
+(2, 'CIAF', '2017-10-12', '2017-11-22', 326);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `alianzas_instituciones`
+--
+
+CREATE TABLE `alianzas_instituciones` (
+  `id` int(11) NOT NULL,
+  `alianza_id` int(11) NOT NULL,
+  `institucion_id` int(11) NOT NULL,
+  `fecha_vinculacion` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `alianzas_instituciones`
+--
+
+INSERT INTO `alianzas_instituciones` (`id`, `alianza_id`, `institucion_id`, `fecha_vinculacion`) VALUES
+(1, 1, 1, '2017-11-05'),
+(2, 1, 1, '2017-11-05'),
+(3, 1, 1, '2017-11-05'),
+(4, 2, 1, '2017-11-05'),
+(5, 2, 2, '2017-11-05');
 
 -- --------------------------------------------------------
 
@@ -411,6 +435,14 @@ ALTER TABLE `alianza`
   ADD UNIQUE KEY `id_UNIQUE` (`id`);
 
 --
+-- Indices de la tabla `alianzas_instituciones`
+--
+ALTER TABLE `alianzas_instituciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_alianza_has_institucion_alianza1` (`alianza_id`),
+  ADD KEY `fk_alianza_has_institucion_institucion1` (`institucion_id`);
+
+--
 -- Indices de la tabla `departamento`
 --
 ALTER TABLE `departamento`
@@ -533,6 +565,11 @@ ALTER TABLE `usuarios_perfiles`
 ALTER TABLE `alianza`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `alianzas_instituciones`
+--
+ALTER TABLE `alianzas_instituciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT de la tabla `departamento`
 --
 ALTER TABLE `departamento`
@@ -590,6 +627,13 @@ ALTER TABLE `usuarios_perfiles`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `alianzas_instituciones`
+--
+ALTER TABLE `alianzas_instituciones`
+  ADD CONSTRAINT `fk_alianza_has_institucion_alianza1` FOREIGN KEY (`alianza_id`) REFERENCES `alianza` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_alianza_has_institucion_institucion1` FOREIGN KEY (`institucion_id`) REFERENCES `institucion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `estudiante`
