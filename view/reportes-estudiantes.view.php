@@ -11,7 +11,7 @@
 
 
         <label for="Edad">Edad:</label>
-        <input type="number" name="edad" min="0" max="25" >
+        <input type="number" name="edad" min="0" max="30" >
 
         <label for="zona">Zona:</label>
         <select name="zona" id="zona">

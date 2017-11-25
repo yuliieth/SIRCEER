@@ -25,7 +25,8 @@ function countEntityWithOutWhere($tabla,$cn){
 function saveAlianza(
 	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
 )
-{	
+{
+echo "entro";	
 	
 	try {
 			//var_dump($conexion);
@@ -38,7 +39,7 @@ function saveAlianza(
 		$statement->bindParam( ':cupos' , $cupos);
 		
 		$result= $statement->execute();
-		
+		var_dump($result);
 		if ($result !== null) {
 			header("Location:".URL."gestion/new-alianza.php?select=a");
 		}
@@ -379,28 +380,35 @@ function saveInstitu
 	$bd_config
 )
 {
+
+	#echo $municipio;
 	$conexion = getConexion($bd_config);
 	if (!$conexion) {
 		echo "Error en conexion";
 	}else{
 		try {
 			//var_dump($conexion);
-			$sql = ("INSERT INTO institucion  (id, nombre,telefono,email,direccion) values(null,:nombre,:telefono,:email,:direccion)"
-		);
+			$sql = "INSERT INTO institucion  (nombre,telefono,email,direccion)VALUES (:nombre,:telefono,:email,:direccion)";
+
 			$statement = $conexion->prepare($sql);
 			$statement->bindParam( ':nombre' , $nombre);
 			$statement->bindParam( ':telefono' , $telefono);
 			$statement->bindParam( ':email' , $email);
 			$statement->bindParam( ':direccion' , $direccion);
+			#var_dump($statement);
 			$result= $statement->execute();
+			#var_dump($result);
 		//Enlazar institucion con municipio por medio de la tabla institucion_municipio
 			$institucion_id = getId("institucion",$conexion);
+			echo $institucion_id;
 			$sql = "INSERT INTO institucion_municipio (institucion_id, municipio_id) VALUES (:institucion,:municipio)";
 			$statement = $conexion->prepare($sql);
 			$statement->bindParam(':institucion',$institucion_id);
 			$statement->bindParam(':municipio',$municipio);
 			$resultInsti = $statement->execute();
+
 			if ($result !== null && $resultInsti != null) {
+				echo "error";
 				header('Location: '.URL.'gestion/new-institucion.php?select=i');
 			}
 		} catch (Exception $e) {

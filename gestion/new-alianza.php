@@ -8,10 +8,11 @@ $cn = getConexion($bd_config);
 comprobarConexion($cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
+	#echo "entro post";
 	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"nombre","fecha_ini","fecha_fina","cupos"
+		"nombre","fecha_ini","fecha_final","cupos"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -22,7 +23,7 @@ if (isset($_POST['submit'])) {
 		#Obtenemos los valores de los campos en el formulario
 		$nombre = $_POST['nombre'];
 		$fecha_ini = $_POST['fecha_ini'];
-		$fecha_fina = $_POST['fecha_fina'];
+		$fecha_fina = $_POST['fecha_final'];
 		$cupos = $_POST['cupos'];
 		
 

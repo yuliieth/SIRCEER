@@ -3,7 +3,7 @@
 <!--CONTENIDO-->
 
 <div class="wrap-formulario-new-estudiante">
-	<h1>Nuevo estudiante</h1>
+	<h1>Nuevo Alianza</h1>
 		
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
