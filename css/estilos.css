@@ -374,6 +374,28 @@ form input[type="submit"]:hover{
 }
 
 
+
+/*odometer*/
+
+.background{
+	margin: auto;
+	margin-bottom: 25px;
+	width: 45%;
+	background-color: grey;
+}
+
+.wraper-odometer{
+
+	width: 30%;
+	height: 140px;
+	padding: 30px;
+	display: block;
+	/*background-color: blue;*/
+	float: left;
+	text-align: center;
+}
+
+
 /*******************/
 
 footer{
