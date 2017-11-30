@@ -49,6 +49,6 @@
 		
 	</form>
 </div>
-<?php require 'piedepagina-admin.php' ?>
+<?php require #'piedepagina-admin.php' ?>
 
 

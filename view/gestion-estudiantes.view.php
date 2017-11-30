@@ -62,5 +62,5 @@ Highcharts.chart('estudiantes', {
 
       
 
-    <?php require 'piedepagina-admin.php'; ?>
+    <?php #require 'piedepagina-admin.php'; ?>
 

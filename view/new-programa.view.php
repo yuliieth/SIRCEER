@@ -44,4 +44,4 @@
 	<!--</table>-->
 </div>
 <!--END CONTENIDO-->				
-<?php require("piedepagina-admin.php") ?>
+<?php #require("piedepagina-admin.php") ?>

@@ -85,12 +85,12 @@ require_once '../admin/config.php'; ?>
             },
             series: [{
                 name: 'Men',
-                data: [502, 635, 809, 947, 1402, 3634, <?php echo $numMen ?> ]
+                data: [502, 635, 809, 947, 1402, 3634, <?php #echo $numMen ?> ]
             }, {
                 name: 'Women',
-                data: [106, 107, 111, 133, 221, 767, <?php echo $numWomen ?> ]
+                data: [106, 107, 111, 133, 221, 767, <?php #echo $numWomen ?> ]
             }]
         });
     </script>
 
-    <?php require 'piedepagina-admin.php'; ?>
+    <?php #require 'piedepagina-admin.php'; ?>

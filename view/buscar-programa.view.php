@@ -16,6 +16,6 @@
 </table>
 
 <?php require("footer-menu.view.php") ?>	
-<?php require 'piedepagina-admin.php' ?>
+<?php #require 'piedepagina-admin.php' ?>
 
 
