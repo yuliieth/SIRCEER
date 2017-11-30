@@ -16,10 +16,10 @@
 </div>
 <script>
 setTimeout(function(){
- odometerE.innerHTML = <?php echo $porceM ?>;
- odometerP.innerHTML = <?php echo $porceM ?>;
- odometerI.innerHTML = <?php echo $porceM ?>;
- odometerA.innerHTML = <?php echo $porceM ?>;
+ odometerE.innerHTML = <?php echo $totalE ?>;
+ odometerP.innerHTML = <?php echo $totalP ?>;
+ odometerI.innerHTML = <?php echo $totalI ?>;
+ odometerA.innerHTML = <?php echo $totalA ?>;
 }, 1000);
 
 </script>
