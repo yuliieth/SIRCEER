@@ -1,6 +1,29 @@
 <?php require'cabecera-admin.php' ?>
 <div class="background">
-    <img src="../imagenes/gobernacion4.jpg" height="736" width="1349" alt="Gobernación de Risaralda">
+
+    <div class="wraper-odometer"> 
+    	<p>Estudiantes registrados:</p> <br> <p class="odometer" id="odometerE"></p> 
+    </div>
+    <div class="wraper-odometer">
+        <p>Programas registrados:</p> <br> <p class="odometer" id="odometerP"></p>
+    </div>
+    <div class="wraper-odometer"> 
+    	<p>Instituciones registradas:</p> <br> <p class="odometer" id="odometerI"></p> 
+    </div>
+    <div class="wraper-odometer"> 
+    	<p>Alianzas registradas:</p> <br> <p class="odometer" id="odometerA"></p> 
+    </div>
 </div>
-<?php #require 'piedepagina-admin.php' ?>
+<script>
+setTimeout(function(){
+ odometerE.innerHTML = <?php echo $totalE ?>;
+ odometerP.innerHTML = <?php echo $totalP ?>;
+ odometerI.innerHTML = <?php echo $totalI ?>;
+ odometerA.innerHTML = <?php echo $totalA ?>;
+}, 1000);
+
+</script>
+
+<?php require 'piedepagina-admin.php' ?>
+
 	

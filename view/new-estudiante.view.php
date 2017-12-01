@@ -98,8 +98,8 @@
 			<td><label for="desplazado">Desplazado:</label></td>
 			<td>
 				<select name="desplazado" id="">
-					<option value="Si">Si</option>
 					<option value="No">No</option>
+					<option value="Si">Si</option>
 				</select>
 			</td>
 		</tr>
@@ -109,8 +109,8 @@
 		<tr>
 			<td><label for="afro">Afrodescendiente:</label></td>
 			<td><select name="afro" id="">
-					<option value="si">Si</option>
-					<option value="no">No</option>
+					<option value="No">No</option>
+					<option value="Si">Si</option>
 				</select></td>
 			<td><label for="ojos">Ojos:</label></td>
 			<td>
@@ -132,8 +132,8 @@
 			<td><label for="victima_conflicto">Victima del conflicto:</label></td>
 			<td>
 				<select name="victima_conflicto" id="">
-					<option value="Si">Si</option>
 					<option value="No">No</option>
+					<option value="Si">Si</option>
 				</select>
 			</td>
 		</tr>
@@ -157,7 +157,7 @@
 
 		<tr>
 			<td><label for="grado"></label>Grado que cursa:</td>
-			<td><input type="number" name="grado" min="6" max="12" placeholder="Grado" required=""></td>
+			<td><input type="number" name="grado" min="6" max="11" placeholder="Grado" required=""></td>
 			<td><label for="tipo_sangre">Tipo sangre:</label></td>
 			<td><select name="tipo_sangre" id="">
 				<?php foreach ($tipos_sangre as $tipo): ?>
