@@ -13,7 +13,7 @@ $munis_resi = getMunicipios($cn);
 $programas = getAllSubject("programa",$cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
-	var_dump($_POST);
+	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
 		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","email","fecha_naci","edad","muni_naci","dire_resi","barrio_resi","muni_resi","estrato","zona","eps","desplazado","afro","ojos","genero","victima_conflicto","discapacidades","situacion_periodo_anterior","grado"
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
 		//Datos del programa
 		$programa = (int) $_POST['programa'];
 		//Datos semestre
-		$anio = $_POST['anio'];
+		$semestre = $_POST['semestre'];
 		$periodo =  $_POST['periodo'];
 		#$promedio_anterior = $_POST['promedio_anterior'];
 		#28 parametros
@@ -76,7 +76,7 @@ saveStudent(
 	$afro,$ojos,$genero,
 	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
 	$grado,$estado,$observacion,
-	$programa,$anio,$periodo,
+	$programa,$semestre,$periodo,
 	$cn
 	#se pasan 28 parametro (conexion)
 	);

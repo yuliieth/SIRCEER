@@ -183,15 +183,19 @@
 
 		<th><strong>Datos semestres</strong></th>
 		<tr>
-			<td><label for="periodo">Periodo:</label></td>
-			<td><select name="anio" id="anio">
-				<option value="2017">2017</option>
-				<option value="2018">2018</option>
-				<option value="2019">2019</option>
-				<option value="2020">2020</option>
-				<option value="2021">2021</option>
-				<option value="2022">2022</option>
-				<option value="2023">2023</option>
+			<td><label for="Semestre">Semestre:</label></td>
+			<td><select name="semestre" id="semestre">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
 			</select>
 			<select name="periodo" id="periodo">
 				<option value="1">1</option>

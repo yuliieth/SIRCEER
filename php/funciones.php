@@ -37,7 +37,7 @@ function saveAlianza(
 	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
 )
 {
-echo "entro";	
+	echo "entro";	
 	
 	try {
 			//var_dump($conexion);
@@ -481,20 +481,17 @@ function saveStudent
 	$afro,$ojos,$genero,
 	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
 	$grado,$estado,$observacion,
-	$programa,$anio,$periodo,
+	$programa,$semestre,$periodo,
 	$cn
 )
 {
 	$fecha_registro =  date("Y-m-d");
-	$fecha_cambio_estado = "2017-08-01";
+	$fecha_cambio_estado = "";
+	$anio = date("Y");
 	try {
 			#var_dump($cn);
 		$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
 
-			/*
-	(documento, tipo_documento_id, tipo_sangre_id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, tel_contacto, email, fecha_naci, edad, municipio_naci_id, direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)
-
-			*/
 
 /*
 :documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)"
@@ -583,24 +580,37 @@ $result=$statement->execute(
 			 $resultSemestre = $statement->execute();
 			#var_dump($result);
 
-			//Obtener el documento (ya esta)
-			//Obtener ID del semestre
-			 $matricula = getIdmatricula($documento,$cn);
 
-			//Insertar tabla evaluacion_semestral
-			 $sql = "INSERT INTO evaluacion_semestral(id, matricula_id, anio, periodo, ultima_modificacion) VALUES (null,:matricula,:anio,:periodo,:fecha_modi)";
+
+			 $sql = "INSERT INTO semestre(id, semestre, periodo) VALUES (null,:semestre,:periodo)";
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
 			 
-			 $statement->bindParam(':matricula',$matricula);
-			 $statement->bindParam(':anio',$anio);
+			 $statement->bindParam(':semestre',$semestre);
 			 $statement->bindParam(':periodo',$periodo);
+			 $resultSemestre = $statement->execute();
+			#
+
+			//Obtener el documento (ya esta)
+			//Obtener ID del semestre
+			 $matricula = getIdmatricula($documento,$cn);
+
+			//Insertar tabla detalle semestre
+			 $sql = "INSERT INTO detalle_semestre(id, matricula_id, semestre_id, anio, ultima_modificacion) VALUES (null,:matricula,:semestre,:anio,:fecha_modi))";
+			 $statement = $cn->prepare($sql);
+			#var_dump($statement);
+			#Devuelve false en caso de ocurrir algun error
+			 echo "semestre: $semestre ,matricula: $matricula";
+			 echo "Año: $anio , fecha_registro: $fecha_registro";
+			 $statement->bindParam(':matricula',$matricula);
+			 $statement->bindParam(':semestre',$semestre);
+			 $statement->bindParam(':anio',$anio);
 			 $statement->bindParam(':fecha_modi',$fecha_registro);
-			 $resultEvaluacion = $statement->execute();
+			 $resultDetalle = $statement->execute();
 			#var_dump($result);			
 
-			 if ($result !== false && $resultSemestre !== false && $resultEvaluacion !== false) {
+			 if ($result !== false && $resultSemestre !== false && $resultDetalle !== false) {
 			 	header("Location:".URL."gestion/new-estudiante.php?select=e");
 			 }else{
 			 	echo "Ocurrio un error";
