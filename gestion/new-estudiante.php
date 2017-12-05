@@ -57,8 +57,8 @@ if (isset($_POST['submit'])) {
 		//Datos del programa
 		$programa = (int) $_POST['programa'];
 		//Datos semestre
-		$periodo = $_POST['periodo'];
-		$periodo .=  "-".$_POST['indicador-periodo'];
+		$anio = $_POST['anio'];
+		$periodo =  $_POST['periodo'];
 		#$promedio_anterior = $_POST['promedio_anterior'];
 		#28 parametros
 		#var_dump($estado);
@@ -76,7 +76,7 @@ saveStudent(
 	$afro,$ojos,$genero,
 	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
 	$grado,$estado,$observacion,
-	$programa,$periodo,
+	$programa,$anio,$periodo,
 	$cn
 	#se pasan 28 parametro (conexion)
 	);

@@ -1,5 +1,16 @@
 <?php 
 
+function getIdmatricula($documento,$cn)
+{
+	$sql = "SELECT  id FROM matricula WHERE estudiante_documento='$documento' LIMIT 1";
+	#var_dump($sql);
+	$ps=$cn->prepare($sql);
+	$ps->execute();
+	$result=$ps->fetch()['id'];
+	var_dump($result);
+	return $result;
+}
+
 function countEntityWithWhere($tabla,$criterio,$valor,$cn){
 	$sql = "SELECT COUNT($criterio) AS total FROM $tabla WHERE $criterio='$valor'";
 	#var_dump($sql);
@@ -470,11 +481,11 @@ function saveStudent
 	$afro,$ojos,$genero,
 	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
 	$grado,$estado,$observacion,
-	$programa,$periodo,
+	$programa,$anio,$periodo,
 	$cn
 )
 {
-	$fecha_registro = "2017-08-01";
+	$fecha_registro =  date("Y-m-d");
 	$fecha_cambio_estado = "2017-08-01";
 	try {
 			#var_dump($cn);
@@ -559,30 +570,33 @@ $result=$statement->execute(
 					 $statement->bindParam( ':observaciones' , $observacion);
 			 $result= $statement->execute();
 */
-			 $sql = "INSERT INTO semestre(id, periodo) VALUES 
-			 (null,:periodo)";
+			 $sql = "INSERT INTO matricula(id, estudiante_documento,programa_snies,fecha) VALUES 
+			 (null,:estudiante_documento, :programa_snies,:fecha)";
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
 			 
-			 $statement->bindParam(':periodo',$periodo);
+			 $statement->bindParam(':estudiante_documento',$documento);
+			 $statement->bindParam(':programa_snies',$programa);
+			 $statement->bindParam(':fecha',$fecha_registro);
 				#$statement->bindParam(':promedio_anterior',$promedio_anterior);
 			 $resultSemestre = $statement->execute();
 			#var_dump($result);
 
 			//Obtener el documento (ya esta)
 			//Obtener ID del semestre
-			 $semestre_id = getId("semestre",$cn);
+			 $matricula = getIdmatricula($documento,$cn);
 
 			//Insertar tabla evaluacion_semestral
-			 $sql = "INSERT INTO evaluacion_semestral(estudiante_documento, semestre_id, programa_snies) VALUES (:estudiante_documento,:semestre_id,:programa_snies)";
+			 $sql = "INSERT INTO evaluacion_semestral(id, matricula_id, anio, periodo, ultima_modificacion) VALUES (null,:matricula,:anio,:periodo,:fecha_modi)";
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
 			 
-			 $statement->bindParam(':estudiante_documento',$documento);
-			 $statement->bindParam(':semestre_id',$semestre_id);
-			 $statement->bindParam(':programa_snies',$programa);
+			 $statement->bindParam(':matricula',$matricula);
+			 $statement->bindParam(':anio',$anio);
+			 $statement->bindParam(':periodo',$periodo);
+			 $statement->bindParam(':fecha_modi',$fecha_registro);
 			 $resultEvaluacion = $statement->execute();
 			#var_dump($result);			
 
