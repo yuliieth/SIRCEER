@@ -6,7 +6,7 @@
 		#'userName' => 'id1872513_root',
 		#'pass' => '1088264375C' 
 
-		'nameBD' => 'srceer',
+		'nameBD' => 'sirceer',
 		'host' => 'localhost',
 		'userName' => 'root',
 		'pass' => ''
