@@ -597,7 +597,7 @@ $result=$statement->execute(
 			 $matricula = getIdmatricula($documento,$cn);
 
 			//Insertar tabla detalle semestre
-			 $sql = "INSERT INTO detalle_semestre(id, matricula_id, semestre_id, anio, ultima_modificacion) VALUES (null,:matricula,:semestre,:anio,:fecha_modi))";
+			 $sql = "INSERT INTO detalle_semestre(id, matricula_id, semestre_id, anio, ultima_modificacion) VALUES (null,:matricula,:semestre,:anio,:fecha_modi)";
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
