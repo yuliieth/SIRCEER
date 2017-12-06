@@ -1,12 +1,9 @@
 <?php
 require '../admin/config.php';
 /////// CONEXIÓN A LA BASE DE DATOS /////////
-$host = 'localhost';
-$basededatos = 'srceer';
-$usuario = 'root';
-$contrasena = '';
 
-$conexion = new mysqli($host, $usuario,$contrasena, $basededatos);
+
+$conexion = new mysqli($bd_config['host'], $bd_config['userName'],$bd_config['pass'], $bd_config['nameBD']);
 if ($conexion -> connect_errno)
 {
 	die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> mysqli_connect_error());
@@ -15,13 +12,13 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma, semestre.periodo,semestre.promedio_anterior,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN evaluacion_semestral ON estudiante.documento=evaluacion_semestral.estudiante_documento INNER JOIN programa ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN semestre ON semestre.id=evaluacion_semestral.semestre_id INNER JOIN institucion ON institucion.id=programa.institucion_id ORDER BY documento";
+$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies ORDER BY documento ASC ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['estudiantes']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['estudiantes']);
-	$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma, semestre.periodo,semestre.promedio_anterior,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN evaluacion_semestral ON estudiante.documento=evaluacion_semestral.estudiante_documento INNER JOIN programa ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN semestre ON semestre.id=evaluacion_semestral.semestre_id INNER JOIN institucion ON institucion.id=programa.institucion_id WHERE
+	$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies WHERE
 		estudiante.documento LIKE '%".$q."%' OR
 		estudiante.primer_nombre LIKE '%".$q."%' OR
 		estudiante.segundo_nombre LIKE '%".$q."%' OR
@@ -82,9 +79,7 @@ if ($buscarEstudiantes->num_rows > 0)
 			<td style="padding: 3px;"> '. $filaEstudiantes['zona'].'</td>
 			<!--<td style="padding: 3px;"> '. $filaEstudiantes['afrodescendiente'].'</td>-->
 			<!--<td style="padding: 3px;"> '. $filaEstudiantes['estado'].'</td>-->
-			<!--<td style="padding: 3px;"> '. $filaEstudiantes['nameInstitute'].'</td>-->
 			<td style="padding: 3px;"> '. $filaEstudiantes['namePrograma'].'</td>
-			<!--<td style="padding: 3px;"> '. $filaEstudiantes['periodo'].'</td>-->
 			<td style="padding: 3px;"> '. $filaEstudiantes['grado'].'</td>
 			<!--<td style="padding: 3px;"> '. $filaEstudiantes['desplazado'].'</td>-->
 
