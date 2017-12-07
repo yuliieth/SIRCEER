@@ -14,6 +14,6 @@
 		);
 
 	#define("URL", "http://sdber.comze.com/");
-	define('URL', "http://localhost/SRCEER/");
-	#define('URL', "http://localhost/DesarrolloWeb/PracticaPHP/SRCEER/");
+	#define('URL', "http://localhost/SRCEER/");
+	define('URL', "http://localhost/DesarrolloWeb/PracticaPHP/SRCEER/");
  ?>

@@ -30,12 +30,23 @@
 		</tr>
 		
 		
-			<th><strong>Nota del semestre en curso</strong></th>
+			<th><strong>promedio semestre</strong></th>
 		<tr>
-			<td><label for="nota">Promedio:</label></td>
-			<td><input type="text" required="" name="nota" placeholder="Nota"></td>
-			<!--<td><label for="notaAnterior">Promedio anterior:</label></td>
-			<td><input type="text" name="nota_anterior" placeholder="Nota periodo anterior"></td>-->
+			<td><label for="promedio">Promedio:</label></td>
+			<td><input type="text" required="" name="promedio" placeholder="Ej: 3.5"></td>
+		<!--Se debe llenar este input con el ultimo semestre registrado para el estudiante-->
+			<td><label for="promedio">Semestre:</label></td>
+			<td><input type="number" max="10" min="1" required="required" name="semestre" placeholder="Semestre"></td>
+		</tr>
+			<td><label for="periodo">Periodo:</label></td>
+			<td>
+				<select name="periodo" id="periodo">
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
+			</td>
+		<tr>
+			
 		</tr>
 
 		<tr>
