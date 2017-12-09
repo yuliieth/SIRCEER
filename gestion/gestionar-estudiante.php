@@ -8,24 +8,24 @@ validateSession();
 <?php 
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	var_dump($_POST);
+
+//*************PETICION POST********************
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset( $_POST['cargar'])) {
+	#var_dump($_POST);
 
 /*
-NECESIDADES: REGISTRAR LA NOTA INGRESADA EN LA TABLA EVALUACION_SEMESTRAL DONDE EL DOCUMENTO SEA IGUAL
-A ......
-Parametros recibidos por $_POST : documento y nota 
-validar parametros
 */
-
 $documento = $_POST['documento'];
-$nota = (double) $_POST['nota'];
+$matricula = $_POST['matricula'];
+$semestre = $_POST['semestre'];
+$promedio =  $_POST['promedio'];
 $estado = 1;
 
-$sql ="UPDATE evaluacion_semestral SET nota=:nota WHERE estudiante_documento = :documento";
+$sql ="UPDATE detalle_semestre SET promedio=:promedio WHERE matricula_id =:matricula AND semestre_id=:semestre";
 $ps = $cn->prepare($sql);
-$ps->bindParam(':nota',$nota);
-$ps->bindParam(':documento',$documento);
+$ps->bindParam(':promedio',$promedio);
+$ps->bindParam(':matricula',$matricula);
+$ps->bindParam(':semestre',$semestre);
 $ps->execute();
 
 
@@ -38,7 +38,37 @@ if ($ps!=false) {
 
 	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
 }
-}else{
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['renovar']) {
+		#echo "Entro a renovar";
+	#echo $_POST['matricula'];
+
+	$fechaModificacion = date("yy,mm,dd");
+	$anio = date("Y");
+	$sql = "INSERT INTO semestre(id, semestre, periodo) VALUES (null,:semestre,:periodo)";
+	$ps = $cn->prepare($sql);
+	$ps->bindParam(':semestre',$_POST['semestre']);
+	$ps->bindParam(':periodo',$_POST['periodo']);
+	$ps->execute();
+
+	$sqlGetiD = "select id FROM semestre ORDER BY id DESC LIMIT 1";
+	$ps = $cn->prepare($sqlGetiD);
+	$ps->execute();
+	$semestre_id = $ps->fetch();
+	
+	#Ahora si insertamos en detalle_semestre
+	$sql = "INSERT INTO detalle_semestre(id, matricula_id, semestre_id, anio, ultima_modificacion) VALUES (null,:matricula,:semestre,:anio,:fechaModificacion)";
+	$ps = $cn->prepare($sql);
+	$ps->bindParam(':matricula',$_POST['matricula']);
+	$ps->bindParam(':semestre',$semestre_id['id']);
+	$ps->bindParam(':anio',$anio);
+	$ps->bindParam(':fechaModificacion',$fechaModificacion);
+	$ps->execute();
+
+	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
+}
+//END PETICION POST
+else
+{
 #Necesidades:
 /*
 1. El estudiante a mostrar (Ya esta seleccionado).
@@ -47,18 +77,10 @@ if ($ps!=false) {
 4. Finalmente con estos datos hacer un insert para "evaluacion_semestral"
 */
 $documento = cleanData($_GET['id']);
-
-$estudiante = getSubjectById("estudiante",$documento,"documento",$cn);
-$programa = getProgramaOfEstudiante($documento,$cn);
-
-$estudiante = getSubjectById("estudiante","documento",$documento,$cn);
-$programas = getAllSubject("programa",$cn);
-
-#var_dump($programas);
-
+#echo "$documento";
+$matricula = getMatriculaEstudiante($documento,$cn);
+$datosEstudiante = getDataAllEstudent($matricula,$cn);
 }
-
-
 
 ?>
 

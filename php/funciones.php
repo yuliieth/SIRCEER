@@ -1,5 +1,29 @@
 <?php 
 
+
+function getMatriculaEstudiante($documento,$cn)
+{
+	$sql = "SELECT matricula.id FROM matricula WHERE matricula.estudiante_documento=$documento LIMIT 1 ";
+	#var_dump($sql);
+	$ps=$cn->prepare($sql);
+	$ps->execute();
+	$result=$ps->fetch()['id'];
+	#var_dump($result);
+	return $result;	
+}
+
+function getDataAllEstudent($matricula,$cn)
+{
+	$sql = "SELECT estudiante.documento,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,detalle_semestre.promedio,semestre.semestre,semestre.periodo,programa.snies,programa.nombre AS nombrePrograma,institucion.nombre AS nombreInstitucion,matricula.id AS matriculaId, semestre.id AS semestreId FROM matricula,estudiante, detalle_semestre, semestre,programa,institucion WHERE matricula.id
+=detalle_semestre.matricula_id AND detalle_semestre.semestre_id=semestre.id AND programa.snies=matricula.programa_snies AND programa.institucion_id=institucion.id AND estudiante.documento=matricula.estudiante_documento AND matricula.id=$matricula ORDER by detalle_semestre.semestre_id DESC LIMIT 1 ";
+	#var_dump($sql);
+	$ps=$cn->prepare($sql);
+	$ps->execute();
+	$result=$ps->fetch();
+	#var_dump($result);
+	return $result;	
+}
+
 function getIdmatricula($documento,$cn)
 {
 	$sql = "SELECT  id FROM matricula WHERE estudiante_documento='$documento' LIMIT 1";
