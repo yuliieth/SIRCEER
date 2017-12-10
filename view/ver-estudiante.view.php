@@ -123,7 +123,7 @@ $html = '
               <td><strong>Grado en curso</strong></td>
               <td>'.$estudiante['grado'].'</td>
               <td><strong>Nota del semestre:</strong></td>
-              <td>'.$estudiante['nota'].'</td>
+              <td>'.$estudiante['promedio'].'</td>
             </tr>
             </table>
             </div>

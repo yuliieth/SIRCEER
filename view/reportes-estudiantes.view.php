@@ -9,25 +9,25 @@
     <div class="wraper-contenido">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 
-
-        <label for="Edad">Edad:</label>
-        <input type="number" name="edad" min="0" max="30" >
-
-        <label for="zona">Zona:</label>
-        <select name="zona" id="zona">
+<table>
+  <tr>
+    <td> <label for="Edad">Edad:</label></td>
+    <td><input type="number" name="edad" min="0" max="30" ></td>
+    <td><label for="zona">Zona:</label></td>
+    <td><select name="zona" id="zona">
           <option value="0">No aplica</option>
           <option value="Urbana">Urbana</option>
           <option value="Rural">Rural</option>
-        </select>
-
-        <label for="afro">Afro:</label>
+        </select></td>
+  
+    <td><label for="afro">Afro:</label></td>
+    <td>
         <select name="afro" id="afro">
           <option value="0">No aplica</option>
           <option value="si">Si</option>
-        </select>
-
-        <label for="estrato">Estrato:</label>
-        <select name="estrato" id="estrato">
+        </select></td>
+    <td><label for="estrato">Estrato:</label></td>
+    <td><select name="estrato" id="estrato">
           <option value="0">No aplica</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -35,33 +35,38 @@
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-        <br>
-        
+        </td>
+  </tr>
 
-        <label for="desplazado">Desplazado:</label>
-        <select name="desplazado" id="desplazado">
+
+  <tr>
+    <td>  <label for="desplazado">Desplazado:</label></td>
+    <td><select name="desplazado" id="desplazado">
           <option value="0">No aplica</option>
           <option value="si">Si</option>
         </select>
-
-
-        <label for="ojos">Ojos:</label>
-        <select name="ojos" id="estrato">
+</td>
+  
+    <td><label for="ojos">Ojos:</label></td>
+    <td><select name="ojos" id="estrato">
           <option value="0">No aplica</option>
           <option value="Negros">Negros</option>
           <option value="Cafes">Cafes</option>
           <option value="Verdes">Verdes</option>
           <option value="Azules">Azules</option>
         </select>
+</td>
 
 
-        <label for="victima_conflicto">Victima del conflicto:</label>
-        <select name="victima_conflicto" id="estrato">
+    <td><label for="victima_conflicto">Victima del conflicto:</label></td>
+    <td><select name="victima_conflicto" id="estrato">
           <option value="0">No aplica</option>
           <option value="Si">Si</option>
-        </select>
-
+        </select></td>
+  </tr>
         <input type="submit" name="generar" value="Generar">
+</table>
+
       </form>
     </div>
   </div>
