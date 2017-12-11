@@ -103,7 +103,7 @@ function getAllStudentRelations($documento,$con)
 {
 	#Trae todos los campos de todas las tablas que tienen relacion con el estudiante con documento = ...
 	#Utilizada por ver-estudiante
-	$sql="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado,estudiante.fecha_naci,estudiante.fecha_registro,estudiante.discapacidades,estudiante.victima_conflicto,estudiante.direccion_residencia,estudiante.barrio_residencia,municipio.nombre AS nameMuniNaci,municipio.nombre AS nameMuniResi, tipo_documento.tipo AS tipo_docu,tipo_sangre.tipo AS tipo_sangre,estudiante.observaciones, programa.nombre AS namePrograma, semestre.periodo,semestre.semestre,detalle_semestre.promedio,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN detalle_semestre ON matricula.id=detalle_semestre.matricula_id INNER JOIN semestre ON semestre.id=detalle_semestre.semestre_id  INNER JOIN institucion ON institucion.id=programa.institucion_id INNER JOIN municipio ON municipio.id=estudiante.municipio_naci_id INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id INNER JOIN tipo_sangre ON estudiante.tipo_sangre_id=tipo_sangre.id WHERE documento=$documento  ORDER BY detalle_semestre.id DESC LIMIT 1";
+	$sql="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.fecha_naci,estudiante.fecha_registro,estudiante.discapacidades,estudiante.direccion_residencia,estudiante.barrio_residencia,municipio.nombre AS nameMuniNaci,municipio.nombre AS nameMuniResi, tipo_documento.tipo AS tipo_docu,tipo_sangre.tipo AS tipo_sangre,estudiante.observaciones, programa.nombre AS namePrograma, semestre.periodo,semestre.semestre,detalle_semestre.promedio,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN detalle_semestre ON matricula.id=detalle_semestre.matricula_id INNER JOIN semestre ON semestre.id=detalle_semestre.semestre_id  INNER JOIN institucion ON institucion.id=programa.institucion_id INNER JOIN municipio ON municipio.id=estudiante.municipio_naci_id INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id INNER JOIN tipo_sangre ON estudiante.tipo_sangre_id=tipo_sangre.id WHERE documento=$documento  ORDER BY detalle_semestre.id DESC LIMIT 1";
 
 	$ps = $con->prepare($sql);
 	$ps->execute();
@@ -501,9 +501,9 @@ function saveStudent
 	$telefono,$email,$fecha_naci,
 	$edad,$muni_naci,$dire_resi,
 	$barrio_resi,$muni_resi,$estrato,
-	$zona,$eps,$desplazado,
-	$afro,$ojos,$genero,
-	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
+	$zona,$eps,$tipo_poblacion,
+	$situacion,$ojos,$genero,
+	$discapacidades,$situacion_academica,
 	$grado,$estado,$observacion,
 	$programa,$semestre,$periodo,
 	$cn
@@ -514,7 +514,7 @@ function saveStudent
 	$anio = date("Y");
 	try {
 			#var_dump($cn);
-		$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, desplazado, afrodescendiente, ojos, genero, victima_conflicto, discapacidades, situacion_periodo_anterior, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
+		$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, situacion, tipo_poblacion, ojos, genero, discapacidades, situacion_academica, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:situacion,:tipo_poblacion,:ojos,:genero,:discapacidades,:situacion_academica,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
 
 
 /*
@@ -544,13 +544,12 @@ $result=$statement->execute(
 		':estrato' => $estrato , 
 		':zona' => $zona , 
 		':EPS' => $eps , 
-		':desplazado' => $desplazado, 
-		':afrodescendiente' => $afro , 
+		':situacion' => $situacion, 
+		':tipo_poblacion' => $tipo_poblacion , 
 		':ojos' => $ojos, 
 		':genero' => $genero, 
-		':victima_conflicto' => $victima_conflicto , 
 		':discapacidades' => $discapacidades, 
-		':situacion_periodo_anterior' => $situacion_periodo_anterior, 
+		':situacion_academica' => $situacion_academica, 
 		':grado' => $grado , 
 		':estado' => $estado, 
 		':fecha_registro' => $fecha_registro, 

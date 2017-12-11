@@ -75,25 +75,46 @@
 		</tr>
 		
 		<tr>
-			<th><label >Desplazado*:</label></th>
+			<th><label >Situacion*:</label></th>
 		</th>
 		<tr>
-			<td><label  for="des_si">Si</label></td>
+			<td><label  for="situacion">Si</label></td>
+		<td><select  name="situacion" id="situacion">
+					<option value="Desplazado" <?php if ($result['situacion'] == 'Desplazado'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Desplazado</option>
+					<option value="Victima conflicto" <?php if ($result['situacion'] == 'Victima conflicto'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Victima del conflicto</option>
+					<option value="Vulnerable" <?php if ($result['situacion'] == 'Vulnerable'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Poblacion vulnerable</option>
+		</select></td>
+		<td><label for="situacion_academica">Situacion academica</label></td>
 		<td>
-			<input type="radio" id="des_si" value="Si" name="desplazado"<?php if ($result['desplazado'] == 'Si'){echo " checked";}?>>
+			<select name="situacion_academica" id="">
+				<option value="Matriculado">Matriculado</option>
+				<option value="Cancelado">Cancelado</option>
+			</select>
 		</td>
-		<td><label  for="des_no">No</label></td>
-		<td><input type="radio" id="des_no" value="No" name="desplazado"<?php if ($result['desplazado'] == 'No'){echo " checked";}?> ></td>
 		</tr>
 
 		<tr>
-		<th><label>Afrodescendiente*:</label></th>
+		<th><label>Tipo de poblacion*:</label></th>
 		</tr>
 		<tr>
-		<td><label for="afro-si">Si</label></td>
-		<td><input type="radio" id="afro-si" value="Si" name="afro"<?php if ($result['afrodescendiente'] == 'Si'){echo " checked";}?>></td>
-		<td><label for="afro-no">No</label></td>
-		<td><input type="radio" id="afro-no" value="No" name="afro"<?php if ($result['afrodescendiente'] == 'No'){echo " checked";}?> ></td>
+		<td><label for="tipo_poblacion">Si</label></td>
+		<td><select  name="tipo_poblacion" id="tipo_poblacion">
+					<option value="Mestizo" <?php if ($result['tipo_poblacion'] == 'Mestizo'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Mestizo</option>
+					<option value="Indigena" <?php if ($result['tipo_poblacion'] == 'Indigena'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Indigena</option>
+					<option value="Afro" <?php if ($result['tipo_poblacion'] == 'Afro'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Afro</option>
+		</select></td>
 		</tr>
 		
 		

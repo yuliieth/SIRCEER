@@ -95,11 +95,13 @@
 		<tr>
 			<td><label for="eps">EPS:</label></td>
 			<td><input type="text" name="eps" placeholder="EPS" required=""></td>
-			<td><label for="desplazado">Desplazado:</label></td>
+			<td><label for="situacion">Situacion:</label></td>
 			<td>
-				<select name="desplazado" id="">
-					<option value="No">No</option>
-					<option value="Si">Si</option>
+				<select name="situacion" id="">
+					<option value="desplazado">Desplazado</option>
+					<option value="victima conflicto">Victima del conflicto</option>
+					<option value="vulnerable">Poblacion vulnerable</option>
+
 				</select>
 			</td>
 		</tr>
@@ -107,10 +109,11 @@
 		
 
 		<tr>
-			<td><label for="afro">Afrodescendiente:</label></td>
-			<td><select name="afro" id="">
-					<option value="No">No</option>
-					<option value="Si">Si</option>
+			<td><label for="tipo_poblacion">Tipo de poblacion:</label></td>
+			<td><select name="tipo_poblacion" id="">
+					<option value="Mestizo">Mestizo</option>
+					<option value="Indigena">Indigena</option>
+					<option value="Afro">Afro</option>
 				</select></td>
 			<td><label for="ojos">Ojos:</label></td>
 			<td>
@@ -129,12 +132,9 @@
 					<option value="F">Mujer</option>
 					<option value="M">Hombre</option>
 				</select></td>
-			<td><label for="victima_conflicto">Victima del conflicto:</label></td>
+			<td></td>
 			<td>
-				<select name="victima_conflicto" id="">
-					<option value="No">No</option>
-					<option value="Si">Si</option>
-				</select>
+				
 			</td>
 		</tr>
 
@@ -143,9 +143,9 @@
 			<td>
 				<input type="text" rows="2" cols="20" size="30" name="discapacidades" placeholder="Discapacidades" required="" >	
 			</td>
-			<td><label for="situacion_periodo_anterior">Situacion periodo anterior:</label></td>
+			<td><label for="situacion_academica">Situacion academica:</label></td>
 			<td>
-				<select name="situacion_periodo_anterior" id="">
+				<select name="situacion_academica" id="">
 					<option value="Matriculado">Matriculado</option>
 					<option value="Promovido">Promovido</option>
 					<option value="Cancelado">Cancelado</option>

@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","email","fecha_naci","edad","muni_naci","dire_resi","barrio_resi","muni_resi","estrato","zona","eps","desplazado","afro","ojos","genero","victima_conflicto","discapacidades","situacion_periodo_anterior","grado"
+		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","email","fecha_naci","edad","muni_naci","dire_resi","barrio_resi","muni_resi","estrato","zona","eps","tipo_poblacion","situacion","ojos","genero","discapacidades","situacion_academica","grado"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -43,14 +43,13 @@ if (isset($_POST['submit'])) {
 		$estrato = $_POST['estrato'];
 		$zona = $_POST['zona'];
 		$eps = $_POST['eps'];
-		$desplazado = $_POST['desplazado'];
-		$afro = $_POST['afro'];
+		$tipo_poblacion = $_POST['tipo_poblacion'];
+		$situacion = $_POST['situacion'];
 		$ojos = $_POST['ojos'];
 		$genero = $_POST['genero'];
 		#$victima_conflicto = ($_POST['victima_conflicto'] == 'si') ? (boolean) 1 : (boolean) 0 ; ;
-		$victima_conflicto = $_POST['victima_conflicto'];
 		$discapacidades = $_POST['discapacidades'];
-		$situacion_periodo_anterior = $_POST['situacion_periodo_anterior'];
+		$situacion_academica = $_POST['situacion_academica'];
 		$grado = $_POST['grado'];
 		$estado = "0";
 		$observacion = $_POST['observacion'];
@@ -72,9 +71,9 @@ saveStudent(
 	$telefono,$email,$fecha_naci,
 	$edad,$muni_naci,$dire_resi,
 	$barrio_resi,$muni_resi,$estrato,
-	$zona,$eps,$desplazado,
-	$afro,$ojos,$genero,
-	$victima_conflicto,$discapacidades,$situacion_periodo_anterior,
+	$zona,$eps,$tipo_poblacion,
+	$situacion,$ojos,$genero,
+	$discapacidades,$situacion_academica,
 	$grado,$estado,$observacion,
 	$programa,$semestre,$periodo,
 	$cn

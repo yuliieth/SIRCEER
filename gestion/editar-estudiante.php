@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$edad = cleanData($_POST['edad']);
 	$muni_naci = cleanData($_POST['muni_naci']);
 	$zona = cleanData($_POST['zona']);
-	$desplazado = cleanData($_POST['desplazado']);
-	$afro = cleanData($_POST['afro']);
+	$situacion = cleanData($_POST['situacion']);
+	$tipo_poblacion = cleanData($_POST['tipo_poblacion']);
 	$ojos = cleanData($_POST['ojos']);
 	#$genero = cleanData($_POST['genero']);
 	#$tipo_doc = cleanData($_POST['tipo_doc']);
@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	municipio_resi_id=:muni_resi,
 	estrato=:estrato,
 	zona=:zona,
-	 desplazado=:desplazado,
-	 afrodescendiente=:afro,
+	 situacion=:situacion,
+	 tipo_poblacion=:tipo_poblacion,
 	 ojos=:ojos WHERE 
 	 documento=:documento";
 
@@ -69,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$ps->bindParam(":muni_resi",$muni_resi);
 	$ps->bindParam(":estrato",$estrato);
 	$ps->bindParam(":zona",$zona);
-	$ps->bindParam(":desplazado",$desplazado);
-	$ps->bindParam(":afro",$afro);
+	$ps->bindParam(":situacion",$situacion);
+	$ps->bindParam(":tipo_poblacion",$tipo_poblacion);
 	$ps->bindParam(":ojos",$ojos);
 	$ps->bindParam(":documento",$documento);
 	$ps->execute();

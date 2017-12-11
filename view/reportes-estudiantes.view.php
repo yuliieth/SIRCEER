@@ -20,11 +20,13 @@
           <option value="Rural">Rural</option>
         </select></td>
   
-    <td><label for="afro">Afro:</label></td>
+    <td><label for="tipo_poblacion">Tipo población:</label></td>
     <td>
-        <select name="afro" id="afro">
+        <select name="tipo_poblacion" id="tipo_poblacion">
           <option value="0">No aplica</option>
-          <option value="si">Si</option>
+          <option value="Indigena">Indigena</option>
+          <option value="Afro">Afro</option>
+          <option value="Mestizo">Mestizo</option>
         </select></td>
     <td><label for="estrato">Estrato:</label></td>
     <td><select name="estrato" id="estrato">
@@ -40,10 +42,13 @@
 
 
   <tr>
-    <td>  <label for="desplazado">Desplazado:</label></td>
-    <td><select name="desplazado" id="desplazado">
+    <td>  <label for="situacion">Situacion:</label></td>
+    <td><select name="situacion" id="situacion">
           <option value="0">No aplica</option>
-          <option value="si">Si</option>
+          <option value="Victima conflicto">Victima conflicto</option>
+          <option value="Desplazado">Desplazado</option>
+          <option value="Vulnerable">Vulnerable</option>
+
         </select>
 </td>
   
@@ -57,12 +62,6 @@
         </select>
 </td>
 
-
-    <td><label for="victima_conflicto">Victima del conflicto:</label></td>
-    <td><select name="victima_conflicto" id="estrato">
-          <option value="0">No aplica</option>
-          <option value="Si">Si</option>
-        </select></td>
   </tr>
         <input type="submit" name="generar" value="Generar">
 </table>

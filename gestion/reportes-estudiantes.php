@@ -13,7 +13,7 @@ comprobarConexion($cn);
 #var_dump($_POST);
 
 if (isset($_POST['generar'])) {
-	$param = array('edad','zona','afro','estrato','desplazado','ojos','victima_conflicto');
+	$param = array('edad','zona','tipo_poblacion','estrato','situacion','ojos');
 	$valores  = array();
 	$criterios  = array();
 	#echo "Tamaño criterios:";
@@ -45,6 +45,7 @@ if (isset($_POST['generar'])) {
 	$result = $ps->fetchAll();
 	#Teniendo ya los estudiantes que han cumplido con los criterios, podemos generar el reporte
 	require("../view/ver-estudiantes.view.php");
+	
 
 }
 

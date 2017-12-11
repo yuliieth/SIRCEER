@@ -1,12 +1,9 @@
 <?php
 require '../admin/config.php';
 /////// CONEXIÓN A LA BASE DE DATOS /////////
-$host = 'localhost';
-$basededatos = 'srceer';
-$usuario = 'root';
-$contrasena = '';
 
-$conexion = new mysqli($host, $usuario,$contrasena, $basededatos);
+
+$conexion = new mysqli($bd_config['host'], $bd_config['userName'],$bd_config['pass'], $bd_config['nameBD']);
 if ($conexion -> connect_errno)
 {
 	die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> mysqli_connect_error());

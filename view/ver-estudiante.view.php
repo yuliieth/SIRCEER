@@ -48,13 +48,13 @@ $html = '
             <tr>
               <td><strong>Zona</strong></td>
               <td>'.$estudiante['zona'].'</td>
-              <td><strong>Desplazado</strong></td>
-              <td>'.$estudiante['desplazado'].'</td>
+              <td><strong>Situación</strong></td>
+              <td>'.$estudiante['situacion'].'</td>
             </tr>
 
             <tr>
-              <td><strong>Afro:</strong></td>
-              <td>'.$estudiante['afrodescendiente'].'</td>
+              <td><strong>Tipo de población:</strong></td>
+              <td>'.$estudiante['tipo_poblacion'].'</td>
               <td><strong>Color de ojos:</strong></td>
               <td>'.$estudiante['ojos'].'</td>
             </tr>
@@ -62,8 +62,6 @@ $html = '
             <tr>
               <td><strong>Genero:</strong></td>
               <td>'.$estudiante['genero'].'</td>
-              <td><strong>Victima del conflicto:</strong></td>
-              <td>'.$estudiante['victima_conflicto'].'</td>
             </tr>
   
           <tr>
@@ -103,12 +101,12 @@ $html = '
           $html .= '
             <div>
             <!--INFORMACION ESCOLAR-->
-            <p style="font-size: 1.5em; font-family: Arial;">Informacion escolar del estudiante</p>
+            <p style="font-size: 1.5em; font-family: Arial;">Información escolar del estudiante</p>
             <table>
             <tr>
               <td><strong>Esta estudiando:</strong></td>
               <td>'.$estudiante['namePrograma'].'</td>
-              <td><strong>En la insitucion:</strong></td>
+              <td><strong>En la institución:</strong></td>
               <td>'.$estudiante['nameInstitute'].'</td>
             </tr>
 

@@ -12,13 +12,13 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies ORDER BY documento ASC ";
+$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.situacion_academica, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id ORDER BY documento ASC ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['estudiantes']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['estudiantes']);
-	$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.desplazado,estudiante.afrodescendiente,estudiante.grado, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies WHERE
+	$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.situacion_academica, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id WHERE
 		estudiante.documento LIKE '%".$q."%' OR
 		estudiante.primer_nombre LIKE '%".$q."%' OR
 		estudiante.segundo_nombre LIKE '%".$q."%' OR
@@ -27,9 +27,16 @@ if(isset($_POST['estudiantes']))
 		estudiante.email LIKE '%".$q."%' OR
 		estudiante.estrato LIKE '%".$q."%' OR
 		estudiante.genero LIKE '%".$q."%' OR
-		estudiante.desplazado LIKE '%".$q."%' OR
-		estudiante.afrodescendiente LIKE '%".$q."%' OR
+		estudiante.situacion LIKE '%".$q."%' OR
+		estudiante.tipo_poblacion LIKE '%".$q."%' OR
 		estudiante.estado LIKE '%".$q."%' OR
+		estudiante.zona LIKE '%".$q."%' OR
+		estudiante.grado LIKE '%".$q."%' OR
+		estudiante.EPS LIKE '%".$q."%' OR
+		tipo_documento.tipo LIKE '%".$q."%' OR
+		estudiante.situacion_academica LIKE '%".$q."%' OR
+		estudiante.fecha_registro LIKE '%".$q."%' OR
+		matricula.id LIKE '%".$q."%' OR
 		estudiante.edad LIKE '%".$q."%' OR
         programa.nombre LIKE '%".$q."%'";
 }
@@ -47,17 +54,18 @@ if ($buscarEstudiantes->num_rows > 0)
 			<td>DOCUMENTO</td>
 			<td>NOMBRE</td>
 			<td>EDAD</td>
-			<td>OJOS</td>
 			<td>ESTRATO</td>
 			<td>GENERO</td>
 			<td>ZONA</td>
-			<!--<td>AFRO</td>-->
+			<td>TIPO POBLACION</td>
 			<!--<td>ESTADO</td>-->
 			<!--<td>INSTITUTO</td>-->
-			<td>PROGRAMA</td>
 			<!--<td>SEMESTRE</td>-->
 			<td>GRADO</td>
-			<!--<td>DESPLAZADO</td>-->
+			<td>SITUACION</td>
+			<td>PROGRAMA</td>
+			<td></td>
+			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -73,15 +81,16 @@ if ($buscarEstudiantes->num_rows > 0)
 			<td style="padding: 3px;"> '. $filaEstudiantes['doc_estudiante'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['primer_nombre'].' '.$filaEstudiantes['primer_apellido'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['edad'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['ojos'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['estrato'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['genero'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['zona'].'</td>
-			<!--<td style="padding: 3px;"> '. $filaEstudiantes['afrodescendiente'].'</td>-->
+			<td style="padding: 3px;"> '. $filaEstudiantes['tipo_poblacion'].'</td>
 			<!--<td style="padding: 3px;"> '. $filaEstudiantes['estado'].'</td>-->
-			<td style="padding: 3px;"> '. $filaEstudiantes['namePrograma'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['grado'].'</td>
-			<!--<td style="padding: 3px;"> '. $filaEstudiantes['desplazado'].'</td>-->
+			<td style="padding: 3px;"> '. $filaEstudiantes['situacion'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['namePrograma'].'</td>
+			<td></td>
+			<td></td>
 
 			<td> <a  href="' . URL .'gestion/gestionar-estudiante.php?id='. urlencode($filaEstudiantes['doc_estudiante']).'&select=e">Gestionar</a></td>
 			<td> <a  href="' . URL .'gestion/editar-estudiante.php?id=' . urlencode($filaEstudiantes['doc_estudiante']).'&select=e">Editar</a></td>
