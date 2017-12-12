@@ -4,7 +4,7 @@ $html = '
       <div style=" width:100%; background: white; margin-top: 12px; text-align:center; font-size: .1em;">
           <p style="font-size: 1.5em; font-family: Arial;">GOBERNACION DE RISARALDA</p>
       <div style="width:90;float:right;">
-          <img style="80%;" src="../imagenes/gobernacion1.jpg">
+          <img style="80%;" src="../imagenes/gobernacion.png">
       </div>
       </div>
 

@@ -122,10 +122,10 @@ $html = '
               <td>'.$estudiante['grado'].'</td>
               <td><strong>Promedio:</strong></td>';
               if (  $estudiante['promedio'] )  {
-                $html .= '<td>'.$estudiante['promedio'].'</td>';  
+                $html .= '<td style="Color: blue;">'.$estudiante['promedio'].'</td>';  
               }else
               {
-                $html .= '<td>Sin asignar</td>';
+                $html .= '<td style="Color: blue;">Promedio sin asignar</td>';
               }
               $html .='              
             </tr>

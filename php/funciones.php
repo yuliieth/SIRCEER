@@ -1,6 +1,18 @@
 <?php 
 
 
+function getProgramaAndInstitute($con)
+{
+	$sql = "SELECT programa.snies,programa.nombre,programa.num_semestres,programa.num_creditos, institucion.nombre AS nombre_institucion FROM programa, institucion WHERE programa.institucion_id=institucion.id";
+	#var_dump($sql);
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$resul = $ps->fetchAll();
+	#var_dump($resul);
+	return $resul;
+
+}
+
 function getMatriculaEstudiante($documento,$cn)
 {
 	$sql = "SELECT matricula.id FROM matricula WHERE matricula.estudiante_documento=$documento LIMIT 1 ";
