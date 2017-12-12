@@ -2,7 +2,7 @@
 $html = '
 <div style="margin-top:10px; width:100%;">
       <div style=" width:100%; background: white; margin-top: 12px; text-align:center; font-size: .1em;">
-          <p style="font-size: 1.5em; font-family: Arial;">GOBERNACION DE RISARALDA</p>
+          <p style="font-size: 1.5em; font-family: Arial;">GOBERNACIÓN DE RISARALDA</p>
       <div style="width:90;float:right;">
           <img style="80%;" src="../imagenes/gobernacion.png">
       </div>
@@ -13,7 +13,7 @@ $html = '
 
       <div style="background-color: white; width: 100%;">
             <p style="font-size: 1.5em; font-family: Arial;">Alianzas registradas a la fecha</p>
-            <table>
+            <table width=100%>
             <tr>
             <td><strong>ID</strong></td>
             <td><strong>Nombre</strong></td>

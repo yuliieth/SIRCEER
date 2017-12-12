@@ -10,11 +10,11 @@ require_once '../admin/config.php'; ?>
     <div class="wraper-charts">
         
 
-        <div style="width:38%; height:220px; float: left;"  id="estudiantes_genero"></div>
-        <div style="width:38%; height:220px; float: left;"  id="estudiantes_zona"></div>
-        <div style="width:38%; height:220px; float: left;"  id="estudiantes_tipo_poblacion"></div>
-        <div style="width:38%; height:220px; float: left;"  id="estudiantes_victimas_conflicto"></div>
-        <div style="width:38%; height:220px; float: left;"  id="estudiantes_menores_mayores_edad"></div>
+        <div style="width:43%; height:226px; float: left;"  id="estudiantes_genero"></div>
+        <div style="width:43%; height:226px; float: left;"  id="estudiantes_zona"></div>
+        <div style="width:43%; height:226px; float: left;"  id="estudiantes_tipo_poblacion"></div>
+        <div style="width:43%; height:226px; float: left;"  id="estudiantes_victimas_conflicto"></div>
+        <!--<div style="width:43%; height:222px; float: left;"  id="estudiantes_menores_mayores_edad"></div>-->
     </div>
 
 
@@ -29,7 +29,7 @@ Highcharts.chart('estudiantes_genero', {
         type: 'pie'
     },
     title: {
-        text:  "Estudiantes por genero"
+        text:  "Estudiantes por género"
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -118,7 +118,7 @@ Highcharts.chart('estudiantes_tipo_poblacion', {
         type: 'pie'
     },
     title: {
-        text:  "Estudiantes de zonas ubanas y rurales"
+        text:  "Estudiantes por tipo de población"
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -165,7 +165,7 @@ Highcharts.chart('estudiantes_victimas_conflicto', {
         type: 'pie'
     },
     title: {
-        text:  "Estudiantes por situacion"
+        text:  "Estudiantes por situación"
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

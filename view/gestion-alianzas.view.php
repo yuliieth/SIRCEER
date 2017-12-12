@@ -1,37 +1,5 @@
 <?php require 'cabecera-admin.php';
 require_once '../admin/config.php'; ?>
-<?php 
-		/*
-		1 Number of Men
-		2 Number of women
-		3 Number peoples
-		4 Find percent: Number man or womens divided total
-		*/
-/*
-		$conexion = getConexion($bd_config);
-		if ($conexion == null) {
-			echo "Fallo la conexion";
-		}
-
-		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM estudiantes";
-		$num = $conexion->prepare($sql);
-		$num->execute();
-		$num = $num->fetchAll();
-		//var_dump($num);
-
-		$numStudent = $conexion->query("SELECT FOUND_ROWS() AS total");
-		$numStudent = $numStudent->fetch()['total'];
-		//echo " el es : {$numStudent}";
-
-		$sql ="SELECT  COUNT(genero)  FROM estudiantes WHERE genero='femenino'";
-		$numWomen = $conexion->query($sql);
-		$numWomen = $numWomen->fetchColumn();
-		//echo "{$numWomen}";
-
-		$numMen = $numStudent - $numWomen;
-		//echo "{$numMen}";
-*/
-      ?>
 
       <script src="https://code.highcharts.com/highcharts.js"></script>
       <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -40,7 +8,7 @@ require_once '../admin/config.php'; ?>
       <?php require("header-menu.view.php") ?>
       
 
-      <div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>							
+      <!--<div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>-->							
       <?php require("footer-menu.view.php") ?>
 
 
