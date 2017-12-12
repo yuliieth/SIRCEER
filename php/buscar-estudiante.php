@@ -45,17 +45,17 @@ $buscarEstudiantes=$conexion->query($query);
 if ($buscarEstudiantes->num_rows > 0)
 {
 	$tabla.= 
-	'<table style="margin:auto; background-color: #FFF;">
+	'<table style="margin:auto; width:90%; background-color: #FFF;">
 	<tr>
 	  	<th scope="colgroup" colspan="4">Listado de estudiantes</th>
 	  </tr>
 	<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
 	font-weight: bold; text-align: center;">
-			<td  width="10%">DOCUMENTO</td>
+			<td>DOCUMENTO</td>
 			<td>NOMBRE</td>
-			<td width="10%">EDAD</td>
-			<td width="10%">ESTRATO</td>
-			<td width="10%">GENERO</td>
+			<td>EDAD</td>
+			<td>ESTRATO</td>
+			<td>GENERO</td>
 			<td>ZONA</td>
 			<td>TIPO POBLACION</td>
 			<!--<td>ESTADO</td>-->

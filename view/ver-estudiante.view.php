@@ -112,7 +112,7 @@ $html = '
 
             <tr>
               <td><strong>Semestre:</strong></td>
-              <td>'.$estudiante['periodo'].'</td>
+              <td>'.$estudiante['semestre'].'</td>
               <td><strong>Periodo:</strong></td>
               <td>'.$estudiante['periodo'].'</td>
             </tr>
