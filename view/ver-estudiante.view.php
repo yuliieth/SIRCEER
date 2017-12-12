@@ -2,9 +2,9 @@
 $html = '
 <div style="margin-top:10px; width:100%;">
       <div style=" width:100%; background: white; margin-top: 12px; text-align:center; font-size: .1em;">
-          <p style="font-size: 1.5em; font-family: Arial;">GOBERNACION DE RISARALDA</p>
-      <div style="width:90;float:right;">
-          <img style="80%;" src="../imagenes/gobernacion1.jpg">
+          <p style="font-size: 1.5em; font-family: Arial;">GOBERNACIÓN DE RISARALDA</p>
+      <div style="width:100;float:right;">
+          <img style="50%;" src="../imagenes/gobernacion.png">
       </div>
       </div>
 
@@ -120,8 +120,14 @@ $html = '
             <tr>
               <td><strong>Grado en curso</strong></td>
               <td>'.$estudiante['grado'].'</td>
-              <td><strong>Nota del semestre:</strong></td>
-              <td>'.$estudiante['promedio'].'</td>
+              <td><strong>Promedio:</strong></td>';
+              if (  $estudiante['promedio'] )  {
+                $html .= '<td>'.$estudiante['promedio'].'</td>';  
+              }else
+              {
+                $html .= '<td>Sin asignar</td>';
+              }
+              $html .='              
             </tr>
             </table>
             </div>
