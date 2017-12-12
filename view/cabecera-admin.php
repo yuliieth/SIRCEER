@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>SRCEER | Gobernaci&oacute;n</title>
+	<title>SIRCEER | Gobernaci&oacute;n</title>
 	<link rel="stylesheet" href="<?php echo URL; ?>css/estilos.css">
 	<link rel="icon" href="<?php echo URL; ?>imagenes/favicon.png">
 	<link rel="stylesheet" href="<?php echo URL; ?>font-awesome/css/font-awesome.css">
@@ -20,7 +20,7 @@
 <body>
 	<!--https://www.facebook.com/fyupanquia-->
 	<header>
-		<h1><a href="principal-gestion.php">SRCEER</a></h1>
+		<h1><a href="principal-gestion.php">SIRCEER</a></h1>
 		<div class="user">
 			<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="<?php echo URL; ?>php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
 		</div>

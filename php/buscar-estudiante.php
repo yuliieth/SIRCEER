@@ -51,17 +51,17 @@ if ($buscarEstudiantes->num_rows > 0)
 	  </tr>
 	<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
 	font-weight: bold; text-align: center;">
-			<td>DOCUMENTO</td>
+			<td  width="10%">DOCUMENTO</td>
 			<td>NOMBRE</td>
-			<td>EDAD</td>
-			<td>ESTRATO</td>
-			<td>GENERO</td>
+			<td width="10%">EDAD</td>
+			<td width="10%">ESTRATO</td>
+			<td width="10%">GENERO</td>
 			<td>ZONA</td>
 			<td>TIPO POBLACION</td>
 			<!--<td>ESTADO</td>-->
 			<!--<td>INSTITUTO</td>-->
 			<!--<td>SEMESTRE</td>-->
-			<td>GRADO</td>
+			<td width="10%">GRADO</td>
 			<td>SITUACION</td>
 			<td>PROGRAMA</td>
 			<td></td>
