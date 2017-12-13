@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SIRCEER | Gobernaci&oacute;n</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo URL; ?>css/estilos.css">
 	<link rel="icon" href="<?php echo URL; ?>imagenes/favicon.png">
 	<link rel="stylesheet" href="<?php echo URL; ?>font-awesome/css/font-awesome.css">
