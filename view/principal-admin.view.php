@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>srceer | Administracion</title>
+	<link rel="icon" href="<?php echo URL; ?>imagenes/favicon.png">
 	<link rel="stylesheet" href="<?php echo URL; ?>css/estilos-admin.css">
 	<link rel="stylesheet" href="<?php echo URL; ?>font-awesome/css/font-awesome.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

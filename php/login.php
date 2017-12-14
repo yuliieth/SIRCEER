@@ -1,6 +1,6 @@
 <?php session_start();
-	require_once'../php/Conexion.php';
-	require_once'../php/funciones.php';
+	require_once '../php/Conexion.php';
+	require_once '../php/funciones.php';
 	require_once '../admin/config.php';
 	
 
@@ -10,7 +10,7 @@
 		$usuario = strtolower( $_POST['usuario']);
 		$pass = $_POST['pass'];
 	$conexion = getConexion($bd_config);
-	var_dump($conexion);
+	#var_dump($conexion);
 	if (!$conexion) {
 		echo "Error en conexion";
 		#header("Location:login.php");
