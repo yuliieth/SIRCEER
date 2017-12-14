@@ -47,6 +47,6 @@ $mpdf = new mPDF('c','A4');
 #$css = file_get_contents('../css/estilos.css');
 #$mpdf->writeHTML($css);
 $mpdf->writeHTML($html,2);
-$mpdf->Output('ReporteEstudiante','I');
+$mpdf->Output('ReporteEstudiantes','I');
 ?>
 <?php #require("../view/reportes-estudiantes.view.php") ?>

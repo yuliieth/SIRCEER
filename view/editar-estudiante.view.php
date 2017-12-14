@@ -93,8 +93,23 @@
 		<td><label for="situacion_academica">Situacion academica</label></td>
 		<td>
 			<select name="situacion_academica" id="">
-				<option value="Matriculado">Matriculado</option>
-				<option value="Cancelado">Cancelado</option>
+
+				<option value="Matriculado" <?php if ($result['situacion_academica'] == 'Matriculado'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?> >Matriculado</option>
+
+				<option value="Cancelado" <?php if ($result['situacion_academica'] == 'Cancelado'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Cancelado</option>
+
+				<option value="Promovido" <?php if ($result['situacion_academica'] == 'Promovido'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Promovido</option>
+
+				<option value="Culmino" <?php if ($result['situacion_academica'] == 'Culmino'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Culmino</option>
+
 			</select>
 		</td>
 		</tr>

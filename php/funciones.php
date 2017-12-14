@@ -1,5 +1,31 @@
 <?php 
 
+function  getHistorialEstudiante($matricula,$cn)
+{
+	$sql = "SELECT * FROM detalle_semestre,semestre WHERE detalle_semestre.matricula_id=$matricula AND detalle_semestre.semestre_id=semestre.id";
+	#var_dump($sql);
+	$ps = $cn->prepare($sql);
+	$ps->execute();
+	$resul = $ps->fetchAll();
+	#var_dump($resul);
+	return $resul;
+
+}
+
+
+
+function getMatricula($documento,$cn)
+{
+	$sql = "SELECT id AS matricula FROM matricula WHERE matricula.estudiante_documento=$documento";
+	#var_dump($sql);
+	$ps = $cn->prepare($sql);
+	$ps->execute();
+	$resul = $ps->fetch()['matricula'];
+	#var_dump($resul);
+	return $resul;
+
+}
+
 
 function getProgramaAndInstitute($con)
 {
@@ -115,7 +141,7 @@ function getAllStudentRelations($documento,$con)
 {
 	#Trae todos los campos de todas las tablas que tienen relacion con el estudiante con documento = ...
 	#Utilizada por ver-estudiante
-	$sql="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.fecha_naci,estudiante.fecha_registro,estudiante.discapacidades,estudiante.direccion_residencia,estudiante.barrio_residencia,municipio.nombre AS nameMuniNaci,municipio.nombre AS nameMuniResi, tipo_documento.tipo AS tipo_docu,tipo_sangre.tipo AS tipo_sangre,estudiante.observaciones, programa.nombre AS namePrograma, semestre.periodo,semestre.semestre,detalle_semestre.promedio,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN detalle_semestre ON matricula.id=detalle_semestre.matricula_id INNER JOIN semestre ON semestre.id=detalle_semestre.semestre_id  INNER JOIN institucion ON institucion.id=programa.institucion_id INNER JOIN municipio ON municipio.id=estudiante.municipio_naci_id INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id INNER JOIN tipo_sangre ON estudiante.tipo_sangre_id=tipo_sangre.id WHERE documento=$documento  ORDER BY detalle_semestre.id DESC LIMIT 1";
+	$sql="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.fecha_naci,estudiante.fecha_registro,estudiante.discapacidades,estudiante.direccion_residencia,estudiante.barrio_residencia,municipio.nombre AS nameMuniNaci,municipio.nombre AS nameMuniResi, tipo_documento.tipo AS tipo_docu,tipo_sangre.tipo AS tipo_sangre,estudiante.situacion_academica,estudiante.observaciones, programa.nombre AS namePrograma, semestre.periodo,semestre.semestre,detalle_semestre.promedio,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN detalle_semestre ON matricula.id=detalle_semestre.matricula_id INNER JOIN semestre ON semestre.id=detalle_semestre.semestre_id  INNER JOIN institucion ON institucion.id=programa.institucion_id INNER JOIN municipio ON municipio.id=estudiante.municipio_naci_id INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id INNER JOIN tipo_sangre ON estudiante.tipo_sangre_id=tipo_sangre.id WHERE documento=$documento  ORDER BY detalle_semestre.id DESC LIMIT 1";
 
 	$ps = $con->prepare($sql);
 	$ps->execute();

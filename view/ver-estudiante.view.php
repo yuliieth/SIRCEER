@@ -1,5 +1,6 @@
 <?php 
 $html = '
+<link rel="icon" href="<?php echo URL; ?>imagenes/favicon.png">
 <div style="margin-top:10px; width:100%;">
       <div style=" width:100%; background: white; margin-top: 12px; text-align:center; font-size: .1em;">
           <p style="font-size: 1.5em; font-family: Arial;">GOBERNACIÓN DE RISARALDA</p>
@@ -13,7 +14,7 @@ $html = '
 
       <div style="background-color: white; width: 100%;">
       <!--INFORMACION PERSONAL-->
-            <p style="font-size: 1.5em; font-family: Arial;">Informacion personal del estudiante</p>
+            <p style="font-size: 1.5em; font-family: Arial;">Datos del estudiante</p>
             <table>
 
             <tr>
@@ -62,6 +63,9 @@ $html = '
             <tr>
               <td><strong>Genero:</strong></td>
               <td>'.$estudiante['genero'].'</td>
+              <td><strong>Situación academica:</strong></td>
+              <td>'.$estudiante['situacion_academica'].'</td>
+              
             </tr>
   
           <tr>
@@ -101,7 +105,7 @@ $html = '
           $html .= '
             <div>
             <!--INFORMACION ESCOLAR-->
-            <p style="font-size: 1.5em; font-family: Arial;">Información escolar del estudiante</p>
+            <p style="font-size: 1.5em; font-family: Arial;">Información academica del estudiante</p>
             <table>
             <tr>
               <td><strong>Esta estudiando:</strong></td>
@@ -130,8 +134,32 @@ $html = '
               $html .='              
             </tr>
             </table>
+              
+              <p style="font-size: 1.5em; font-family: Arial;">Historial semestral</p>
+            <table width="100%">
+              <tr>
+                <td><strong>Año</strong></td>
+                <td><strong>Semestre</strong></td>
+                <td><strong>Periodo</strong></td>
+                <td><strong>Promedio</strong></td>
+                <td><strong>Fecha modificación<strong></td>
+              </tr>';
+              foreach ($historial as $value) {
+                $html .= '
+              <tr>
+                <td>'. $value['anio'] .'</td>
+                <td>'. $value['semestre'] .'</td>
+                <td>'. $value['periodo'] .'</td>
+                <td>'. $value['promedio'] .'</td>
+                <td>'. $value['ultima_modificacion'] .'</td>
+            </tr>
+              ';            
+              }
+             $html .=' </table>
             </div>
           ';
+
+
 
           $html .= '
       <div id="notices">

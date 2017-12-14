@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$zona = cleanData($_POST['zona']);
 	$situacion = cleanData($_POST['situacion']);
 	$tipo_poblacion = cleanData($_POST['tipo_poblacion']);
+	$situacion_academica = cleanData($_POST['situacion_academica']);
 	$ojos = cleanData($_POST['ojos']);
 	#$genero = cleanData($_POST['genero']);
 	#$tipo_doc = cleanData($_POST['tipo_doc']);
@@ -52,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	zona=:zona,
 	 situacion=:situacion,
 	 tipo_poblacion=:tipo_poblacion,
+	 situacion_academica=:situacion_academica,
 	 ojos=:ojos WHERE 
 	 documento=:documento";
 
@@ -71,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$ps->bindParam(":zona",$zona);
 	$ps->bindParam(":situacion",$situacion);
 	$ps->bindParam(":tipo_poblacion",$tipo_poblacion);
+	$ps->bindParam(":situacion_academica",$situacion_academica);
 	$ps->bindParam(":ojos",$ojos);
 	$ps->bindParam(":documento",$documento);
 	$ps->execute();
