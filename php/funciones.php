@@ -652,9 +652,15 @@ $result=$statement->execute(
 			 $statement->bindParam(':semestre',$semestre);
 			 $statement->bindParam(':periodo',$periodo);
 			 $resultSemestre = $statement->execute();
-			#
 
-			//Obtener el documento (ya esta)
+
+			#Obtener el ID del semestre ingresado
+			 $sql = "SELECT id AS semestre_id FROM semestre ORDER BY id DESC LIMIT 1";
+			 $ps = $cn->prepare($sql); 
+			 $ps->execute();
+			 $semestre_id = $ps->fetch()['semestre_id'];
+
+			
 			//Obtener ID del semestre
 			 $matricula = getIdmatricula($documento,$cn);
 
@@ -668,6 +674,12 @@ $result=$statement->execute(
 			 $sql = "INSERT INTO detalle_semestre (id, matricula_id, semestre_id, anio,ultima_modificacion) VALUES 
 			 (null,:matricula,:semestre,:anio,:ultima_modificacion)";
 			 $statement = $cn->prepare($sql);
+
+
+			#var_dump($statement);
+			#Devuelve false en caso de ocurrir algun error
+			 
+
 			 $statement->bindParam(':matricula',$matricula);
 			 $statement->bindParam(':semestre',$semestre_id);
 			 $statement->bindParam(':anio',$anio);

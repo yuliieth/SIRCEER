@@ -13,6 +13,10 @@ $leyenda = "Estudiantes registrados a la fecha ";
 #var_dump($totalM);
 #var_dump($totalF);
 #var_dump($totalE);
+
+if ($totalE != 0) {
+	# code...
+
 #realizando operaciones
 
 if ($totalE == 0) {

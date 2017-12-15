@@ -80,6 +80,10 @@
 		<tr>
 			<td><label  for="situacion">Si</label></td>
 		<td><select  name="situacion" id="situacion">
+					<option value="Ninguna" <?php if ($result['situacion'] == 'Ninguna'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Ninguna</option>
+
 					<option value="Desplazado" <?php if ($result['situacion'] == 'Desplazado'): ?>
 						 <?php echo "selected" ?> 
 					<?php endif ?>>Desplazado</option>
@@ -93,7 +97,7 @@
 		<td><label for="situacion_academica">Situacion academica</label></td>
 		<td>
 			<select name="situacion_academica" id="">
-
+				
 				<option value="Matriculado" <?php if ($result['situacion_academica'] == 'Matriculado'): ?>
 						 <?php echo "selected" ?> 
 					<?php endif ?> >Matriculado</option>
@@ -102,9 +106,9 @@
 						 <?php echo "selected" ?> 
 					<?php endif ?>>Cancelado</option>
 
-				<option value="Promovido" <?php if ($result['situacion_academica'] == 'Promovido'): ?>
+				<!--<option value="Promovido" <?php if ($result['situacion_academica'] == 'Promovido'): ?>
 						 <?php echo "selected" ?> 
-					<?php endif ?>>Promovido</option>
+					<?php endif ?>>Promovido</option>-->
 
 				<option value="Culmino" <?php if ($result['situacion_academica'] == 'Culmino'): ?>
 						 <?php echo "selected" ?> 
@@ -120,6 +124,9 @@
 		<tr>
 		<td><label for="tipo_poblacion">Si</label></td>
 		<td><select  name="tipo_poblacion" id="tipo_poblacion">
+					<option value="Ninguna" <?php if ($result['tipo_poblacion'] == 'Ninguna'): ?>
+						 <?php echo "selected" ?> 
+					<?php endif ?>>Ninguna</option>
 					<option value="Mestizo" <?php if ($result['tipo_poblacion'] == 'Mestizo'): ?>
 						 <?php echo "selected" ?> 
 					<?php endif ?>>Mestizo</option>
