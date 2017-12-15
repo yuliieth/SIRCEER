@@ -25,9 +25,9 @@
 			<tr>
 				<td>Nivel academico:</td>
 				<td><select  name="nivel_academico" id="nivel_academico">
-				<option value="1"<?php if ($result['nivel_academico_id'] == '1'){echo " selected";}?>>Tecnico</option>
-				<option value="2"<?php if ($result['nivel_academico_id'] == '2'){echo " selected";}?>>Tecnologia</option>
-				<option value="3"<?php if ($result['nivel_academico_id'] == '3'){echo " selected";}?>>Ingenieria</option>
+				<option value="1"<?php if ($result['nivel_academico_id'] == 1){echo " selected";}?>>Tecnico</option>
+				<option value="2"<?php if ($result['nivel_academico_id'] == 2){echo " selected";}?>>Tecnologia</option>
+				<option value="3"<?php if ($result['nivel_academico_id'] == 3){echo " selected";}?>>Ingenieria</option>
 		</select>		
 		</td>
 				<td></td>

@@ -10,6 +10,9 @@ $totalI=countEntityWithWhere("programa","nivel_academico_id",'3',$cn);
 $totalTo=countEntityWithWhere("programa","nivel_academico_id",'2',$cn);
 $totalTi=countEntityWithWhere("programa","nivel_academico_id",'1',$cn);
 #$leyenda = "";
+if ($totalP != 0) {
+	# code...
+
 #var_dump($totalM);
 #var_dump($totalF);
 #var_dump($totalE);
@@ -17,6 +20,6 @@ $totalTi=countEntityWithWhere("programa","nivel_academico_id",'1',$cn);
 $porceI=($totalI / $totalP)*100;
 $porceTo=($totalTo / $totalP)*100;
 $porceTi= ($totalTi / $totalP)*100;
-
+}
 ?>
 <?php require'../view/gestion-programas.view.php' ?>

@@ -98,9 +98,10 @@
 			<td><label for="situacion">Situacion:</label></td>
 			<td>
 				<select name="situacion" id="">
-					<option value="desplazado">Desplazado</option>
-					<option value="victima conflicto">Victima del conflicto</option>
-					<option value="vulnerable">Poblacion vulnerable</option>
+					<option value="Ninguna">Ninguna</option>
+					<option value="Desplazado">Desplazado</option>
+					<option value="Victima conflicto">Victima del conflicto</option>
+					<option value="Vulnerable">Poblacion vulnerable</option>
 
 				</select>
 			</td>
@@ -111,6 +112,7 @@
 		<tr>
 			<td><label for="tipo_poblacion">Tipo de poblacion:</label></td>
 			<td><select name="tipo_poblacion" id="">
+				<option value="Ninguna">Ninguna</option>
 					<option value="Mestizo">Mestizo</option>
 					<option value="Indigena">Indigena</option>
 					<option value="Afro">Afro</option>
@@ -147,7 +149,7 @@
 			<td>
 				<select name="situacion_academica" id="">
 					<option value="Matriculado">Matriculado</option>
-					<option value="Promovido">Promovido</option>
+					<!--<option value="Promovido">Promovido</option>-->
 					<option value="Cancelado">Cancelado</option>
 					<option value="Trasladado">Trasladado</option>
 					<option value="Suspendido">Suspendido</option>

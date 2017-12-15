@@ -638,7 +638,7 @@ $result=$statement->execute(
 			 $statement->bindParam(':programa_snies',$programa);
 			 $statement->bindParam(':fecha',$fecha_registro);
 				#$statement->bindParam(':promedio_anterior',$promedio_anterior);
-			 $resultSemestre = $statement->execute();
+			 $resultMatricula = $statement->execute();
 			#var_dump($result);
 
 
@@ -651,9 +651,15 @@ $result=$statement->execute(
 			 $statement->bindParam(':semestre',$semestre);
 			 $statement->bindParam(':periodo',$periodo);
 			 $resultSemestre = $statement->execute();
-			#
 
-			//Obtener el documento (ya esta)
+
+			#Obtener el ID del semestre ingresado
+			 $sql = "SELECT id AS semestre_id FROM semestre ORDER BY id DESC LIMIT 1";
+			 $ps = $cn->prepare($sql); 
+			 $ps->execute();
+			 $semestre_id = $ps->fetch()['semestre_id'];
+
+			
 			//Obtener ID del semestre
 			 $matricula = getIdmatricula($documento,$cn);
 
@@ -662,16 +668,15 @@ $result=$statement->execute(
 			 $statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
-			 echo "semestre: $semestre ,matricula: $matricula";
-			 echo "Año: $anio , fecha_registro: $fecha_registro";
+			 
 			 $statement->bindParam(':matricula',$matricula);
-			 $statement->bindParam(':semestre',$semestre);
+			 $statement->bindParam(':semestre',$semestre_id);
 			 $statement->bindParam(':anio',$anio);
 			 $statement->bindParam(':fecha_modi',$fecha_registro);
 			 $resultDetalle = $statement->execute();
 			#var_dump($result);			
 
-			 if ($result !== false && $resultSemestre !== false && $resultDetalle !== false) {
+			 if ($result != false && $resultSemestre != false && $resultDetalle != false && $resultMatricula != false) {
 			 	header("Location:".URL."gestion/new-estudiante.php?select=e");
 			 }else{
 			 	echo "Ocurrio un error";

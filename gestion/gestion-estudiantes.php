@@ -13,6 +13,10 @@ $leyenda = "Estudiantes registrados a la fecha ";
 #var_dump($totalM);
 #var_dump($totalF);
 #var_dump($totalE);
+
+if ($totalE != 0) {
+	# code...
+
 #realizando operaciones
 $porceM = 0;
 $porceF = 0;
@@ -54,6 +58,6 @@ $porceVu = (($totalVu/$totalE)*100);
 #Chart estudiantes mayores y menores de edad
 $totalVu=countEntityWithWhere("estudiante","situacion",'Vulnerable',$cn);
 $porceDes = (($totalDes/$totalE)*100);
-
+}
 ?>
 <?php require'../view/gestion-estudiantes.view.php' ?>
