@@ -197,6 +197,7 @@
 				<option value="9">9</option>
 				<option value="10">10</option>
 			</select>
+			<label for="Semestre">Periodo:</label>
 			<select name="periodo" id="periodo">
 				<option value="1">1</option>
 				<option value="2">2</option>

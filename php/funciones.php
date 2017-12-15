@@ -550,6 +550,7 @@ function saveStudent
 	$fecha_registro =  date("Y-m-d");
 	$fecha_cambio_estado = "";
 	$anio = date("Y");
+	$promedio = "";
 	try {
 			#var_dump($cn);
 		$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, situacion, tipo_poblacion, ojos, genero, discapacidades, situacion_academica, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:situacion,:tipo_poblacion,:ojos,:genero,:discapacidades,:situacion_academica,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
@@ -638,7 +639,7 @@ $result=$statement->execute(
 			 $statement->bindParam(':programa_snies',$programa);
 			 $statement->bindParam(':fecha',$fecha_registro);
 				#$statement->bindParam(':promedio_anterior',$promedio_anterior);
-			 $resultSemestre = $statement->execute();
+			 $resultMatricula = $statement->execute();
 			#var_dump($result);
 
 
@@ -657,21 +658,26 @@ $result=$statement->execute(
 			//Obtener ID del semestre
 			 $matricula = getIdmatricula($documento,$cn);
 
+			 #Traer el id del semestre
+			 $sql = "SELECT id AS semestre_id FROM semestre ORDER BY id DESC";
+			 $ps = $cn->prepare($sql);
+			 $ps->execute();
+			 $semestre_id = $ps->fetch()['semestre_id'];
+
 			//Insertar tabla detalle semestre
-			 $sql = "INSERT INTO detalle_semestre(id, matricula_id, semestre_id, anio, ultima_modificacion) VALUES (null,:matricula,:semestre,:anio,:fecha_modi)";
+			 $sql = "INSERT INTO detalle_semestre (id, matricula_id, semestre_id, anio,ultima_modificacion) VALUES 
+			 (null,:matricula,:semestre,:anio,:ultima_modificacion)";
 			 $statement = $cn->prepare($sql);
-			#var_dump($statement);
-			#Devuelve false en caso de ocurrir algun error
-			 echo "semestre: $semestre ,matricula: $matricula";
-			 echo "Año: $anio , fecha_registro: $fecha_registro";
 			 $statement->bindParam(':matricula',$matricula);
-			 $statement->bindParam(':semestre',$semestre);
+			 $statement->bindParam(':semestre',$semestre_id);
 			 $statement->bindParam(':anio',$anio);
-			 $statement->bindParam(':fecha_modi',$fecha_registro);
+			 $statement->bindParam(':ultima_modificacion',$fecha_registro);
+			 var_dump($statement);
 			 $resultDetalle = $statement->execute();
+			 var_dump($resultDetalle);
 			#var_dump($result);			
 
-			 if ($result !== false && $resultSemestre !== false && $resultDetalle !== false) {
+			 if ($result != false && $resultSemestre != false && $resultDetalle != false && $resultMatricula != false) {
 			 	header("Location:".URL."gestion/new-estudiante.php?select=e");
 			 }else{
 			 	echo "Ocurrio un error";

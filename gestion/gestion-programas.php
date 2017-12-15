@@ -14,9 +14,10 @@ $totalTi=countEntityWithWhere("programa","nivel_academico_id",'1',$cn);
 #var_dump($totalF);
 #var_dump($totalE);
 #realizando operaciones
+if ($totalP == 0) {}else{
 $porceI=($totalI / $totalP)*100;
 $porceTo=($totalTo / $totalP)*100;
 $porceTi= ($totalTi / $totalP)*100;
-
+}
 ?>
 <?php require'../view/gestion-programas.view.php' ?>

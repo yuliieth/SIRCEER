@@ -64,6 +64,9 @@ if ($ps!=false) {
 	$ps->bindParam(':fechaModificacion',$fechaModificacion);
 	$ps->execute();
 
+	#Cambiarle de estado academico al estudainte luego de que su matricula ha sido renovada
+	#Actualizar el estado a de nuevo sin gestionar, esto por que inicia un nuevo semestre
+
 	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
 }
 //END PETICION POST
