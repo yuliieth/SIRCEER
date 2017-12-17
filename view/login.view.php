@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Login</title>
 	<link rel="icon" href="../iconos/favicon.png">
-	<link rel="stylesheet" href="../css/estilos.loguin.css">
-	<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/estilos.loguin.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	
 </head>
 <body>
