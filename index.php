@@ -1,101 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SRCEER | Gobernaci&oacute;n</title>
-    <link rel="icon" href="iconos/favicon.png">
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="css/estilos-index.css">
-    <link rel="stylesheet" href="css/footer.css">
+<?php session_start();
+    require_once 'php/Conexion.php';
+    require_once 'php/funciones.php';
+    require_once 'admin/config.php';
     
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-</head>
 
 
+    /*Comprobamos methodo de envio*/
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $usuario = strtolower( $_POST['usuario']);
+        $pass = $_POST['pass'];
+    $conexion = getConexion($bd_config);
+    #var_dump($conexion);
+    if (!$conexion) {
+        echo "Error en conexion";
+        #header("Location:login.php");
+    }
 
-<body>
-    <header>
-        <!--<img src="imagenes/logo_magtimus3.png" class="img-logo">-->
-        <input type="checkbox" id="check">
-        <label for="check" class="icon-menu"></label>
+        #Buscamos coincidencia en la base de datos
+        $result = shearcUserLogin($usuario,$pass,$conexion);
+        #var_dump($result);
+        #Sy hay coincidencia se guardan datos y se verfica perfil
+        if ($result !== false) {
+            $_SESSION['usuario']['user'] = $usuario;
+
+            $perfil = shearcPerfilUser($result['id'],$conexion);
+            #var_dump($perfil);
+            $_SESSION['usuario']['perfil'] = $perfil;
+            #var_dump($_SESSION);
+            if ($_SESSION['usuario']['perfil'] == "superusuario") {
+                header("Location:".URL."admin/principal-admin.php");
+            }elseif (($_SESSION['usuario']['perfil'] == "estandar")) {
+                header("Location:".URL."gestion/principal-gestion.php");
+            }else {
+                header("Location: ".URL."gestion/errorOut.php");
+            }
+            
+        }else{
+            header("Location: ".URL."gestion/errorOut.php");
+        }
         
-        <nav class="menu">
-            <ul>
-                <li><a href="#" style="background:#df6666;color:white;">Inicio</a></li>
-                <li><a href="#">Acerca de</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="php/login.php">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+    }
 
-    
-    <main>
-    <div class="banner">
-            <img src="imagenes/logo-y-escudo.png" alt="gobernacion" width="990" height="570">
-    </div>
-        <div class="content-one">
-            <div class="content-portada">
-                <div id="content-itemUno">
-                    <h4>Gobernaci&oacute;n de <h3>Risaralda</h3> </h4>
-                    <h2>SECRETARIA DE EDUCACI&Oacute;N</h2>
-                </div>
-            </div>
-        </div>
-        <div class="content-dos">
-            <div class="content-details">
-                <div class="content-itemdos">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                    <h4>Eventos</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga ut nulla dicta, ab doloremque consequatur harum mollitia, ipsam minus magnam quaerat praesentium ratione, amet aperiam incidunt. Iste porro molestiae non.</p>
-                    
-                </div>
-                <div class="content-itemdos">
-                    <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
-                    <h4>Noticias</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga ut nulla dicta, ab doloremque consequatur harum mollitia, ipsam minus magnam quaerat praesentium ratione, amet aperiam incidunt. Iste porro molestiae non.</p>
-                    
-                </div>
-                <div class="content-itemdos">
-                    <i class="fa fa-life-ring fa-2x" aria-hidden="true" ></i>
-                    <h4>Soporte</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga ut nulla dicta, ab doloremque consequatur harum mollitia, ipsam minus magnam quaerat praesentium ratione, amet aperiam incidunt. Iste porro molestiae non.</p>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="content-tres">
-            <div class="content-modulo">
-                <h3>LATEST WORKS</h3>
-                <img src="imagenes/img2.png">
-                <img src="imagenes/img3.png">
-                <img src="imagenes/img4.png">
-            </div>
-        </div>
-
-        <div class="content-cuatro">
-            <div class="content-itemtres">
-                <h4>LOREM IPSUM DOLOR</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat consectetur mollitia, magni rerum doloribus iste iusto, nostrum quidem sunt quibusdam assumenda reiciendis. Corporis tempore debitis iusto quaerat illo, dolorem sed.</p>
-                <img src="imagenes/img5.png">
-
-            <div class="content-cinco">
-                <div class="content-itemcuatro">
-                    <h4>WE ARE STORYTELLERS. BRANDS ARE OUR SUBJECTS. DESIGN IS OUR VOICE.</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio tenetur tempora voluptate officiis. Est dolore neque assumenda aspernatur asperiores dolorem rerum totam ad libero enim dicta veritatis, officia praesentium fugit!</p>
-                </div>
-            </div>
-        </div>
-        </div>
-
-    </main>
-    <footer>
-       <i class="fa fa-facebook-official" aria-hidden="true"></i>
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-    </footer>
-</body>
-</html>
-
+ ?>
+<?php require("view/login.view.php") ?>
