@@ -16,9 +16,11 @@
         #header("Location:login.php");
     }
 
+
         #Buscamos coincidencia en la base de datos
         $result = shearcUserLogin($usuario,$pass,$conexion);
-        #var_dump($result);
+       # var_dump($result);
+
         #Sy hay coincidencia se guardan datos y se verfica perfil
         if ($result !== false) {
             $_SESSION['usuario']['user'] = $usuario;

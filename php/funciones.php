@@ -294,7 +294,7 @@ function shearcPerfilUser($id_user,$con)
 {
 	#devuelve el nombre del perfil
 	$result = getUserById($id_user,$con);
-	var_dump($result);
+	#var_dump($result);
 	$nombre_perfil = $result['nombre_perfil'];
 	return $nombre_perfil;
 }
@@ -304,6 +304,7 @@ function shearcUserLogin($usuario,$pass,$conexion)
 	#echo "$usuario $pass";
 	$sql = "SELECT * FROM usuarios WHERE username=:usuario AND password=:password";
 	$statement = $conexion->prepare($sql);
+	#var_dump($statement);
 	$statement->execute(
 		array(
 			':usuario' => $usuario,
