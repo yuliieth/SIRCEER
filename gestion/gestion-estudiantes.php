@@ -19,9 +19,6 @@ if ($totalE != 0) {
 
 #realizando operaciones
 
-if ($totalE == 0) {
-
-}else{
 $porceM=($totalM / $totalE)*100;
 $porceF=($totalF / $totalE)*100;
 #var_dump($porceM);

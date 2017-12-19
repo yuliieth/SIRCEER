@@ -1,6 +1,5 @@
 <?php session_start(); ?>
-<?php 	
-require_once '../admin/config.php';
+<?php require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
 validateSession();
@@ -18,10 +17,7 @@ if (isset($_POST['submit'])) {
 	$parameters = array(
 		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","email","fecha_naci","edad","muni_naci","dire_resi","barrio_resi","muni_resi","estrato","zona","eps","tipo_poblacion","situacion","ojos","genero","discapacidades","situacion_academica","grado"
 		);
-	#var_dump($parameters);
-	#echo "string";
 	$errores = validarErrores($parameters,$errores);
-	#var_dump($errores);
 	if (empty($errores)) {
 		$enviado = true;
 		#Obtenemos los valores de los campos en el formulario
@@ -58,14 +54,7 @@ if (isset($_POST['submit'])) {
 		//Datos semestre
 		$semestre = $_POST['semestre'];
 		$periodo =  $_POST['periodo'];
-		#$promedio_anterior = $_POST['promedio_anterior'];
-		#28 parametros
-		#var_dump($estado);
-		#var_dump($victima_conflicto);
-
-
-
-saveStudent(
+$estado = saveStudent(
 	$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
 	$segundo_nombre,$primer_apellido,$segundo_apellido,
 	$telefono,$email,$fecha_naci,
@@ -80,13 +69,8 @@ saveStudent(
 	#se pasan 28 parametro (conexion)
 	);
 }
-
-
-
 }
 ?>
-
-
 <script type=text/javascript>
 
 		function ejecutar(str)

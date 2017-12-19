@@ -25,12 +25,9 @@
 		<div class="user">
 			<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="<?php echo URL; ?>php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
 		</div>
-
 	</header>
-
 	<div class="wraper-nav">
 		<nav class="menu-bar">
-
 			<ul>
 				<li class="students"><i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
 					<a href="gestion-estudiantes.php?select=e">Estudiantes</a></li>
@@ -43,5 +40,4 @@
 							</ul>
 						</nav>
 					</div>
-
 					<div class="contenedor">
