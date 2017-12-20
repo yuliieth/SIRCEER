@@ -10,7 +10,7 @@ comprobarConexion($cn);
 $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
-	print_r($_POST);
+	#print_r($_POST);
 	$id = $_POST['id'];
 	$nombre = cleanData($_POST['nombre']);
 	$fecha_inicio = cleanData($_POST['fecha_ini']);
@@ -36,16 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 
 	// echo a message to say the UPDATE succeeded
-	echo $ps->rowCount() . " records UPDATED successfully";
+	#echo $ps->rowCount() . " records UPDATED successfully";
 
-    header("Location: buscar-alianza.php?select=a");
+    header("Location:".URL."gestion/buscar-alianza.php?select=a");
 	$enviado = true;
 }else
 {
 	#Crear funcion para limpiar id
 	$id_alianza = $_GET['id'];
 	if (empty($id_alianza)) {
-		header("Location:principal-admin.php");
+		header("Location:".URL."gestion/principal-gestion.php");
 		#echo "Id vacio";
 	}
 	$result = getSubjectById("alianza",$id_alianza,'id',$cn);

@@ -43,10 +43,6 @@
 		<tr>
 			<td><label for="promedio">Promedio:</label></td>
 
-			<td><input type="text" <?php if ( !empty($datosEstudiante['promedio'])): ?>
-				<?php echo 'disabled="disabled' ?>
-			<?php endif ?> name="promedio" required="required" value="<?php echo $datosEstudiante['promedio']; ?>"></td>
-
 			<td><input type="text"  name="promedio" required="required" <?php if ( !empty( $datosEstudiante['promedio']) ): ?>
 				<?php echo   'readonly="readonly"'?>
 			 value="<?php echo $datosEstudiante['promedio']; ?>">
