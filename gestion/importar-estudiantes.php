@@ -25,7 +25,7 @@ if ( substr( $_FILES(['excel'],['name']) , -3) == "cvs" ) {
 	while ($data = fgetcsv($fp,1000,",")) {
 		
 		if ($row != 1) {
-			# code...
+			
 		}
 	}
 }
