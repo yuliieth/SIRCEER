@@ -21,7 +21,7 @@
                 <a href="../gestion/reportes-estudiantes.php?select=e">Reportes</a>
                 </li>
                                 <li>
-                <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/importar-estudiantes.php?select=e">Importar</a>
                                 </li>
                 
