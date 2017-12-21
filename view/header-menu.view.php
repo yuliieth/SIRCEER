@@ -3,7 +3,7 @@
                         switch ($_GET['select']) {
                                 case 'e':
                                         ?>
-                                        <table id="estructura">
+        <table id="estructura">
         <tr>
                 <td id="menu">&nbsp;
                         <ul>
@@ -20,25 +20,21 @@
                 <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/reportes-estudiantes.php?select=e">Reportes</a>
                 </li>
-                                <!--<li>
+                                <li>
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/estadisticas-estudiantes.php?select=e">Estadisticas</a>
-                                </li>-->
-                <!--<li>
-                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/simat-estudiantes.php?select=e">Consultar SIMAT</a>
-                                </li>-->
+                <a href="../gestion/importar-estudiantes.php?select=e">Importar</a>
+                                </li>
+                
                         </ul>
                 </td>
                 <td id="pagina">
                 <?php  
+                break;
 
-                                        break;
-                                case 'i':
-                                        
-                                        ?>
+            case 'i':
+                ?>
 
-<table id="estructura">
+        <table id="estructura">
         <tr>
                 <td id="menu">&nbsp;
                         <ul>
