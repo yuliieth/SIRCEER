@@ -8,13 +8,15 @@ comprobarConexion($cn);
 
 #-------------PROCESANDO HOJA----------------------------
 
-if ( substr( $_FILES(['excel'],['name']) , -3) == "cvs" ) {
+if ( isset($_FILES['excel']['name']) ) {
+	if (substr( $_FILES['excel']['name'] , -3) == "cvs") {#Gobernacion maneja XLS
+	
 	$fecha = Date("Y-m-d");
 	$carpeta = "tmp_excel/";
-	$excel = $fecha. $fecha . $_FILES["excel"]["name"];
+	$excel = $fecha. "-". $_FILES["excel"]["name"];
 
 	#movemos la hoja a la carpet temporal creada
-	move_uploaded_file($_FILES["excel"]["tmp_name"],$carpeta$excel);
+	move_uploaded_file($_FILES["excel"]["tmp_name"],"$carpeta$excel");
 
 	#con permisos de lectura abrimos el archivo en la ruta estipulada
 	$fp = fopen("$carpeta$excel", "r");
@@ -28,8 +30,8 @@ if ( substr( $_FILES(['excel'],['name']) , -3) == "cvs" ) {
 			
 		}
 	}
-}
-
+}}
+#https://mega.nz/#F!on4WSJqZ!7Qhjr37tl57S8VKeoUt8dA
 ?>
 
 <?php require("../view/importar-estudiantes.view.php") ?>
