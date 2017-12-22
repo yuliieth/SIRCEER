@@ -27,6 +27,8 @@ if ( isset($_FILES['excel']['name']) ) {
 	while ($data = fgetcsv($fp,1000,",")) {
 		
 		if ($row != 1) {
+			#Campos hoja: 
+			#Nombres + apellidos, documento, fecha naci, edad, sisben o estrato
 			
 		}
 	}
