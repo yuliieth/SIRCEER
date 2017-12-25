@@ -42,5 +42,5 @@ $mpdf = new mPDF('c','A4');
 #$css = file_get_contents('../css/estilos.css');
 #$mpdf->writeHTML($css);
 $mpdf->writeHTML($html,2);
-$mpdf->Output('ReporteAlianzas.pdf','I');
+$mpdf->Output('ReporteProgramas.pdf','I');
 ?>

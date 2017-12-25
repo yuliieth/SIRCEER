@@ -8,8 +8,8 @@ require_once '../mpdf60/mpdf.php';
 $cn = getConexion($bd_config);
 #Traemos todas las insttuciones creadas a la fecha
 $instituciones = getAllSubject('institucion',$cn);
+#var_dump($instituciones);
 
 
-
-include_once '../view/reportes-institutos.view.php';
+include '../view/reportes-institutos.view.php';
  ?>
