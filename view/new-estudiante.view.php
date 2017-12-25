@@ -1,10 +1,8 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
-
 <div class="wrap-formulario-new-estudiante">
-	<h1>Nuevo estudiante</h1>
-		
+	<h1>Nuevo estudiante</h1>	
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
 		<tr>
@@ -24,35 +22,30 @@
 			</td>
 				
 		</tr>	
-
 		<tr>
 			<td><label for="primer_nombre">Primer nombre:</label></td>
 			<td><input type="text" size="30" name="primer_nombre" placeholder="Primer nombre"  required="" ></td>
 			<td><label for="segundo_nombre">Segundo nombre:</label></td>
 			<td><input type="text" size="30" name="segundo_nombre" placeholder="Segundo nombre"></td>
 		</tr>
-
 		<tr>
 			<td><label for="primer_apellido">Primer apellido:</label></td>
 			<td><input type="text" size="30" name="primer_apellido" placeholder="Primer apellido"  required="" ></td>
 			<td><label for="segundo_apellido">Segundo apellido:</label></td>
 			<td><input type="text" size="30" name="segundo_apellido" placeholder="Segundo apellido"></td>
 		</tr>
-
 		<tr>
 			<td><label for="telefono">Telefono:</label></td>
 			<td><input type="text" size="30" name="telefono" placeholder="Telefono"></td>
 			<td><label for="email">Email:</label></td>
 			<td><input type="email" size="30" name="email" placeholder="Email"></td>
 		</tr>
-
 		<tr>
 			<td><label for="fecha-naci">Fecha de nacimiento:</label></td>
 			<td><input type="date" name="fecha_naci" step="1" min="1980-01-01" max="2018-12-31" value="" placeholder="Fecha de nacimiento"></td>
 			<td><label for="edad">Edad:</label></td>
 			<td><input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="" ></td>
 		</tr>
-
 		<tr>
 			<td><label for="muni_naci">Municipio de nacimiento:</label></td>
 			<td>
@@ -199,6 +192,7 @@
 				<option value="9">9</option>
 				<option value="10">10</option>
 			</select>
+			<label for="Semestre">Periodo:</label>
 			<select name="periodo" id="periodo">
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -211,11 +205,7 @@
 			<td><label for="observacion:">Observación:</label></td>
 			<td><textarea name="observacion" placeholder="Observaciones para el estudiante..." id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
 		</tr>
-
-
-	</table>	
-
-
+	</table>
 		<?php //if (!empty($errores)): ?>
 			<!--<div class="input-redit alert error">
 				<?php #echo $errores;?>
@@ -224,10 +214,7 @@
 			<!--<div class="input-redit alert success">
 				<p>Datos enviados correctamente</p>
 			</div>-->
-		<?php #endif ?>
-		
-
-		
+		<?php #endif ?>	
 		<input type="reset" name="">
 		<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
 

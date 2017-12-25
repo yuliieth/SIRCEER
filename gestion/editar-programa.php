@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 
 	// echo a message to say the UPDATE succeeded
-    echo $ps->rowCount() . " records UPDATED successfully";
+   # echo $ps->rowCount() . " records UPDATED successfully";
 
-    header("Location: buscar-programa.php?select=p");
+    header("Location:".URL."gestion/buscar-programa.php?select=p");
     $enviado = true;
 }else
 {

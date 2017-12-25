@@ -14,32 +14,24 @@ if (empty($id)) {
 #Institucion_municipio
 $sql = "DELETE FROM institucion_municipio WHERE institucion_id=$id";
 $ps_IM = $con->prepare($sql);
-$ps_IM->execute();
-
-#Evaluacion_semestral
-$sql = "DELETE FROM evaluacion_semestral WHERE evaluacion_semestral.programa_snies = $programa_snies";
-$ps_ES = $con->prepare($sql);
-$ps_ES->execute();
-
-var_dump($id);
-$sql = "DELETE FROM programa WHERE institucion_id=$id";
-$ps_P = $con->prepare($sql);
-$ps_P->execute();
-
-
+$ps_IM = $ps_IM->execute();
+$ps_IM =$ps_IM;
+var_dump($ps_IM);
 
 #DELETE FROM A WHERE ID = (SELECT ID FROM B);
 
 #Y finalmente institucion
-$sql = "DELETE FROM institucion WHERE id=$id";
-$ps = $con->prepare($sql);
-$ps->execute();
+$sqlI = "DELETE FROM institucion WHERE id=$id";
+$ps_I = $con->prepare($sqlI);
+$ps_I = $ps_I->execute();
+$ps_I = $ps_I;
+var_dump($ps_I);
 
-if (!$ps or !$ps_IM or !$ps_P or !$ps_ES) {
-	header("Location:".URL."gestion/error.php");
+if ($ps_IM != null && $ps_I != null) {
+	header("Location:".URL."gestion/buscar-institucion.php?select=i");
 }else
 {
-	header("Location:".URL."gestion/buscar-institucion.php?select=i");
+	echo "No se pudo realizar la transaccion";
 }
 	
 }

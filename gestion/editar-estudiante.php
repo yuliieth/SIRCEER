@@ -13,7 +13,7 @@ $municipios = getMunicipios($cn);
 $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
-	print_r($_POST);
+	#print_r($_POST);
 	$documento = cleanData($_POST['documento']);
 	$primer_nombre = cleanData($_POST['primer_nombre']);
 	$segundo_nombre = cleanData($_POST['segundo_nombre']);
@@ -80,16 +80,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 
 	// echo a message to say the UPDATE succeeded
-    echo $ps->rowCount() . " records UPDATED successfully";
+    #echo $ps->rowCount() . " records UPDATED successfully";
 
-    header("Location: buscar-estudiantes.php?select=e");
+    header("Location:".URL."gestion/buscar-estudiantes.php?select=e");
     $enviado = true;
 }else
 {
 	#Crear funcion para limpiar id
 	$doc_estu = $_GET['id'];
 	if (empty($doc_estu)) {
-		header("Location:principal-admin.php");
+		header("Location:".URL."principal-admin.php");
 		#echo "Id vacio";
 	}
 	$result = getSubjectById("estudiante",$doc_estu,'documento',$cn);

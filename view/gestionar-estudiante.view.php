@@ -42,14 +42,16 @@
 		</tr>
 		<tr>
 			<td><label for="promedio">Promedio:</label></td>
+
 			<td><input type="text"  name="promedio" required="required" <?php if ( !empty( $datosEstudiante['promedio']) ): ?>
 				<?php echo   'readonly="readonly"'?>
 			 value="<?php echo $datosEstudiante['promedio']; ?>">
 			 <?php echo "El promedio ya ha sido asignado" ?>
 				<?php endif ?>
 			</td>
+
 			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['matriculaId']; ?>"></td>
-			<td><input type="hidden" name="semestre" value="<?php echo $datosEstudiante['semestreId']; ?>"></td>
+			<td><input type="hidden"  name="semestre" value="<?php echo $datosEstudiante['semestreId']; ?>"></td>
 		<tr>
 			
 		</tr>

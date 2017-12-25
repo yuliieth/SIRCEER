@@ -53,7 +53,7 @@ function getMatriculaEstudiante($documento,$cn)
 function getDataAllEstudent($matricula,$cn)
 {
 	$sql = "SELECT estudiante.documento,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,detalle_semestre.promedio,semestre.semestre,semestre.periodo,programa.snies,programa.nombre AS nombrePrograma,institucion.nombre AS nombreInstitucion,matricula.id AS matriculaId, semestre.id AS semestreId FROM matricula,estudiante, detalle_semestre, semestre,programa,institucion WHERE matricula.id
-=detalle_semestre.matricula_id AND detalle_semestre.semestre_id=semestre.id AND programa.snies=matricula.programa_snies AND programa.institucion_id=institucion.id AND estudiante.documento=matricula.estudiante_documento AND matricula.id=$matricula ORDER by detalle_semestre.semestre_id DESC LIMIT 1 ";
+	=detalle_semestre.matricula_id AND detalle_semestre.semestre_id=semestre.id AND programa.snies=matricula.programa_snies AND programa.institucion_id=institucion.id AND estudiante.documento=matricula.estudiante_documento AND matricula.id=$matricula ORDER by detalle_semestre.semestre_id DESC LIMIT 1 ";
 	#var_dump($sql);
 	$ps=$cn->prepare($sql);
 	$ps->execute();
@@ -69,7 +69,7 @@ function getIdmatricula($documento,$cn)
 	$ps=$cn->prepare($sql);
 	$ps->execute();
 	$result=$ps->fetch()['id'];
-	var_dump($result);
+	#var_dump($result);
 	return $result;
 }
 
@@ -99,7 +99,6 @@ function saveAlianza(
 	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
 )
 {
-	echo "entro";	
 	
 	try {
 			//var_dump($conexion);
@@ -112,7 +111,6 @@ function saveAlianza(
 		$statement->bindParam( ':cupos' , $cupos);
 		
 		$result= $statement->execute();
-		var_dump($result);
 		if ($result !== null) {
 			header("Location:".URL."gestion/new-alianza.php?select=a");
 		}
@@ -294,7 +292,7 @@ function shearcPerfilUser($id_user,$con)
 {
 	#devuelve el nombre del perfil
 	$result = getUserById($id_user,$con);
-	var_dump($result);
+	#var_dump($result);
 	$nombre_perfil = $result['nombre_perfil'];
 	return $nombre_perfil;
 }
@@ -304,6 +302,7 @@ function shearcUserLogin($usuario,$pass,$conexion)
 	#echo "$usuario $pass";
 	$sql = "SELECT * FROM usuarios WHERE username=:usuario AND password=:password";
 	$statement = $conexion->prepare($sql);
+	#var_dump($statement);
 	$statement->execute(
 		array(
 			':usuario' => $usuario,
@@ -473,7 +472,7 @@ function saveInstitu
 			#var_dump($result);
 		//Enlazar institucion con municipio por medio de la tabla institucion_municipio
 			$institucion_id = getId("institucion",$conexion);
-			echo $institucion_id;
+			#echo $institucion_id;
 			$sql = "INSERT INTO institucion_municipio (institucion_id, municipio_id) VALUES (:institucion,:municipio)";
 			$statement = $conexion->prepare($sql);
 			$statement->bindParam(':institucion',$institucion_id);
@@ -481,7 +480,7 @@ function saveInstitu
 			$resultInsti = $statement->execute();
 
 			if ($result !== null && $resultInsti != null) {
-				echo "error";
+				#echo "error";
 				header('Location: '.URL.'gestion/new-institucion.php?select=i');
 			}
 		} catch (Exception $e) {
@@ -550,150 +549,93 @@ function saveStudent
 	$fecha_registro =  date("Y-m-d");
 	$fecha_cambio_estado = "";
 	$anio = date("Y");
+	$promedio = "";
 	try {
-			#var_dump($cn);
 		$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, situacion, tipo_poblacion, ojos, genero, discapacidades, situacion_academica, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:situacion,:tipo_poblacion,:ojos,:genero,:discapacidades,:situacion_academica,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
-
-
-/*
-:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:desplazado,:afrodescendiente,:ojos,:genero,:victima_conflicto,:discapacidades,:situacion_periodo_anterior,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)"
-*/
-
-$statement = $cn->prepare($sql);
+		$statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
-$result=$statement->execute(
-	array(
-		':documento' => $documento , 
-		':tipo_documento_id' => $tipo_documento , 
-		':tipo_sangre_id' => $tipo_sangre, 
-		':primer_nombre' => $primer_nombre, 
-		':segundo_nombre' => $segundo_nombre , 
-		':primer_apellido' => $primer_apellido , 
-		':segundo_apellido' => $segundo_apellido , 
-		':tel_contacto' => $telefono , 
-		':email' => $email, 
-		':fecha_naci' => $fecha_naci , 
-		':edad' => $edad , 
-		':municipio_naci_id' => $muni_naci,
-		':direccion_residencia' => $dire_resi , 
-		':barrio_residencia' => $barrio_resi , 
-		':municipio_resi_id' => $muni_resi,
-		':estrato' => $estrato , 
-		':zona' => $zona , 
-		':EPS' => $eps , 
-		':situacion' => $situacion, 
-		':tipo_poblacion' => $tipo_poblacion , 
-		':ojos' => $ojos, 
-		':genero' => $genero, 
-		':discapacidades' => $discapacidades, 
-		':situacion_academica' => $situacion_academica, 
-		':grado' => $grado , 
-		':estado' => $estado, 
-		':fecha_registro' => $fecha_registro, 
-		':fecha_cambio_estado' => $fecha_cambio_estado, 
-		':observaciones' => $observacion
-	));
-
-			/*
-					 $statement->bindParam( ':documento' , $documento);
-					 $statement->bindParam( ':tipo_documento_id' , $tipo_documento);
-					 $statement->bindParam( ':tipo_sangre_id' , $tipo_sangre);
-					 $statement->bindParam( ':primer_nombre' , $primer_nombre);
-					 $statement->bindParam( ':segundo_nombre' , $segundo_nombre);
-					 $statement->bindParam( ':primer_apellido' , $primer_apellido);
-					 $statement->bindParam( ':segundo_apellido' , $segundo_apellido);
-					 $statement->bindParam( ':tel_contacto' , $telefono);
-					 $statement->bindParam( ':email' , $email);
-					 $statement->bindParam( ':fecha_naci' , $fecha_naci);
-					 $statement->bindParam( ':edad' , $edad);
-					 $statement->bindParam( ':municipio_naci_id' , $muni_naci);
-					 $statement->bindParam( ':direccion_residencia' , $dire_resi);
-					 $statement->bindParam( ':barrio_residencia' , $barrio_resi);
-					 $statement->bindParam( ':municipio_resi_id' , $muni_resi);
-					 $statement->bindParam( ':estrato' , $estrato);
-					 $statement->bindParam( ':zona' , $zona);
-					 $statement->bindParam( ':EPS' , $eps);
-					 $statement->bindParam( ':desplazado' , $desplazado);
-					 $statement->bindParam( ':afrodescendiente' , $afro);
-					 $statement->bindParam( ':ojos' , $ojos);
-					 $statement->bindParam( ':genero' , $genero);
-					 $statement->bindParam( ':victima_conflicto' , $victima_conflicto);
-					 $statement->bindParam( ':discapacidades' , $discapacidades);
-					 $statement->bindParam( ':situacion_periodo_anterior', $ituacion_periodo_anterior);
-					 $statement->bindParam( ':grado' , $grado);
-					 $statement->bindParam( ':estado' , $estado);
-					 $statement->bindParam( ':fecha_registro' , $fecha_registro);
-					 $statement->bindParam( ':fecha_cambio_estado' , $fecha_cambio_estado);
-					 $statement->bindParam( ':observaciones' , $observacion);
-			 $result= $statement->execute();
-*/
-			 $sql = "INSERT INTO matricula(id, estudiante_documento,programa_snies,fecha) VALUES 
-			 (null,:estudiante_documento, :programa_snies,:fecha)";
-			 $statement = $cn->prepare($sql);
+		$result=$statement->execute(
+			array(
+				':documento' => $documento , 
+				':tipo_documento_id' => $tipo_documento , 
+				':tipo_sangre_id' => $tipo_sangre, 
+				':primer_nombre' => $primer_nombre, 
+				':segundo_nombre' => $segundo_nombre , 
+				':primer_apellido' => $primer_apellido , 
+				':segundo_apellido' => $segundo_apellido , 
+				':tel_contacto' => $telefono , 
+				':email' => $email, 
+				':fecha_naci' => $fecha_naci , 
+				':edad' => $edad , 
+				':municipio_naci_id' => $muni_naci,
+				':direccion_residencia' => $dire_resi , 
+				':barrio_residencia' => $barrio_resi , 
+				':municipio_resi_id' => $muni_resi,
+				':estrato' => $estrato , 
+				':zona' => $zona , 
+				':EPS' => $eps , 
+				':situacion' => $situacion, 
+				':tipo_poblacion' => $tipo_poblacion , 
+				':ojos' => $ojos, 
+				':genero' => $genero, 
+				':discapacidades' => $discapacidades, 
+				':situacion_academica' => $situacion_academica, 
+				':grado' => $grado , 
+				':estado' => $estado, 
+				':fecha_registro' => $fecha_registro, 
+				':fecha_cambio_estado' => $fecha_cambio_estado, 
+				':observaciones' => $observacion
+			));
+		$sql = "INSERT INTO matricula(id, estudiante_documento,programa_snies,fecha) VALUES 
+		(null,:estudiante_documento, :programa_snies,:fecha)";
+		$statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
-			 
-			 $statement->bindParam(':estudiante_documento',$documento);
-			 $statement->bindParam(':programa_snies',$programa);
-			 $statement->bindParam(':fecha',$fecha_registro);
+		$statement->bindParam(':estudiante_documento',$documento);
+		$statement->bindParam(':programa_snies',$programa);
+		$statement->bindParam(':fecha',$fecha_registro);
 				#$statement->bindParam(':promedio_anterior',$promedio_anterior);
-			 $resultMatricula = $statement->execute();
+		$resultMatricula = $statement->execute();
 			#var_dump($result);
 
-
-
-			 $sql = "INSERT INTO semestre(id, semestre, periodo) VALUES (null,:semestre,:periodo)";
-			 $statement = $cn->prepare($sql);
+		$sql = "INSERT INTO semestre(id, semestre, periodo) VALUES (null,:semestre,:periodo)";
+		$statement = $cn->prepare($sql);
 			#var_dump($statement);
 			#Devuelve false en caso de ocurrir algun error
-			 
-			 $statement->bindParam(':semestre',$semestre);
-			 $statement->bindParam(':periodo',$periodo);
-			 $resultSemestre = $statement->execute();
+		$statement->bindParam(':semestre',$semestre);
+		$statement->bindParam(':periodo',$periodo);
+		$resultSemestre = $statement->execute();
 
 
 			#Obtener el ID del semestre ingresado
-			 $sql = "SELECT id AS semestre_id FROM semestre ORDER BY id DESC LIMIT 1";
-			 $ps = $cn->prepare($sql); 
-			 $ps->execute();
-			 $semestre_id = $ps->fetch()['semestre_id'];
+		$sql = "SELECT id AS semestre_id FROM semestre ORDER BY id DESC LIMIT 1";
+		$ps = $cn->prepare($sql); 
+		$ps->execute();
+		$semestre_id = $ps->fetch()['semestre_id'];
 
-			
-			//Obtener ID del semestre
-			 $matricula = getIdmatricula($documento,$cn);
+
+			//Obtener ID de la matricula
+		$matricula = getIdmatricula($documento,$cn);
 
 			//Insertar tabla detalle semestre
-			 $sql = "INSERT INTO detalle_semestre(id, matricula_id, semestre_id, anio, ultima_modificacion) VALUES (null,:matricula,:semestre,:anio,:fecha_modi)";
-			 $statement = $cn->prepare($sql);
-			#var_dump($statement);
-			#Devuelve false en caso de ocurrir algun error
-			 
-			 $statement->bindParam(':matricula',$matricula);
-			 $statement->bindParam(':semestre',$semestre_id);
-			 $statement->bindParam(':anio',$anio);
-			 $statement->bindParam(':fecha_modi',$fecha_registro);
-			 $resultDetalle = $statement->execute();
-			#var_dump($result);			
-
-			 if ($result != false && $resultSemestre != false && $resultDetalle != false && $resultMatricula != false) {
-			 	header("Location:".URL."gestion/new-estudiante.php?select=e");
-			 }else{
-			 	echo "Ocurrio un error";
-			 }
-
-			} catch (Exception $e) {
-				echo "Linea de error: ".$e->getMessage();	
-			}
-			#echo "ejecuto el metodo";
-			
-
-
-
+		$sql = "INSERT INTO detalle_semestre (id, matricula_id, semestre_id, anio,ultima_modificacion) VALUES 
+		(null,:matricula,:semestre,:anio,:ultima_modificacion)";
+		$statement = $cn->prepare($sql);
+		$statement->bindParam(':matricula',$matricula);
+		$statement->bindParam(':semestre',$semestre_id);
+		$statement->bindParam(':anio',$anio);
+		$statement->bindParam(':ultima_modificacion',$fecha_registro);
+		$resultDetalle = $statement->execute();
+		if ($result == true && $resultSemestre == true && $resultDetalle == true && $resultMatricula == true) {
+			header("Location:".URL."gestion/new-estudiante.php?select=e");
 		}
-
-
-
-
-
-		?>
+		else
+		{
+			echo  "error";
+		}
+	} catch (Exception $e) {
+		echo "Linea de error: ".$e->getMessage();	
+	}			
+}
+?>

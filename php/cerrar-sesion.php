@@ -3,5 +3,5 @@ require '../admin/config.php';
  session_start(); 
 	session_destroy();
 	$_SESSION  = array();
-	header("Location:".URL."php/login.php");
+	header("Location:".URL."index.php");
 ?>

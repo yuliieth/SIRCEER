@@ -6,12 +6,10 @@
 <?php
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
-
-
 $enviado = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
-	print_r($_POST);
+	#print_r($_POST);
 	$id = cleanData($_POST['id']);
 	$nombre = cleanData($_POST['nombre']);
 	$telefono = cleanData($_POST['telefono']);
@@ -31,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 
 	// echo a message to say the UPDATE succeeded
-    echo $ps->rowCount() . " records UPDATED successfully";
+    #echo $ps->rowCount() . " records UPDATED successfully";
 
-    header("Location: buscar-institucion.php?select=i");
+    header("Location:".URL."gestion/buscar-institucion.php?select=i");
     $enviado = true;
 }else
 {
