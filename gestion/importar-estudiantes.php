@@ -8,32 +8,24 @@ comprobarConexion($cn);
 
 #-------------PROCESANDO HOJA----------------------------
 
-if ( isset($_FILES['excel']['name']) ) {
-	if (substr( $_FILES['excel']['name'] , -3) == "cvs") {#Gobernacion maneja XLS
-	
-	$fecha = Date("Y-m-d");
-	$carpeta = "tmp_excel/";
-	$excel = $fecha. "-". $_FILES["excel"]["name"];
+require '../PHPExcel/IOFactory.php';
 
-	#movemos la hoja a la carpet temporal creada
-	move_uploaded_file($_FILES["excel"]["tmp_name"],"$carpeta$excel");
+$nombreArchivo = "agenda";
 
-	#con permisos de lectura abrimos el archivo en la ruta estipulada
-	$fp = fopen("$carpeta$excel", "r");
+#indicamos que vamos a cargar el archivo
+#llama a la funcion  PHPEXCEL_IOFactory
+#y luego a la funcion load
+$ocjPHPEXCEL = PHPEXCEL_IOFactory::load($nombreArchivo);
+#Establecemos en que hoja vamos a leer por medio del objeto
+$ocjPHPEXCEL->setActiveShetIndex(0);
 
-	$row = 1;
+#obtenemos el numero de filas en la hoja activa
+$numRows = $ocjPHPEXCEL->setActiveShetIndex(0)->getHighestRow();
 
-	//fgetcsv. obtiene los valores que estan en el csv y los extrae.
-	while ($data = fgetcsv($fp,1000,",")) {
-		
-		if ($row != 1) {
-			#Campos hoja: 
-			#Nombres + apellidos, documento, fecha naci, edad, sisben o estrato
-			
-		}
-	}
-}}
-#https://mega.nz/#F!on4WSJqZ!7Qhjr37tl57S8VKeoUt8dA
+#Creamos la tabla para mostrar
+
+
+#https://www.youtube.com/watch?v=4Sw24E5Hi5M
 ?>
 
 <?php require("../view/importar-estudiantes.view.php") ?>
