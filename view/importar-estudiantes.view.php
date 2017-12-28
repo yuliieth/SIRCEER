@@ -1,7 +1,15 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
+<?php var_dump($_POST); ?>
+<!--Formulario-->
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="post" >
+Fichero a recibir: <input type="file" name="myfile"/><br/>
+<input type="submit" value="Enviar" name="Importar">
+</form>
 
+<?php if ($estado): ?>
+	
 <table border=1>
 	<tr>
 		<td>Nombres</td>
@@ -21,17 +29,19 @@
 
 
 	}?>
-<tr>
- <td><?php echo $nombres ?></td>
- <td><?php echo $apellidos ?></td>
- <td><?php echo $telefeno ?></td>
- <td><?php echo $direccion ?></td>
- <td><?php echo $email ?></td>
+	<tr>
+ 		<td><?php echo $nombres ?></td>
+ 		<td><?php echo $apellidos ?></td>
+ 		<td><?php echo $telefeno ?></td>
+ 		<td><?php echo $direccion ?></td>
+ 		<td><?php echo $email ?></td>
 	
-</tr>
- 
+	</tr> 
 </table>
+<?php endif ?>
+	
 
 <!--END CONTENIDO-->
 <?php require("footer-menu.view.php") ?>					
-<?php #require("piedepagina-admin.php") ?>
+<?php require("piedepagina-admin.php") ?>
+
