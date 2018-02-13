@@ -7,8 +7,9 @@ $cn = getConexion($bd_config);
 comprobarConexion($cn);
 $tipoDocumento = getTiposDocumentos($cn);
 $tipos_sangre = getTiposSangre($cn);
-$munis_naci = getMunicipios($cn);
-$munis_resi = getMunicipios($cn);
+$departamentos = getDepartamentos($cn);
+#$munis_naci = getMunicipios($cn);
+#$munis_resi = getMunicipios($cn);
 $programas = getAllSubject("programa",$cn);
 $enviado = "";
 if (isset($_POST['submit'])) {

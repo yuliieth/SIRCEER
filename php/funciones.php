@@ -1,5 +1,16 @@
 <?php 
 
+function getDepartamentos($cn)
+{
+	$sql = "SELECT * FROM departamento ORDER BY nombre ASC";
+	#var_dump($sql);
+	$ps = $cn->prepare($sql);
+	$ps->execute();
+	$resul = $ps->fetchAll();
+	#var_dump($resul);
+	return $resul;
+}
+
 function  getHistorialEstudiante($matricula,$cn)
 {
 	$sql = "SELECT * FROM detalle_semestre,semestre WHERE detalle_semestre.matricula_id=$matricula AND detalle_semestre.semestre_id=semestre.id";
@@ -204,14 +215,15 @@ function getNivelesAcademicos($con)
 }
 
 
-function getMunicipios($con)
+function getMunicipios($id,$con)
 {
-	$sql = "SELECT * FROM municipio";
+	var_dump($id);
+	$sql = "SELECT * FROM municipio WHERE departamento_id=$id ORDER BY nombre ASC";
 	$ps = $con->prepare($sql);
 	$ps->execute();
-	#var_dump($ps);
+	var_dump($ps);
 	$result = $ps->fetchAll();
-	#var_dump($result);
+	var_dump($result);
 	return $result;
 }
 

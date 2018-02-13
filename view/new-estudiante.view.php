@@ -50,10 +50,18 @@
 			<td><label for="muni_naci">Municipio de nacimiento:</label></td>
 			<td>
 			<select name="muni_naci" id="">
-				<?php foreach ($munis_naci as $muni): ?>
-					<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+				<?php foreach ($departamentos as $depa): ?>
+					<optgroup label="<?php echo $depa['nombre']; ?>">
+						
+						<?php $municipios = getMunicipios($depa['id'],$cn); 
+						var_dump($municipios);
+							foreach ($municipios as $muni) {?>
+								<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+								<?php 
+							}
+						?>
+					</optgroup>
 				<?php endforeach ?>
-				
 			</select>
 			</td>			
 			<td><label for="dire_resi">Direccion de residencia:</label></td>
@@ -65,12 +73,20 @@
 			<td><label for="muni_resi">Municipio de residencia:</label></td>
 			<td>
 			<select name="muni_resi" id="">
-				<?php foreach ($munis_resi as $muni): ?>
-					<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+				<?php foreach ($departamentos as $depa): ?>
+					<optgroup label="<?php echo $depa['nombre']; ?>">
+						
+						<?php $municipios = getMunicipios($depa['id'],$cn); 
+						var_dump($municipios);
+							foreach ($municipios as $muni) {?>
+								<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
+								<?php 
+							}
+						?>
+					</optgroup>
 				<?php endforeach ?>
-				
 			</select>
-			</td>
+			</td>		
 		</tr>
 		
 		<tr>
