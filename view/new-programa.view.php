@@ -9,13 +9,14 @@
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		<input type="text" size="30" name="nombre" placeholder="Nombre*" required>
 		<input type="text" size="30" name="codigosnies" placeholder="Codigo SNIES*" required>
-		<input type="text" size="30" name="semestres" placeholder="Semestres*">	
+		<input type="text" size="30" name="semestres" placeholder="Numero de semestres*">	
 			
 		<br>
-		<input type="text" size="30" name="creditos" placeholder="Creditos*" required>	
+		<input type="text"  name="valor_semestre" placeholder="Valor del semestre*" required>
+
 		<select name="nivel-academico" id="nivel-academico">
 			<?php foreach ($niveles as $valor): ?>
-				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['tipo'] ?></option>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>
 		</select>
 
@@ -26,6 +27,13 @@
 			<?php endforeach ?>
 		</select>	
 
+
+		<br>
+		<select name="jornada" id="">
+			<?php foreach ($jornadas as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>	
 		
 		<br>		
 		<?php if (!empty($errores)): ?>

@@ -1,117 +1,197 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
+
+<div style=" margin-top: 5px; padding-top: 15px; width: 82%; height: 40px; background-color: rgb(255,255,255);">
+	<h1>AGREGANDO NUEVO ESTUDIANTE</h1>
+</div>
+
 <div class="wrap-formulario-new-estudiante">
-	<h1>Nuevo estudiante</h1>	
+	
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
+
 		<tr>
-			<td>
-			<label for="tipo_documento">Tipo de documento:</label>
-			</td>
-			<td>
-				<select name="tipo_documento" id="">
-				<?php foreach ($tipoDocumento as $tipoDocumento): ?>
-					<option value="<?php echo $tipoDocumento['id'] ?>"><?php echo $tipoDocumento['tipo'] ?></option>
-				<?php endforeach ?>
-				</select>
-			</td>
 			<td><label for="documento">Documento:</label></td>
 			<td><input type="text" onkeyup="sugerencias(this.value)" size="20" name="documento" placeholder="Documento" required="" >
 				<div id="miDiv"></div>
+			</td>		
+			<td><label for="tipo_documento">Tipo de documento:</label></td>
+			<td>
+				<select name="tipo_documento" id="">
+					<option value="#">Sin seleccionar</option>
+				<?php foreach ($tipoDocumento as $tipoDocumento): ?>
+					<option value="<?php echo $tipoDocumento['id'] ?>"><?php echo $tipoDocumento['nombre'] ?></option>
+				<?php endforeach ?>
+				</select>
 			</td>
-				
 		</tr>	
+
 		<tr>
 			<td><label for="primer_nombre">Primer nombre:</label></td>
 			<td><input type="text" size="30" name="primer_nombre" placeholder="Primer nombre"  required="" ></td>
 			<td><label for="segundo_nombre">Segundo nombre:</label></td>
 			<td><input type="text" size="30" name="segundo_nombre" placeholder="Segundo nombre"></td>
 		</tr>
+
 		<tr>
 			<td><label for="primer_apellido">Primer apellido:</label></td>
 			<td><input type="text" size="30" name="primer_apellido" placeholder="Primer apellido"  required="" ></td>
 			<td><label for="segundo_apellido">Segundo apellido:</label></td>
 			<td><input type="text" size="30" name="segundo_apellido" placeholder="Segundo apellido"></td>
 		</tr>
+		
+
 		<tr>
 			<td><label for="telefono">Telefono:</label></td>
 			<td><input type="text" size="30" name="telefono" placeholder="Telefono"></td>
 			<td><label for="email">Email:</label></td>
 			<td><input type="email" size="30" name="email" placeholder="Email"></td>
 		</tr>
+
 		<tr>
 			<td><label for="fecha-naci">Fecha de nacimiento:</label></td>
-			<td><input type="date" name="fecha_naci" step="1" min="1980-01-01" max="2018-12-31" value="" placeholder="Fecha de nacimiento"></td>
+			<td><input type="date" name="fecha_naci" step="1" min="1980-01-01" max="2030-12-31" value="" placeholder="Fecha de nacimiento"></td>
 			<td><label for="edad">Edad:</label></td>
-			<td><input type="number" min="10" max="30" name="edad" placeholder="Edad: 10-30" required="" ></td>
+			<td><input type="number" min="10" max="50" name="edad" placeholder="Edad: 10-50" required="" ></td>
 		</tr>
+
 		<tr>
-			<td><label for="muni_naci">Municipio de nacimiento:</label></td>
-			<td>
-			<select name="muni_naci" id="">
-				<?php foreach ($departamentos as $depa): ?>
-					<optgroup label="<?php echo $depa['nombre']; ?>">
-						
-						<?php $municipios = getMunicipios($depa['id'],$cn); 
-						var_dump($municipios);
-							foreach ($municipios as $muni) {?>
-								<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
-								<?php 
-							}
-						?>
-					</optgroup>
-				<?php endforeach ?>
-			</select>
-			</td>			
 			<td><label for="dire_resi">Direccion de residencia:</label></td>
 			<td><input type="text" size="30" name="dire_resi" placeholder="Direccion"></td>
-		</tr>
-		<tr>
-			<td><label for="barrio_resi">Barrio de residencia:</label></td>
-			<td><input type="text" size="30" name="barrio_resi" placeholder="Barrio"></td>
-			<td><label for="muni_resi">Municipio de residencia:</label></td>
+			<td><label for="ciudad">Municipio de residencia:</label></td>
+				<option value="#">Sin seleccionar</option>
 			<td>
-			<select name="muni_resi" id="">
-				<?php foreach ($departamentos as $depa): ?>
-					<optgroup label="<?php echo $depa['nombre']; ?>">
-						
-						<?php $municipios = getMunicipios($depa['id'],$cn); 
-						var_dump($municipios);
-							foreach ($municipios as $muni) {?>
-								<option value="<?php echo $muni['id'] ?>"><?php echo $muni['nombre'] ?></option>
-								<?php 
-							}
-						?>
-					</optgroup>
+			<select name="ciudad" id="">
+				<option value="#">Sin seleccionar</option>
+				<?php foreach ($muni_resi as $muni_resi): ?>
+					<option value="<?php echo $muni_resi['id'] ?>"><?php echo $muni_resi['nombre'] ?></option>
 				<?php endforeach ?>
 			</select>
 			</td>		
-		</tr>
-		
-		<tr>
-			<td><label for="estrato">Estrato:</label></td>
-			<td><input type="number" size="30" min="1" max="6" name="estrato" placeholder="Estrato"></td>
-			<td><label for="zona">Zona:</label></td>
-			<td>
-				<select name="zona" id="">
-					<option value="Urbana">Urbana</option>
-					<option value="Rural">Rural</option>
-				</select>
-			</td>
 		</tr>
 
 		<tr>
 			<td><label for="eps">EPS:</label></td>
 			<td><input type="text" name="eps" placeholder="EPS" required=""></td>
-			<td><label for="situacion">Situacion:</label></td>
+			<td><label for="fecha_inicio">Fecha de inicio</label></td>
+			<td><input type="date" name="fecha_inicio" step="1" min="1980-01-01" max="2030-12-31" value="" placeholder="Fecha de inicio"></td>
+		</tr>
+		
+		<tr>
+			<td><label for="fecha_fin">Fecha fin</label></td>
+			<td><input type="date" name="fecha_fin" step="1" min="1980-01-01" max="2030-12-31" value="" placeholder="Fecha de inicio"></td>
+			<td><label for="fuente_recurso">Fuente de recurso</label></td>
 			<td>
-				<select name="situacion" id="">
-					<option value="Ninguna">Ninguna</option>
-					<option value="Desplazado">Desplazado</option>
-					<option value="Victima conflicto">Victima del conflicto</option>
-					<option value="Vulnerable">Poblacion vulnerable</option>
+				<select name="fuente_recurso" id="">	
+				<option value="#">Sin seleccionar</option>
+				<?php foreach ($fuente_recurso as $fuente_recurso): ?>
+					<option value="<?php echo $fuente_recurso['id'] ?>"><?php echo $fuente_recurso['nombre'] ?></option>
+				<?php endforeach ?>
+				</select>
+			</td>
+		</tr>
 
+		<tr>
+			<td><label for="internado">Internado</label></td>
+			<td>
+				<select name="internado" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($internado as $internado): ?>
+					<option value="<?php echo $internado['id'] ?>"><?php echo $internado['nombre'] ?></option>
+				<?php endforeach ?>
+				</select>
+			</td>
+			<td><label for="servicio_social">Servicio social</label></td>
+			<td>
+				<select name="servicio_social" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($servicio_social as $servicio_social): ?>
+					<option value="<?php echo $servicio_social['id'] ?>"><?php echo $servicio_social['estado'] ?></option>
+				<?php endforeach ?>
+				</select>
+			</td>
+		</tr>
+
+
+		<tr>
+			<td><label for="grado"></label>Grado que cursa:</td>
+			<td>
+				<select name="grado" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($grado as $grado): ?>
+					<option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
+				<?php endforeach ?>
+				</select>
+			</td>
+			<td><label for="tipo_sangre">Tipo sangre:</label></td>
+			<td><select name="tipo_sangre" id="">
+					<option value="#">Sin seleccionar</option>
+				<?php foreach ($tipos_sangre as $tipos_sangre): ?>
+					<option value="<?php echo $tipos_sangre['id'] ?>"><?php echo $tipos_sangre['nombre'] ?></option>
+				<?php endforeach ?>
+			</select></td>
+		</tr>
+
+		<tr>
+			<td><label for="colegio">Colegio</label></td>
+			<td>
+				<select name="colegio" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($colegio as $colegio): ?>
+					<option value="<?php echo $colegio['id'] ?>"><?php echo $colegio['nombre'] ?></option>
+				<?php endforeach ?>
+				</select>
+			</td>
+			
+			<td><label for="tipo_poblacion">Tipo de poblacion:</label></td>
+			<td>
+			<select name="tipo_poblacion" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($tipo_poblacion as $tipo_poblacion): ?>
+					<option value="<?php echo $tipo_poblacion['id'] ?>"><?php echo $tipo_poblacion['nombre'] ?></option>
+				<?php endforeach ?>
+				</select></td>
+		</tr>
+
+
+		<tr>
+			<td><label for="zona">Zona:</label></td>
+			<td>
+				<select name="zona" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($zona as $zona): ?>
+					<option value="<?php echo $zona['id'] ?>"><?php echo $zona['nombre'] ?></option>
+				<?php endforeach ?>
+				</select>
+			</td>
+			<td><label for="genero">Genero</label></td>
+			<td><select name="genero" id="">
+					<option value="#">Sin seleccionar</option>
+					<?php foreach ($genero as $genero): ?>
+					<option value="<?php echo $genero['id'] ?>"><?php echo $genero['nombre'] ?></option>
+				<?php endforeach ?>
+				</select></td>
+		</tr>
+
+
+		<tr>
+			<td><label for="estrato">Estrato:</label></td>
+			<td>
+			<select name="estrato" id="">
+					<option value="#">Sin seleccionar</option>
+				<?php foreach ($estrato as $estrato): ?>
+					<option value="<?php echo $estrato['id'] ?>"><?php echo $estrato['nombre'] ?></option>
+				<?php endforeach ?>
+			</select>
+			</td>
+			<td><label for="situacion_academica">Situacion academica:</label></td>
+			<td>
+				<select name="situacion_academica" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($situacion_academica as $situacion_academica): ?>
+					<option value="<?php echo $situacion_academica['id'] ?>"><?php echo $situacion_academica['nombre'] ?></option>
+				<?php endforeach ?>
 				</select>
 			</td>
 		</tr>
@@ -119,108 +199,41 @@
 		
 
 		<tr>
-			<td><label for="tipo_poblacion">Tipo de poblacion:</label></td>
-			<td><select name="tipo_poblacion" id="">
-				<option value="Ninguna">Ninguna</option>
-					<option value="Mestizo">Mestizo</option>
-					<option value="Indigena">Indigena</option>
-					<option value="Afro">Afro</option>
-				</select></td>
 			<td><label for="ojos">Ojos:</label></td>
 			<td>
 				<select name="ojos" id="">
-					<option value="Negros">Negros</option>
-					<option value="Cafes">Cafes</option>
-					<option value="Azules">Azules</option>
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($ojos as $ojos): ?>
+					<option value="<?php echo $ojos['id'] ?>"><?php echo $ojos['color'] ?></option>
+				<?php endforeach ?>
 				</select>
 			</td>
-		</tr>
-
-
-		<tr>
-			<td><label for="genero">Genero</label></td>
-			<td><select name="genero" id="">
-					<option value="F">Mujer</option>
-					<option value="M">Hombre</option>
-				</select></td>
-			<td></td>
-			<td>
-				
-			</td>
-		</tr>
-
-		<tr>
 			<td><label for="discapacidades">Discapacidades:</label></td>
 			<td>
-				<input type="text" rows="2" cols="20" size="30" name="discapacidades" placeholder="Discapacidades" required="" >	
+				<select name="discapacidades" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($discapacidades as $discapacidades): ?>
+					<option value="<?php echo $discapacidades['id'] ?>"><?php echo $discapacidades['nombre'] ?></option>
+				<?php endforeach ?>
+
+				</select>	
 			</td>
-			<td><label for="situacion_academica">Situacion academica:</label></td>
+		</tr>
+
+		<tr>
+			<td><label for="situacion_social">Situacion social:</label></td>
 			<td>
-				<select name="situacion_academica" id="">
-					<option value="Matriculado">Matriculado</option>
-					<!--<option value="Promovido">Promovido</option>-->
-					<option value="Cancelado">Cancelado</option>
-					<option value="Trasladado">Trasladado</option>
-					<option value="Suspendido">Suspendido</option>
+				<select name="situacion_social" id="">
+						<option value="#">Sin seleccionar</option>
+					<?php foreach ($situacion_social as $situacion_social): ?>
+					<option value="<?php echo $situacion_social['id'] ?>"><?php echo $situacion_social['nombre'] ?></option>
+				<?php endforeach ?>
 				</select>
 			</td>
-		</tr>
-
-		<tr>
-			<td><label for="grado"></label>Grado que cursa:</td>
-			<td><input type="number" name="grado" min="6" max="11" placeholder="Grado" required=""></td>
-			<td><label for="tipo_sangre">Tipo sangre:</label></td>
-			<td><select name="tipo_sangre" id="">
-				<?php foreach ($tipos_sangre as $tipo): ?>
-					<option value="<?php echo $tipo['id'] ?>"><?php echo $tipo['tipo'] ?></option>
-				<?php endforeach ?>
-			</select></td>
-		</tr>
-
-		<th><strong>Datos del programa</strong></th>
-		<tr>
-		<td><label for="programa">Programa:</label></td>
-		<td>
-		<select name="programa" id="" onchange="ejecutar(this.value)">
-			<option value="">Seleccione una opcion</option>
-		<?php foreach ($programas as $programa): ?>
-			<option  value="<?php echo $programa['snies']?>"><?php echo $programa['nombre']?></option>
-		<?php endforeach ?>
-		</select>
-		</td>
-		<td>Institucion/SNIES:</td>
-		<td id="snies"></td>
-		</tr>
-
-		<th><strong>Datos semestres</strong></th>
-		<tr>
-			<td><label for="Semestre">Semestre:</label></td>
-			<td><select name="semestre" id="semestre">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-			</select>
-			<label for="Semestre">Periodo:</label>
-			<select name="periodo" id="periodo">
-				<option value="1">1</option>
-				<option value="2">2</option>
-			</select></td>
-			<!--<td><label for="promedio_anterior">Promedio anterior:</label></td>
-			<td><input type="text" name="promedio_anterior" placeholder="Ejemplo: 4.5"></td>-->
-		</tr>
-
-		<tr>
 			<td><label for="observacion:">Observación:</label></td>
 			<td><textarea name="observacion" placeholder="Observaciones para el estudiante..." id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
 		</tr>
+
 	</table>
 		<?php //if (!empty($errores)): ?>
 			<!--<div class="input-redit alert error">

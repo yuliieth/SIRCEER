@@ -1,5 +1,210 @@
 <?php 
 
+function saveDiscapacidades($discapacidad,$cn){
+	
+	$sql = "INSERT INTO discapacidades(nombre) VALUES (:nombre)";
+
+	$stm = $cn->prepare($sql);
+	$stm->bindParam(':nombre',$discapacidad);
+	
+	
+	$result = $stm->execute();
+
+	if ($result == false) {
+		echo "Error insertando la sede";
+	}
+
+	echo "<br> Id sede insertada <br>";
+	return $cn->lastInsertId();
+
+}
+
+function saveSede($sede,$codigo_dane_sede,$consecutivo,$zona_sede,$modelo,$institucion,$municipio,$cn){
+
+	echo "<br>Guardando sede...<br>";
+
+	$sql = "INSERT INTO sedes(nombre, codigo_dane_sede, consecutivo, zona_id, modelo_id, institucion_id,municipio_id) VALUES (:nombre,:codigo_dane_sede,:consecutivo,:zona_id,:modelo_id,:colegio_id,:municipio_id)";
+
+	$stm = $cn->prepare($sql);
+
+	$stm->bindParam(':nombre',$sede);
+	$stm->bindParam(':codigo_dane_sede',$codigo_dane_sede);
+	$stm->bindParam(':consecutivo',$consecutivo);
+	$stm->bindParam(':zona_id',$zona_sede);
+	$stm->bindParam(':modelo_id',$modelo);
+	$stm->bindParam(':colegio_id',$institucion);
+	$stm->bindParam(':municipio_id',$municipio);
+
+	$result = $stm->execute();
+
+	if ($result == false) {
+		echo "Error insertando la sede";
+	}else{
+
+	echo "<br> Id sede insertada <br>";
+	}
+
+	return $cn->lastInsertId();
+
+}
+
+function saveSchool($institucion,$calendario,$dane,$sector,$municipio,$cn){
+
+	echo "<br>Entro saveSchool<br> Valores variables recibidads: <br>
+	$institucion <br> $calendario <br> $dane <br> $sector <br> municipio: $municipio <br>";
+
+	/*
+	#Primero debemos conocer el municipio y obtener su id
+	$row = getSubjectByValue('municipios',$municipio,'nombre',$cn);
+	#var_dump($row);
+	$municipio_id =  $row['id'];
+*/
+	$sql = "INSERT INTO instituciones (nombre,calendario, DANE, sector_id,municipio_id) VALUES (:nombre,:calendario,:DANE,:sector_id,:municipio_id)";
+
+	$stm = $cn->prepare($sql);
+
+	$stm->bindParam(':nombre',$institucion);
+	$stm->bindParam(':calendario',$calendario);
+	$stm->bindParam(':DANE',$dane);
+	$stm->bindParam(':sector_id',$sector);
+	$stm->bindParam(':municipio_id',$municipio);
+
+	echo "Insertando escuela...";
+	$estado = $stm->execute();
+	echo "<br> Valor de estado: ";
+	var_dump($estado);
+	if ($estado==false) {
+		echo "<br> Error insertando la escuela<br>";
+	}else{
+
+	echo "<br> Id escuela insertada:<br>";
+	var_dump($cn->lastInsertId());
+	}
+	return $cn->lastInsertId();
+}
+
+function validarYregistrar($nameTable,$nameColumnUno,$nameColumnDos,$valueUno,$cn){
+	$id = 0;
+	$relacion = validarRegistro($nameTable,$nameColumnUno,$valueUno,$cn);
+		if ($relacion) {
+			#Ya hay coincidencia
+			#Obtener id para establecer relacion en BD
+			echo "Encontro coincidencia";
+			#buscar la coincidencia con la ciudad y obtiene su id
+			$row = getSubjectByValue($nameTable,$valueUno,$nameColumnUno,$cn);
+			#var_dump($row);
+			$id = $row['id'];
+
+			#echo "valor de last_id_estado <br>";
+			#var_dump($last_id_estado);
+			echo "<br>";
+			#echo "$last_id_estado";
+		}else
+		{
+			#echo "No hay coincidencias...";
+
+
+			switch ($nameTable) {
+				case 'municipios':
+				#Por ahora trae el id del unico de partamento
+				$valueDos = getId('departamentos',$cn);
+				
+					break;
+				
+				default:
+					$valueDos = "Descripcion por defecto";
+					break;
+			}
+
+			#Do insert
+			$do_registred = registrarRelacion($nameTable,$nameColumnUno,$nameColumnDos,$valueUno,$valueDos,$cn);
+			echo "<br>";
+			#var_dump($do_registred);
+			echo "<br>";
+			if ($do_registred == false) {
+				echo "Ocurrio un error al tratar de registrar $nameTable";
+			}else{
+			#Return last id
+			$id = getId($nameTable,$cn);
+				
+			}
+
+
+
+		}#End else
+
+		return $id;
+
+}
+
+
+ function registrarRelacion($nameTable,$nameValueUno,$nameValueDos,$valueUno,$valueDos,$cn)
+{
+	
+	echo "<br>";
+	echo $nameValueUno;
+	echo $nameValueDos;
+	echo $valueUno;
+	echo $valueDos;
+	
+	echo "<br>";
+	$sql = "INSERT INTO $nameTable ($nameValueUno,$nameValueDos) VALUES(?,?)";
+	$preparado = $cn->prepare($sql);
+	$preparado->bindParam(1,$valueUno);
+	$preparado->bindParam(2,$valueDos);
+	$state = $preparado->execute();
+	var_dump($preparado);
+
+	#con->lastInsertId(); //devuelve el id del ultimo registro insertado en esta conexion
+	if ($state) {
+		return true;
+		die();
+	}else{
+		return false;
+		die();
+	}
+}
+
+
+#Validad si hay coincidencia, si es asi devuelve el id de la coincidencia
+function validarRegistro($nameTable,$nameColumn,$valor,$cn)
+{
+	/*
+	echo "<br>";
+	echo "$nameTable <br>";
+	echo "$nameColumn <br>";
+	echo "$valor <br>";
+	echo "<br>";
+	*/
+
+	echo "<br>Ingresa a validarRegistro:<br>";
+
+	$value = "";
+	$sql = "SELECT * FROM $nameTable WHERE $nameColumn LIKE '".$valor."' LIMIT 1";	
+	$stm = $cn->prepare($sql);
+	$stm->execute();
+	$estado = $stm->fetch();
+	#echo "<br>Valor de stm<br>";
+	#var_dump($stm);
+
+	#echo "<br>Valor de estado de la busquedad...<br>";
+	#var_dump($estado);
+	#echo "<br>";
+	if ($estado != false) {
+	#	echo "<br> Hay coincidencias <br>";
+			#Sy hay coincidencas
+			$row = getSubjectByValue($nameTable,$valor,$nameColumn,$cn);
+			#var_dump($row);
+			#id de la ENTIDAD donde el nombre coincide
+			#echo "<br> Mostrando row: <br>";
+			#var_dump($row);
+			$value = $row['id'];
+	}
+
+	#var_dump($stm);
+	return $value;
+}
+
 function getDepartamentos($cn)
 {
 	$sql = "SELECT * FROM departamento ORDER BY nombre ASC";
@@ -107,13 +312,15 @@ function countEntityWithOutWhere($tabla,$cn){
 }
 
 function saveAlianza(
-	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
+	$nombre,$fecha_ini,$fecha_fina,$cupos,$instituciones,$cn
 )
 {
+
+	$fecha_sistema = Date("YY-mm-dd");
 	
 	try {
 			//var_dump($conexion);
-		$sql = ("INSERT INTO alianza (nombre,fecha_inicio,fecha_final,cupos) VALUES(  :nombre,:fecha_ini,:fecha_fina,:cupos)"
+		$sql = ("INSERT INTO alianzas (nombre,fecha_inicio,fecha_final,cupos) VALUES(  :nombre,:fecha_ini,:fecha_fina,:cupos)"
 	);
 		$statement = $cn->prepare($sql);
 		$statement->bindParam( ':nombre' , $nombre);
@@ -122,9 +329,39 @@ function saveAlianza(
 		$statement->bindParam( ':cupos' , $cupos);
 		
 		$result= $statement->execute();
-		if ($result !== null) {
-			header("Location:".URL."gestion/new-alianza.php?select=a");
+		var_dump($result);
+
+
+
+		echo "<br>*********<br>";
+		var_dump($instituciones);
+
+		#consultar id alianza
+		$id_alianza = getId('alianzas',$cn);
+
+		#Ahora se obtienen las instituciones seleccionadas para guardar en la tabla: instituciones_alianzas
+		$sql = "INSERT INTO instituciones_alianzas (institucion_id,alianzas_id,fecha_vinculacion) 
+		VALUES (:institucion_id,:alianzas_id,:fecha_vinculacion)";
+		$stp = $cn->prepare($sql);
+
+		for ($i=0; $i <  count($instituciones) ; $i++) { 
+			
+			
+		$stp->bindParam(':institucion_id',$instituciones[$i]);
+		$stp->bindParam(':alianzas_id',$id_alianza);
+		$stp->bindParam(':fecha_vinculacion',$fecha_sistema);
+
+		$resultA = $stp->execute();
+
 		}
+
+
+		if ($result != false && $resultA != false) {
+			header("Location:".URL."gestion/new-alianza.php?select=a");
+		}else{
+			echo "ocurrio un error...";
+		}
+
 
 	} catch (Exception $e) {
 		echo "Linea de error: ".$e->getMessage();	
@@ -169,16 +406,6 @@ function getProgramaOfEstudiante($documento,$con)
 	return $result;	
 }
 
-function getTiposSangre($con)
-{
-	$sql = "SELECT * FROM tipo_sangre ORDER BY id DESC";
-	$ps = $con->prepare($sql);
-	$ps->execute();
-	$result = $ps->fetchAll();
-	#var_dump($result);
-	return $result;
-
-}
 
 function getId($tabla,$con)
 {
@@ -215,26 +442,158 @@ function getNivelesAcademicos($con)
 }
 
 
-function getMunicipios($id,$con)
+
+
+
+/**
+*Para combox of student
+*/
+function getTipoDocumento($con)
 {
-	var_dump($id);
-	$sql = "SELECT * FROM municipio WHERE departamento_id=$id ORDER BY nombre ASC";
+	$sql = "SELECT * FROM tipos_documento";
 	$ps = $con->prepare($sql);
 	$ps->execute();
-	var_dump($ps);
 	$result = $ps->fetchAll();
-	var_dump($result);
 	return $result;
 }
 
-function getTiposDocumentos($con)
-{
-	$sql = "SELECT * FROM tipo_documento";
-	$ps = $con->prepare($sql);
-	$ps->execute();
-	$result = $ps->fetchAll();
-	return $result;
-}
+
+
+ function getMuniResi($cn)
+ {
+ 	$sql = "SELECT * FROM municipios";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getFuenteRecurso($cn)
+ {
+ 	$sql = "SELECT * FROM fuente_recursos";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getInternado($cn)
+ {
+ 	$sql = "SELECT * FROM internado";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getServicioSocial($cn)
+ {
+ 	$sql = "SELECT * FROM servicios_sociales";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getGrado($cn)
+ {
+ 	$sql = "SELECT * FROM grados";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getTiposSangre($cn)
+ {
+ 	$sql = "SELECT * FROM tipos_sangre";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getColegio($cn)
+ {
+ 	$sql = "SELECT * FROM sedes";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getTipoPoblacion($cn)
+ {
+ 	$sql = "SELECT * FROM tipos_poblacion";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getZona($cn)
+ {
+ 	$sql = "SELECT * FROM zonas";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getGenero($cn)
+ {
+ 	$sql = "SELECT * FROM generos";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getEstrato($cn)
+ {
+ 	$sql = "SELECT * FROM estrato";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getSituacionAcademica($cn)
+ {
+ 	$sql = "SELECT * FROM situaciones_academicas";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getOjos($cn)
+ {
+ 	$sql = "SELECT * FROM color_ojos";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getDiscapacidades($cn)
+ {
+ 	$sql = "SELECT * FROM discapacidades";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getSituacionSocial($cn)
+ {
+ 	$sql = "SELECT * FROM situaciones_sociales";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
 
 function getInstituciones($con)
 {
@@ -247,6 +606,8 @@ function getInstituciones($con)
 	return $result;
 }
 
+
+//Pendiente de eliminar 
 #SIMAT
 function buscarEstudianteSIMAT($documento,$con)
 {
@@ -296,7 +657,7 @@ function getTotalObjects($con)
 function validateSession()
 {
 	if (!isset($_SESSION['usuario'])) {
-		header("Location: ".URL."php/login.php");
+		header("Location: ".URL."index.php");
 	}
 }
 
@@ -380,17 +741,18 @@ function getAllSubject($table,$con)
 
 }
 
-function getSubjectById($table,$doc,$campo,$con)
+function getSubjectByValue($table,$value,$nameColumn,$con)
 {
 	#Used by Estudiante
 	#used by Ver estudiante
-	$sql = "SELECT * FROM $table WHERE $campo=$doc";
+	$sql = "SELECT * FROM $table WHERE $nameColumn='".$value."'";
 	$ps = $con->prepare($sql);
 	#var_dump($campo);
 	$ps->execute();
 	#var_dump($ps);
+	//echo "Sujeto";
 	$resul = $ps->fetch();
-	#var_dump($result);
+	//var_dump($resul);
 	
 	return $resul;
 
@@ -449,6 +811,7 @@ function validarErrores($parameter,$errores)
 			$errores .= " Ingrese el campo " . $campo . "</br>";
 		}
 	}
+	var_dump($errores);
 	return $errores;
 }
 
@@ -461,39 +824,31 @@ function saveInstitu
 	$municipio,
 	$email,
 	$direccion,
-	$bd_config
+	$cn
 )
 {
 
-	#echo $municipio;
-	$conexion = getConexion($bd_config);
-	if (!$conexion) {
+	
+	if (!$cn) {
 		echo "Error en conexion";
 	}else{
 		try {
 			//var_dump($conexion);
-			$sql = "INSERT INTO institucion  (nombre,telefono,email,direccion)VALUES (:nombre,:telefono,:email,:direccion)";
+			$sql = "INSERT INTO instituciones  (nombre,telefono,email,direccion,ciudad_id)VALUES (:nombre,:telefono,:email,:direccion,:municipio)";
 
-			$statement = $conexion->prepare($sql);
+			$statement = $cn->prepare($sql);
 			$statement->bindParam( ':nombre' , $nombre);
 			$statement->bindParam( ':telefono' , $telefono);
 			$statement->bindParam( ':email' , $email);
 			$statement->bindParam( ':direccion' , $direccion);
+			$statement->bindParam( ':municipio' , $municipio);
 			#var_dump($statement);
 			$result= $statement->execute();
 			#var_dump($result);
-		//Enlazar institucion con municipio por medio de la tabla institucion_municipio
-			$institucion_id = getId("institucion",$conexion);
-			#echo $institucion_id;
-			$sql = "INSERT INTO institucion_municipio (institucion_id, municipio_id) VALUES (:institucion,:municipio)";
-			$statement = $conexion->prepare($sql);
-			$statement->bindParam(':institucion',$institucion_id);
-			$statement->bindParam(':municipio',$municipio);
-			$resultInsti = $statement->execute();
-
-			if ($result !== null && $resultInsti != null) {
-				#echo "error";
-				header('Location: '.URL.'gestion/new-institucion.php?select=i');
+		
+			if ($result != false) {
+				echo "error";
+				//header('Location: '.URL.'gestion/new-institucion.php?select=i');
 			}
 		} catch (Exception $e) {
 			echo "Linea de error: ".$e->getMessage();	
@@ -504,39 +859,36 @@ function saveInstitu
 }
 function saveProgram
 (
-	$nombre,
 	$codigosnies,
+	$nombre,
 	$semestres,
-	$creditos,
+	$valor_semestre,
 	$nivelAcademico,
 	$institucion,
+	$jornada,
 	$cn
 )
 {	
 	
-	try {
+	
 			//var_dump($conexion);
-		$sql = ("INSERT INTO programa(snies, nombre,num_semestres,num_creditos,nivel_academico_id,institucion_id) VALUES(  :snies,:nombre,:num_semestres,:num_creditos,:nivel_academico_id,:institucion_id)"
+		$sql = ("INSERT INTO programas(snies, nombre,cantidad_semestre,costo_semestre,nivel_academico_id,institucion_id,jornada_id) VALUES(  :snies,:nombre,:num_semestres,:costo_semestre,:nivel_academico_id,:institucion_id,:jornada_id)"
 	);
-		$statement = $cn->prepare($sql);
-		$statement->bindParam( ':snies' , $codigosnies);
-		$statement->bindParam( ':nombre' , $nombre);
-		$statement->bindParam( ':num_semestres' , $semestres);
-		$statement->bindParam( ':num_creditos' , $creditos);
-		$statement->bindParam( ':nivel_academico_id' , $nivelAcademico);
-		$statement->bindParam( ':institucion_id' , $institucion);
-		
-		$result= $statement->execute();
-		
-		if ($result !== null) {
+		$stp = $cn->prepare($sql);
+		$stp->bindParam( ':snies' , $codigosnies);
+		$stp->bindParam( ':nombre' , $nombre);
+		$stp->bindParam( ':num_semestres' , $semestres);
+		$stp->bindParam( ':costo_semestre' , $valor_semestre);
+		$stp->bindParam( ':nivel_academico_id' , $nivelAcademico);
+		$stp->bindParam( ':institucion_id' , $institucion);
+		$stp->bindParam( ':jornada_id' , $jornada);
+		#var_dump($stp);
+		$result= $stp->execute();
+		#var_dump($result);
+		if ($result != false) {
 			header("Location:".URL."gestion/new-programa.php?select=p");
 		}
 
-	} catch (Exception $e) {
-		echo "Linea de error: ".$e->getMessage();	
-	}
-			//echo "ejecuto el metodo";
-	
 	
 }
 
@@ -545,109 +897,175 @@ function saveProgram
 #Registro del estudiante en la BD
 function saveStudent
 (
-	$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
-	$segundo_nombre,$primer_apellido,$segundo_apellido,
-	$telefono,$email,$fecha_naci,
-	$edad,$muni_naci,$dire_resi,
-	$barrio_resi,$muni_resi,$estrato,
-	$zona,$eps,$tipo_poblacion,
-	$situacion,$ojos,$genero,
-	$discapacidades,$situacion_academica,
-	$grado,$estado,$observacion,
-	$programa,$semestre,$periodo,
-	$cn
+		$tipo_doc,
+		$doc,
+		$nombre_uno,
+		$nombre_dos,
+		$ape_uno,
+		$ape_dos,
+		$telefono_contacto,
+		$email,
+		$fecha_naci,
+		$edad,
+		$direccion_residencia,
+		$municipio,
+		$eps_estudiante,
+		$fecha_ini,
+		$fecha_fin,
+		$fuente_recursos,
+		$internado,
+		$servicioSocial,
+		$codigo_grado,
+		$tipos_sangre,
+		$sede,
+		$tipos_poblacion,
+		$zona,
+		$genero,
+		$estrato,
+		$estado,
+		$ojos,
+		$discapacidad,
+		$situacion_social,
+		$observacion,
+		$cn
 )
+
 {
-	$fecha_registro =  date("Y-m-d");
-	$fecha_cambio_estado = "";
-	$anio = date("Y");
-	$promedio = "";
-	try {
-		$sql = ("INSERT INTO estudiante (documento, tipo_documento_id, tipo_sangre_id,primer_nombre, segundo_nombre,primer_apellido,segundo_apellido, tel_contacto, email,fecha_naci, edad,municipio_naci_id,  direccion_residencia, barrio_residencia, municipio_resi_id, estrato, zona, EPS, situacion, tipo_poblacion, ojos, genero, discapacidades, situacion_academica, grado, estado,fecha_registro,fecha_cambio_estado, observaciones)VALUES(	:documento,:tipo_documento_id,:tipo_sangre_id,:primer_nombre,:segundo_nombre,:primer_apellido,:segundo_apellido,:tel_contacto,:email,:fecha_naci,:edad,:municipio_naci_id,:direccion_residencia,:barrio_residencia,:municipio_resi_id,:estrato,:zona,:EPS,:situacion,:tipo_poblacion,:ojos,:genero,:discapacidades,:situacion_academica,:grado,:estado,:fecha_registro,:fecha_cambio_estado,:observaciones)");	
-		$statement = $cn->prepare($sql);
-			#var_dump($statement);
-			#Devuelve false en caso de ocurrir algun error
-		$result=$statement->execute(
-			array(
-				':documento' => $documento , 
-				':tipo_documento_id' => $tipo_documento , 
-				':tipo_sangre_id' => $tipo_sangre, 
-				':primer_nombre' => $primer_nombre, 
-				':segundo_nombre' => $segundo_nombre , 
-				':primer_apellido' => $primer_apellido , 
-				':segundo_apellido' => $segundo_apellido , 
-				':tel_contacto' => $telefono , 
-				':email' => $email, 
-				':fecha_naci' => $fecha_naci , 
-				':edad' => $edad , 
-				':municipio_naci_id' => $muni_naci,
-				':direccion_residencia' => $dire_resi , 
-				':barrio_residencia' => $barrio_resi , 
-				':municipio_resi_id' => $muni_resi,
-				':estrato' => $estrato , 
-				':zona' => $zona , 
-				':EPS' => $eps , 
-				':situacion' => $situacion, 
-				':tipo_poblacion' => $tipo_poblacion , 
-				':ojos' => $ojos, 
-				':genero' => $genero, 
-				':discapacidades' => $discapacidades, 
-				':situacion_academica' => $situacion_academica, 
-				':grado' => $grado , 
-				':estado' => $estado, 
-				':fecha_registro' => $fecha_registro, 
-				':fecha_cambio_estado' => $fecha_cambio_estado, 
-				':observaciones' => $observacion
-			));
-		$sql = "INSERT INTO matricula(id, estudiante_documento,programa_snies,fecha) VALUES 
-		(null,:estudiante_documento, :programa_snies,:fecha)";
-		$statement = $cn->prepare($sql);
-			#var_dump($statement);
-			#Devuelve false en caso de ocurrir algun error
-		$statement->bindParam(':estudiante_documento',$documento);
-		$statement->bindParam(':programa_snies',$programa);
-		$statement->bindParam(':fecha',$fecha_registro);
-				#$statement->bindParam(':promedio_anterior',$promedio_anterior);
-		$resultMatricula = $statement->execute();
-			#var_dump($result);
+	
+/*
 
-		$sql = "INSERT INTO semestre(id, semestre, periodo) VALUES (null,:semestre,:periodo)";
-		$statement = $cn->prepare($sql);
-			#var_dump($statement);
-			#Devuelve false en caso de ocurrir algun error
-		$statement->bindParam(':semestre',$semestre);
-		$statement->bindParam(':periodo',$periodo);
-		$resultSemestre = $statement->execute();
+		echo "<br>******VARIABLES recibidads*****<br>";
+		echo "<br>$tipo_doc<br>"; 	
+		echo "<br>$doc<br>"; 
+		echo "<br>$nombre_uno<br>"; 
+		echo "<br>$nombre_dos<br>"; 
+		echo "<br>$ape_uno<br>"; 
+		echo "<br>$ape_dos<br>"; 
+		echo "<br>$telefono_contacto<br>"; 
+		echo "<br>$email<br>"; 
+		echo "<br>$fecha_naci<br>"; 
+		echo "<br>$edad<br>"; 
+		echo "<br>$direccion_residencia<br>"; 
+		echo "<br>$municipio<br>"; 
+		echo "<br>$eps_estudiante<br>"; 
+		echo "<br>$fecha_ini<br>"; 
+		echo "<br>$fecha_fin<br>"; 
+		echo "<br>$fuente_recursos<br>"; 
+		echo "<br>$internado<br>"; 
+		echo "<br>$servicioSocial<br>"; 
+		echo "<br>$codigo_grado<br>"; 
+		echo "<br>$tipos_sangre<br>"; 
+		echo "<br>$sede<br>"; 
+		echo "<br>$tipos_poblacion<br>"; 
+		echo "<br>$zona<br>"; 
+		echo "<br>$genero<br>"; 
+		echo "<br>$estrato<br>"; 
+		echo "<br>$estado<br>"; 
+		echo "<br>$ojos<br>"; 
+		echo "<br>$discapacidad<br>"; 
+		echo "<br>$situacion_social<br>"; 
+		echo "<br>$observacion<br>"; 
+*/	
 
+		$sql = "
+	INSERT INTO estudiantes(documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, telefono_contacto, email, fecha_nacimiento, edad, direccion_residencia, EPS, fecha_inicio, fecha_fin, observacion, tipo_documento_id, tipo_sangre_id, zona_id, tipo_poblaion_id, estrato_id, genero_id, ojos_id, situacion_academica_id, situacion_social_id, grado_id, fuenterecurso_id, internado_id, discapacidad_id, municipio_id,sede_id) VALUES (
+	:documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :telefono_contacto, :email, :fecha_nacimiento, :edad, :direccion_residencia, :EPS, :fecha_inicio, :fecha_fin, :observacion, :tipo_documento_id, :tipo_sangre_id, :zona_id, :tipo_poblaion_id, :estrato_id, :genero_id, :ojos_id, :situacion_academica_id, :situacion_social_id, :grado_id, :fuenterecurso_id, :internado_id, :discapacidad_id, :ciudades_id,:sede_id
+)";
 
-			#Obtener el ID del semestre ingresado
-		$sql = "SELECT id AS semestre_id FROM semestre ORDER BY id DESC LIMIT 1";
-		$ps = $cn->prepare($sql); 
-		$ps->execute();
-		$semestre_id = $ps->fetch()['semestre_id'];
+	$state = $cn->prepare($sql);
+	
+	$state->bindParam(':documento', $doc);
+	$state->bindParam(':primer_nombre', $nombre_uno);
+	$state->bindParam(':segundo_nombre', $nombre_dos);
+	$state->bindParam(':primer_apellido', $ape_uno);
+	$state->bindParam(':segundo_apellido', $ape_dos);
+	$state->bindParam(':telefono_contacto', $telefono_contacto);
+	$state->bindParam(':email', $email);
+	$state->bindParam(':fecha_nacimiento', $fecha_naci);
+	$state->bindParam(':edad', $edad );
+	$state->bindParam(':direccion_residencia', $direccion_residencia);
+	$state->bindParam(':EPS', $eps_estudiante);
+	$state->bindParam(':fecha_inicio', $fecha_ini);
+	$state->bindParam(':fecha_fin', $fecha_fin);
+	$state->bindParam(':observacion', $observacion);
+	$state->bindParam(':tipo_documento_id', $tipo_doc);
+	$state->bindParam(':tipo_sangre_id', $tipos_sangre);//?
+	$state->bindParam(':zona_id', $zona);//?
+	$state->bindParam(':tipo_poblaion_id', $tipos_poblacion);//?
+	$state->bindParam(':estrato_id', $estrato);
+	$state->bindParam(':genero_id', $genero);
+	$state->bindParam(':ojos_id', $ojos);//?
+	$state->bindParam(':situacion_academica_id', $estado);
+	$state->bindParam(':situacion_social_id', $situacion_social);//?
+	$state->bindParam(':grado_id', $codigo_grado);
+	$state->bindParam(':fuenterecurso_id', $fuente_recursos);
+	$state->bindParam(':internado_id', $internado);
+	$state->bindParam(':discapacidad_id', $discapacidad);
+	$state->bindParam(':ciudades_id',$municipio);
+	$state->bindParam(':sede_id',$sede);
 
+	#echo "<br> Mostrando sql: <br>";
+	#var_dump($state);
 
-			//Obtener ID de la matricula
-		$matricula = getIdmatricula($documento,$cn);
+	$resultE = $state->execute();
+	#echo "<br>RESULTADO INSERCION ESTUDIANTE <br>";
+	#var_dump($resultE);
 
-			//Insertar tabla detalle semestre
-		$sql = "INSERT INTO detalle_semestre (id, matricula_id, semestre_id, anio,ultima_modificacion) VALUES 
-		(null,:matricula,:semestre,:anio,:ultima_modificacion)";
-		$statement = $cn->prepare($sql);
-		$statement->bindParam(':matricula',$matricula);
-		$statement->bindParam(':semestre',$semestre_id);
-		$statement->bindParam(':anio',$anio);
-		$statement->bindParam(':ultima_modificacion',$fecha_registro);
-		$resultDetalle = $statement->execute();
-		if ($result == true && $resultSemestre == true && $resultDetalle == true && $resultMatricula == true) {
-			header("Location:".URL."gestion/new-estudiante.php?select=e");
+		if (!$resultE) {
+			echo "Ocurrio un error al tratrar de registrar el estudiante";
 		}
-		else
-		{
-			echo  "error";
+
+		
+		#Una vez se hace el insert para el estudiante retornamos si ID para ser ocupado en la tabla "estudiante_serviciosocial: campos ids estudiante_serviciosocial_id - servicio_social_id"
+
+		$idEstudiante = getId("estudiantes",$cn);
+		
+
+		$sql = ("INSERT INTO estudiante_serviciosocial (estudiante_serviciosocial_id,servicio_social_id) VALUES (:estudiante,:servicio)");
+
+		$stp = $cn->prepare($sql);
+		$stp->bindParam(':estudiante',$idEstudiante);
+		$stp->bindParam(':servicio',$servicioSocial);
+		$resultS = $stp->execute();
+
+
+		if ($resultE == false && $resultS == false) {
+			echo "Ocurrio un error al tratrar de registrar los datos";
 		}
-	} catch (Exception $e) {
-		echo "Linea de error: ".$e->getMessage();	
-	}			
-}
+
+	}	
+
+
+
+	function saveColegio(
+	$nombre,
+	$telefono,
+	$siglas,
+	$calendario,
+	$dane,
+	$cn
+			)
+	{
+
+
+			//var_dump($conexion);
+		$sql = ("INSERT INTO colegios(nombre, telefono, siglas, calendario, DANE) VALUES(:nombre,:telefono,:siglas,:calendario,:DANE)"
+	);
+		$stp = $cn->prepare($sql);
+		
+		$stp->bindParam( ':nombre' , $nombre);
+		$stp->bindParam( ':telefono' , $telefono);
+		$stp->bindParam( ':siglas' , $siglas);
+		$stp->bindParam( ':calendario' , $calendario);
+		$stp->bindParam( ':DANE' , $DANE);
+		
+		#var_dump($stp);
+		$result= $stp->execute();
+		#var_dump($result);
+		if ($result != false) {
+			header("Location:".URL."gestion/new-colegio.php?select=c");
+		}
+
+	}	
+
 ?>

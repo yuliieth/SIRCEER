@@ -12,32 +12,32 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.situacion_academica, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id ORDER BY documento ASC ";
+$query="SELECT estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad,estudiantes.email,estudiantes.ojos,estudiantes.estrato,estudiantes.genero,estudiantes.estado,estudiantes.zona,estudiantes.situacion,estudiantes.tipo_poblacion,estudiantes.grado,estudiantes.situacion_academica, programa.nombre AS namePrograma FROM estudiantes INNER JOIN matricula ON estudiantes.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiantes.tipo_documento_id=tipo_documento.id ORDER BY documento ASC ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['estudiantes']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['estudiantes']);
-	$query="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.situacion_academica, programa.nombre AS namePrograma FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id WHERE
-		estudiante.documento LIKE '%".$q."%' OR
-		estudiante.primer_nombre LIKE '%".$q."%' OR
-		estudiante.segundo_nombre LIKE '%".$q."%' OR
-		estudiante.primer_apellido LIKE '%".$q."%' OR
-		estudiante.segundo_apellido LIKE '%".$q."%' OR
-		estudiante.email LIKE '%".$q."%' OR
-		estudiante.estrato LIKE '%".$q."%' OR
-		estudiante.genero LIKE '%".$q."%' OR
-		estudiante.situacion LIKE '%".$q."%' OR
-		estudiante.tipo_poblacion LIKE '%".$q."%' OR
-		estudiante.estado LIKE '%".$q."%' OR
-		estudiante.zona LIKE '%".$q."%' OR
-		estudiante.grado LIKE '%".$q."%' OR
-		estudiante.EPS LIKE '%".$q."%' OR
+	$query="SELECT estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad,estudiantes.email,estudiantes.ojos,estudiantes.estrato,estudiantes.genero,estudiantes.estado,estudiantes.zona,estudiantes.situacion,estudiantes.tipo_poblacion,estudiantes.grado,estudiantes.situacion_academica, programa.nombre AS namePrograma FROM estudiantes INNER JOIN matricula ON estudiantes.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiantes.tipo_documento_id=tipo_documento.id WHERE
+		estudiantes.documento LIKE '%".$q."%' OR
+		estudiantes.primer_nombre LIKE '%".$q."%' OR
+		estudiantes.segundo_nombre LIKE '%".$q."%' OR
+		estudiantes.primer_apellido LIKE '%".$q."%' OR
+		estudiantes.segundo_apellido LIKE '%".$q."%' OR
+		estudiantes.email LIKE '%".$q."%' OR
+		estudiantes.estrato LIKE '%".$q."%' OR
+		estudiantes.genero LIKE '%".$q."%' OR
+		estudiantes.situacion LIKE '%".$q."%' OR
+		estudiantes.tipo_poblacion LIKE '%".$q."%' OR
+		estudiantes.estado LIKE '%".$q."%' OR
+		estudiantes.zona LIKE '%".$q."%' OR
+		estudiantes.grado LIKE '%".$q."%' OR
+		estudiantes.EPS LIKE '%".$q."%' OR
 		tipo_documento.tipo LIKE '%".$q."%' OR
-		estudiante.situacion_academica LIKE '%".$q."%' OR
-		estudiante.fecha_registro LIKE '%".$q."%' OR
+		estudiantes.situacion_academica LIKE '%".$q."%' OR
+		estudiantes.fecha_registro LIKE '%".$q."%' OR
 		matricula.id LIKE '%".$q."%' OR
-		estudiante.edad LIKE '%".$q."%' OR
+		estudiantes.edad LIKE '%".$q."%' OR
         programa.nombre LIKE '%".$q."%'";
 }
 

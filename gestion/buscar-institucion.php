@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 <?php  
+require_once '../admin/config.php';
 require_once '../php/funciones.php';
-validateSession();
+#validateSession();
 ?>
 <?php require("../view/buscar-institucion.view.php") ?>
 

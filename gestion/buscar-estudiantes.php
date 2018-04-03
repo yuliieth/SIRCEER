@@ -3,7 +3,7 @@
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-validateSession();
+#validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 #$allEntitys = getStudentsInsitutesAndprogramns($bd_config);

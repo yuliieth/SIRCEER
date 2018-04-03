@@ -2,19 +2,19 @@
 <?php 	require_once '../admin/config.php';?>
 <?php  require_once '../php/Conexion.php';?>
 <?php  require_once '../php/funciones.php';
-validateSession();
+#validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
-$niveles = getNivelesAcademicos($cn);
-$instituciones = getInstituciones($cn);
+$niveles = getAllSubject('nivel_academico',$cn);
+$instituciones = getAllSubject('instituciones',$cn);
 #las anteriores pueden ser reemplazadas por esta
-$alianzas = getAllSubject('alianza',$cn);
+$jornadas = getAllSubject('jornadas',$cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"nombre","codigosnies","semestres","creditos","nivel-academico"
+		"nombre","codigosnies","semestres","jornada","nivel-academico","institucion","valor_semestre"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -33,14 +33,15 @@ if (isset($_POST['submit'])) {
 		
 		$semestres = $_POST['semestres'];
 
-		$creditos = $_POST['creditos'];
+		$valor_semestre = $_POST['valor_semestre'];
 
 		$nivelAcademico = $_POST['nivel-academico'];
 		$institucion = $_POST['institucion'];
+		$jornada = $_POST['jornada'];
 		
 		
 saveProgram(
-	$nombre,$codigosnies,$semestres,$creditos,$nivelAcademico,$institucion,$cn
+	$codigosnies,$nombre,$semestres,$valor_semestre,$nivelAcademico,$institucion,$jornada,$cn
 	);
 }
 

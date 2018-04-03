@@ -4,6 +4,7 @@
                                 case 'e':
                                         ?>
         <table id="estructura">
+            <!--ESTUDAINTES-->
         <tr>
                 <td id="menu">&nbsp;
                         <ul>
@@ -91,10 +92,10 @@
                 <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/estadisticas-programas.php?select=p">Estadisticas</a>
                 </li>
--->                                <!--<li>
-                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
-                <a href="../gestion/simat-programas.php?select=p">Consultar SIMAT</a>
-                </li>-->
+-->                                <li>
+                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/importar-programas.php?select=u">Importar</a>
+                </li>
                         </ul>
                 </td>
                 <td id="pagina">
@@ -132,9 +133,96 @@
                 </td>
                 <td id="pagina">
 
+<?php
+                                        break;
+
+
+ case 'u':
+                                        
+?>
+
+<table id="estructura">
+        <tr>
+                <td id="menu">&nbsp;
+                        <ul>
+                                <li>
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/new-universidad.php?select=u">Nuevo</a>
+                </li>
+                                <li>
+                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/buscar-universidad.php?select=u">Buscar</a>
+                </li>
+                                <li>
+                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/reportes-universidades.php?select=u">Reportes</a>
+                </li>
+                                <!--<li>
+                <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/estadisticas-instituciones.php?select=u">Estadisticas</a>
+                </li>
+
+                -->
+                <li>
+                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/importar-universidades.php?select=u">Importar</a>
+                </li>
+
+-->                        </ul>
+                </td>
+                <td id="pagina">
+
+
 
 <?php
                                         break;
+
+
+
+
+case 's':
+                                        
+?>
+
+<table id="estructura">
+        <tr>
+                <td id="menu">&nbsp;
+                        <ul>
+                                <li>
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/new-sede.php?select=s">Nuevo</a>
+                </li>
+                                <li>
+                <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/buscar-sede.php?select=s">Buscar</a>
+                </li>
+                                <li>
+                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/reportes-sedes.php?select=s">Reportes</a>
+                </li>
+                                <!--<li>
+                <i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/estadisticas-sedes.php?select=s">Estadisticas</a>
+                </li>
+
+                -->
+                <li>
+                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <a href="../gestion/importar-sedes.php?select=s">Importar</a>
+                </li>
+
+-->                        </ul>
+                </td>
+                <td id="pagina">
+
+
+
+<?php
+                                        break;
+
+
+
+
                                 
                                 default:
                                         echo "Error de menu";

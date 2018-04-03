@@ -1,30 +1,50 @@
 <?php session_start(); ?>
+<?php $titulo = " ESTUDIANTES" ?>
 <?php require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-validateSession();
+#validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
-$tipoDocumento = getTiposDocumentos($cn);
+
+#Load from DB to combox
+$tipoDocumento = getTipoDocumento($cn);
+$muni_resi = getMuniResi($cn);
+$fuente_recurso = getFuenteRecurso($cn);
+$internado = getInternado($cn);
+$servicio_social = getServicioSocial($cn);
+$grado = getGrado($cn); 
 $tipos_sangre = getTiposSangre($cn);
-$departamentos = getDepartamentos($cn);
-#$munis_naci = getMunicipios($cn);
-#$munis_resi = getMunicipios($cn);
-$programas = getAllSubject("programa",$cn);
+$colegio = getColegio($cn);
+$tipo_poblacion = getTipoPoblacion($cn);
+$zona = getZona($cn); 
+$genero = getGenero($cn);
+$estrato = getEstrato($cn);
+$situacion_academica = getSituacionAcademica($cn);
+$ojos = getOjos($cn); 
+$discapacidades = getDiscapacidades($cn);
+$situacion_social = getSituacionSocial($cn); 
+
+
+
+#$programas = getAllSubject("programa",$cn);
+
 $enviado = "";
 if (isset($_POST['submit'])) {
 	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","email","fecha_naci","edad","muni_naci","dire_resi","barrio_resi","muni_resi","estrato","zona","eps","tipo_poblacion","situacion","ojos","genero","discapacidades","situacion_academica","grado"
+		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","fecha_naci","edad","dire_resi","fecha_inicio","estrato","zona","eps","tipo_poblacion","situacion_social","fuente_recurso","internado","servicio_social","colegio","ojos","genero","discapacidades","situacion_academica","grado","ciudad"
 		);
+	#echo "Entra a validar";
 	$errores = validarErrores($parameters,$errores);
+
 	if (empty($errores)) {
+		#echo "No se encontraron errores de validacion";
 		$enviado = true;
 		#Obtenemos los valores de los campos en el formulario
 		$tipo_documento = $_POST['tipo_documento'];
 		$documento = $_POST['documento'];
-		$tipo_sangre = $_POST['tipo_sangre'];
 		$primer_nombre = $_POST['primer_nombre'];
 		$segundo_nombre = $_POST['segundo_nombre'];
 		$primer_apellido = $_POST['primer_apellido'];
@@ -33,41 +53,61 @@ if (isset($_POST['submit'])) {
 		$email = $_POST['email'];
 		$fecha_naci = $_POST['fecha_naci'];
 		$edad = $_POST['edad'];
-		$muni_naci = $_POST['muni_naci'];
 		$dire_resi = $_POST['dire_resi'];
-		$barrio_resi = $_POST['barrio_resi'];
-		$muni_resi = $_POST['muni_resi'];
-		$estrato = $_POST['estrato'];
-		$zona = $_POST['zona'];
+		$muni_resi = $_POST['ciudad'];
 		$eps = $_POST['eps'];
-		$tipo_poblacion = $_POST['tipo_poblacion'];
-		$situacion = $_POST['situacion'];
-		$ojos = $_POST['ojos'];
-		$genero = $_POST['genero'];
-		#$victima_conflicto = ($_POST['victima_conflicto'] == 'si') ? (boolean) 1 : (boolean) 0 ; ;
-		$discapacidades = $_POST['discapacidades'];
-		$situacion_academica = $_POST['situacion_academica'];
+		$fecha_inicio = $_POST['fecha_inicio'];
+		$fecha_fin = $_POST['fecha_fin'];
+		$fuente_recurso = $_POST['fuente_recurso'];
+		$internado = $_POST['internado'];
+		$servicio_social = $_POST['servicio_social'];
 		$grado = $_POST['grado'];
-		$estado = "0";
+		$tipo_sangre = $_POST['tipo_sangre'];
+		$colegio = $_POST['colegio'];
+		$tipo_poblacion = $_POST['tipo_poblacion'];
+		$zona = $_POST['zona'];
+		$genero = $_POST['genero'];
+		$estrato = $_POST['estrato'];
+		$situacion_academica = $_POST['situacion_academica'];
+		$ojos = $_POST['ojos'];
+		$discapacidades = $_POST['discapacidades'];
+		$situacion_social = $_POST['situacion_social'];
 		$observacion = $_POST['observacion'];
-		//Datos del programa
-		$programa = (int) $_POST['programa'];
-		//Datos semestre
-		$semestre = $_POST['semestre'];
-		$periodo =  $_POST['periodo'];
-$estado = saveStudent(
-	$tipo_documento,$documento,$tipo_sangre,$primer_nombre,
-	$segundo_nombre,$primer_apellido,$segundo_apellido,
-	$telefono,$email,$fecha_naci,
-	$edad,$muni_naci,$dire_resi,
-	$barrio_resi,$muni_resi,$estrato,
-	$zona,$eps,$tipo_poblacion,
-	$situacion,$ojos,$genero,
-	$discapacidades,$situacion_academica,
-	$grado,$estado,$observacion,
-	$programa,$semestre,$periodo,
-	$cn
-	#se pasan 28 parametro (conexion)
+		
+
+
+	$estado = saveStudent(
+		$tipo_documento,
+		$documento,
+		$primer_nombre,
+		$segundo_nombre,
+		$primer_apellido,
+		$segundo_apellido,
+		$telefono,
+		$email,
+		$fecha_naci,
+		$edad,
+		$dire_resi,
+		$muni_resi,
+		$eps,
+		$fecha_inicio,
+		$fecha_fin,
+		$fuente_recurso,
+		$internado,
+		$servicio_social,
+		$grado,
+		$tipo_sangre,
+		$colegio,
+		$tipo_poblacion,
+		$zona,
+		$genero,
+		$estrato,
+		$situacion_academica,
+		$ojos,
+		$discapacidades,
+		$situacion_social,
+		$observacion,
+		$cn
 	);
 }
 }

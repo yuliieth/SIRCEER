@@ -11,7 +11,7 @@ require_once '../admin/config.php'; ?>
       <!--<div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>-->							
       <?php require("footer-menu.view.php") ?>
 
-<!--
+
       <script type="text/javascript">
 
         Highcharts.chart('container', {
@@ -60,6 +60,5 @@ require_once '../admin/config.php'; ?>
             }]
         });
     </script>
-    -->
 
     <?php #require 'piedepagina-admin.php'; ?>

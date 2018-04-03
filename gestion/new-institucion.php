@@ -1,36 +1,42 @@
 <?php session_start(); ?>
-<?php 	require_once '../admin/config.php';
-require_once '../php/Conexion.php';
+<?php 	
+require_once '../admin/config.php';
 require_once '../php/funciones.php';
-validateSession();
+require_once '../php/Conexion.php';
+#validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
-$municipios = getMunicipios($cn);
+
+$instituciones = getAllSubject('instituciones',$cn);
+
 $enviado = "";
 if (isset($_POST['submit'])) {
-
+	#echo "entro post";
+	var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"nombre","telefono","municipio","email","direccion"
+		"nombre","fecha_ini","fecha_final","cupos"
 		);
 	#var_dump($parameters);
 	#echo "string";
 	$errores = validarErrores($parameters,$errores);
 	#var_dump($errores);
-
-
 	if (empty($errores)) {
 		$enviado = true;
-		
+		#Obtenemos los valores de los campos en el formulario
 		$nombre = $_POST['nombre'];
-		#$codigo = $_POST['codigo'];
 		$telefono = $_POST['telefono'];
-		$municipio = $_POST['municipio'];
-		$email = $_POST['email'];
-		$direccion = $_POST['direccion'];
+		$siglas = $_POST['siglas'];
+		$calendario = $_POST['calendario'];
+		$dane = $_POST['dane'];
 		
-saveInstitu(
-	$nombre,$telefono,$municipio,$email,$direccion,$bd_config
+
+saveColegio(
+	$nombre,
+$telefono,
+$siglas,
+$calendario,
+$dane,$cn
 	);
 }
 
@@ -38,4 +44,5 @@ saveInstitu(
 
 }
 ?>
-<?php include '../view/new-institucion.view.php' ?>
+
+<?php require("../view/new-alianza.view.php") ?>

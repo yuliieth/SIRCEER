@@ -2,7 +2,7 @@
 <?php  
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
+require_once '../php/Conexion.php';
 #validateSession();
-?>
-<?php require("../view/buscar-programa.view.php") ?>
-
+$cn = getConexion($bd_config);?>
+<?php require '../view/gestion-universidades.view.php' ?>

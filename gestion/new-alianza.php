@@ -3,13 +3,16 @@
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-validateSession();
+#validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
+
+$instituciones = getAllSubject('instituciones',$cn);
+
 $enviado = "";
 if (isset($_POST['submit'])) {
 	#echo "entro post";
-	#var_dump($_POST);
+	var_dump($_POST);
 	$errores = "";
 	$parameters = array(
 		"nombre","fecha_ini","fecha_final","cupos"
@@ -25,10 +28,11 @@ if (isset($_POST['submit'])) {
 		$fecha_ini = $_POST['fecha_ini'];
 		$fecha_fina = $_POST['fecha_final'];
 		$cupos = $_POST['cupos'];
+		$instituciones = $_POST['institucion'];
 		
 
 saveAlianza(
-	$nombre,$fecha_ini,$fecha_fina,$cupos,$cn
+	$nombre,$fecha_ini,$fecha_fina,$cupos,$instituciones,$cn
 	);
 }
 
