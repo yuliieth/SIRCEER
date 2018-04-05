@@ -194,8 +194,9 @@ div#bodymenu .itemSeis{
 	height: 60px;
 	margin-top: 5px;
 	margin-left: 5px;
-	background-color: rgb(8,160,165);
 	float: right;
+	background-color: rgb(8,160,165);
+	border-radius: 9px;
 }
 
 

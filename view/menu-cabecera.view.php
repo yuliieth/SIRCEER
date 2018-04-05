@@ -1,6 +1,6 @@
 <div id="bodymenu">
 	
-	<div class="itemCero"></div>
+	<!--<div class="itemCero"></div>-->
 
 	<div class="itemUno">
 		<i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
 	</div>
 
 	<div class="sessionuser">
-		<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="<?php echo URL; ?>php/cerrar-sesion.php"><?php #echo $_SESSION['usuario']['user']; ?></a>
+		<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="<?php echo URL; ?>php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
 	</div>
 		
 </div>

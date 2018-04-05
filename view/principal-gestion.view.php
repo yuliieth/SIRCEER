@@ -13,6 +13,9 @@
     <div class="wraper-odometer"> 
     	<p>Alianzas registradas:</p> <br> <p class="odometer" id="odometerA"></p> 
     </div>
+    <div class="wraper-odometer"> 
+        <p>Universidades registradas:</p> <br> <p class="odometer" id="odometerU"></p> 
+    </div>
 </div>
 <script>
 setTimeout(function(){
@@ -20,6 +23,7 @@ setTimeout(function(){
  odometerP.innerHTML = <?php echo $totalP ?>;
  odometerI.innerHTML = <?php echo $totalI ?>;
  odometerA.innerHTML = <?php echo $totalA ?>;
+ odometerU.innerHTML = <?php echo $totalU ?>;
 }, 1000);
 
 </script>

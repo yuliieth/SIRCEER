@@ -495,6 +495,18 @@ function getTipoDocumento($con)
  	return $result;
  }
 
+
+function getEstudianteServicioSocial($id,$cn)
+ {
+ 	#echo "$id";
+ 	$sql = "SELECT * FROM estudiante_serviciosocial WHERE estudiante_serviciosocial_id='".$id."'";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+
  function getGrado($cn)
  {
  	$sql = "SELECT * FROM grados";
@@ -607,6 +619,17 @@ function getInstituciones($con)
 }
 
 
+function getSedes($con)
+{
+	$sql = "SELECT * FROM sedes";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	#var_dump($ps);
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
+}
+
 //Pendiente de eliminar 
 #SIMAT
 function buscarEstudianteSIMAT($documento,$con)
@@ -661,29 +684,35 @@ function validateSession()
 	}
 }
 
+	#devuelve el nombre del perfil
 function shearcPerfilUser($id_user,$con)
 {
-	#devuelve el nombre del perfil
-	$result = getUserById($id_user,$con);
+	$sql = "SELECT roles.nombre AS namePerfil FROM roles,usuarios WHERE roles.id=usuarios.rol_id AND usuarios.id=$id_user";
 	#var_dump($result);
-	$nombre_perfil = $result['nombre_perfil'];
-	return $nombre_perfil;
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$namePerfil = $ps->fetch()['namePerfil'];
+	return $namePerfil;
 }
 
 function shearcUserLogin($usuario,$pass,$conexion)
 {
-	#echo "$usuario $pass";
-	$sql = "SELECT * FROM usuarios WHERE username=:usuario AND password=:password";
+	#echo "<br>Entro a buscar usuario: $usuario $pass <br>";
+	$sql = "SELECT * FROM usuarios WHERE nombre=:usuario AND clave=:password LIMIT 1";
 	$statement = $conexion->prepare($sql);
+	$statement->bindParam(':usuario',$usuario);
+	$statement->bindParam(':password',$pass);
 	#var_dump($statement);
-	$statement->execute(
-		array(
-			':usuario' => $usuario,
-			':password' => $pass 
-		));
+	$statement->execute();
+	
 	$result= $statement->fetch();
-	#var_dump($result);
-	return $result;
+	
+	if ($result != false) {
+		return $result;
+	}else{
+		return false;
+
+	}
 
 }
 

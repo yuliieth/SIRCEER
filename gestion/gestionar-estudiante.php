@@ -90,7 +90,7 @@ else
 3. Traer el programa y la institucion a la que pertenece el estudiante
 4. Finalmente con estos datos hacer un insert para "evaluacion_semestral"
 */
-$documento = cleanData($_GET['documento']);
+$documento = cleanData($_GET['id']);
 #echo "$documento";
 $matricula = getMatriculaEstudiante($documento,$cn);
 $datosEstudiante = getDataAllEstudent($matricula,$cn);

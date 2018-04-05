@@ -12,33 +12,24 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad,estudiantes.email,estudiantes.ojos,estudiantes.estrato,estudiantes.genero,estudiantes.estado,estudiantes.zona,estudiantes.situacion,estudiantes.tipo_poblacion,estudiantes.grado,estudiantes.situacion_academica, programa.nombre AS namePrograma FROM estudiantes INNER JOIN matricula ON estudiantes.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiantes.tipo_documento_id=tipo_documento.id ORDER BY documento ASC ";
+$query="SELECT estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['estudiantes']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['estudiantes']);
-	$query="SELECT estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad,estudiantes.email,estudiantes.ojos,estudiantes.estrato,estudiantes.genero,estudiantes.estado,estudiantes.zona,estudiantes.situacion,estudiantes.tipo_poblacion,estudiantes.grado,estudiantes.situacion_academica, programa.nombre AS namePrograma FROM estudiantes INNER JOIN matricula ON estudiantes.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN tipo_documento ON estudiantes.tipo_documento_id=tipo_documento.id WHERE
+	$query="SELECT estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id WHERE
 		estudiantes.documento LIKE '%".$q."%' OR
 		estudiantes.primer_nombre LIKE '%".$q."%' OR
 		estudiantes.segundo_nombre LIKE '%".$q."%' OR
 		estudiantes.primer_apellido LIKE '%".$q."%' OR
 		estudiantes.segundo_apellido LIKE '%".$q."%' OR
-		estudiantes.email LIKE '%".$q."%' OR
-		estudiantes.estrato LIKE '%".$q."%' OR
-		estudiantes.genero LIKE '%".$q."%' OR
-		estudiantes.situacion LIKE '%".$q."%' OR
-		estudiantes.tipo_poblacion LIKE '%".$q."%' OR
-		estudiantes.estado LIKE '%".$q."%' OR
-		estudiantes.zona LIKE '%".$q."%' OR
-		estudiantes.grado LIKE '%".$q."%' OR
-		estudiantes.EPS LIKE '%".$q."%' OR
-		tipo_documento.tipo LIKE '%".$q."%' OR
-		estudiantes.situacion_academica LIKE '%".$q."%' OR
-		estudiantes.fecha_registro LIKE '%".$q."%' OR
-		matricula.id LIKE '%".$q."%' OR
-		estudiantes.edad LIKE '%".$q."%' OR
-        programa.nombre LIKE '%".$q."%'";
+		estudiantes.genero_id LIKE '%".$q."%' OR
+		estudiantes.zona_id LIKE '%".$q."%' OR
+		estudiantes.grado_id LIKE '%".$q."%' OR
+		estudiantes.fecha_inicio LIKE '%".$q."%' OR
+		estudiantes.municipio_id LIKE '%".$q."%' OR
+		estudiantes.sede_id LIKE '%".$q."%'";
 }
 
 $buscarEstudiantes=$conexion->query($query);
@@ -52,20 +43,14 @@ if ($buscarEstudiantes->num_rows > 0)
 	<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
 	font-weight: bold; text-align: center;">
 			<td>DOCUMENTO</td>
-			<td>NOMBRE</td>
+			<td>NOMBRES</td>
+			<td>APELLIDOS</td>
 			<td>EDAD</td>
-			<td>ESTRATO</td>
 			<td>GENERO</td>
 			<td>ZONA</td>
-			<td>TIPO POBLACION</td>
-			<!--<td>ESTADO</td>-->
-			<!--<td>INSTITUTO</td>-->
-			<!--<td>SEMESTRE</td>-->
 			<td width="10%">GRADO</td>
-			<td>SITUACION</td>
-			<td>PROGRAMA</td>
-			<td></td>
-			<td></td>
+			<td>MUNICIPIO</td>
+			<td>SEDE</td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -75,20 +60,16 @@ if ($buscarEstudiantes->num_rows > 0)
 	while($filaEstudiantes= $buscarEstudiantes->fetch_assoc())
 	{
 		$tabla.=
-		'<tr ';if ($filaEstudiantes['estado']!=0) {
-			$tabla.='style="background-color: #CEE3F6;"';
-		};$tabla.='>
+		'<tr>
 			<td style="padding: 3px;"> '. $filaEstudiantes['doc_estudiante'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['primer_nombre'].' '.$filaEstudiantes['primer_apellido'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['primer_nombre'].' '.$filaEstudiantes['segundo_nombre'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['primer_apellido'].' '.$filaEstudiantes['segundo_apellido'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['edad'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['estrato'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['genero'].'</td>
 			<td style="padding: 3px;"> '. $filaEstudiantes['zona'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['tipo_poblacion'].'</td>
-			<!--<td style="padding: 3px;"> '. $filaEstudiantes['estado'].'</td>-->
 			<td style="padding: 3px;"> '. $filaEstudiantes['grado'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['situacion'].'</td>
-			<td style="padding: 3px;"> '. $filaEstudiantes['namePrograma'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['municipio'].'</td>
+			<td style="padding: 3px;"> '. $filaEstudiantes['sede'].'</td>
 			<td></td>
 			<td></td>
 

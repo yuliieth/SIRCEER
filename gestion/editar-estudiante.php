@@ -7,7 +7,7 @@
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
-$municipios = getMunicipios($cn);
+$municipios = getMuniResi($cn);
 
 
 $enviado = false;
@@ -92,8 +92,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		header("Location:".URL."principal-admin.php");
 		#echo "Id vacio";
 	}
-	$result = getSubjectById("estudiante",$doc_estu,'documento',$cn);
-	#var_dump($result);
+	$result = getSubjectByValue("estudiantes",$doc_estu,'documento',$cn);
+	$situacionA = getSituacionAcademica($cn);
+	$fuente = getFuenteRecurso($cn);
+	$servicio_social = getServicioSocial($cn);
+	$grados = getGrado($cn);
+	$tipos_sangre = getTiposSangre($cn);
+	$tipos_poblacion = getTipoPoblacion($cn);
+	$generos = getGenero($cn);
+	$discapacidades = getDiscapacidades($cn);
+	$tipos_documento = getTipoDocumento($cn);
+	$internados = getInternado($cn);
+	$instituciones = getSedes($cn);
+	$estratos = getEstrato($cn);
+	$colores_ojos = getOjos($cn);
+	$estudianteServicioSocial = getEstudianteServicioSocial($result['id'],$cn);
+
+	var_dump($result);
+	var_dump($estudianteServicioSocial);
 
 }
 ?>
