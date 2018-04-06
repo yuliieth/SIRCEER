@@ -433,7 +433,7 @@ LEFT JOIN universidades ON programas.institucion_id=universidades.id
 LEFT JOIN historial_academico_semestre ON matricula.id=historial_academico_semestre.matricula_id
 LEFT JOIN semestre ON historial_academico_semestre.semestre_id=semestre.id
 
-where estudiantes.documento=1088264375 LIMIT 1";
+where estudiantes.documento=$documento LIMIT 1";
 
 	$ps = $con->prepare($sql);
 	$ps->execute();
