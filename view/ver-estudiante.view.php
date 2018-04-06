@@ -106,8 +106,8 @@ $html = '
             <tr>
               <td><strong>Telefono:</strong></td>
               <td>'.$estudiante['telefono_contacto'].'</td>
-              <td><strong>Otro registro:</strong></td>
-              <td></td>
+              <td><strong>Servicio siocial:</strong></td>
+              <td>'.$estudiante['servicio_social'].'</td>
             </tr>
 
             <tr>

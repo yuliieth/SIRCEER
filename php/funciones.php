@@ -408,7 +408,9 @@ programas.nombre AS nombre_programa,
 matricula.id AS id_matricula,
 universidades.nombre AS universidad,
 historial_academico_semestre.promedio,historial_academico_semestre.anio,
-semestre.semestre, semestre.periodo
+semestre.semestre, semestre.periodo,
+servicios_sociales.estado servicio_social
+
 
 FROM estudiantes 
 
@@ -432,6 +434,8 @@ LEFT JOIN programas ON matricula.programa_id=programas.id
 LEFT JOIN universidades ON programas.institucion_id=universidades.id
 LEFT JOIN historial_academico_semestre ON matricula.id=historial_academico_semestre.matricula_id
 LEFT JOIN semestre ON historial_academico_semestre.semestre_id=semestre.id
+LEFT JOIN estudiante_serviciosocial ON estudiantes.id=estudiante_serviciosocial.estudiante_serviciosocial_id
+LEFT JOIN servicios_sociales ON estudiante_serviciosocial.servicio_social_id=servicios_sociales.id
 
 where estudiantes.documento=$documento LIMIT 1";
 
