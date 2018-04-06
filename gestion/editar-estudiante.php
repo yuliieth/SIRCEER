@@ -108,8 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$colores_ojos = getOjos($cn);
 	$estudianteServicioSocial = getEstudianteServicioSocial($result['id'],$cn);
 
-	var_dump($result);
-	var_dump($estudianteServicioSocial);
+	#var_dump($result);
+	#var_dump($estudianteServicioSocial);
 
 }
 ?>

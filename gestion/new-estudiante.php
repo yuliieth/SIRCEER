@@ -109,6 +109,15 @@ if (isset($_POST['submit'])) {
 		$observacion,
 		$cn
 	);
+
+
+	if ($estado) {
+		?>
+            <script type="text/javascript"> 
+                window.location="<?php echo URL ?>gestion/new-estudiante.php?select=e"; 
+            </script> 
+            <?php //lo abro de nuevo
+	}
 }
 }
 ?>

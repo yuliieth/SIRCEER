@@ -3,12 +3,12 @@
 	<!--<div class="itemCero"></div>-->
 
 	<div class="itemUno">
-		<i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
+		<i class="fa fa-user fa-2x" aria-hidden="true"></i>
 					<a href="gestion-estudiantes.php?select=e">Estudiantes</a>
 	</div>
 
 	<div class="itemDos">
-		<i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i>
+		<i class="fa fa-graduation-cap fa-2x" aria-hidden="true"></i>
 							<a href="gestion-instituciones.php?select=i">Instituciones</a></li>
 	</div>
 	<div class="itemTres">
@@ -27,12 +27,12 @@
 	</div>
 
 	<div class="itemSeis">
-		<i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i>
+		<i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
 		<a href="gestion-sedes.php?select=s">Sedes</a>
 	</div>
 
 	<div class="sessionuser">
-		<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i><a href="<?php echo URL; ?>php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user']; ?></a>
+		<i class="fa fa-sign-out fa-3x" aria-hidden="true"></i><a href="<?php echo URL ?>php/cerrar-sesion.php"><?php echo $_SESSION['usuario']['user'] ?></a>
 	</div>
 		
 </div>

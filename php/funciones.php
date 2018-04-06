@@ -387,7 +387,53 @@ function getAllStudentRelations($documento,$con)
 {
 	#Trae todos los campos de todas las tablas que tienen relacion con el estudiante con documento = ...
 	#Utilizada por ver-estudiante
-	$sql="SELECT estudiante.documento AS doc_estudiante,estudiante.primer_nombre,estudiante.segundo_nombre,estudiante.primer_apellido,estudiante.segundo_apellido,estudiante.edad,estudiante.email,estudiante.ojos,estudiante.estrato,estudiante.genero,estudiante.estado,estudiante.zona,estudiante.situacion,estudiante.tipo_poblacion,estudiante.grado,estudiante.fecha_naci,estudiante.fecha_registro,estudiante.discapacidades,estudiante.direccion_residencia,estudiante.barrio_residencia,municipio.nombre AS nameMuniNaci,municipio.nombre AS nameMuniResi, tipo_documento.tipo AS tipo_docu,tipo_sangre.tipo AS tipo_sangre,estudiante.situacion_academica,estudiante.observaciones, programa.nombre AS namePrograma, semestre.periodo,semestre.semestre,detalle_semestre.promedio,institucion.nombre AS nameInstitute FROM estudiante INNER JOIN matricula ON estudiante.documento=matricula.estudiante_documento INNER JOIN programa ON programa.snies=matricula.programa_snies INNER JOIN detalle_semestre ON matricula.id=detalle_semestre.matricula_id INNER JOIN semestre ON semestre.id=detalle_semestre.semestre_id  INNER JOIN institucion ON institucion.id=programa.institucion_id INNER JOIN municipio ON municipio.id=estudiante.municipio_naci_id INNER JOIN tipo_documento ON estudiante.tipo_documento_id=tipo_documento.id INNER JOIN tipo_sangre ON estudiante.tipo_sangre_id=tipo_sangre.id WHERE documento=$documento  ORDER BY detalle_semestre.id DESC LIMIT 1";
+	$sql="SELECT 
+estudiantes.documento, estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.email, estudiantes.fecha_nacimiento,estudiantes.edad,estudiantes.direccion_residencia,estudiantes.fecha_inicio,estudiantes.fecha_fin, estudiantes.telefono_contacto,estudiantes.EPS, estudiantes.observacion, 
+tipos_documento.nombre AS tipos_documento,
+tipos_sangre.nombre AS sangre,
+zonas.nombre AS zona,
+tipos_poblacion.nombre AS tipo_poblacion,
+estrato.nombre AS estrato,
+generos.nombre AS genero,
+color_ojos.color AS ojos,
+situaciones_academicas.nombre AS situacion_academica,
+situaciones_sociales.nombre AS situacion_social,
+grados.nombre AS grado,
+fuente_recursos.nombre AS fuente_recurso,
+internado.nombre AS internado,
+discapacidades.nombre AS discapacidades,
+municipios.nombre as municipios,
+sedes.nombre AS sede,
+programas.nombre AS nombre_programa,
+matricula.id AS id_matricula,
+universidades.nombre AS universidad,
+historial_academico_semestre.promedio,historial_academico_semestre.anio,
+semestre.semestre, semestre.periodo
+
+FROM estudiantes 
+
+LEFT JOIN tipos_documento ON estudiantes.tipo_documento_id=tipos_documento.id 
+LEFT JOIN tipos_sangre ON estudiantes.tipo_sangre_id=tipos_sangre.id 
+LEFT JOIN zonas ON estudiantes.zona_id=zonas.id 
+LEFT JOIN tipos_poblacion ON estudiantes.tipo_poblaion_id=tipos_poblacion.id
+LEFT JOIN estrato ON estudiantes.estrato_id=estrato.id
+LEFT JOIN generos ON estudiantes.genero_id=generos.id
+LEFT JOIN color_ojos ON estudiantes.ojos_id=color_ojos.id
+LEFT JOIN situaciones_academicas ON estudiantes.situacion_academica_id=situaciones_academicas.id
+LEFT JOIN situaciones_sociales ON estudiantes.situacion_social_id=situaciones_sociales.id
+LEFT JOIN grados ON estudiantes.grado_id=grados.id
+LEFT JOIN fuente_recursos ON estudiantes.fuenterecurso_id=fuente_recursos.id
+LEFT JOIN internado ON estudiantes.internado_id=internado.id
+LEFT JOIN discapacidades ON estudiantes.discapacidad_id=discapacidades.id
+LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id
+LEFT JOIN sedes ON estudiantes.sede_id=sedes.id
+LEFT JOIN matricula ON estudiantes.id=matricula.estudiante_id
+LEFT JOIN programas ON matricula.programa_id=programas.id
+LEFT JOIN universidades ON programas.institucion_id=universidades.id
+LEFT JOIN historial_academico_semestre ON matricula.id=historial_academico_semestre.matricula_id
+LEFT JOIN semestre ON historial_academico_semestre.semestre_id=semestre.id
+
+where estudiantes.documento=1088264375 LIMIT 1";
 
 	$ps = $con->prepare($sql);
 	$ps->execute();
@@ -679,7 +725,7 @@ function getTotalObjects($con)
 
 function validateSession()
 {
-	if (!isset($_SESSION['usuario'])) {
+	if (!isset($_SESSION['usuario']['user'])  || empty($_SESSION['usuario']['user'])) {
 		header("Location: ".URL."index.php");
 	}
 }
@@ -1040,10 +1086,7 @@ function saveStudent
 	#echo "<br>RESULTADO INSERCION ESTUDIANTE <br>";
 	#var_dump($resultE);
 
-		if (!$resultE) {
-			echo "Ocurrio un error al tratrar de registrar el estudiante";
-		}
-
+		
 		
 		#Una vez se hace el insert para el estudiante retornamos si ID para ser ocupado en la tabla "estudiante_serviciosocial: campos ids estudiante_serviciosocial_id - servicio_social_id"
 
@@ -1059,7 +1102,9 @@ function saveStudent
 
 
 		if ($resultE == false && $resultS == false) {
-			echo "Ocurrio un error al tratrar de registrar los datos";
+			return false;
+		}else{
+			return true;
 		}
 
 	}	

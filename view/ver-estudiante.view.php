@@ -19,9 +19,9 @@ $html = '
 
             <tr>
               <td><strong>Documento:</strong></td>
-              <td>'.$estudiante['doc_estudiante'].'</td>
+              <td>'.$estudiante['documento'].'</td>
               <td><strong>Tipo de documento:</strong></td>
-              <td>'.$estudiante['tipo_docu'].'</td>
+              <td>'.$estudiante['tipos_documento'].'</td>
             </tr>
 
             <tr>
@@ -35,7 +35,7 @@ $html = '
               <td><strong>Email:</strong></td>
               <td>'.$estudiante['email'].'</td>
               <td><strong>Fecha de nacimiento:</strong></td>
-              <td>'.$estudiante['fecha_naci'].'</td>
+              <td>'.$estudiante['fecha_nacimiento'].'</td>
             </tr>
 
             <tr>
@@ -49,8 +49,8 @@ $html = '
             <tr>
               <td><strong>Zona</strong></td>
               <td>'.$estudiante['zona'].'</td>
-              <td><strong>Situación</strong></td>
-              <td>'.$estudiante['situacion'].'</td>
+              <td><strong>EPS:</strong></td>
+              <td>'.$estudiante['EPS'].'</td>
             </tr>
 
             <tr>
@@ -58,6 +58,13 @@ $html = '
               <td>'.$estudiante['tipo_poblacion'].'</td>
               <td><strong>Color de ojos:</strong></td>
               <td>'.$estudiante['ojos'].'</td>
+            </tr>
+
+            <tr>
+              <td><strong>Tipo de sangre:</strong></td>
+              <td>'.$estudiante['sangre'].'</td>
+              <td><strong>Fuente de recurso:</strong></td>
+              <td>'.$estudiante['fuente_recurso'].'</td>
             </tr>
 
             <tr>
@@ -70,9 +77,9 @@ $html = '
   
           <tr>
               <td><strong>Municipio de residencia:</strong></td>
-              <td>'.$estudiante['nameMuniResi'].'</td>
-              <td><strong>Municipio de nacimiento:</strong></td>
-              <td>'.$estudiante['nameMuniNaci'].'</td>
+              <td>'.$estudiante['municipios'].'</td>
+              <td><strong>situacion social:</strong></td>
+              <td>'.$estudiante['situacion_social'].'</td>
             </tr>            
 
             <tr>
@@ -84,14 +91,26 @@ $html = '
 
             <tr>
               <td><strong>Fecha de registro:</strong></td>
-              <td>'.$estudiante['fecha_registro'].'</td>
-              <td><strong>Barrio de residencia:</strong></td>
-              <td>'.$estudiante['barrio_residencia'].'</td>
+              <td>'.$estudiante['fecha_inicio'].'</td>
+              <td><strong>Fecha fin:</strong></td>
+              <td>'.$estudiante['fecha_fin'].'</td>
             </tr>
 
             <tr>
+              <td><strong>Internado:</strong></td>
+              <td>'.$estudiante['internado'].'</td>
               <td><strong>Observaciones:</strong></td>
-              <td>'.$estudiante['observaciones'].'</td>
+              <td>'.$estudiante['observacion'].'</td>
+            </tr>
+
+            <tr>
+              <td><strong>Telefono:</strong></td>
+              <td>'.$estudiante['telefono_contacto'].'</td>
+              <td><strong>Otro registro:</strong></td>
+              <td></td>
+            </tr>
+
+            <tr>
             </tr>
             
             
@@ -105,13 +124,21 @@ $html = '
           $html .= '
             <div>
             <!--INFORMACION ESCOLAR-->
-            <p style="font-size: 1.5em; font-family: Arial;">Información academica del estudiante</p>
+            <p style="font-size: 1.5em; font-family: Arial;">Información educacion basica</p>
             <table>
             <tr>
-              <td><strong>Esta estudiando:</strong></td>
+              <td><strong>Institucion secundaria:</strong></td>
+              <td>'.$estudiante['sede'].'</td>
+            </tr>
+            </table>
+
+            <p style="font-size: 1.5em; font-family: Arial;">Información academica educacion superior</p>
+            <table>
+            <tr>
+              <td><strong>Programa de estudio:</strong></td>
               <td>'.$estudiante['namePrograma'].'</td>
-              <td><strong>En la institución:</strong></td>
-              <td>'.$estudiante['nameInstitute'].'</td>
+              <td><strong>Universidad:</strong></td>
+              <td>'.$estudiante['Universidad                              '].'</td>
             </tr>
 
             <tr>
