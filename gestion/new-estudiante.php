@@ -117,6 +117,8 @@ if (isset($_POST['submit'])) {
                 window.location="<?php echo URL ?>gestion/new-estudiante.php?select=e"; 
             </script> 
             <?php //lo abro de nuevo
+	}else{
+		echo "Ocurrio un error";
 	}
 }
 }

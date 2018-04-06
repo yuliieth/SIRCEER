@@ -76,6 +76,7 @@ INSERT INTO `sectores`(`nombre`,`descripcion`) VALUES ("OFICIAL","");
 INSERT INTO `sectores`(`nombre`,`descripcion`) VALUES ("NO OFICIAL","");
 
 //SERVICIOS SOCIALES
+INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("NO APLICA","");
 INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("APROBADO","");
 INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("EN CURSO","");
 INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("NO APROBADO","");

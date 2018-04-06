@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$estudianteServicioSocial = getEstudianteServicioSocial($result['id'],$cn);
 
 	#var_dump($result);
-	#var_dump($estudianteServicioSocial);
+	var_dump($estudianteServicioSocial);
 
 }
 ?>

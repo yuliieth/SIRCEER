@@ -46,7 +46,7 @@ $numRows = $objPHPEXCEL->setActiveSheetIndex(0)->getHighestRow();
 #echo $numRows;
 
 
-	for ($i=2; $i <= 50; $i++) { 
+	for ($i=2; $i <= 30; $i++) { 
 
 		//Extrae datos por fila
 
@@ -365,12 +365,31 @@ $numRows = $objPHPEXCEL->setActiveSheetIndex(0)->getHighestRow();
 	$state->bindParam(':ciudades_id',$municipio);
 	$state->bindParam(':sede_id',$sede);
 
-echo "<br> Mostrando sql: <br>";
-	var_dump($state);
+	#echo "<br> Mostrando sql: <br>";
+	#var_dump($state);
 
-	$result = $state->execute();
-	echo "<br>RESULTADO INSERCION ESTUDIANTE <br>";
-	var_dump($result);
+	$resultE = $state->execute();
+	#echo "<br>RESULTADO INSERCION ESTUDIANTE <br>";
+	#var_dump($resultE);
+
+#Una vez se hace el insert para el estudiante retornamos si ID para ser ocupado en la tabla "estudiante_serviciosocial: campos ids estudiante_serviciosocial_id - servicio_social_id"
+
+		$idEstudiante = getId("estudiantes",$cn);
+		$servicioSocial = getSubjectByValue('servicios_sociales','NO APLICA','estado',$cn);
+		
+
+		$sql = ("INSERT INTO estudiante_serviciosocial (estudiante_serviciosocial_id,servicio_social_id) VALUES (:estudiante,:servicio)");
+
+		$stp = $cn->prepare($sql);
+		$stp->bindParam(':estudiante',$idEstudiante);
+		$stp->bindParam(':servicio',$servicioSocial['id']);
+		$resultS = $stp->execute();
+
+
+		if ($resultE != false && $resultS != false) {
+			echo "<br>estudiante y sercio : OK<br>";
+		}
+
 
 					}//Fin for
 
