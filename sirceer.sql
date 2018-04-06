@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-04-2018 a las 17:26:27
+-- Tiempo de generación: 06-04-2018 a las 17:55:34
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -695,7 +695,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `clave`, `correo`, `fecha_ingreso`, `rol_id`, `estado_id`) VALUES
-(1, 'cristhian', '123', 'titiruiza@gmail.com', '2018-04-05', 4, 1);
+(1, 'cristhian', '123', 'titiruiza@gmail.com', '2018-04-05', 4, 1),
+(2, 'invitado', '123', 'ninguno@ninguno.com', '2018-04-06', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -1174,7 +1175,7 @@ ALTER TABLE `universidades`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `zonas`
 --
