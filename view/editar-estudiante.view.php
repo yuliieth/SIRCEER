@@ -5,6 +5,8 @@
 	<hr>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		<table>
+
+			<input type="hidden" readonly="readonly" size="20" name="id" value="<?php echo $result['id']; ?>">
 		<tr>
 			<td><label>Documento</label></td>
 			<td><input type="text" readonly="readonly" size="20" name="documento" value="<?php echo $result['documento']; ?>"></td>
@@ -14,7 +16,7 @@
 		
 		<tr>
 			<td><label>Segundo nombre</label></td>
-			<td><input type="text" size="30" name="segundo_nombre"  value="<?php echo $result['segundo_nombre']; ?>"  placeholder="Primer nombre" required="">	</td>
+			<td><input type="text" size="30" name="segundo_nombre"  value="<?php echo $result['segundo_nombre']; ?>"  placeholder="Segundo nombre" >	</td>
 		
 			<td><label>Primer apellido</label>	</td>
 			<td><input type="text" size="30" name="primer_apellido" value="<?php echo $result['primer_apellido']; ?>"  placeholder="Primer apellido" required=""></td>
@@ -148,12 +150,11 @@
 		</select></td>
 			<td><label>Zona</label></td>
 			<td><select  name="zona" id="zona">
-					<option value="Urbana" <?php if ($result['zona_id'] == 'Urbana'): ?>
-						 <?php echo "selected" ?> 
-					<?php endif ?>>Urbana</option>
-					<option value="Rural" <?php if ($result['zona_id'] == 'Rural'): ?>
-						 <?php echo "selected" ?> 
-					<?php endif ?>>Rural</option>
+					<?php foreach ($zonas as $value): ?>
+					<option value="<?php echo $value['id'] ?>" <?php if ($result['zona_id'] == $value['id']): ?>
+						<?php echo 'selected' ?>
+					<?php endif ?>><?php echo $value['nombre'] ?></option>
+				<?php endforeach ?>
 		</select></td>
 		</tr>
 
@@ -229,21 +230,13 @@
 				<?php endforeach ?>
 				</select>	
 			</td>
-			<td><label  for="situacion">Situacion social</label></td>
-		<td><select  name="situacion" id="situacion">
-					<option value="Ninguna" <?php if ($result['situacion_social_id'] == 'Ninguna'): ?>
-						 <?php echo "selected" ?> 
-					<?php endif ?>>Ninguna</option>
-
-					<option value="Desplazado" <?php if ($result['situacion_social_id'] == 'Desplazado'): ?>
-						 <?php echo "selected" ?> 
-					<?php endif ?>>Desplazado</option>
-					<option value="Victima conflicto" <?php if ($result['situacion_social_id'] == 'Victima conflicto'): ?>
-						 <?php echo "selected" ?> 
-					<?php endif ?>>Victima del conflicto</option>
-					<option value="Vulnerable" <?php if ($result['situacion_social_id'] == 'Vulnerable'): ?>
-						 <?php echo "selected" ?> 
-					<?php endif ?>>Poblacion vulnerable</option>
+			<td><label  for="situacion_social">Situacion social</label></td>
+		<td><select  name="situacion_social" id="situacion">
+					<?php foreach ($situacion_social as $value): ?>
+					<option value="<?php echo $value['id'] ?>" <?php if ($result['situacion_social_id'] == $value['id']): ?>
+						<?php echo 'selected' ?>
+					<?php endif ?>><?php echo $value['nombre'] ?></option>
+				<?php endforeach ?>
 		</select></td>
 		</tr>
 

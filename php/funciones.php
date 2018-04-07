@@ -549,10 +549,10 @@ function getTipoDocumento($con)
 function getEstudianteServicioSocial($id,$cn)
  {
  	#echo "$id";
- 	$sql = "SELECT * FROM estudiante_serviciosocial WHERE estudiante_serviciosocial_id='".$id."'";
+ 	$sql = "SELECT * FROM estudiante_serviciosocial WHERE estudiante_serviciosocial_id='".$id."' LIMIT 1";
  	$ps = $cn->prepare($sql);
  	$ps -> execute();
- 	$result = $ps->fetchAll();
+ 	$result = $ps->fetch();
  	return $result;
  }
 
