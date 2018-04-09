@@ -2,6 +2,7 @@
 <?php require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
+require_once '../libs/PHPExcel/IOFactory.php';
 validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
@@ -13,9 +14,10 @@ if (isset($_POST['Importar'])) {
 
 $nombreArchivo = $_FILES['myfile']['name'];
 
-$destino = "../tmp_excel/back_".$nombreArchivo;
+$destino = '../tmp_excel/back_'.$nombreArchivo;
+echo "<br> Destino: $destino <br> ";
 
-#var_dump($_FILES);
+var_dump($_FILES);
 
 echo "Copying...";
 if (copy($_FILES['myfile']['tmp_name'], $destino)) {
@@ -29,21 +31,21 @@ if (file_exists("../tmp_excel/back_".$nombreArchivo)) {
 
 #Cambiamos parametros de PHP
 //set_time_limit('max_execution_time','1200'); //5 minutos ó  set_time_limit 
-require_once '../libs/PHPExcel/IOFactory.php';
 
 echo "Exists";
-
+PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 #indicamos que vamos a cargar el archivo
 #llama a la funcion  PHPEXCEL_IOFactory
 #y luego a la funcion load
-$objPHPEXCEL = PHPEXCEL_IOFactory::load("../tmp_excel/back_".$nombreArchivo);
+$objPHPEXCEL = PHPEXCEL_IOFactory::load('../tmp_excel/back_'.$nombreArchivo);
+#var_dump($objPHPEXCEL);
 #Establecemos en que hoja vamos a leer por medio del objeto
 $objPHPEXCEL->setActiveSheetIndex(0);
 #obtenemos el numero de filas en la hoja activa
 $numRows = $objPHPEXCEL->setActiveSheetIndex(0)->getHighestRow();
 
 
-#echo $numRows;
+echo $numRows;
 
 
 	for ($i=2; $i <= 30; $i++) { 

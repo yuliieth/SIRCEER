@@ -3,7 +3,7 @@
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-#validateSession();
+validateSession();
 ?>
 <?php 
 $cn = getConexion($bd_config);
@@ -92,8 +92,10 @@ else
 */
 $documento = cleanData($_GET['id']);
 #echo "$documento";
+$datosEstudiante = getAllStudentRelations($documento,$cn);
 $matricula = getMatriculaEstudiante($documento,$cn);
-$datosEstudiante = getDataAllEstudent($matricula,$cn);
+$programas = getProgramas($cn);
+var_dump($matricula);
 }
 
 ?>

@@ -257,6 +257,7 @@ function getProgramaAndInstitute($con)
 
 function getMatriculaEstudiante($documento,$cn)
 {
+	#Devuelve el id de la matricula
 	$sql = "SELECT matricula.id FROM matricula WHERE matricula.estudiante_documento=$documento LIMIT 1 ";
 	#var_dump($sql);
 	$ps=$cn->prepare($sql);
@@ -405,6 +406,7 @@ discapacidades.nombre AS discapacidades,
 municipios.nombre as municipios,
 sedes.nombre AS sede,
 programas.nombre AS nombre_programa,
+programas.snies AS snies,
 matricula.id AS id_matricula,
 universidades.nombre AS universidad,
 historial_academico_semestre.promedio,historial_academico_semestre.anio,
@@ -468,16 +470,7 @@ function getId($tabla,$con)
 
 }
 
-function getProgramas($con)
-{
-	$sql = "SELECT * FROM programa";
-	$ps = $con->prepare($sql);
-	$ps->execute();
-	#var_dump($ps);
-	$result = $ps->fetchAll();
-	#var_dump($result);
-	return $result;
-}
+
 
 
 function getNivelesAcademicos($con)
@@ -539,6 +532,15 @@ function getTipoDocumento($con)
  function getServicioSocial($cn)
  {
  	$sql = "SELECT * FROM servicios_sociales";
+ 	$ps = $cn->prepare($sql);
+ 	$ps -> execute();
+ 	$result = $ps->fetchAll();
+ 	return $result;
+ }
+
+ function getProgramas($cn)
+ {
+ 	$sql = "SELECT * FROM programas";
  	$ps = $cn->prepare($sql);
  	$ps -> execute();
  	$result = $ps->fetchAll();

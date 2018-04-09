@@ -1,74 +1,8 @@
 <?php require 'cabecera-admin.php';?>
 <?php require("header-menu.view.php") ?>
 <div class="contenedor">
-	<h2>Cargar pronmedio semestre culminado</h2>
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-	<table>
-		<th><p><strong>Estudiante</strong></p></th>
-	<tr>
-		<td><label for="documento">Documento</label></td>
-		<td><input type="text" readonly="readonly" value="<?php echo $datosEstudiante['documento']; ?>" name="documento" ><br></td>
-		<td><label for="documento">Nombre estudiante</label></td>
-		<td><input type="text" value="<?php echo $datosEstudiante['primer_nombre']." ".$datosEstudiante['segundo_nombre'] ." ".$datosEstudiante['primer_apellido'];?>" name="nombre" disabled=""></td>
-	</tr>
-
-		<th><p><strong>Programa</strong></p></th>
-	<tr>
-		<td><label for="nombre">Nombre:</label></td>
-		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['nombrePrograma'] ?>"></td>
-		<td><label for="nombre">SNIES:</label></td>
-		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['snies'] ?>"></td>
-	</tr>
-		
-		
-			<th><strong><p>Institucion academica</p></strong></th>
-		<tr>
-			<td></td>
-			
-			<td><h2><?php echo $datosEstudiante['nombreInstitucion']; ?></h2></td>
-			
-		</tr>
-		
-		
-			<th><strong>Datos del semestre</strong></th>
-		<tr>
-		<!--Se debe llenar este input con el ultimo semestre registrado para el estudiante-->
-			<td><label for="semestre">Semestre:</label></td>
-			<td><input type="text" disabled="disabled" name="semestre" required="required" value="<?php echo $datosEstudiante['semestre']; ?>"></td>
-			<td><label for="periodo">Periodo:</label></td>
-			<td>
-				<input type="text" disabled="disabled" name="periodo" value="<?php echo $datosEstudiante['periodo']; ?>">
-			</td>
-		</tr>
-		<tr>
-			<td><label for="promedio">Promedio:</label></td>
-
-			<td><input type="text"  name="promedio" required="required" <?php if ( !empty( $datosEstudiante['promedio']) ): ?>
-				<?php echo   'readonly="readonly"'?>
-			 value="<?php echo $datosEstudiante['promedio']; ?>">
-			 <?php echo "El promedio ya ha sido asignado" ?>
-				<?php endif ?>
-			</td>
-
-			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['matriculaId']; ?>"></td>
-			<td><input type="hidden"  name="semestre" value="<?php echo $datosEstudiante['semestreId']; ?>"></td>
-		<tr>
-			
-		</tr>
-
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td><input type="submit" name="cargar" value="enviar"></td>
-		</tr>
-	
-	</table>
-	</form>
-
-
 	<!--SEGUNDO FORMULARIO DE RENOVACION SEMESTRE-->	
-	<h2>Renovacion matricula</h2>
+	<h2>REALIZAR MATRICULA</h2>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table>
 		<th><p><strong>Estudiante</strong></p></th>
@@ -79,10 +13,16 @@
 		<td><input type="text" value="<?php echo $datosEstudiante['primer_nombre']." ".$datosEstudiante['segundo_nombre'] ." ".$datosEstudiante['primer_apellido'];?>" name="nombre" disabled=""></td>
 	</tr>
 
-		<th><p><strong>Programa</strong></p></th>
+		
 	<tr>
-		<td><label for="nombre">Nombre:</label></td>
-		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['nombrePrograma'] ?>"></td>
+		<td><label  for="programa">Programa de formacion</label></td>
+		<td><select  name="programa" id="programa">
+					<?php foreach ($programas as $value): ?>
+					<option value="<?php echo $value['id'] ?>" <?php if ($datosEstudiante['nombre_programa'] == $value['id']): ?>
+						<?php echo 'selected' ?>
+					<?php endif ?>><?php echo $value['nombre'] ?></option>
+				<?php endforeach ?>
+		</select></td>
 		<td><label for="nombre">SNIES:</label></td>
 		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['snies'] ?>"></td>
 	</tr>
@@ -92,7 +32,7 @@
 		<tr>
 			<td></td>
 			
-			<td><h2><?php echo $datosEstudiante['nombreInstitucion']; ?></h2></td>
+			<td><h2><?php echo $datosEstudiante['universidad']; ?></h2></td>
 			
 		</tr>
 		
@@ -136,6 +76,72 @@
 	</table>
 	</form>
 	
+	<h2>Cargar pronmedio semestre culminado</h2>
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+	<table>
+		<th><p><strong>Estudiante</strong></p></th>
+	<tr>
+		<td><label for="documento">Documento</label></td>
+		<td><input type="text" readonly="readonly" value="<?php echo $datosEstudiante['documento']; ?>" name="documento" ><br></td>
+		<td><label for="documento">Nombre estudiante</label></td>
+		<td><input type="text" value="<?php echo $datosEstudiante['primer_nombre']." ".$datosEstudiante['segundo_nombre'] ." ".$datosEstudiante['primer_apellido'];?>" name="nombre" disabled=""></td>
+	</tr>
+
+		<th><p><strong>Programa</strong></p></th>
+	<tr>
+		<td><label for="nombre">Nombre:</label></td>
+		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['nombre_programa'] ?>"></td>
+		<td><label for="nombre">SNIES:</label></td>
+		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['snies'] ?>"></td>
+	</tr>
+		
+		
+			<th><strong><p>Institucion academica</p></strong></th>
+		<tr>
+			<td></td>
+			
+			<td><h2><?php echo $datosEstudiante['universidad']; ?></h2></td>
+			
+		</tr>
+		
+		
+			<th><strong>Datos del semestre</strong></th>
+		<tr>
+		<!--Se debe llenar este input con el ultimo semestre registrado para el estudiante-->
+			<td><label for="semestre">Semestre:</label></td>
+			<td><input type="text" disabled="disabled" name="semestre" required="required" value="<?php echo $datosEstudiante['semestre']; ?>"></td>
+			<td><label for="periodo">Periodo:</label></td>
+			<td>
+				<input type="text" disabled="disabled" name="periodo" value="<?php echo $datosEstudiante['periodo']; ?>">
+			</td>
+		</tr>
+		<tr>
+			<td><label for="promedio">Promedio:</label></td>
+
+			<td><input type="text"  name="promedio" required="required" <?php if ( !empty( $datosEstudiante['promedio']) ): ?>
+				<?php echo   'readonly="readonly"'?>
+			 value="<?php echo $datosEstudiante['promedio']; ?>">
+			 <?php echo "El promedio ya ha sido asignado" ?>
+				<?php endif ?>
+			</td>
+
+			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['matriculaId']; ?>"></td>
+			<td><input type="hidden"  name="semestre" value="<?php echo $datosEstudiante['semestreId']; ?>"></td>
+		<tr>
+			
+		</tr>
+
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><input type="submit" name="cargar" value="enviar"></td>
+		</tr>
+	
+	</table>
+	</form>
+
+
 
 </div>
 <?php require("footer-menu.view.php") ?>
