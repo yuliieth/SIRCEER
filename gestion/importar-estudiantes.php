@@ -2,7 +2,7 @@
 <?php require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-require_once '../libs/PHPExcel/IOFactory.php';
+require_once '../libs/PHPExcel1.8.0/Classes/PHPExcel/IOFactory.php';
 validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
@@ -32,6 +32,15 @@ if (file_exists("../tmp_excel/back_".$nombreArchivo)) {
 #Cambiamos parametros de PHP
 //set_time_limit('max_execution_time','1200'); //5 minutos ó  set_time_limit 
 
+
+
+/**
+VERSION PHPEXCEL: 1.8.0 2014
+REQUESITOS: EXTENSION ZIP INSTALADA
+LINEA: PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
+SE COMPRUEBA QUE SOLO FUNCIONA ESTE ENTORNO CON PHPEXCEL VERSION 2017, EL QUE ESTA HABILITADO EN ESTE MOMENTO
+PHP 7.1
+*/
 echo "Exists";
 PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 #indicamos que vamos a cargar el archivo
@@ -43,6 +52,8 @@ $objPHPEXCEL = PHPEXCEL_IOFactory::load('../tmp_excel/back_'.$nombreArchivo);
 $objPHPEXCEL->setActiveSheetIndex(0);
 #obtenemos el numero de filas en la hoja activa
 $numRows = $objPHPEXCEL->setActiveSheetIndex(0)->getHighestRow();
+
+
 
 
 echo $numRows;

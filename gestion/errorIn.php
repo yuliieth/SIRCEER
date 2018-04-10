@@ -1,1 +1,1 @@
-<?php require_once '../view/error.view.php' ?>
+<?php require_once '../view/errorIn.view.php' ?>
