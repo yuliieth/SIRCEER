@@ -1,5 +1,77 @@
 <?php 
 
+
+function saveHistorialSemestre($semestre_id,$matricula_id,$estado,$cn)
+{
+
+	$fecha_modificaion = Date("YY-mm-dd");
+	$anio = Date("Y");
+	echo "<br>Año: $anio<br>";
+	echo "<br>Estado: $estado<br>";
+	echo "<br>matricula: $matricula_id<br>";
+	echo "<br> Semestre: $semestre_id<br>";
+
+	$sql = "INSERT INTO historial_academico_semestre(  anio, fecha_modificaion, estado, matricula_id, semestre_id) VALUES (:anio,:fecha_modificaion,:estado,:matricula_id,:semestre_id)";
+
+	$ps = $cn->prepare($sql);
+
+	
+	$ps->bindParam(':anio',$anio);
+	$ps->bindParam(':fecha_modificaion',$fecha_modificaion);
+	$ps->bindParam(':estado',$estado);
+	$ps->bindParam(':matricula_id',$matricula_id);
+	$ps->bindParam(':semestre_id',$semestre_id);
+	
+
+	$result = $ps->execute();
+
+	if ($result) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function saveSemestre($semestre,$periodo,$cn)
+{
+	$sql = "INSERT INTO semestre(semestre, periodo) VALUES (:semestre,:periodo)";
+
+	$ps = $cn->prepare($sql);
+
+	$ps->bindParam(':semestre',$semestre);
+	$ps->bindParam(':periodo',$periodo);
+
+	$result = $ps->execute();
+
+	if ($result) {
+		return true;
+	}else{
+		return false;
+	}
+
+}
+
+function saveMatricula($estudiante_id,$programa_id,$cn){
+	#fecha del ssitema
+	$fecha = Date("YY-mm-dd");
+
+	$sql_matricula = "INSERT INTO matricula(fecha, estudiante_id, programa_id) VALUES (:fecha,:estudiante_id,:programa_id)";
+
+	$ps = $cn->prepare($sql_matricula);
+
+	$ps->bindParam(':fecha',$fecha);
+	$ps->bindParam(':estudiante_id',$estudiante_id);
+	$ps->bindParam(':programa_id',$programa_id);
+
+	$result = $ps->execute();
+
+	if ($result) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
 function saveDiscapacidades($discapacidad,$cn){
 	
 	$sql = "INSERT INTO discapacidades(nombre) VALUES (:nombre)";
@@ -406,6 +478,7 @@ discapacidades.nombre AS discapacidades,
 municipios.nombre as municipios,
 sedes.nombre AS sede,
 programas.nombre AS nombre_programa,
+programas.id as id_programa,
 programas.snies AS snies,
 matricula.id AS id_matricula,
 universidades.nombre AS universidad,
@@ -826,7 +899,7 @@ function getSubjectByValue($table,$value,$nameColumn,$con)
 {
 	#Used by Estudiante
 	#used by Ver estudiante
-	$sql = "SELECT * FROM $table WHERE $nameColumn='".$value."'";
+	$sql = "SELECT * FROM $table WHERE $nameColumn='".$value."' LIMIT 1";
 	$ps = $con->prepare($sql);
 	#var_dump($campo);
 	$ps->execute();
@@ -859,11 +932,12 @@ function getInstitucionesOfAlianzaById($id,$con)
 }
 
 
-function getAllSubjectById($table,$doc,$campo,$con)
+#Obtiene todos los valores de la entidad donde el campo coincida
+function getAllSubjectById($table,$value,$campo,$con)
 {
 	#Used by Estudiante
 	#used by Ver estudiante
-	$sql = "SELECT * FROM $table WHERE $campo=$doc";
+	$sql = "SELECT * FROM $table WHERE $campo=$value";
 	$ps = $con->prepare($sql);
 	#var_dump($campo);
 	$ps->execute();

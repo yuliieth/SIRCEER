@@ -2,9 +2,19 @@
 <?php require("header-menu.view.php") ?>
 <div class="contenedor">
 	<!--SEGUNDO FORMULARIO DE RENOVACION SEMESTRE-->	
-	<h2>REALIZAR MATRICULA</h2>
+	<!--<h2>REALIZAR MATRICULA</h2>-->
+	<br>
+	<?php if ( empty($datosEstudiante['id_matricula']) || ($datosEstudiante['id_matricula'] == NULL)): ?>
+			<script type="text/javascript">
+				alert("Realizar matricula en un programa de formacion superior...");
+			</script>
+			<h2>ESTUDIANTE NO MATRICULADO EN ALGÚN PROGRAMA DE FORMACIÓN SUPERIOR</h2>
+				<?php else: ?>
+			<h2>ESTUDIANTE YA SE ENCUENTRA CURSANDO UN PROGRAMA DE FORMACIÓN SUPERIOR</h2>
+		<?php endif ?>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table>
+	
 		<th><p><strong>Estudiante</strong></p></th>
 	<tr>
 		<td><label for="documento">Documento</label></td>
@@ -15,11 +25,14 @@
 
 		
 	<tr>
-		<td><label  for="programa">Programa de formacion</label></td>
-		<td><select  name="programa" id="programa">
+		<td><label  for="programa">Programa de formación</label></td>
+		<td><select  name="programa" id="programa"  <?php if ( !empty($datosEstudiante['id_matricula'])) {
+							echo " disabled";
+						} ?>>
+			<option value="">SELECCIONE UNA OPCIÓN</option>
 					<?php foreach ($programas as $value): ?>
-					<option value="<?php echo $value['id'] ?>" <?php if ($datosEstudiante['nombre_programa'] == $value['id']): ?>
-						<?php echo 'selected' ?>
+					<option value="<?php echo $value['id'] ?>" <?php if ($datosEstudiante['id_programa'] == $value['id']): ?>
+						<?php echo 'selected'; ?>
 					<?php endif ?>><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
 		</select></td>
@@ -28,7 +41,7 @@
 	</tr>
 		
 		
-			<th><strong><p>Institucion academica</p></strong></th>
+			<th><strong><p>Institución academica</p></strong></th>
 		<tr>
 			<td></td>
 			
@@ -42,7 +55,9 @@
 		<!--Se debe llenar este input con el ultimo semestre registrado para el estudiante-->
 			<td><label for="semestre">Semestre:</label></td>
 			<td>
-				<select name="semestre" id="semestre">
+				<select name="semestre" id="semestre" onl <?php if ( empty($datosEstudiante['id_matricula'])) {
+							echo " disabled='disabled'";
+						} ?> >
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -62,7 +77,7 @@
 					<option value="2">2</option>
 				</select>
 			</td>
-			<td><td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['matriculaId']; ?>"></td></td>
+			<td><td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['id_matricula']; ?>"></td></td>
 		</tr>
 			
 
@@ -70,12 +85,14 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><input type="submit" name="renovar" value="renovar"></td>
+			<td><input type="submit" name="matricular" value="MATRICULAR"></td>
 		</tr>
 	
 	</table>
 	</form>
 	
+
+	<?php if ( !empty($datosEstudiante['id_matricula']) || ($datosEstudiante['id_matricula'] != NULL)): ?>
 	<h2>Cargar pronmedio semestre culminado</h2>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table>
@@ -90,7 +107,7 @@
 		<th><p><strong>Programa</strong></p></th>
 	<tr>
 		<td><label for="nombre">Nombre:</label></td>
-		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['nombre_programa'] ?>"></td>
+		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['id_programa'] ?>"></td>
 		<td><label for="nombre">SNIES:</label></td>
 		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['snies'] ?>"></td>
 	</tr>
@@ -125,7 +142,7 @@
 				<?php endif ?>
 			</td>
 
-			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['matriculaId']; ?>"></td>
+			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['id_matricula']; ?>"></td>
 			<td><input type="hidden"  name="semestre" value="<?php echo $datosEstudiante['semestreId']; ?>"></td>
 		<tr>
 			
@@ -140,7 +157,7 @@
 	
 	</table>
 	</form>
-
+<?php endif ?>
 
 
 </div>

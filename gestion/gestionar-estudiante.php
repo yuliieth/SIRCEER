@@ -38,47 +38,56 @@ if ($ps!=false) {
 
 	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
 }
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['renovar']) {
-		#echo "Entro a renovar";
-	#echo $_POST['matricula'];
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['matricular']) {
+
+	var_dump($_POST);
+	#obteniendo valores de la variable $_POST[]
 	$documento = $_POST['documento'];
-	$estado = 0;
-	$fechaModificacion = date("Y,m,d");
-	$anio = date("Y");
-	$sql = "INSERT INTO semestre(id, semestre, periodo) VALUES (null,:semestre,:periodo)";
-	$ps = $cn->prepare($sql);
-	$ps->bindParam(':semestre',$_POST['semestre']);
-	$ps->bindParam(':periodo',$_POST['periodo']);
-	$ps->execute();
+	$id_programa = $_POST['programa'];
+	$periodo = $_POST['periodo'];
 
-	$sqlGetiD = "select id FROM semestre ORDER BY id DESC LIMIT 1";
-	$ps = $cn->prepare($sqlGetiD);
-	$ps->execute();
-	$semestre_id = $ps->fetch();
-	
-	#Ahora si insertamos en detalle_semestre
-	$sql = "INSERT INTO detalle_semestre(id, matricula_id, semestre_id, anio, ultima_modificacion) VALUES (null,:matricula,:semestre,:anio,:fechaModificacion)";
-	$ps = $cn->prepare($sql);
-	$ps->bindParam(':matricula',$_POST['matricula']);
-	$ps->bindParam(':semestre',$semestre_id['id']);
-	$ps->bindParam(':anio',$anio);
-	$ps->bindParam(':fechaModificacion',$fechaModificacion);
-	$ps->execute();
+	#EN CASO DE QUE EL ESTUDIANTE NO ESTE MATRICULADO EN ALGUN P.E.S
+	#PASOS:
+	/*
+	1. tener el id del estudiante.
+	2. tener el id del programa.
+	3. insert in matricula.
+	4. obtener id de la matricula anterior.
+	5. inser in semestre (Como es la primera matricula el semestre es 1=primero).
+	6. obtener id semestre anterior
+	7. insert in historial_academico_semestre
+	*/
 
 
-	#Cambiarle de estado academico al estudainte luego de que su matricula ha sido renovada
-	#Actualizar el estado a de nuevo sin gestionar, esto por que inicia un nuevo semestre
+	$id_estudiante = getSubjectByValue('estudiantes',$documento,'documento',$cn);
+	#var_dump($id_estudiante);
+	$estado_matricula = saveMatricula($id_estudiante['id'],$id_programa,$cn);
 
-	#--------------Actualizar estado del estudiante a sin gestionar--------------------------------------------
-	$sql ="UPDATE estudiante SET estado=$estado WHERE estudiante.documento =$documento";
-$ps = $cn->prepare($sql);
-$ps->execute();
+	$id_matricula = $cn->lastInsertId();
 
-#------------------------------------------------------------------------------------------------------------------------
+	$estado_semestre = saveSemestre(1,$periodo,$cn);
+
+	$id_semestre = $cn->lastInsertId();	
+
+	$estado_historial_semestre = saveHistorialSemestre($id_semestre,$id_matricula,'null',$cn);
+
+
+	if (!$estado_matricula || !$estado_semestre || !$estado_historial_semestre) {
+		echo "<br>Ocurrio un error<br>";
+		var_dump($estado_matricula);
+		echo "<br>Semestre:<br>";
+		var_dump($estado_semestre);
+		echo "<br>Historial:<br>";
+		var_dump($estado_historial_semestre);
+	}else
+	{
+		echo "Sin errores";
+	}
 
 
 
-	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
+
+	#header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
 }
 //END PETICION POST
 else
@@ -93,6 +102,8 @@ else
 $documento = cleanData($_GET['id']);
 #echo "$documento";
 $datosEstudiante = getAllStudentRelations($documento,$cn);
+#var_dump($datosEstudiante);
+#echo "<br>***********<br>";
 $matricula = getMatriculaEstudiante($documento,$cn);
 $programas = getProgramas($cn);
 var_dump($matricula);
