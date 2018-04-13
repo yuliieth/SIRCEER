@@ -8,6 +8,7 @@ $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
 $instituciones = getAllSubject('instituciones',$cn);
+$universidades = getAllSubject('universidades',$cn);
 
 $enviado = "";
 if (isset($_POST['submit'])) {

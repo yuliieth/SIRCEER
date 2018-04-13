@@ -27,9 +27,9 @@
 		</tr>	
 
 		<tr>
-			<td><label for="institucion">Primera institución</label></td>
+			<td><label for="institucion">Institución</label></td>
 			<td>
-				<select name="institucion[]" id="">
+				<select name="institucion" id="">
 					<option value="#">No aplica</option>
 				<?php foreach ($instituciones as $institucion): ?>
 					<option value="<?php echo $institucion['id'] ?>"><?php echo $institucion['nombre'] ?></option>
@@ -38,11 +38,11 @@
 				</select>
 			</td>
 
-			<td><label for="institucion">Primera institución</label></td>
+			<td><label for="institucion">Universidad</label></td>
 			<td>
 				<select name="institucion[]" id="">
 					<option value="#">No aplica</option>
-				<?php foreach ($instituciones as $institucion): ?>
+				<?php foreach ($universidades as $institucion): ?>
 					<option value="<?php echo $institucion['id'] ?>"><?php echo $institucion['nombre'] ?></option>
 				<?php endforeach ?>
 				</select>
