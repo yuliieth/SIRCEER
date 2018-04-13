@@ -3,7 +3,7 @@
 <!--CONTENIDO-->
 
 <div class="wrap-formulario-new-estudiante">
-	<h1>Nuevo Alianza</h1>
+	<h1>Nuevo Institucion</h1>
 		
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
@@ -13,7 +13,7 @@
 			</td>
 			<td><input type="text" size="20" name="nombre" placeholder="Nombre" required="" ></td>
 			<td><label for="telefono">Telefono:</label></td>
-			<td><input type="text" name="telefono" placeholder="Telefono de contacto"></td>
+			<td><input type="text" size="12" name="telefono" placeholder="Telefono de contacto"></td>
 		</tr>
 
 		<tr>
@@ -35,9 +35,9 @@
 			<td><label for="dane">DANE</label></td>
 			<td><input type="text" name="dane" placeholder="DANE"></td>
 
-			<td><label for="sectores">Sector</label></td>
+			<td><label for="sector">Sector</label></td>
 			<td>
-				<select name="sectores" id="">
+				<select name="sector" id="">
 					<option value="#">No aplica</option>
 				<?php foreach ($sectores as $value): ?>
 					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
@@ -49,7 +49,7 @@
 		<tr>
 			<td><label for="municipio">Municipio</label></td>
 			<td>
-				<select name="municipios" id="">
+				<select name="municipio" id="">
 					<?php foreach ($municipios as $value): ?>
 					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>

@@ -972,7 +972,7 @@ function validarErrores($parameter,$errores)
 
 
 
-function saveInstitu
+function saveUniversidad
 (
 	$nombre,
 	$telefono,
@@ -1191,33 +1191,38 @@ function saveStudent
 
 
 
-	function saveColegio(
+	function saveInstitucion(
 	$nombre,
 	$telefono,
 	$siglas,
 	$calendario,
 	$dane,
+	$sector,
+	$municipio,
 	$cn
-			)
+		)
 	{
 
-
+		
 			//var_dump($conexion);
-		$sql = ("INSERT INTO colegios(nombre, telefono, siglas, calendario, DANE) VALUES(:nombre,:telefono,:siglas,:calendario,:DANE)"
-	);
-		$stp = $cn->prepare($sql);
+		$sql = "INSERT INTO instituciones(nombre, telefono, siglas, calendario, DANE, sector_id, municipio_id) VALUES (:nombre,:telefono,:siglas,:calendario,:DANE,:sector_id,:municipio_id)";
+		$ps = $cn->prepare($sql);
 		
-		$stp->bindParam( ':nombre' , $nombre);
-		$stp->bindParam( ':telefono' , $telefono);
-		$stp->bindParam( ':siglas' , $siglas);
-		$stp->bindParam( ':calendario' , $calendario);
-		$stp->bindParam( ':DANE' , $DANE);
+		$ps->bindParam(':nombre',$nombre);
+		$ps->bindParam(':telefono',$telefono);
+		$ps->bindParam(':siglas',$siglas);
+		$ps->bindParam(':calendario',$calendario);
+		$ps->bindParam(':DANE',$dane);
+		$ps->bindParam(':sector_id',$sector);
+		$ps->bindParam(':municipio_id',$municipio);
 		
-		#var_dump($stp);
-		$result= $stp->execute();
+		#var_dump($ps);
+		$result= $ps->execute();
 		#var_dump($result);
 		if ($result != false) {
-			header("Location:".URL."gestion/new-colegio.php?select=c");
+			return true;
+		}else{
+			return false;
 		}
 
 	}	

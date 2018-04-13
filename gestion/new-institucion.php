@@ -14,10 +14,10 @@ $municipios = getAllSubject('municipios',$cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
 	#echo "entro post";
-	var_dump($_POST);
+	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"nombre","fecha_ini","fecha_final","cupos"
+		"nombre","calendario","dane"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -31,15 +31,31 @@ if (isset($_POST['submit'])) {
 		$siglas = $_POST['siglas'];
 		$calendario = $_POST['calendario'];
 		$dane = $_POST['dane'];
+		$sector = $_POST['sector'];
+		$municipio = $_POST['municipio'];
+		
 		
 
-saveColegio(
+$estado_institucion = saveInstitucion(
 	$nombre,
-$telefono,
-$siglas,
-$calendario,
-$dane,$cn
+	$telefono,
+	$siglas,
+	$calendario,
+	$dane,
+	$sector,
+	$municipio,
+	$cn
 	);
+
+	
+	if ($estado_institucion) {
+		?>
+			<script type="text/javascript">
+				window.location = "<?php echo URL ?>gestion/new-institucion.php?select=i"
+			</script>
+		<?php
+	}
+
 }
 
 
