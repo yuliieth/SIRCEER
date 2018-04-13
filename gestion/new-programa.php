@@ -6,7 +6,7 @@
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 $niveles = getAllSubject('nivel_academico',$cn);
-$instituciones = getAllSubject('instituciones',$cn);
+$universidades = getAllSubject('universidades',$cn);
 #las anteriores pueden ser reemplazadas por esta
 $jornadas = getAllSubject('jornadas',$cn);
 $enviado = "";

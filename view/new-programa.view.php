@@ -22,7 +22,7 @@
 
 		<br>
 		<select name="institucion" id="">
-			<?php foreach ($instituciones as $valor): ?>
+			<?php foreach ($universidades as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>
 		</select>	
