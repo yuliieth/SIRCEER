@@ -483,7 +483,7 @@ programas.snies AS snies,
 matricula.id AS id_matricula,
 universidades.nombre AS universidad,
 historial_academico_semestre.promedio,historial_academico_semestre.anio,
-semestre.semestre, semestre.periodo,
+semestre.semestre, semestre.periodo, semestre.id AS id_semestre,
 servicios_sociales.estado servicio_social
 
 
@@ -512,7 +512,7 @@ LEFT JOIN semestre ON historial_academico_semestre.semestre_id=semestre.id
 LEFT JOIN estudiante_serviciosocial ON estudiantes.id=estudiante_serviciosocial.estudiante_serviciosocial_id
 LEFT JOIN servicios_sociales ON estudiante_serviciosocial.servicio_social_id=servicios_sociales.id
 
-where estudiantes.documento=$documento LIMIT 1";
+where estudiantes.documento=$documento ORDER BY historial_academico_semestre.id DESC LIMIT 1";
 
 	$ps = $con->prepare($sql);
 	$ps->execute();

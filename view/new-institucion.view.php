@@ -11,41 +11,48 @@
 			<td>
 			<label for="nombre">Nombre:</label>
 			</td>
-			<td><input type="text" size="20" name="nombre" placeholder="Nombre alianza" required="" ></td>
-			<td><label for="fecha_ini">Fecha inicio:</label></td>
-			<td><input type="date" name="fecha_ini" step="1" min="2017-01-01" max="2025-12-31" value=""></td>
+			<td><input type="text" size="20" name="nombre" placeholder="Nombre" required="" ></td>
+			<td><label for="telefono">Telefono:</label></td>
+			<td><input type="text" name="telefono" placeholder="Telefono de contacto"></td>
 		</tr>
 
 		<tr>
 			<td>
-			<label for="fecha_fina">Fecha final:</label>
+			<label for="siglas">Siglas:</label>
 			</td>
-			<td><input type="date" name="fecha_final" step="1" min="2017-01-01" max="2025-12-31" value=""></td>
-			<td><label for="cupos">Cupos:</label></td>
-			<td><input type="text" size="30" name="cupos" placeholder="cupos" required="required">
+			<td><input type="text" name="siglas" placeholder="Siglas"></td>
+			<td><label for="calendario">Calendario:</label></td>
+			<td>
+				<select name="calendario" id="">
+					<option value="#">Sin selccionar</option>
+					<option value="A">A</option>
+					<option value="B">B</option>
+				</select>
 			</td>
 		</tr>	
 
 		<tr>
-			<td><label for="institucion">Primera institución</label></td>
+			<td><label for="dane">DANE</label></td>
+			<td><input type="text" name="dane" placeholder="DANE"></td>
+
+			<td><label for="sectores">Sector</label></td>
 			<td>
-				<select name="institucion[]" id="">
+				<select name="sectores" id="">
 					<option value="#">No aplica</option>
-				<?php foreach ($instituciones as $institucion): ?>
-					<option value="<?php echo $institucion['id'] ?>"><?php echo $institucion['nombre'] ?></option>
+				<?php foreach ($sectores as $value): ?>
+					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
-				</select>
 				</select>
 			</td>
+		</tr>
 
-			<td><label for="institucion">Primera institución</label></td>
+		<tr>
+			<td><label for="municipio">Municipio</label></td>
 			<td>
-				<select name="institucion[]" id="">
-					<option value="#">No aplica</option>
-				<?php foreach ($instituciones as $institucion): ?>
-					<option value="<?php echo $institucion['id'] ?>"><?php echo $institucion['nombre'] ?></option>
+				<select name="municipios" id="">
+					<?php foreach ($municipios as $value): ?>
+					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
-				</select>
 				</select>
 			</td>
 		</tr>

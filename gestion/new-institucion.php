@@ -3,11 +3,13 @@
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-#validateSession();
+validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
-$instituciones = getAllSubject('instituciones',$cn);
+$sectores = getAllSubject('sectores',$cn);
+$municipios = getAllSubject('municipios',$cn);
+
 
 $enviado = "";
 if (isset($_POST['submit'])) {
@@ -45,4 +47,4 @@ $dane,$cn
 }
 ?>
 
-<?php require("../view/new-alianza.view.php") ?>
+<?php require("../view/new-institucion.view.php") ?>

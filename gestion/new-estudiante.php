@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","fecha_naci","edad","dire_resi","fecha_inicio","estrato","zona","eps","tipo_poblacion","situacion_social","fuente_recurso","internado","servicio_social","colegio","ojos","genero","discapacidades","situacion_academica","grado","ciudad"
+		"tipo_documento","documento","tipo_sangre","primer_nombre","segundo_nombre","primer_apellido","segundo_apellido","telefono","fecha_naci","edad","fecha_inicio","estrato","zona","eps","tipo_poblacion","situacion_social","fuente_recurso","internado","servicio_social","colegio","ojos","genero","discapacidades","situacion_academica","grado","ciudad"
 		);
 	#echo "Entra a validar";
 	$errores = validarErrores($parameters,$errores);

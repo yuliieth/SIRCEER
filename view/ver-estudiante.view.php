@@ -136,9 +136,9 @@ $html = '
             <table>
             <tr>
               <td><strong>Programa de estudio:</strong></td>
-              <td>'.$estudiante['namePrograma'].'</td>
+              <td>'.$estudiante['nombre_programa'].'</td>
               <td><strong>Universidad:</strong></td>
-              <td>'.$estudiante['Universidad                              '].'</td>
+              <td>'.$estudiante['universidad'].'</td>
             </tr>
 
             <tr>
@@ -178,7 +178,7 @@ $html = '
                 <td>'. $value['semestre'] .'</td>
                 <td>'. $value['periodo'] .'</td>
                 <td>'. $value['promedio'] .'</td>
-                <td>'. $value['ultima_modificacion'] .'</td>
+                <td>'. $value['fecha_modificacion'] .'</td>
             </tr>
               ';            
               }

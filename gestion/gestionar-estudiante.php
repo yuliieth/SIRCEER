@@ -14,33 +14,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset( $_POST['cargar'])) {
 	#var_dump($_POST);
 
 /*
+EN EL CASO DE CARGA DE PROMEDIO
+REQUISITOS:
+1. Id matricula
+2. Id semestre
+3. Valor promedio
+4. Insertar historial_academico_semestre
 */
 $documento = $_POST['documento'];
-$matricula = $_POST['matricula'];
-$semestre = $_POST['semestre'];
+$matricula_id = $_POST['matricula'];
+$semestre_id = $_POST['semestre'];
+#echo "$semestre_id";
 $promedio =  $_POST['promedio'];
 $estado = 1;
 
-$sql ="UPDATE detalle_semestre SET promedio=:promedio WHERE matricula_id =:matricula AND semestre_id=:semestre";
+$fecha_modificaion = date("YY-mm-dd");
+
+$sql ="UPDATE historial_academico_semestre SET promedio=:promedio,fecha_modificaion=:fecha_modificaion WHERE   historial_academico_semestre.matricula_id=:matricula_id AND historial_academico_semestre.semestre_id=:semestre_id";
 $ps = $cn->prepare($sql);
 $ps->bindParam(':promedio',$promedio);
-$ps->bindParam(':matricula',$matricula);
-$ps->bindParam(':semestre',$semestre);
-$ps->execute();
+$ps->bindParam(':fecha_modificaion',$fecha_modificaion);
+$ps->bindParam(':matricula_id',$matricula_id);
+$ps->bindParam(':semestre_id',$semestre_id);
+
+$result = $ps->execute();
 
 
-if ($ps!=false) {
-	$sql ="UPDATE estudiante SET estado=:estado WHERE documento = :documento";
-	$ps = $cn->prepare($sql);
-	$ps->bindParam(':estado',$estado);
-	$ps->bindParam(':documento',$documento);
-	$ps->execute();
-
-	header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
+if ($result != false) {
+	?>
+		<script type="text/javascript">
+			window.location="<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
+		</script>
+	<?php
+	
 }
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['matricular']) {
+	$operacion = $_POST['operacion'];
 
-	var_dump($_POST);
+	switch ($operacion) {
+	
+		case 'insert':
+	#var_dump($_POST);
 	#obteniendo valores de la variable $_POST[]
 	$documento = $_POST['documento'];
 	$id_programa = $_POST['programa'];
@@ -81,13 +95,73 @@ if ($ps!=false) {
 		var_dump($estado_historial_semestre);
 	}else
 	{
-		echo "Sin errores";
+		?>
+			<script type="text/javascript">
+				window.location = "<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
+			</script>
+		<?php
 	}
+	
+			break;
 
+		case 'update':
+			
+		#Objetivo:
+		#Update historial_academico_semestre para registrar nuevo semestre consecutivo
 
+		#Necesario: Id matricula (POST)
+		#Insert semestre (semestre y periodo=(POST))
+		#Id semestre
+		#Insertar historial_academico_semestre
 
+		$id_matricula = $_POST['matricula'];
+		$semestre = $_POST['semestre'];
+		$periodo = $_POST['periodo'];
 
-	#header("Location: ".URL. "gestion/buscar-estudiantes.php?select=e");
+		$estado = "NULL";
+		$anio = Date("YY");
+		$fecha_modificaion = Date("YY-mm-dd");
+
+		$sql_semestre = "INSERT INTO semestre(semestre, periodo) VALUES (:semestre,:periodo)";
+
+		$ps = $cn->prepare($sql_semestre);
+		$ps->bindParam(':semestre',$semestre);
+		$ps->bindParam(':periodo',$periodo);
+
+		$result_semestre = $ps->execute();
+		#var_dump($result_semestre);
+		$id_semestre = $cn->lastInsertId();
+		#echo "<br>ID semestre: $id_semestre";
+
+		#Insertando historail_academico_semestre
+		$sql_historial_semestre = "INSERT INTO historial_academico_semestre( anio, fecha_modificaion, estado, matricula_id, semestre_id) VALUES (:anio,:fecha_modificaion,:estado,:matricula_id,:semestre_id)";
+
+		$ps = $cn->prepare($sql_historial_semestre);
+		
+		$ps->bindParam(':anio',$anio);
+		$ps->bindParam(':fecha_modificaion',$fecha_modificaion);
+		$ps->bindParam(':estado',$estado);
+		$ps->bindParam(':matricula_id',$id_matricula);
+		$ps->bindParam(':semestre_id',$id_semestre);
+
+		$result_historial = $ps->execute();
+
+		#var_dump($result_historial);
+
+		?>
+			<script type="text/javascript">
+				window.location = "<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
+			</script>
+		<?php
+		
+			break;
+		
+		default:
+			# code...
+			break;
+
+	}#End swith
+
 }
 //END PETICION POST
 else

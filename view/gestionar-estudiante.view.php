@@ -27,7 +27,7 @@
 	<tr>
 		<td><label  for="programa">Programa de formación</label></td>
 		<td><select  name="programa" id="programa"  <?php if ( !empty($datosEstudiante['id_matricula'])) {
-							echo " disabled";
+							echo " readonly='readonly'";
 						} ?>>
 			<option value="">SELECCIONE UNA OPCIÓN</option>
 					<?php foreach ($programas as $value): ?>
@@ -55,7 +55,7 @@
 		<!--Se debe llenar este input con el ultimo semestre registrado para el estudiante-->
 			<td><label for="semestre">Semestre:</label></td>
 			<td>
-				<select name="semestre" id="semestre" onl <?php if ( empty($datosEstudiante['id_matricula'])) {
+				<select name="semestre" id="semestre"  <?php if ( empty($datosEstudiante['id_matricula'])) {
 							echo " disabled='disabled'";
 						} ?> >
 					<option value="1">1</option>
@@ -77,13 +77,12 @@
 					<option value="2">2</option>
 				</select>
 			</td>
-			<td><td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['id_matricula']; ?>"></td></td>
 		</tr>
 			
 
 		<tr>
-			<td></td>
-			<td></td>
+			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['id_matricula']; ?>"></td>
+			<td><input type="hidden" name="operacion" value="<?php if ( !empty( $datosEstudiante['id_matricula'])) echo 'update'; else echo 'insert'; ?>"></td>
 			<td></td>
 			<td><input type="submit" name="matricular" value="MATRICULAR"></td>
 		</tr>
@@ -91,6 +90,8 @@
 	</table>
 	</form>
 	
+
+<!--******************************************************************-->
 
 	<?php if ( !empty($datosEstudiante['id_matricula']) || ($datosEstudiante['id_matricula'] != NULL)): ?>
 	<h2>Cargar pronmedio semestre culminado</h2>
@@ -107,7 +108,7 @@
 		<th><p><strong>Programa</strong></p></th>
 	<tr>
 		<td><label for="nombre">Nombre:</label></td>
-		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['id_programa'] ?>"></td>
+		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['nombre_programa'] ?>"></td>
 		<td><label for="nombre">SNIES:</label></td>
 		<td><input type="text" disabled="" value="<?php echo $datosEstudiante['snies'] ?>"></td>
 	</tr>
@@ -143,7 +144,7 @@
 			</td>
 
 			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['id_matricula']; ?>"></td>
-			<td><input type="hidden"  name="semestre" value="<?php echo $datosEstudiante['semestreId']; ?>"></td>
+			<td><input type="hidden"  name="semestre" value="<?php echo $datosEstudiante['id_semestre']; ?>"></td>
 		<tr>
 			
 		</tr>
@@ -152,7 +153,7 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><input type="submit" name="cargar" value="enviar"></td>
+			<td><input type="submit" name="cargar" value="Cargar"></td>
 		</tr>
 	
 	</table>
