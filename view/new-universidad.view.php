@@ -1,7 +1,7 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
-<h2>Nueva institucion</h2>
+<h2>Nueva universidad</h2>
 <div class="wrap-formulario-institucion">
 
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">	
@@ -12,6 +12,13 @@
 		</tr>
 	
 		<tr>
+			<td><input type="email" size="30" name="email" placeholder="E-mail*" required=""></td>
+			<td><input type="text" size="30" name="direccion" placeholder="Direccion"></td>
+		</tr>
+		
+		<!--<input type="text" size="30" name="codigo" placeholder="Codigo*" required="">-->
+		
+		<tr>
 			<td>
 				<select  name="municipio" id="municipio">
 			<?php foreach ($municipios as $valor): ?>
@@ -19,13 +26,6 @@
 			<?php endforeach ?>
 		</select>
 			</td>
-			<td><input type="email" size="30" name="email" placeholder="E-mail*" required=""></td>
-		</tr>
-		
-		<!--<input type="text" size="30" name="codigo" placeholder="Codigo*" required="">-->
-		
-		<tr>
-			<td><input type="text" size="30" name="direccion" placeholder="Direccion"></td>
 		</tr>
 
 		<tr>

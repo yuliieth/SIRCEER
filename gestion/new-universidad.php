@@ -38,4 +38,4 @@ saveInstitu(
 
 }
 ?>
-<?php include '../view/new-institucion.view.php' ?>
+<?php include '../view/new-universidad.view.php' ?>
