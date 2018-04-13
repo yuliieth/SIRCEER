@@ -12,11 +12,9 @@
 		</tr>
 	
 		<tr>
-			<td><input type="email" size="30" name="email" placeholder="E-mail*" required=""></td>
+			<td><input type="email" size="30" name="email" placeholder="E-mail*" ></td>
 			<td><input type="text" size="30" name="direccion" placeholder="Direccion"></td>
 		</tr>
-		
-		<!--<input type="text" size="30" name="codigo" placeholder="Codigo*" required="">-->
 		
 		<tr>
 			<td>

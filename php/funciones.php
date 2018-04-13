@@ -974,12 +974,7 @@ function validarErrores($parameter,$errores)
 
 function saveUniversidad
 (
-	$nombre,
-	$telefono,
-	$municipio,
-	$email,
-	$direccion,
-	$cn
+	$nombre,$telefono,$email,$direccion,$municipio,$cn
 )
 {
 
@@ -989,9 +984,10 @@ function saveUniversidad
 	}else{
 		try {
 			//var_dump($conexion);
-			$sql = "INSERT INTO instituciones  (nombre,telefono,email,direccion,ciudad_id)VALUES (:nombre,:telefono,:email,:direccion,:municipio)";
+			$sql = "INSERT INTO universidades(nombre,telefono,email,direccion,ciudad_id)VALUES (:nombre,:telefono,:email,:direccion,:municipio)";
 
 			$statement = $cn->prepare($sql);
+
 			$statement->bindParam( ':nombre' , $nombre);
 			$statement->bindParam( ':telefono' , $telefono);
 			$statement->bindParam( ':email' , $email);
@@ -1002,8 +998,9 @@ function saveUniversidad
 			#var_dump($result);
 		
 			if ($result != false) {
-				echo "error";
-				//header('Location: '.URL.'gestion/new-institucion.php?select=i');
+				return true;
+			}else{
+				return false;
 			}
 		} catch (Exception $e) {
 			echo "Linea de error: ".$e->getMessage();	

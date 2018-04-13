@@ -11,8 +11,9 @@ if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"nombre","telefono","municipio","email","direccion"
+		"nombre"
 		);
+
 	#var_dump($parameters);
 	#echo "string";
 	$errores = validarErrores($parameters,$errores);
@@ -23,15 +24,31 @@ if (isset($_POST['submit'])) {
 		$enviado = true;
 		
 		$nombre = $_POST['nombre'];
-		#$codigo = $_POST['codigo'];
 		$telefono = $_POST['telefono'];
-		$municipio = $_POST['municipio'];
 		$email = $_POST['email'];
 		$direccion = $_POST['direccion'];
+		$municipio = $_POST['municipio'];
 		
-saveInstitu(
-	$nombre,$telefono,$municipio,$email,$direccion,$cn
+$estado_universidad = saveUniversidad(
+	$nombre,$telefono,$email,$direccion,$municipio,$cn
 	);
+
+
+
+	if ($estado_universidad) {
+		?> 
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>gestion/new-universidad.php?select=u";
+			</script>
+		<?php
+	}else{
+		?> 
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>gestion/errorIn.php";
+			</script>
+		<?php
+	}
+
 }
 
 
