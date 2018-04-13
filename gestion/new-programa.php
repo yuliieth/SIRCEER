@@ -10,11 +10,12 @@ $universidades = getAllSubject('universidades',$cn);
 #las anteriores pueden ser reemplazadas por esta
 $jornadas = getAllSubject('jornadas',$cn);
 $enviado = "";
+
 if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"nombre","codigosnies","semestres","jornada","nivel-academico","institucion","valor_semestre"
+		"nombre","codigo_snies","jornada","nivel_academico","universidad","valor_semestre"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -27,22 +28,27 @@ if (isset($_POST['submit'])) {
 
 
 
+		$codigo_snies = $_POST['codigo_snies'];
 		$nombre = $_POST['nombre'];
-		
-		$codigosnies = $_POST['codigosnies'];
-		
 		$semestres = $_POST['semestres'];
-
 		$valor_semestre = $_POST['valor_semestre'];
-
-		$nivelAcademico = $_POST['nivel-academico'];
-		$institucion = $_POST['institucion'];
+		$nivel_academico = $_POST['nivel_academico'];
+		$universidad = $_POST['universidad'];
 		$jornada = $_POST['jornada'];
 		
-		
-saveProgram(
-	$codigosnies,$nombre,$semestres,$valor_semestre,$nivelAcademico,$institucion,$jornada,$cn
+$estado_programa = saveProgram(
+	$codigo_snies,$nombre,$semestres,$valor_semestre,$nivel_academico,$universidad,$jornada,$cn
 	);
+
+
+	if ($estado_programa) {
+		?>
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>gestion/new-programa.php?select=p";
+			</script>
+		<?php
+	}
+
 }
 
 

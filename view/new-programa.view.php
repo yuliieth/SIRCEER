@@ -8,20 +8,20 @@
 	<!--<table class="table-formulario">-->
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		<input type="text" size="30" name="nombre" placeholder="Nombre*" required>
-		<input type="text" size="30" name="codigosnies" placeholder="Codigo SNIES*" required>
+		<input type="text" size="30" name="codigo_snies" placeholder="Codigo SNIES*" required>
 		<input type="text" size="30" name="semestres" placeholder="Numero de semestres*">	
 			
 		<br>
 		<input type="text"  name="valor_semestre" placeholder="Valor del semestre*" required>
 
-		<select name="nivel-academico" id="nivel-academico">
+		<select name="nivel_academico" id="nivel-academico">
 			<?php foreach ($niveles as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>
 		</select>
 
 		<br>
-		<select name="institucion" id="">
+		<select name="universidad" id="">
 			<?php foreach ($universidades as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
 			<?php endforeach ?>

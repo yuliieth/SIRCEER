@@ -1014,34 +1014,28 @@ function saveUniversidad
 }
 function saveProgram
 (
-	$codigosnies,
-	$nombre,
-	$semestres,
-	$valor_semestre,
-	$nivelAcademico,
-	$institucion,
-	$jornada,
-	$cn
+	$codigo_snies,$nombre,$semestres,$valor_semestre,$nivel_academico,$universidad,$jornada,$cn
 )
 {	
 	
 	
 			//var_dump($conexion);
-		$sql = ("INSERT INTO programas(snies, nombre,cantidad_semestre,costo_semestre,nivel_academico_id,institucion_id,jornada_id) VALUES(  :snies,:nombre,:num_semestres,:costo_semestre,:nivel_academico_id,:institucion_id,:jornada_id)"
-	);
+		$sql = "INSERT INTO programas(snies, nombre,cantidad_semestre,costo_semestre,nivel_academico_id,institucion_id,jornada_id) VALUES(  :snies,:nombre,:num_semestres,:costo_semestre,:nivel_academico_id,:institucion_id,:jornada_id)";
 		$stp = $cn->prepare($sql);
-		$stp->bindParam( ':snies' , $codigosnies);
+		$stp->bindParam( ':snies' , $codigo_snies);
 		$stp->bindParam( ':nombre' , $nombre);
 		$stp->bindParam( ':num_semestres' , $semestres);
 		$stp->bindParam( ':costo_semestre' , $valor_semestre);
-		$stp->bindParam( ':nivel_academico_id' , $nivelAcademico);
-		$stp->bindParam( ':institucion_id' , $institucion);
+		$stp->bindParam( ':nivel_academico_id' , $nivel_academico);
+		$stp->bindParam( ':institucion_id' , $universidad);
 		$stp->bindParam( ':jornada_id' , $jornada);
 		#var_dump($stp);
 		$result= $stp->execute();
 		#var_dump($result);
 		if ($result != false) {
-			header("Location:".URL."gestion/new-programa.php?select=p");
+			return true;
+		}else{
+			return false;
 		}
 
 	
