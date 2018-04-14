@@ -3,7 +3,7 @@
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-#validateSession();
+validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
 	var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"nombre","fecha_ini","fecha_final","cupos"
+		"nombre","codigo_dane","consecutivo","zona","modelo","institucion","municipio"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -28,15 +28,35 @@ if (isset($_POST['submit'])) {
 		$enviado = true;
 		#Obtenemos los valores de los campos en el formulario
 		$nombre = $_POST['nombre'];
-		$fecha_ini = $_POST['fecha_ini'];
-		$fecha_fina = $_POST['fecha_final'];
-		$cupos = $_POST['cupos'];
-		$instituciones = $_POST['institucion'];
+		$codigo_dane = $_POST['codigo_dane'];
+		$consecutivo = $_POST['consecutivo'];
+		$zona = $_POST['zona'];
+		$modelo = $_POST['modelo'];
+		$institucion = $_POST['institucion'];
+		$municipio = $_POST['municipio'];
+
 		
 
-saveAlianza(
-	$nombre,$fecha_ini,$fecha_fina,$cupos,$instituciones,$cn
+$estado_sede = saveSede(
+	$nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$municipio,$cn
 	);
+
+	if ($estado_sede) {
+		?>
+			<script type="text/javascript">
+				window.location = "<?php echo URL ?>gestion/buscar-sedes.php?select=s";
+			</script>
+		<?php
+	}else{
+		?>
+		<script type="text/javascript">
+				window.location = "<?php echo URL ?>gestion/errorIn.php";
+		</script>
+
+		<?php
+	}
+	
+
 }
 
 

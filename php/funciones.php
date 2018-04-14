@@ -91,32 +91,29 @@ function saveDiscapacidades($discapacidad,$cn){
 
 }
 
-function saveSede($sede,$codigo_dane_sede,$consecutivo,$zona_sede,$modelo,$institucion,$municipio,$cn){
+function saveSede($nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$municipio,$cn){
 
-	echo "<br>Guardando sede...<br>";
+	#echo "<br>Guardando sede...<br>";
 
-	$sql = "INSERT INTO sedes(nombre, codigo_dane_sede, consecutivo, zona_id, modelo_id, institucion_id,municipio_id) VALUES (:nombre,:codigo_dane_sede,:consecutivo,:zona_id,:modelo_id,:colegio_id,:municipio_id)";
+	$sql = "INSERT INTO sedes(nombre, codigo_dane_sede, consecutivo, zona_id, modelo_id, institucion_id,municipio_id) VALUES (:nombre,:codigo_dane_sede,:consecutivo,:zona_id,:modelo_id,:institucion_id,:municipio_id)";
 
 	$stm = $cn->prepare($sql);
 
-	$stm->bindParam(':nombre',$sede);
-	$stm->bindParam(':codigo_dane_sede',$codigo_dane_sede);
+	$stm->bindParam(':nombre',$nombre);
+	$stm->bindParam(':codigo_dane_sede',$codigo_dane);
 	$stm->bindParam(':consecutivo',$consecutivo);
-	$stm->bindParam(':zona_id',$zona_sede);
+	$stm->bindParam(':zona_id',$zona);
 	$stm->bindParam(':modelo_id',$modelo);
-	$stm->bindParam(':colegio_id',$institucion);
+	$stm->bindParam(':institucion_id',$institucion);
 	$stm->bindParam(':municipio_id',$municipio);
 
 	$result = $stm->execute();
 
-	if ($result == false) {
-		echo "Error insertando la sede";
+	if ($result != false) {
+		return true;
 	}else{
-
-	echo "<br> Id sede insertada <br>";
+		return false;
 	}
-
-	return $cn->lastInsertId();
 
 }
 
@@ -385,7 +382,7 @@ function countEntityWithOutWhere($tabla,$cn){
 }
 
 function saveAlianza(
-	$nombre,$fecha_ini,$fecha_fina,$cupos,$instituciones,$cn
+	$nombre,$fecha_ini,$fecha_final,$cupos,$instituciones,$universidad,$cn
 )
 {
 
@@ -406,27 +403,6 @@ function saveAlianza(
 
 
 
-		echo "<br>*********<br>";
-		var_dump($instituciones);
-
-		#consultar id alianza
-		$id_alianza = getId('alianzas',$cn);
-
-		#Ahora se obtienen las instituciones seleccionadas para guardar en la tabla: instituciones_alianzas
-		$sql = "INSERT INTO instituciones_alianzas (institucion_id,alianzas_id,fecha_vinculacion) 
-		VALUES (:institucion_id,:alianzas_id,:fecha_vinculacion)";
-		$stp = $cn->prepare($sql);
-
-		for ($i=0; $i <  count($instituciones) ; $i++) { 
-			
-			
-		$stp->bindParam(':institucion_id',$instituciones[$i]);
-		$stp->bindParam(':alianzas_id',$id_alianza);
-		$stp->bindParam(':fecha_vinculacion',$fecha_sistema);
-
-		$resultA = $stp->execute();
-
-		}
 
 
 		if ($result != false && $resultA != false) {

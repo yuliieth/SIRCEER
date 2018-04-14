@@ -27,14 +27,27 @@ if (isset($_POST['submit'])) {
 		#Obtenemos los valores de los campos en el formulario
 		$nombre = $_POST['nombre'];
 		$fecha_ini = $_POST['fecha_ini'];
-		$fecha_fina = $_POST['fecha_final'];
+		$fecha_final = $_POST['fecha_final'];
 		$cupos = $_POST['cupos'];
-		$instituciones = $_POST['institucion'];
+		$institucion = $_POST['institucion'];
+		$universidad = $_POST['universidad'];
 		
 
-saveAlianza(
-	$nombre,$fecha_ini,$fecha_fina,$cupos,$instituciones,$cn
+$estado_alianza = saveAlianza(
+	$nombre,$fecha_ini,$fecha_final,$cupos,$institucion,$universidad,$cn
 	);
+
+	if ($estado_alianza) {
+		?> 
+			<script type="text/javascript">
+				window.location="";
+			</script>
+		<?php
+	}else{
+
+	}
+
+
 }
 
 

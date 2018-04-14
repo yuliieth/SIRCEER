@@ -18,7 +18,7 @@
 
 		<tr>
 			<td>
-			<label for="fecha_fina">Fecha final:</label>
+			<label for="fecha_final">Fecha final:</label>
 			</td>
 			<td><input type="date" name="fecha_final" step="1" min="2017-01-01" max="2025-12-31" value=""></td>
 			<td><label for="cupos">Cupos:</label></td>
@@ -31,18 +31,18 @@
 			<td>
 				<select name="institucion" id="">
 					<option value="#">No aplica</option>
-				<?php foreach ($instituciones as $institucion): ?>
-					<option value="<?php echo $institucion['id'] ?>"><?php echo $institucion['nombre'] ?></option>
+				<?php foreach ($instituciones as $value): ?>
+					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
 				</select>
 			</td>
 
 			<td><label for="universidad">Universidad</label></td>
 			<td>
-				<select name="institucion" id="">
+				<select name="universidad" id="">
 					<option value="#">No aplica</option>
-				<?php foreach ($universidades as $universidad): ?>
-					<option value="<?php echo $universidad['id'] ?>"><?php echo $universidad['nombre'] ?></option>
+				<?php foreach ($universidades as $value): ?>
+					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
 				</select>
 			</td>

@@ -21,12 +21,6 @@
 			<label for="consecutivo">Consecutivo</label>
 			</td>
 			<td><input type="text" name="consecutivo" placeholder="Consecutivo"></td>
-			<td><label for="cupos">Cupos:</label></td>
-			<td><input type="text" size="30" name="cupos" placeholder="cupos" required="required">
-			</td>
-		</tr>	
-
-		<tr>
 			<td><label for="zona">Zona</label></td>
 			<td>
 				<select name="zona" id="">
@@ -36,6 +30,9 @@
 				<?php endforeach ?>
 				</select>
 			</td>
+		</tr>	
+
+		<tr>
 
 			<td><label for="modelo">Modelo</label></td>
 			<td>
@@ -46,9 +43,6 @@
 				<?php endforeach ?>
 				</select>
 			</td>
-		</tr>
-
-		<tr>
 			<td><label for="institucion">Institucion</label></td>
 			<td>
 				<select name="institucion" id="">
@@ -58,6 +52,9 @@
 				<?php endforeach ?>
 				</select>
 			</td>
+		</tr>
+
+		<tr>
 
 			<td><label for="municipio">Municipio</label></td>
 			<td>
