@@ -909,7 +909,7 @@ function getInstitucionesOfAlianzaById($id,$con)
 
 
 #Obtiene todos los valores de la entidad donde el campo coincida
-function getAllSubjectById($table,$value,$campo,$con)
+function getAllSubjectByValue($table,$value,$campo,$con)
 {
 	#Used by Estudiante
 	#used by Ver estudiante
@@ -918,7 +918,7 @@ function getAllSubjectById($table,$value,$campo,$con)
 	#var_dump($campo);
 	$ps->execute();
 	#var_dump($ps);
-	$resul = $ps->fetchAll();
+	$resul = $ps->fetch();
 		#var_dump($result);
 	
 	return $resul;

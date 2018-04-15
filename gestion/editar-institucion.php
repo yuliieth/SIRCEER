@@ -13,36 +13,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$id = cleanData($_POST['id']);
 	$nombre = cleanData($_POST['nombre']);
 	$telefono = cleanData($_POST['telefono']);
-	$email = cleanData($_POST['email']);
-	$direccion = cleanData($_POST['direccion']);
+	$siglas = cleanData($_POST['siglas']);
+	$calendario = cleanData($_POST['calendario']);
+	$dane = cleanData($_POST['dane']);
 
 	$sql = 
-	"UPDATE 
-	institucion SET nombre=:nombre,telefono=:telefono,email=:email,direccion=:direccion WHERE id=:id";
+	"UPDATE instituciones SET nombre=:nombre,telefono=:telefono,siglas=:siglas,calendario=:calendario,DANE=:dane WHERE instituciones.id=:id";
+
 	$ps=$cn->prepare($sql);
 	$ps->bindParam(":nombre",$nombre);
 	$ps->bindParam(":telefono",$telefono);
-	$ps->bindParam(":email",$email);
-	$ps->bindParam(":direccion",$direccion);
+	$ps->bindParam(":siglas",$siglas);
+	$ps->bindParam(":calendario",$calendario);
+	$ps->bindParam(":dane",$dane);
 	$ps->bindParam(":id",$id);
-	$ps->execute();
-	
 
-	// echo a message to say the UPDATE succeeded
-    #echo $ps->rowCount() . " records UPDATED successfully";
-
-    header("Location:".URL."gestion/buscar-institucion.php?select=i");
+	$result = $ps->execute();
+	if ($result) {
+		?>
+			<script type="text/javascript">
+				window.location = "<?php echo URL ?>gestion/buscar-institucion.php?select=i"
+			</script>
+		<?php
+	}else{
+		?>
+			<script type="text/javascript">
+				window.location = "<?php echo URL ?>gestion/errorIn.php"
+			</script>
+		<?php
+	}
     $enviado = true;
 }else
 {
 	#Crear funcion para limpiar id
-	$id_insti = $_GET['id'];
-	if (empty($id_insti)) {
-		header("Location:error.php");
+	$id_institucion = $_GET['id'];
+	if (empty($id_institucion)) {
+		header("Location:errorIn.php");
 	}
 	#echo $id_insti;
-	$result = getSubjectById("institucion",$id_insti,'id',$cn);
-		#var_dump($result);
+	$result = getAllSubjectByValue('instituciones',$id_institucion,'id',$cn);
+	#var_dump($result);
 
 }
 ?>

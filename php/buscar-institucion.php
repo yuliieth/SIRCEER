@@ -12,18 +12,19 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT * FROM institucion ORDER BY id";
+$query="SELECT * FROM instituciones ORDER BY id";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['institucion']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['institucion']);
-	$query="SELECT * FROM institucion WHERE
+	$query="SELECT * FROM instituciones WHERE
 		id LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
 		telefono LIKE '%".$q."%' OR
-		email LIKE '%".$q."%' OR
-		direccion LIKE '%".$q."%'";
+		siglas LIKE '%".$q."%' OR
+		calendario LIKE '%".$q."%' OR
+		DANE LIKE '%".$q. "%'";
 }
 
 $buscarInstitutos=$conexion->query($query);
@@ -37,11 +38,11 @@ if ($buscarInstitutos->num_rows > 0)
 		<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
 	font-weight: bold; text-align: center;">
 			<td>ID</td>
-			<td>INSTITUTO</td>
+			<td>NOMBRE</td>
 			<td>TELEFONO</td>
-			<td>EMAIL</td>
-			<td>DIRECCION</td>
-			<td></td>
+			<td>SIGLAS</td>
+			<td>CALENDARIO</td>
+			<td>DANE</td>
 			<td></td>
 		</tr>';
 
@@ -52,8 +53,9 @@ if ($buscarInstitutos->num_rows > 0)
 			<td style="padding: 3px;">'.$filaInstitutos['id'].'</td>
 			<td style="padding: 3px;">'.$filaInstitutos['nombre'].'</td>
 			<td style="padding: 3px;">'.$filaInstitutos['telefono'].'</td>
-			<td style="padding: 3px;">'.$filaInstitutos['email'].'</td>
-			<td style="padding: 3px;">'.$filaInstitutos['direccion'].'</td>
+			<td style="padding: 3px;">'.$filaInstitutos['siglas'].'</td>
+			<td style="padding: 3px;">'.$filaInstitutos['calendario'].'</td>
+			<td style="padding: 3px;">'.$filaInstitutos['DANE'].'</td>
 			<td>
 			 <a href="'.URL.'gestion/editar-institucion.php?id='. urlencode($filaInstitutos['id']).'&select=i">Editar</a> 
 			</td>
