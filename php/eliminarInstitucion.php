@@ -3,35 +3,51 @@ require_once 'Conexion.php';
 require_once 'funciones.php';
 include '../admin/config.php';
 validateSession();
-$con = getConexion($bd_config);
-comprobarConexion($con);
-$id = cleanData($_GET['id']);
-#var_dump($id);
-if (empty($id)) {
-	header("Location:".URL."gestion/error.php");
+$cn = getConexion($bd_config);
+comprobarConexion($cn);
+$id_institucion = cleanData($_GET['id']);
+#var_dump($id_institucion);
+if (empty($id_institucion)) {
+	?>
+		<script type="text/javascript">
+			window.location= "<?php echo URL ?>gestion/errorIn.php";
+		</script>
+	<?php
 }else{
-	#CONDICION PRIMERO ELIMINAR EN: INSTITUCION_MUNICIPIO (consultar todos los programa que tiene: snies),EVALUACION_SEMESTRAL y PROGRAMA
-#Institucion_municipio
-$sql = "DELETE FROM institucion_municipio WHERE institucion_id=$id";
-$ps_IM = $con->prepare($sql);
-$ps_IM = $ps_IM->execute();
-$ps_IM =$ps_IM;
-var_dump($ps_IM);
+	#CONDICIONES : 
+	# 1. Eliminar su sede.
+	# 2. Eliminar institucion
 
-#DELETE FROM A WHERE ID = (SELECT ID FROM B);
+$sql = "DELETE FROM sedes WHERE sedes.institucion_id = :id_institucion";
+
+$ps_sede = $cn->prepare($sql);
+$ps_sede->bindParam(':id_institucion',$id_institucion);
+$rs_sede = $ps_sede->execute();
+
+#var_dump($rs_sede);
+
+
 
 #Y finalmente institucion
-$sqlI = "DELETE FROM institucion WHERE id=$id";
-$ps_I = $con->prepare($sqlI);
-$ps_I = $ps_I->execute();
-$ps_I = $ps_I;
-var_dump($ps_I);
+$sql_institucion = "DELETE FROM instituciones WHERE id=:id_institucion";
+$ps_institucion = $cn->prepare($sql_institucion);
+$ps_institucion->bindParam(':id_institucion',$id_institucion);
+$rs_institucion = $ps_institucion->execute();
+#var_dump($rs_institucion);
 
-if ($ps_IM != null && $ps_I != null) {
-	header("Location:".URL."gestion/buscar-institucion.php?select=i");
+if ($rs_sede != null && $rs_institucion != null) {
+	?>
+		<script type="text/javascript">
+			window.location= "<?php echo URL ?>gestion/buscar-institucion.php?select=i";
+		</script>
+	<?php
 }else
 {
-	echo "No se pudo realizar la transaccion";
+	?>
+		<script type="text/javascript">
+			window.location= "<?php echo URL ?>gestion/errorIn.php";
+		</script>
+	<?php
 }
 	
 }
