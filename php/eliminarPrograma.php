@@ -3,24 +3,38 @@ require_once 'Conexion.php';
 require_once 'funciones.php';
 include '../admin/config.php';
 validateSession();
-$con = getConexion($bd_config);
-comprobarConexion($con);
-$id = cleanData($_GET['id']);
-#echo "$id";
-if (empty($id)) {
-	header("Location: ".URL."gestion/error.php");
+$cn = getConexion($bd_config);
+comprobarConexion($cn);
+$snies = cleanData($_GET['snies']);
+#echo "$snies";
+if (empty($snies)) {
+	?>
+		<script type="text/javascript">
+			window.location="<?php echo URL ?>gestion/errorIn.php";
+		</script>
+	
+	<?php
 		}else{
-$sql = "DELETE FROM programa WHERE snies=$id";
-$ps = $con->prepare($sql);
+$sql = "DELETE FROM programas WHERE snies=:snies";
+
+$ps = $cn->prepare($sql);
+$ps->bindParam(':snies',$snies);
 $result = $ps->execute();
+var_dump($result);
 if (!$result) {
-	echo "<script>alert('El programa no se puede eliminar')</script>";
-	echo "<script>location.href='".URL."gestion/buscar-programa.php?select=p';</script>";
-	#header("Location: ".URL."gestion/error.php");
+	?>
+	
+		<script type="text/javascript">
+			window.location="<?php echo URL ?>gestion/errorIn.php";
+		</script>
+	
+	<?php
 }else{
-	echo "<script>alert('El programa ha sido eliminado')</script>";
-	echo "<script>location.href='".URL."gestion/buscar-programa.php?select=p';</script>";
-	#header("Location: ".URL."gestion/buscar-programa.php?select=p");
+	?>
+		<script type="text/javascript">
+			window.location="<?php echo URL ?>gestion/buscar-programa.php?select=p";
+		</script>
+	<?php
 }
 	
 }
