@@ -12,13 +12,13 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT * FROM alianza";
+$query="SELECT * FROM alianzas";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['alianzas']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['alianzas']);
-	$query="SELECT * FROM alianza WHERE 
+	$query="SELECT * FROM alianzas WHERE 
 		id LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
 		fecha_inicio LIKE '%".$q."%' OR
