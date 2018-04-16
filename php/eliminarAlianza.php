@@ -6,19 +6,37 @@ validateSession();
 $con = getConexion($bd_config);
 comprobarConexion($con);
 $id = cleanData($_GET['id']);
+
 if (empty($id)) {
-	header("Location: ".URL."gestion/error.php");
+	?>
+		<script type="text/javascript">
+			window.location="<?php echo URL ?>gestion/errorIn.php";
+		</script>
+	<?php
 }
 else
 {
-$sql="DELETE FROM alianza WHERE alianza.id=$id";
+$sql="DELETE FROM alianzas WHERE alianzas.id=:id";
+
 $ps = $con->prepare($sql);
-$ps->execute();
-if (!$ps) {
-	header("Location: ".URL."gestion/error.php");
+$ps->bindParam(':id',$id);
+$result = $ps->execute();
+
+#var_dump($result);
+if (!$result) {
+	?>
+		<script type="text/javascript">
+			window.location="<?php echo URL ?>gestion/errorIn.php";
+		</script>
+	<?php
 }else
 {
-	header("Location: ".URL."gestion/buscar-alianza.php?select=a");
+	?>
+	
+		<script type="text/javascript">
+			window.location="<?php echo URL ?>gestion/buscar-alianza.php?select=a";
+		</script>
+	<?php
 }
 	
 }
