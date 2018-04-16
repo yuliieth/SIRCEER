@@ -31,34 +31,7 @@ $html = '
             </tr>
 
             </table>
-      
-          </div>';
-
-          $html .= '
-            <div>
-            <!--INFORMACION DE SUS INSTITUCIONES-->
-            <p style="font-size: 1.5em; font-family: Arial;">INSTITUCIONES PERTENECIENTES A LA ALIANZA</p>
-            <table>
-            <tr>
-            <td><strong>Nombre</strong></td>
-            <td><strong>Email</strong></td>
-            <td><strong>Telefono</strong></td>
-            </tr>';
-              foreach ($instituciones as $value) {
-             $html .='<tr>
-                <td>'.$value['nombre'].'</td>
-                <td>'.$value['email'].'</td>
-                <td>'.$value['telefono'].'</td>
-                </tr>';
-              }
-
-         $html .='
-            </table>
-            </div>
-          ';
-
-          $html .= '
-      <div>
+          </div>
     </div>';
 $mpdf = new mPDF('c','A4');
 #$css = file_get_contents('../css/estilos.css');

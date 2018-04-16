@@ -10,8 +10,8 @@ comprobarConexion($cn);
 
 $id = $_GET['id'];
 
-$alianza = getSubjectById('alianza',$id,'id',$cn);
-$instituciones = getInstitucionesOfAlianzaById($id,$cn);
+$alianza = getSubjectByValue('alianzas',$id,'id',$cn);
+#$instituciones = getInstitucionesOfAlianzaById($id,$cn);
 
 #var_dump($alianza);
 #var_dump($instituciones);
