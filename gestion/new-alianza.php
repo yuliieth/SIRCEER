@@ -3,7 +3,7 @@
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-#validateSession();
+validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 	var_dump($_POST);
 	$errores = "";
 	$parameters = array(
-		"nombre","fecha_ini","fecha_final","cupos"
+		"nombre"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -40,7 +40,7 @@ $estado_alianza = saveAlianza(
 	if ($estado_alianza) {
 		?> 
 			<script type="text/javascript">
-				window.location="";
+				window.location="<?php echo URL ?>gestion/buscar-alianza.php?select=a";
 			</script>
 		<?php
 	}else{

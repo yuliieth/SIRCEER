@@ -390,8 +390,8 @@ function saveAlianza(
 	
 	try {
 			//var_dump($conexion);
-		$sql = ("INSERT INTO alianzas (nombre,fecha_inicio,fecha_final,cupos) VALUES(  :nombre,:fecha_ini,:fecha_fina,:cupos)"
-	);
+		$sql = "INSERT INTO alianzas (nombre,fecha_inicio,fecha_final,cupos) VALUES(  :nombre,:fecha_ini,:fecha_fina,:cupos)";
+
 		$statement = $cn->prepare($sql);
 		$statement->bindParam( ':nombre' , $nombre);
 		$statement->bindParam( ':fecha_ini' , $fecha_ini);
@@ -399,13 +399,13 @@ function saveAlianza(
 		$statement->bindParam( ':cupos' , $cupos);
 		
 		$result= $statement->execute();
-		var_dump($result);
+		#var_dump($result);
 
 
 
 
 
-		if ($result != false && $resultA != false) {
+		if ($result != false) {
 			header("Location:".URL."gestion/new-alianza.php?select=a");
 		}else{
 			echo "ocurrio un error...";
