@@ -12,17 +12,17 @@ if ($conexion -> connect_errno)
 //////////////// VALORES INICIALES ///////////////////////
 
 $tabla="";
-$query="SELECT * FROM programa ORDER BY snies";
+$query="SELECT * FROM programas ORDER BY snies";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['programa']))
 {                  #Por seguridad
 	$q=$conexion->real_escape_string($_POST['programa']);
-	$query="SELECT * FROM programa WHERE 
+	$query="SELECT * FROM programas WHERE 
 		snies LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
-		num_semestres LIKE '%".$q."%' OR
-		num_creditos LIKE '%".$q."%'";
+		cantidad_semestre LIKE '%".$q."%' OR
+		costo_semestre LIKE '%".$q."%'";
 }
 
 $buscarProgramas=$conexion->query($query);
@@ -36,9 +36,9 @@ if ($buscarProgramas->num_rows > 0)
 		<tr style="background-color: rgb(232,64,68); color:fff; padding: 4px; height: 31px;
 	font-weight: bold; text-align: center;">
 			<td>SNIES</td>
-			<td>PROGRAMA</td>
+			<td>NOMBRE</td>
 			<td>SEMESTRES</td>
-			<td>CREDITOS</td>
+			<td>COSTO POR SEMESTRE</td>
 			<td></td>
 			<td></td>
 		</tr>';
@@ -49,9 +49,9 @@ if ($buscarProgramas->num_rows > 0)
 		'<tr style="text-align: center;">
 			<td style="padding: 3px;">'.$filaProgramas['snies'].'</td>
 			<td style="padding: 3px;">'.$filaProgramas['nombre'].'</td>
-			<td style="padding: 3px;">'.$filaProgramas['num_semestres'].'</td>
-			<td style="padding: 3px;">'.$filaProgramas['num_creditos'].'</td>
-			<td style="padding: 3px;"> <a href="'.URL.'gestion/editar-programa.php?id='. urlencode($filaProgramas['snies']).'&select=p">Editar</a> </td>
+			<td style="padding: 3px;">'.$filaProgramas['cantidad_semestre'].'</td>
+			<td style="padding: 3px;">'.$filaProgramas['costo_semestre'].'</td>
+			<td style="padding: 3px;"> <a href="'.URL.'gestion/editar-programa.php?snies='. urlencode($filaProgramas['snies']).'&select=p">Editar</a> </td>
 			<td> <a href="'.URL.'php/eliminarPrograma.php?id='. urlencode($filaProgramas['snies']).'&select=p">Eliminar</a></td>
 		 </tr>
 		';
