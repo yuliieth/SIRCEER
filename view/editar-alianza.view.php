@@ -15,15 +15,15 @@
 
 		<tr>
 			<td><label for="fecha_ini">Fecha de inicio:</label></td>
-			<td><input type="text" size="30" value="<?php echo $result['fecha_inicio'] ?>" name="fecha_ini" required="required"></td>
+			<td><input type="text" size="30" value="<?php echo $result['fecha_inicio'] ?>" name="fecha_ini" ></td>
 			<td><label for="fecha_fina">Fecha final:</label></td>
-			<td><input type="text" size="20" value="<?php echo $result['fecha_final'] ?>" name="fecha_fina" required="required" ></td>
+			<td><input type="text" size="20" value="<?php echo $result['fecha_final'] ?>" name="fecha_fina" ></td>
 		</tr>
 
 
 		<tr>
 			<td><label for="cupos">Cupos:</label></td>
-			<td><input type="text" size="30" value="<?php echo $result['cupos'] ?>" name="cupos"  required="required"></td>
+			<td><input type="text" size="30" value="<?php echo $result['cupos'] ?>" name="cupos"></td>
 			<td></td>
 			<td></td>
 		</tr>

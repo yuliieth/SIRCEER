@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 	#Crear funcion para esto
 	$sql = 
-	"UPDATE alianza SET nombre=:nombre,
+	"UPDATE alianzas SET nombre=:nombre,
 	fecha_inicio=:fecha_inicio,
 	fecha_final=:fecha_final,
 	cupos=:cupos
@@ -32,23 +32,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$ps->bindParam(":fecha_final",$fecha_final);
 	$ps->bindParam(":cupos",$cupos);
 	$ps->bindParam(":id",$id);
-	$ps->execute();
+	$rs_alianza = $ps->execute();
 	
 
 	// echo a message to say the UPDATE succeeded
 	#echo $ps->rowCount() . " records UPDATED successfully";
-
-    header("Location:".URL."gestion/buscar-alianza.php?select=a");
+	if ($rs_alianza) {
+		?>
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>gestion/buscar-alianza.php?select=a";
+			</script>
+		<?php
+	}else{
+		?>
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>gestion/errorIn.php";
+			</script>
+		<?php
+	}
+    
 	$enviado = true;
 }else
 {
 	#Crear funcion para limpiar id
 	$id_alianza = $_GET['id'];
 	if (empty($id_alianza)) {
-		header("Location:".URL."gestion/principal-gestion.php");
-		#echo "Id vacio";
+		?>
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>gestion/errorIn.php";
+			</script>
+		<?php
 	}
-	$result = getSubjectById("alianza",$id_alianza,'id',$cn);
+	$result = getSubjectByValue("alianzas",$id_alianza,'id',$cn);
 	#var_dump($result);
 
 }
