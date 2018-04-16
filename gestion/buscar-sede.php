@@ -4,5 +4,5 @@ require_once '../admin/config.php';
 require_once '../php/funciones.php';
 validateSession();
 ?>
-<?php require("../view/buscar-institucion.view.php") ?>
+<?php require("../view/buscar-sede.view.php") ?>
 
