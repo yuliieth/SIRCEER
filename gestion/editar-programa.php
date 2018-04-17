@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		#var_dump($result);
 	$universidades = getAllSubject('universidades',$cn);
 	$jornadas = getAllSubject('jornadas',$cn);
+	$niveles = getAllSubject('nivel_academico',$cn);
 
 }
 ?>
