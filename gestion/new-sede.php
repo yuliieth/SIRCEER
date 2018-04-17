@@ -44,7 +44,7 @@ $estado_sede = saveSede(
 	if ($estado_sede) {
 		?>
 			<script type="text/javascript">
-				window.location = "<?php echo URL ?>gestion/buscar-sedes.php?select=s";
+				window.location = "<?php echo URL ?>gestion/buscar-sede.php?select=s";
 			</script>
 		<?php
 	}else{

@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	// echo a message to say the UPDATE succeeded
 	#echo $ps->rowCount() . " records UPDATED successfully";
 	if ($rs_alianza) {
-		?><!--
+		?>
 			<script type="text/javascript">
 				window.location="<?php echo URL ?>gestion/buscar-sede.php?select=a";
-			</script>-->
+			</script>
 		<?php
 	}else{
 		?>
