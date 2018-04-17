@@ -12,23 +12,25 @@ $html = '
 
 
       <div style="background-color: white; width: 100%;">
-            <p style="font-size: 1.5em; font-family: Arial;">Instituciones registradas a la fecha</p>
+            <p style="font-size: 1.5em; font-family: Arial;">INSTITUCIONES REGISTRADAS</p>
             <table>
             <tr>
             <td><strong>Id</strong></td>
             <td><strong>Nombre</strong></td>
             <td><strong>Telefono</strong></td>
-            <td><strong>Email</strong></td>
-            <td><strong>Direccion</strong></td>
+            <td><strong>siglas</strong></td>
+            <td><strong>Calendario</strong></td>
+            <td><strong>DANE</strong></td>
           
             </tr>';
               foreach ($instituciones as $instituto) {
              $html .='<tr>
                 <td>'.$instituto['id'].'</td>
-                <td>'.$instituto['nombre'].'</td>
+                <td>'. utf8_encode( $instituto['nombre']).'</td>
                 <td>'.$instituto['telefono'].'</td>
-                <td>'.$instituto['email'].'</td>
-                <td>'.$instituto['direccion'].'</td>
+                <td>'.$instituto['siglas'].'</td>
+                <td>'.$instituto['calendario'].'</td>
+                <td>'.$instituto['DANE'].'</td>
                 </tr>';
               }
 
@@ -41,5 +43,5 @@ $mpdf = new mPDF('c','A4');
 #$css = file_get_contents('../css/estilos.css');
 #$mpdf->writeHTML($css);
 $mpdf->writeHTML($html,2);
-$mpdf->Output('ReporteAl.pdf','I');
+$mpdf->Output('ReporteInstitutos.pdf','I');
 ?>
