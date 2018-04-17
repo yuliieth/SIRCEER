@@ -13,7 +13,7 @@ $html = '
 
 
       <div style="background-color: white; width: 100%;">
-            <p style="font-size: 1.5em; font-family: Arial;">Programas registrados a la fecha</p>
+            <p style="font-size: 1.5em; font-family: Arial;">UNIVERSIDADES REGISTRADAS</p>
             <table>
             <tr>
             
