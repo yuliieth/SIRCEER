@@ -507,7 +507,7 @@ function getProgramaOfEstudiante($documento,$con)
 	return $result;	
 }
 
-
+#Obtiene el id del ultimo elemento de la tabla
 function getId($tabla,$con)
 {
 	$sql = "SELECT id FROM $tabla ORDER BY id DESC LIMIT 1";
@@ -913,13 +913,15 @@ function getAllSubjectByValue($table,$value,$campo,$con)
 {
 	#Used by Estudiante
 	#used by Ver estudiante
-	$sql = "SELECT * FROM $table WHERE $campo=$value";
+
+	#echo "<br>Valor recibido value: $value";
+	#echo "<br>Valor recibido campo: $campo";
+	$sql = "SELECT * FROM $table WHERE $campo LIKE '%".$value."%'";
 	$ps = $con->prepare($sql);
-	#var_dump($campo);
 	$ps->execute();
 	#var_dump($ps);
 	$resul = $ps->fetch();
-		#var_dump($result);
+	#var_dump($resul);
 	
 	return $resul;
 

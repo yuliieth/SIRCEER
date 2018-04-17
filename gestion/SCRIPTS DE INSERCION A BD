@@ -22,6 +22,8 @@ INSERT INTO `municipios`(`nombre`, `departamentos_id`) VALUES ("SANTA ROSA DE CA
 INSERT INTO `municipios`(`nombre`, `departamentos_id`) VALUES ("SANTUARIO",1);
 
 //UNIVERSIDADES
+INSERT INTO universidades( nombre, telefono, email, direccion, ciudad_id) VALUES ('NO APLICA','NO APLICA','NO APLICA','NO APLICA',1);
+
 
 //COLOR DE OJOS
 INSERT INTO color_ojos(color) VALUES ('NO APLICA');
@@ -59,6 +61,7 @@ INSERT INTO `grados`(`nombre`) VALUES (11);
 INSERT INTO `internado`(`nombre`, `descripcion`) VALUES ("NINGUNO","");
 
 //JORNADAS o im,portacion
+INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("NO APLICA","SIN RELACIÓN");
 INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("MAÑANA","");
 INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("TARDE","");
 INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("NOCHE","");
@@ -123,5 +126,6 @@ INSERT INTO nivel_academico( nombre, descripcion) VALUES ('TECNICO','');
 INSERT INTO nivel_academico( nombre, descripcion) VALUES ('TECNOLOGÍA','');
 INSERT INTO nivel_academico( nombre, descripcion) VALUES ('INGENIERÍA','');
 
+//
 
 //SEMESTRE
