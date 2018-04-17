@@ -7,7 +7,7 @@ require_once '../mpdf60/mpdf.php';
 
 $cn = getConexion($bd_config);
 #Traemos todas las alianzas creadas a la fecha
-$alianzas = getAllSubject('alianza',$cn);
+$alianzas = getAllSubject('alianzas',$cn);
 
 
 
