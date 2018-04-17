@@ -7,10 +7,10 @@ require_once '../mpdf60/mpdf.php';
 
 $cn = getConexion($bd_config);
 #Traemos todas las programas creados a la fecha
-$programas = getProgramaAndInstitute($cn);
+$programas = getAllSubject('programas',$cn);
 $fecha_sistema = Date("Y,m,d");
 
 
 
-include_once '../view/reportes-programas.view.php';
+require_once '../view/reportes-programas.view.php';
  ?>

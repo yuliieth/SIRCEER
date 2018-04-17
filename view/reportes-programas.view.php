@@ -18,18 +18,17 @@ $html = '
             <tr>
             <td><strong>SNIES</strong></td>
             <td><strong>Nombre</strong></td>
-            <td><strong># Semestres</strong></td>
-            <td><strong># Creditos</strong></td>
-            <td><strong># Institucion</strong></td>
+            <td><strong>Semestres</strong></td>
+            <td><strong>Costo semestre</strong></td>
+            
           
             </tr>';
               foreach ($programas as $programa) {
              $html .='<tr>
                 <td>'.$programa['snies'].'</td>
                 <td>'.$programa['nombre'].'</td>
-                <td>'.$programa['num_semestres'].'</td>
-                <td>'.$programa['num_creditos'].'</td>
-                <td>'.$programa['nombre_institucion'].'</td>
+                <td>'.$programa['cantidad_semestre'].'</td>
+                <td>'.$programa['costo_semestre'].'</td>
                 </tr>';
               }
 
