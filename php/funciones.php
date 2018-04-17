@@ -395,7 +395,7 @@ function saveAlianza(
 		$statement = $cn->prepare($sql);
 		$statement->bindParam( ':nombre' , $nombre);
 		$statement->bindParam( ':fecha_ini' , $fecha_ini);
-		$statement->bindParam( ':fecha_fina' , $fecha_fina);
+		$statement->bindParam( ':fecha_fina' , $fecha_final);
 		$statement->bindParam( ':cupos' , $cupos);
 		
 		$result= $statement->execute();
@@ -406,9 +406,9 @@ function saveAlianza(
 
 
 		if ($result != false) {
-			header("Location:".URL."gestion/new-alianza.php?select=a");
+			return true;
 		}else{
-			echo "ocurrio un error...";
+			return false;
 		}
 
 

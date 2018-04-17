@@ -42,9 +42,14 @@ $estado_alianza = saveAlianza(
 			<script type="text/javascript">
 				window.location="<?php echo URL ?>gestion/buscar-alianza.php?select=a";
 			</script>
+		
 		<?php
 	}else{
-
+		?> 
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>gestion/errorIn.php";
+			</script>
+		<?php
 	}
 
 
