@@ -6,9 +6,9 @@ require_once '../php/Conexion.php';
 #validateSession();
 $cn = getConexion($bd_config);
 #Chart estudiantes by genero
-$totalE=countEntityWithOutWhere("estudiante",$cn);
-$totalM=countEntityWithWhere("estudiante","genero",'M',$cn);
-$totalF=countEntityWithWhere("estudiante","genero",'F',$cn);
+$totalE=countEntityWithOutWhere("estudiantes",$cn);
+$totalM=contarGeneroEstudiantes('estudiantes','generos','genero_id','nombre','MASCULINO',$cn);
+$totalF=contarGeneroEstudiantes('estudiantes','generos','genero_id','nombre','FEMENINO',$cn);
 $leyenda = "Estudiantes registrados a la fecha ";
 #var_dump($totalM);
 #var_dump($totalF);
@@ -27,30 +27,34 @@ $porceF=($totalF / $totalE)*100;
 
 
 #Chart estudiantes by zona
-$totalZR=countEntityWithWhere("estudiante","zona",'Rural',$cn);
-$totalZU=countEntityWithWhere("estudiante","zona",'Urbana',$cn);
+$totalZR=contarGeneroEstudiantes('estudiantes','zonas','zona_id','nombre','RURAL',$cn);
+$totalZU=contarGeneroEstudiantes('estudiantes','zonas','zona_id','nombre','URBANA',$cn);
+$totalNRZ=contarGeneroEstudiantes('estudiantes','zonas','zona_id','nombre','NO APLICA',$cn);
 #Realizando calculo
 $porceZR = ($totalZR / $totalE)*100;
 $porceZU = ($totalZU / $totalE)*100;
+$porceNRZ = ($totalNRZ / $totalE)*100;
 
 
 #Chart estudiantes_tipo_poblacion
-$totalMes=countEntityWithWhere("estudiante","tipo_poblacion",'Mestizo',$cn);
-$totalInd=countEntityWithWhere("estudiante","tipo_poblacion",'Indigena',$cn);
-$totalAfr=countEntityWithWhere("estudiante","tipo_poblacion",'Afro',$cn);
+$totalMes=contarGeneroEstudiantes('estudiantes','tipos_poblacion','tipo_poblaion_id','nombre','NO APLICA',$cn);
+$totalInd=contarGeneroEstudiantes('estudiantes','tipos_poblacion','tipo_poblaion_id','nombre','INDIGENA',$cn);
+$totalAfr=contarGeneroEstudiantes('estudiantes','tipos_poblacion','tipo_poblaion_id','nombre','AFRODESCENDIENTE',$cn);
 
 $porceMes = (($totalMes/$totalE)*100);
 $porceInd = (($totalInd/$totalE)*100);
 $porceAfr = (($totalAfr/$totalE)*100);
 
 #Chart estudiantes victimas del conflicto
-$totalDes=countEntityWithWhere("estudiante","situacion",'Desplazado',$cn);
-$totalVC=countEntityWithWhere("estudiante","situacion",'Victima conflicto',$cn);
-$totalVu=countEntityWithWhere("estudiante","situacion",'Vulnerable',$cn);
+$totalDes=contarGeneroEstudiantes('estudiantes','situaciones_sociales','situacion_social_id','nombre','DESPLAZADO',$cn);
+$totalVC=contarGeneroEstudiantes('estudiantes','situaciones_sociales','situacion_social_id','nombre','VICTIMAS DEL CONFLICTO',$cn);
+$totalVu=contarGeneroEstudiantes('estudiantes','situaciones_sociales','situacion_social_id','nombre','NO APLICA',$cn);
+$totalEP=contarGeneroEstudiantes('estudiantes','situaciones_sociales','situacion_social_id','nombre','EXTREMA POBREZA',$cn);
 #Calculando
 $porceDes = (($totalDes/$totalE)*100);
 $porceVC = (($totalVC/$totalE)*100);
 $porceVu = (($totalVu/$totalE)*100);
+$porceEP = (($totalEP/$totalE)*100);
 
 
 

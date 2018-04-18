@@ -102,7 +102,13 @@ Highcharts.chart('estudiantes_zona', {
             y: <?php echo $porceZR ?> ,
             sliced: true,
             selected: true
-        }]
+        },{
+            name: 'No registra',
+            y: <?php echo $porceNRZ ?> ,
+            sliced: true,
+            selected: true
+        }
+        ]
     }]
 });
 
@@ -140,7 +146,7 @@ Highcharts.chart('estudiantes_tipo_poblacion', {
         name: 'Brands',
         colorByPoint: true,
         data: [{
-            name: 'Mestizo',
+            name: 'No registra',
             y: <?php echo $porceMes ?>
         }, {
             name: 'Indigena',
@@ -195,8 +201,13 @@ Highcharts.chart('estudiantes_victimas_conflicto', {
             sliced: true,
             selected: true
         },{
-            name: 'Vulnerable',
+            name: 'No registra',
             y: <?php echo $porceVu ?>
+        }, {
+            name: 'Extrema pobreza',
+            y: <?php echo $porceEP ?> ,
+            sliced: true,
+            selected: true
         }
         ]
     }]
