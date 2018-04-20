@@ -33,7 +33,7 @@
             #var_dump($_SESSION);
             if ($_SESSION['usuario']['perfil'] == "admin") {?>
             <script type="text/javascript"> 
-                window.location="<?php echo URL ?>admin/principal-admin.php.php"; 
+                window.location="<?php echo URL ?>admin/principal-admin.php"; 
             </script> 
             <?php //lo abro de nuevo
             }elseif (($_SESSION['usuario']['perfil'] == "usuario")) {?>
