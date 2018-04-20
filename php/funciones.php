@@ -1,5 +1,33 @@
 <?php 
 
+function pagina_actual(){
+	#echo "Pagina actual:";
+	#var_dump($_GET);
+	return isset($_GET['p']) ? (int)$_GET['p'] : 1;
+}
+
+function obtener_estudiante($estudiante_por_pagina,$cn){
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $estudiante_por_pagina - $estudiante_por_pagina : 0;
+
+
+	$ps = $cn->prepare("SELECT  SQL_CALC_FOUND_ROWS estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id LIMIT $inicio, $estudiante_por_pagina");
+
+	$ps->execute();
+
+
+	return $ps->fetchAll();
+}
+
+
+function numero_paginas($estudiantes_por_pagina,$cn){
+	$total_estudiantes = $cn->prepare('SELECT COUNT(*) AS total FROM estudiantes');
+	$total_estudiantes->execute();
+	$total_estudiantes = $total_estudiantes->fetch()['total'];
+	#echo "<br> 1. $total_estudiantes<br>";
+	#echo "<br> 2. $estudiantes_por_pagina<br>";
+	$numero_paginas = ceil($total_estudiantes / $estudiantes_por_pagina);
+	return $numero_paginas;
+}
 
 function saveHistorialSemestre($semestre_id,$matricula_id,$estado,$cn)
 {

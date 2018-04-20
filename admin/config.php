@@ -12,6 +12,10 @@
 
 		);
 
+	$config_global = array(
+		'estudiantes_por_pagina' => 10
+		 );
+
 	#DESCOMENTAR PARA HABILITAR
 	#SOLO MODIFICAR VALOR ENTRE COMILLAS DOBLES
 	#define('URL', "http://host/namedirectorio/");

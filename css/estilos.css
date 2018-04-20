@@ -231,15 +231,16 @@ div#bodymenu .itemSeis{
 
 
 
+
 /********TABLE GENERAL***********/
-table,tr,td{
+/*table,tr,td{
 	border-collapse: collapse;
 	padding-left: 25px;
 	vertical-align: top;
 	font-size: 13px;
 	line-height: 15px;
 }
-
+*/
 #estructura{
 	height: 600px;
 	width: 100%;
@@ -293,6 +294,72 @@ form{
 	font-size: .5em;
 	font-weight: bolder;
 }
+
+
+/***********TABLA DE RESULTADOS**************/
+#estructura  .table_estudiantes_th, .table_estudiantes_td{
+	border: 1px solid black;
+	text-align: left;
+	padding: 7px;
+}
+
+.table_estudiantes{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table_estudiantes_th{
+	background-color: rgb(2,28,52);
+	height: 90%;
+	color: white;
+}
+
+.table_estudiantes_tr:hover{
+	background-color: #f5f5f5;
+}
+
+.table_estudiantes_tr:nth-child(even){
+	background-color: #f2f2f2
+}
+
+
+
+/**********PAGINACION************/
+.paginacion ul li{
+	display: inline-block;
+	margin-right: 5px;
+}
+
+
+.paginacion ul .active{
+	background-color: #ce7f08;
+}
+
+.paginacion ul .disabled{
+	background-color: #c8c8c8;
+	display: inline-block;
+	font-family: "Oswald" , Arial , helveltica, sans-serif;
+	padding:  15px 25px;
+	cursor:  not-allowed;
+	color: #fff;
+	text-decoration:  none;
+}
+
+.paginacion ul li a{
+	display: inline-block;
+	font-family: "Oswald" , Arial , helveltica, sans-serif;
+	padding:  15px 25px;
+	background-color: #424242;
+	color: #fff;
+	text-decoration:  none;
+}
+
+.paginacion ul li a:hover{
+	text-decoration: none;
+	background-color: #3299bb;
+
+	}
+
 
 
 
