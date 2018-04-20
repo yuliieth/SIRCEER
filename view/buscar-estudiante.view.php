@@ -3,7 +3,10 @@
 
 
 <section class="contenedor-busqueda">
+	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar...">
+		<input type="submit" name="buscar" value="Buscar">
+	</form>
 </section>
 
 

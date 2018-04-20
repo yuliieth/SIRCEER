@@ -34,10 +34,10 @@ function saveHistorialSemestre($semestre_id,$matricula_id,$estado,$cn)
 
 	$fecha_modificaion = Date("YY-mm-dd");
 	$anio = Date("Y");
-	echo "<br>Año: $anio<br>";
-	echo "<br>Estado: $estado<br>";
-	echo "<br>matricula: $matricula_id<br>";
-	echo "<br> Semestre: $semestre_id<br>";
+	// echo "<br>Año: $anio<br>";
+	// echo "<br>Estado: $estado<br>";
+	// echo "<br>matricula: $matricula_id<br>";
+	// echo "<br> Semestre: $semestre_id<br>";
 
 	$sql = "INSERT INTO historial_academico_semestre(  anio, fecha_modificaion, estado, matricula_id, semestre_id) VALUES (:anio,:fecha_modificaion,:estado,:matricula_id,:semestre_id)";
 
