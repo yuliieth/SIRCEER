@@ -107,15 +107,18 @@
 				<h3>Datos del nuevo usuario:</h3>
 				<hr>
 				<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-				<input type="text" name="nombre" placeholder="Nombre:" required="Campo requerido"><br>
+				<!-- <input type="text" name="nombre" placeholder="Nombre:" required="Campo requerido"><br> -->
 					<div id="miDiv"></div>
 					<input type="text" onkeyup="sugerencias(this.value)" name="usuario" placeholder="Usuario:" required="" ><br>
 					<input type="password" name="password" placeholder="Contraseña:" required=""><br>
-					<input type="email" name="email" placeholder="Email" required=""><br>
+					<!-- <input type="email" name="email" placeholder="Email" required=""><br> -->
 					<select name="perfil" id="perfil">
-						<option value="1">Super usuario</option>
-						<option value="2">Usuario estandar</option>
-						<option value="3">Usuario externo</option>
+						<option value="3">Administrador</option>
+						<option value="4">Usuario regular</option>
+					</select>
+					<select name="estado" id="">
+						<option value="1">Activo</option>
+						<option value="2">Inactivo</option>
 					</select>
 					<input type="submit" name="enviar" value="Crear usuario">		
 				</form>
@@ -131,28 +134,28 @@
 			<table>
 				<tr class="head">
 					<th>#</th>
-					<th>Nombre</th>
 					<th>Usuario</th>
 					<th>Contraseña</th>
 					<th>Email</th>
-					<th>Tipo</th>
+					<th>Rol</th>
+					<th>Estado</th>
 				</tr>
 				<?php 
 				foreach ($statement as $valor) {
 					?>
 					<tr class="cuerpo">
 						<td><?php echo $valor['id_usuarios']; ?></td>
-						<td><?php echo $valor['nombre_completo']; ?></td>
-						<td><?php echo $valor['username']; ?></td>
-						<td><?php echo $valor['password']; ?></td>
-						<td><?php echo $valor['email']; ?></td>
 						<td><?php echo $valor['nombre']; ?></td>
-						<td>
+						<td><?php echo $valor['clave']; ?></td>
+						<td><?php echo $valor['correo']; ?></td>
+						<td><?php echo $valor['rol']; ?></td>
+						<td><?php echo $valor['estado']; ?></td>
+						<!-- <td>
 							<a href="editar-user.php?id=<?php echo urlencode($valor['id_usuarios']) ?>"><i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i></a>
 														
-						</td>
+						</td> -->
 						<td>
-							<a href="../php/eliminarUser.php?id=<?php echo urlencode($valor['id_usuarios']) ?>" style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;">Deletes</a>
+							<a href="../php/eliminarUser.php?id=<?php echo urlencode($valor['id_usuarios']) ?>" style="background-color: red; padding: 4px; border: 1px solid red; border-radius:3px; color: white;">Eliminar</a>
 						</td>
 					</tr>
 					<?php } ?>

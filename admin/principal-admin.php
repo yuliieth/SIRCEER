@@ -10,48 +10,37 @@ $statement = getAllUsers($con);
 
 
 if (isset($_POST['enviar'])) {
-	$nombre = $_POST['nombre'];
+	$fecha_ingreso = date("YY-mm-dd");
 	$user = $_POST['usuario'];
 	$pass = $_POST['password'];
-	$email = $_POST['email'];
-	$perfiles_id = $_POST['perfil'];
+	// $email = $_POST['email'];
+	$perfil_id = $_POST['perfil'];
+	$estado_id = $_POST['estado'];
 
 		#print_r($_POST);
 		#inser on usuarios, and usuarios_perfiles
-		#no vamos a utilizar query sino preparedStatement para aplicar seguridad
-	$sql = "INSERT INTO usuarios (id,nombre_completo,username,password,email) values(null,:nombre,:usuario,:pass,:email)";
-	$sql2 = "INSERT INTO usuarios_perfiles(id,perfiles_id,usuarios_id) values (null,:perfiles_id,:usuarios_id)";
-	$sql3 = "SELECT id FROM usuarios ORDER BY id DESC LIMIT 1";
+		#no vamos a utilizar query sino ps para aplicar seguridad
+	$sql = "INSERT INTO usuarios(nombre, clave, fecha_ingreso, rol_id, estado_id) VALUES (:nombre,:clave,:fecha_ingreso,:rol_id,:estado_id)";
 
-	$preparedStatement = $con->prepare($sql);
-	$preparedStatement->execute(
-		array(
-			':nombre' => $nombre, 
-			':usuario' => $user,
-			':pass' => $pass,
-			':email' => $email
-			)
-		);
 
-	$preparedStatement2 = $con->prepare($sql3);
-	$preparedStatement2->execute();
-	
-	$usuarios_id = $preparedStatement2->fetch()['id'];
-	
-		#var_dump($usuarios_id);
-		#print_r($usuarios_id);
+	echo "Fecha: $fecha_ingreso<br>";
+	echo "Perfuil: $perfil_id<br>";
+	echo "Estado: $estado_id<br>";
 
-		#$usuarios_id = 5;
-	$preparedStatement1 = $con->prepare($sql2);
-	$preparedStatement1->execute(
-		array(
-			':perfiles_id' => $perfiles_id,
-			':usuarios_id' => $usuarios_id 
-			)
-		);
+	$ps = $con->prepare($sql);
+	$ps->bindParam(':nombre',$user);
+	$ps->bindParam(':clave',$pass);
+	$ps->bindParam(':fecha_ingreso',$fecha_ingreso);
+	$ps->bindParam(':rol_id',$perfil_id);
+	$ps->bindParam(':estado_id',$estado_id);
+	$result = $ps->execute();
 
-	if ($sql2 != null && $sql != null && $sql3 != null) {
-		header("Location: principal-admin.php");
+	if ($result != false) {
+		?>
+			<script type="text/javascript">
+				window.location="<?php echo URL ?>admin/principal-admin.php";
+			</script>
+		<?php
 	}else{?>
 	<script>
 		alert("Ocurrio un error en la insercion..");
