@@ -891,7 +891,7 @@ function getUserById($id,$con)
 function getAllUsers($con)
 {
 		//Devuelve todos los user con sus relaciones
-	$sql = "SELECT usuarios.id AS id_usuarios,usuarios.nombre,usuarios.clave,usuarios.correo,usuarios.fecha_ingreso,estados.nombre AS estado,roles.nombre AS rol FROM usuarios INNER JOIN roles ON usuarios.rol_id=roles.id INNER JOIN estados ON  usuarios.estado_id=estados.id";
+	$sql = "SELECT usuarios.id AS id_usuarios,usuarios.nombre,usuarios.clave,usuarios.fecha_ingreso,estados.nombre AS estado,roles.nombre AS rol FROM usuarios INNER JOIN roles ON usuarios.rol_id=roles.id INNER JOIN estados ON  usuarios.estado_id=estados.id";
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$result = $ps->fetchAll();

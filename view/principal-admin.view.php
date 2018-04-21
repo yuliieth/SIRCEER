@@ -136,7 +136,6 @@
 					<th>#</th>
 					<th>Usuario</th>
 					<th>Contraseña</th>
-					<th>Email</th>
 					<th>Rol</th>
 					<th>Estado</th>
 				</tr>
@@ -147,7 +146,6 @@
 						<td><?php echo $valor['id_usuarios']; ?></td>
 						<td><?php echo $valor['nombre']; ?></td>
 						<td><?php echo $valor['clave']; ?></td>
-						<td><?php echo $valor['correo']; ?></td>
 						<td><?php echo $valor['rol']; ?></td>
 						<td><?php echo $valor['estado']; ?></td>
 						<!-- <td>

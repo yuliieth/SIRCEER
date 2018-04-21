@@ -6,7 +6,7 @@ validateSession();
 $con = getConexion($bd_config);
 comprobarConexion($con);
 $statement = getAllUsers($con);
-
+var_dump($statement);
 
 
 if (isset($_POST['enviar'])) {
