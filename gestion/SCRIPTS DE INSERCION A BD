@@ -1,5 +1,34 @@
-//DEPARTAMENTOS
 
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+IMPORNTANTE HACER LAS SIGUIENTES INSERCIONES RESPETANDO SU ORDEN AQUI EXPUESTO
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+
+//ROLES
+INSERT INTO roles (nombre,descripcion,estado) VALUES ('ADMINISTRADOR','Administrador del programa',1);
+INSERT INTO roles (nombre,descripcion,estado) VALUES ('REGULAR','Usuario del programa',1);
+
+//ESTADOS
+INSERT INTO `estados`(`nombre`, `descripcion`) VALUES ('ACTIVO','CON PERMISO');
+INSERT INTO `estados`(`nombre`, `descripcion`) VALUES ('INACTIVO','SIN PERMISO');
+
+
+//ROLES_OPCIONES
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (1,1,1);
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (2,1,1);
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (1,1,2);
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (2,1,2);
+
+//USUARIOS
+INSERT INTO `usuarios`(`nombre`, `clave`, `fecha_ingreso`, `rol_id`, `estado_id`) VALUES ('admin','123','2018-04-21',1,1);
+INSERT INTO `usuarios`(`nombre`, `clave`, `fecha_ingreso`, `rol_id`, `estado_id`) VALUES ('invitado','123','2018-04-21',2,1);
+
+//DEPARTAMENTOS
 INSERT INTO `departamentos`(`nombre`) VALUES ('RISARALDA');
 
 
