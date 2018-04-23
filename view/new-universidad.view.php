@@ -18,6 +18,13 @@
 		
 		<tr>
 			<td>
+				<select  name="alianza" id="alianza">
+			<?php foreach ($alianzas as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>
+			</td>
+			<td>
 				<select  name="municipio" id="municipio">
 			<?php foreach ($municipios as $valor): ?>
 				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>

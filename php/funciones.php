@@ -963,7 +963,7 @@ function validarErrores($parameter,$errores)
 
 function saveUniversidad
 (
-	$nombre,$telefono,$email,$direccion,$municipio,$cn
+	$nombre,$telefono,$email,$direccion,$municipio,$alianza,$cn
 )
 {
 
@@ -973,7 +973,7 @@ function saveUniversidad
 	}else{
 		try {
 			//var_dump($conexion);
-			$sql = "INSERT INTO universidades(nombre,telefono,email,direccion,ciudad_id)VALUES (:nombre,:telefono,:email,:direccion,:municipio)";
+			$sql = "INSERT INTO universidades(nombre,telefono,email,direccion,ciudad_id,alianza_id)VALUES (:nombre,:telefono,:email,:direccion,:municipio,:alianza_id)";
 
 			$statement = $cn->prepare($sql);
 
@@ -982,6 +982,7 @@ function saveUniversidad
 			$statement->bindParam( ':email' , $email);
 			$statement->bindParam( ':direccion' , $direccion);
 			$statement->bindParam( ':municipio' , $municipio);
+			$statement->bindParam( ':alianza_id' , $alianza);
 			#var_dump($statement);
 			$result= $statement->execute();
 			#var_dump($result);
