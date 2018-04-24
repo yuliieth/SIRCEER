@@ -119,11 +119,11 @@ function saveDiscapacidades($discapacidad,$cn){
 
 }
 
-function saveSede($nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$municipio,$cn){
+function saveSede($nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$municipio,$alianza,$cn){
 
 	#echo "<br>Guardando sede...<br>";
 
-	$sql = "INSERT INTO sedes(nombre, codigo_dane_sede, consecutivo, zona_id, modelo_id, institucion_id,municipio_id) VALUES (:nombre,:codigo_dane_sede,:consecutivo,:zona_id,:modelo_id,:institucion_id,:municipio_id)";
+	$sql = "INSERT INTO sedes(nombre, codigo_dane_sede, consecutivo, zona_id, modelo_id, institucion_id,municipio_id,alianza_id) VALUES (:nombre,:codigo_dane_sede,:consecutivo,:zona_id,:modelo_id,:institucion_id,:municipio_id,:alianza_id)";
 
 	$stm = $cn->prepare($sql);
 
@@ -134,6 +134,7 @@ function saveSede($nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$
 	$stm->bindParam(':modelo_id',$modelo);
 	$stm->bindParam(':institucion_id',$institucion);
 	$stm->bindParam(':municipio_id',$municipio);
+	$stm->bindParam(':alianza_id',$alianza);
 
 	$result = $stm->execute();
 

@@ -35,11 +35,12 @@ if (isset($_POST['submit'])) {
 		$modelo = $_POST['modelo'];
 		$institucion = $_POST['institucion'];
 		$municipio = $_POST['municipio'];
+		$alianza = $_POST['alianza'];
 
 		
 
 $estado_sede = saveSede(
-	$nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$municipio,$cn
+	$nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$municipio,$alianza,$cn
 	);
 
 	if ($estado_sede) {

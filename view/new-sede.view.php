@@ -24,7 +24,6 @@
 			<td><label for="zona">Zona</label></td>
 			<td>
 				<select name="zona" id="">
-					<option value="#">No aplica</option>
 				<?php foreach ($zonas as $value): ?>
 					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
@@ -37,7 +36,6 @@
 			<td><label for="modelo">Modelo</label></td>
 			<td>
 				<select name="modelo" id="">
-					<option value="#">No aplica</option>
 				<?php foreach ($modelos as $value): ?>
 					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
@@ -46,7 +44,6 @@
 			<td><label for="institucion">Institucion</label></td>
 			<td>
 				<select name="institucion" id="">
-					<option value="#">No aplica</option>
 				<?php foreach ($instituciones as $value): ?>
 					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>
