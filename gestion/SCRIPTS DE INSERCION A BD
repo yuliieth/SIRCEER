@@ -1,13 +1,13 @@
 
+/***************************************************************************************************
 ***************************************************************************************************
 ***************************************************************************************************
 ***************************************************************************************************
-***************************************************************************************************
-IMPORNTANTE HACER LAS SIGUIENTES INSERCIONES RESPETANDO SU ORDEN AQUI EXPUESTO
-***************************************************************************************************
-***************************************************************************************************
+/*IMPORNTANTE HACER LAS SIGUIENTES INSERCIONES RESPETANDO SU ORDEN AQUI EXPUESTO*/
+/***************************************************************************************************
 ***************************************************************************************************
 ***************************************************************************************************
+***************************************************************************************************/
 
 /*ROLES*/
 INSERT INTO roles (nombre,descripcion,estado) VALUES ('ADMINISTRADOR','Administrador del programa',1);
@@ -59,6 +59,7 @@ INSERT INTO `alianzas`(`nombre`,  `cupos`) VALUES ('NO APLICA',0);
 INSERT INTO universidades( nombre, telefono, email, direccion, ciudad_id,alianza_id) VALUES ('NO APLICA','NO APLICA','NO APLICA','NO APLICA',1,1);
 
 
+
 /*COLOR DE OJOS*/
 INSERT INTO color_ojos(color) VALUES ('NO APLICA');
 INSERT INTO color_ojos(color) VALUES ('NEGROS');
@@ -103,6 +104,8 @@ INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("NOCHE","");
 
 
 /*MODELOS o por importancion*/
+INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("NO APLICA
+","");
 INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("EDUCACIÓN TRADICIONAL
 ","");
 INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("SAT PRESENCIAL
@@ -161,6 +164,12 @@ INSERT INTO nivel_academico( nombre, descripcion) VALUES ('TÉCNICO','');
 INSERT INTO nivel_academico( nombre, descripcion) VALUES ('TECNOLOGÍA','');
 INSERT INTO nivel_academico( nombre, descripcion) VALUES ('INGENIERÍA','');
 
-/**/
 
-/*SEMESTRE*/
+/*INSTITUCIONES*/
+INSERT INTO `instituciones`(`nombre`, `calendario`, `DANE`, `sector_id`, `municipio_id`) VALUES ('NO APLICA',' ',' ',1,1);
+
+
+/*SEDES*/
+INSERT INTO `sedes`(`nombre`, `codigo_dane_sede`, `consecutivo`, `zona_id`, `modelo_id`, `institucion_id`, `municipio_id`, `alianza_id`) VALUES ('NO APLICA',' ',' ','1',1,1,1,1);
+
+/*En produccion luego de hacer estos insert, se tiene la opcion de registrar las universidades y programas desde archivo excel igual que el principal que es estudiantes*/
