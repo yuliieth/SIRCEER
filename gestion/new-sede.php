@@ -11,6 +11,7 @@ $instituciones = getAllSubject('instituciones',$cn);
 $zonas = getAllSubject('zonas',$cn);
 $modelos = getAllSubject('modelos',$cn);
 $municipios = getAllSubject('municipios',$cn);
+$alianzas = getAllSubject('alianzas',$cn);
 
 $enviado = "";
 if (isset($_POST['submit'])) {

@@ -65,6 +65,14 @@
 				<?php endforeach ?>
 				</select>
 			</td>
+			<td><label for="alianza">Alianza</label></td>
+			<td>
+				<select  name="alianza" id="alianza">
+			<?php foreach ($alianzas as $valor): ?>
+				<option value="<?php echo $valor['id'] ?>"><?php echo $valor['nombre'] ?></option>
+			<?php endforeach ?>
+		</select>
+			</td>
 		</tr>
 
 		
