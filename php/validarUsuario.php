@@ -14,7 +14,7 @@ $result=$ps->fetchAll();
 echo $_GET['u'];
 
 foreach ($result as $campo) {
-	if ($campo['username'] == $_GET['u']) {
+	if ($campo['nombre'] == $_GET['u']) {
 		echo '<p style="color: #e9ece8;">ya existe</p>'; 
 	}
 }

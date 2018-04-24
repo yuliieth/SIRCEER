@@ -1,15 +1,43 @@
 <?php 
 
+function pagina_actual(){
+	#echo "Pagina actual:";
+	#var_dump($_GET);
+	return isset($_GET['p']) ? (int)$_GET['p'] : 1;
+}
+
+function obtener_estudiante($estudiante_por_pagina,$cn){
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $estudiante_por_pagina - $estudiante_por_pagina : 0;
+
+
+	$ps = $cn->prepare("SELECT  SQL_CALC_FOUND_ROWS estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id LIMIT $inicio, $estudiante_por_pagina");
+
+	$ps->execute();
+
+
+	return $ps->fetchAll();
+}
+
+
+function numero_paginas($estudiantes_por_pagina,$cn){
+	$total_estudiantes = $cn->prepare('SELECT COUNT(*) AS total FROM estudiantes');
+	$total_estudiantes->execute();
+	$total_estudiantes = $total_estudiantes->fetch()['total'];
+	#echo "<br> 1. $total_estudiantes<br>";
+	#echo "<br> 2. $estudiantes_por_pagina<br>";
+	$numero_paginas = ceil($total_estudiantes / $estudiantes_por_pagina);
+	return $numero_paginas;
+}
 
 function saveHistorialSemestre($semestre_id,$matricula_id,$estado,$cn)
 {
 
 	$fecha_modificaion = Date("YY-mm-dd");
 	$anio = Date("Y");
-	echo "<br>Año: $anio<br>";
-	echo "<br>Estado: $estado<br>";
-	echo "<br>matricula: $matricula_id<br>";
-	echo "<br> Semestre: $semestre_id<br>";
+	// echo "<br>Año: $anio<br>";
+	// echo "<br>Estado: $estado<br>";
+	// echo "<br>matricula: $matricula_id<br>";
+	// echo "<br> Semestre: $semestre_id<br>";
 
 	$sql = "INSERT INTO historial_academico_semestre(  anio, fecha_modificaion, estado, matricula_id, semestre_id) VALUES (:anio,:fecha_modificaion,:estado,:matricula_id,:semestre_id)";
 
@@ -863,9 +891,12 @@ function getUserById($id,$con)
 function getAllUsers($con)
 {
 		//Devuelve todos los user con sus relaciones
-	$sql = "SELECT usuarios.id AS id_usuarios,nombre_completo,username,password,email,nombre FROM usuarios INNER JOIN usuarios_perfiles ON usuarios.id=usuarios_perfiles.usuarios_id INNER JOIN perfiles ON  perfiles.id=usuarios_perfiles.perfiles_id";
-	return 	$con->query($sql);
-	#var_dump($sta);
+	$sql = "SELECT usuarios.id AS id_usuarios,usuarios.nombre,usuarios.clave,usuarios.fecha_ingreso,estados.nombre AS estado,roles.nombre AS rol FROM usuarios INNER JOIN roles ON usuarios.rol_id=roles.id INNER JOIN estados ON  usuarios.estado_id=estados.id";
+	$ps = $con->prepare($sql);
+	$ps->execute();
+	$result = $ps->fetchAll();
+	#var_dump($result);
+	return $result;
 }
 
 function getAllSubject($table,$con)

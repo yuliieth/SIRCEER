@@ -31,12 +31,12 @@
             #var_dump($perfil);
             $_SESSION['usuario']['perfil'] = $perfil;
             #var_dump($_SESSION);
-            if ($_SESSION['usuario']['perfil'] == "admin") {?>
+            if ($_SESSION['usuario']['perfil'] == "ADMINISTRADOR") {?>
             <script type="text/javascript"> 
-                window.location="<?php echo URL ?>admin/principal-admin.php.php"; 
+                window.location="<?php echo URL ?>admin/principal-admin.php"; 
             </script> 
             <?php //lo abro de nuevo
-            }elseif (($_SESSION['usuario']['perfil'] == "usuario")) {?>
+            }elseif (($_SESSION['usuario']['perfil'] == "REGULAR")) {?>
             <script type="text/javascript"> 
                 window.location= "<?php echo URL ?>gestion/principal-gestion.php"; 
             </script> 

@@ -1,9 +1,38 @@
-//DEPARTAMENTOS
 
+/***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+/*IMPORNTANTE HACER LAS SIGUIENTES INSERCIONES RESPETANDO SU ORDEN AQUI EXPUESTO*/
+/***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************/
+
+/*ROLES*/
+INSERT INTO roles (nombre,descripcion,estado) VALUES ('ADMINISTRADOR','Administrador del programa',1);
+INSERT INTO roles (nombre,descripcion,estado) VALUES ('REGULAR','Usuario del programa',1);
+
+/*ESTADOS*/
+INSERT INTO `estados`(`nombre`, `descripcion`) VALUES ('ACTIVO','CON PERMISO');
+INSERT INTO `estados`(`nombre`, `descripcion`) VALUES ('INACTIVO','SIN PERMISO');
+
+
+/*ROLES_OPCIONES*/
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (1,1,1);
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (2,1,1);
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (1,1,2);
+INSERT INTO `roles_opciones`(`opcion`, `estado`, `rol_id`) VALUES (2,1,2);
+
+/*USUARIOS*/
+INSERT INTO `usuarios`(`nombre`, `clave`, `fecha_ingreso`, `rol_id`, `estado_id`) VALUES ('admin','123','2018-04-21',1,1);
+INSERT INTO `usuarios`(`nombre`, `clave`, `fecha_ingreso`, `rol_id`, `estado_id`) VALUES ('invitado','123','2018-04-21',2,1);
+
+/*DEPARTAMENTOS*/
 INSERT INTO `departamentos`(`nombre`) VALUES ('RISARALDA');
 
 
-//MUNICIPIOS
+/*MUNICIPIOS*/
 
 INSERT INTO `municipios`(`nombre`, `departamentos_id`) VALUES ("NO APLICA",1);
 INSERT INTO `municipios`(`nombre`, `departamentos_id`) VALUES ("APÍA",1);
@@ -21,111 +50,126 @@ INSERT INTO `municipios`(`nombre`, `departamentos_id`) VALUES ("QUINCHIA",1);
 INSERT INTO `municipios`(`nombre`, `departamentos_id`) VALUES ("SANTA ROSA DE CABAL",1);
 INSERT INTO `municipios`(`nombre`, `departamentos_id`) VALUES ("SANTUARIO",1);
 
-//UNIVERSIDADES
-INSERT INTO universidades( nombre, telefono, email, direccion, ciudad_id) VALUES ('NO APLICA','NO APLICA','NO APLICA','NO APLICA',1);
 
 
-//COLOR DE OJOS
+/*ALIANZAS*/
+INSERT INTO `alianzas`(`nombre`,  `cupos`) VALUES ('NO APLICA',0);
+
+/*UNIVERSIDADES*/
+INSERT INTO universidades( nombre, telefono, email, direccion, ciudad_id,alianza_id) VALUES ('NO APLICA','NO APLICA','NO APLICA','NO APLICA',1,1);
+
+
+
+/*COLOR DE OJOS*/
 INSERT INTO color_ojos(color) VALUES ('NO APLICA');
 INSERT INTO color_ojos(color) VALUES ('NEGROS');
 INSERT INTO color_ojos(color) VALUES ('VERDES');
 INSERT INTO color_ojos(color) VALUES ('CAFES');
 
-//DISCAPACIDADES o por importacion
+/*DISCAPACIDADES o por importacion*/
 INSERT INTO `discapacidades`(`nombre`, `descripcion`) VALUES ("NO APLICA","SIN RELACION");
 INSERT INTO `discapacidades`(`nombre`, `descripcion`) VALUES ("SORDERA","PERSONA CON DIFICULTADES AUDITIVAS");
 INSERT INTO `discapacidades`(`nombre`, `descripcion`) VALUES ("CEGUERA","PERSONA CON DIFICULTADES VISUALES");
 
-//ESTRATO o por importacion
+/*ESTRATO o por importacion*/
 INSERT INTO `estrato`(`nombre`) VALUES ("ESTRATO 1");
 INSERT INTO `estrato`(`nombre`) VALUES ("ESTRATO 2");
 INSERT INTO `estrato`(`nombre`) VALUES ("ESTRATO 3");
 INSERT INTO `estrato`(`nombre`) VALUES ("ESTRATO 4");
 INSERT INTO `estrato`(`nombre`) VALUES ("ESTRATO 5");
 
-//FUENTE DE RECURSO o por importacion
+/*FUENTE DE RECURSO o por importacion*/
 INSERT INTO `fuente_recursos`(`nombre`, `descripcion`) VALUES ("NO APLICA","SIN RELACION");
 INSERT INTO `fuente_recursos`(`nombre`, `descripcion`) VALUES ("SGP","");
 
-//GENERO o por importacion
+/*GENERO o por importacion*/
 INSERT INTO `generos`(`nombre`) VALUES ("MASCULINO");
 INSERT INTO `generos`(`nombre`) VALUES ("FEMENINO");
 
-//GRADOS O importacion
+/*GRADOS O importacion*/
 INSERT INTO `grados`(`nombre`) VALUES (8);
 INSERT INTO `grados`(`nombre`) VALUES (9);
 INSERT INTO `grados`(`nombre`) VALUES (10);
 INSERT INTO `grados`(`nombre`) VALUES (11);
 
-//INTERNADO o por importacion
+/*INTERNADO o por importacion*/
+INSERT INTO `internado`(`nombre`, `descripcion`) VALUES ("NO APLICA","");
 INSERT INTO `internado`(`nombre`, `descripcion`) VALUES ("NINGUNO","");
 
-//JORNADAS o im,portacion
+/*JORNADAS o im,portacion*/
 INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("NO APLICA","SIN RELACIÓN");
 INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("MAÑANA","");
 INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("TARDE","");
 INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("NOCHE","");
 
 
-//MODELOS o por importancion
+/*MODELOS o por importancion*/
+INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("NO APLICA
+","");
 INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("EDUCACIÓN TRADICIONAL
 ","");
 INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("SAT PRESENCIAL
 ","");
 
 
-//SECTORES o por importacion
+/*SECTORES o por importacion*/
 INSERT INTO `sectores`(`nombre`,`descripcion`) VALUES ("OFICIAL","");
 INSERT INTO `sectores`(`nombre`,`descripcion`) VALUES ("NO OFICIAL","");
 
-//SERVICIOS SOCIALES
+/*SERVICIOS SOCIALES*/
 INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("NO APLICA","");
 INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("APROBADO","");
 INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("EN CURSO","");
 INSERT INTO `servicios_sociales`(`estado`, `descripcion`) VALUES ("NO APROBADO","");
 
-//SITUACIONES ACADEMICA o importacion
+/*SITUACIONES ACADEMICA o importacion*/
 INSERT INTO `situaciones_academicas`(`nombre`, `descripcion`) VALUES ("MATRICULADO","");
 INSERT INTO `situaciones_academicas`(`nombre`, `descripcion`) VALUES ("SUSPENDIDO","");
 INSERT INTO `situaciones_academicas`(`nombre`, `descripcion`) VALUES ("CANCELADO","");
 
 
-//SITUACIONES SOCIALES
+/*SITUACIONES SOCIALES*/
 INSERT INTO `situaciones_sociales`( `nombre`, `descripcion`) VALUES ("NO APLICA","SIN RELACION");
 INSERT INTO `situaciones_sociales`( `nombre`, `descripcion`) VALUES ("DESPLAZADO","PERSONAS QUE DEJARON SUS LUGARES DE ORIGEN POR ALGUNO RAZON");
 INSERT INTO `situaciones_sociales`( `nombre`, `descripcion`) VALUES ("EXTREMA POBREZA","PERSONAS DE BAJOS RECURSOS");
 INSERT INTO `situaciones_sociales`( `nombre`, `descripcion`) VALUES ("VICTIMAS DEL CONFLICTO","PERSONA AFRECTAS POR LA VIOLENCIA");
 
 
-//TIPO DOCUMENTO o importacion
-INSERT INTO `tipos_documento`( `tipo`, `descripcion`) VALUES ("TI:TARJETA DE IDENTIDAD","MENOR DE EDAD");
-INSERT INTO `tipos_documento`( `tipo`, `descripcion`) VALUES ("CC:CEDULA DE CIUDADANIA","MAYOR DE EDAD");
+/*TIPO DOCUMENTO o importacion*/
+INSERT INTO `tipos_documento`( `nombre`, `descripcion`) VALUES ("TI:TARJETA DE IDENTIDAD","MENOR DE EDAD");
+INSERT INTO `tipos_documento`( `nombre`, `descripcion`) VALUES ("CC:CEDULA DE CIUDADANIA","MAYOR DE EDAD");
 
 
-//TIPO DE POBLACION
+/*TIPO DE POBLACION*/
 INSERT INTO `tipos_poblacion`(`nombre`, `descripcion`) VALUES ("NO APLICA","SIN RELACION");
 INSERT INTO `tipos_poblacion`(`nombre`, `descripcion`) VALUES ("INDIGENA","PERTENECIENTES A ETNIAS");
 INSERT INTO `tipos_poblacion`(`nombre`, `descripcion`) VALUES ("AFRODESCENDIENTES","PERSONAS MULATAS");
 
-//TIPO DE SANGRE
+/*TIPO DE SANGRE*/
 INSERT INTO `tipos_sangre`( `nombre`) VALUES ("NO APLICA");
 INSERT INTO `tipos_sangre`( `nombre`) VALUES ("A+");
 INSERT INTO `tipos_sangre`( `nombre`) VALUES ("A-");
 INSERT INTO `tipos_sangre`( `nombre`) VALUES ("O+");
 INSERT INTO `tipos_sangre`( `nombre`) VALUES ("O-");
 
-//ZONAS 
+/*ZONAS */
 INSERT INTO `zonas`(`nombre`, `descripcion`) VALUES ("NO APLICA","SIN RELACION");
 INSERT INTO `zonas`(`nombre`, `descripcion`) VALUES ("URBANA","METROPOLI");
 INSERT INTO `zonas`(`nombre`, `descripcion`) VALUES ("RURAL","GRANJAS Y EXTENSIONES DE TIERRA");
 
 
-//NIVEL ACADEMICO
+/*NIVEL ACADEMICO*/
 INSERT INTO nivel_academico( nombre, descripcion) VALUES ('NO APLICA','SIN REGISTRO');
-INSERT INTO nivel_academico( nombre, descripcion) VALUES ('TECNICO','');
+INSERT INTO nivel_academico( nombre, descripcion) VALUES ('TÉCNICO','');
 INSERT INTO nivel_academico( nombre, descripcion) VALUES ('TECNOLOGÍA','');
 INSERT INTO nivel_academico( nombre, descripcion) VALUES ('INGENIERÍA','');
 
-//
 
-//SEMESTRE
+/*INSTITUCIONES*/
+INSERT INTO `instituciones`(`nombre`, `calendario`, `DANE`, `sector_id`, `municipio_id`) VALUES ('NO APLICA',' ',' ',1,1);
+
+
+/*SEDES*/
+INSERT INTO `sedes`(`nombre`, `codigo_dane_sede`, `consecutivo`, `zona_id`, `modelo_id`, `institucion_id`, `municipio_id`, `alianza_id`) VALUES ('NO APLICA',' ',' ','1',1,1,1,1);
+
+/*En produccion luego de hacer estos insert, se tiene la opcion de registrar las universidades y programas desde archivo excel igual que el principal que es estudiantes*/
