@@ -59,7 +59,7 @@ $numRows = $objPHPEXCEL->setActiveSheetIndex(0)->getHighestRow();
 echo $numRows;
 
 
-	for ($i=2; $i <= 30; $i++) { 
+	for ($i=2; $i <= 15; $i++) { 
 
 		//Extrae datos por fila
 
@@ -70,10 +70,11 @@ echo $numRows;
 		#Validar si este registro em $estado ya esta en la tabla situaciones_academicas column nombre:
 		#Se tiene: valor, nombre table, nombre campo
 		#se necesita: Crear funcion que reciba el valor, nombre tabla, nombre campo, conexion crear sql de tipo select, la funcion devuelve true o false.
+		echo "<b>********ESTADO*********<br>";
 		$estado = validarYregistrar('situaciones_academicas','nombre','descripcion',$estado,$cn);
 		echo "<br> Estado academico: $estado <br>";
 		
-
+		echo "<b>********MUNICIPIO*********<br>";
 		#Relacion:Jerarquia=municipio
 		$jerarquia = utf8_decode($objPHPEXCEL ->getActiveSheet()->getCell('C'.$i)->getCalculatedValue());
 		$municipio =  validarYregistrar('municipios','nombre','departamentos_id',$jerarquia,$cn);
@@ -86,8 +87,8 @@ echo $numRows;
 		#2. Registrar(si aplica)
 		#3. Obtener id
 		#Atributo para colegios
-		$institucion =  utf8_decode( $objPHPEXCEL ->getActiveSheet()->getCell('D'.$i)->getCalculatedValue());
-		
+		$institucion =  utf8_encode( $objPHPEXCEL ->getActiveSheet()->getCell('D'.$i)->getCalculatedValue());
+		echo "Institucion: $institucion";
 		#Atributo para colegios
 		$dane = $objPHPEXCEL ->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
 		
@@ -98,6 +99,7 @@ echo $numRows;
 		#Atributo para colegios, primero debe ser validado e insertado en la tabla sectores
 		$sector = $objPHPEXCEL ->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
 		$sector = validarYregistrar('sectores','nombre','descripcion',$sector,$cn);
+		echo "<br>Sector: $sector";
 
 		#Validar existencia de la institucion
 		echo "Validando registro institucion...<br>";
@@ -121,7 +123,7 @@ echo $numRows;
 		echo "<br>**********SEDES*************<br>";
 		//******sedes******
 		#Relacion: sedes(nombre, codigo_dane, consecutivo,zona,modelo,colegio)
-		$sede = utf8_decode( $objPHPEXCEL ->getActiveSheet()->getCell('H'.$i)->getCalculatedValue());
+		$sede = utf8_encode( $objPHPEXCEL ->getActiveSheet()->getCell('H'.$i)->getCalculatedValue());
 		echo "<br>Nombre sede: $sede<br>";
 
 		$codigo_dane_sede = $objPHPEXCEL ->getActiveSheet()->getCell('I'.$i)->getCalculatedValue();
@@ -134,6 +136,9 @@ echo $numRows;
 		$zona_sede = validarYregistrar('zonas','nombre','descripcion',$zona_sede,$cn);
 		echo "<br>Id zona sede: $zona_sede<br>";
 
+		$alianza = validarYregistrar('alianzas','nombre','fecha_inicio','NO APLICA',$cn); 
+		echo "<br>alianza: $alianza <br>";
+
 		#Relacion:
 		$modelo = utf8_decode( $objPHPEXCEL ->getActiveSheet()->getCell('O'.$i)->getCalculatedValue());
 		$modelo = validarYregistrar('modelos','nombre','descripcion',$modelo,$cn);
@@ -145,13 +150,13 @@ echo $numRows;
 			#No hay coincidencia, entonces recoje datos de las columns
 			echo "<br>No hay registro aun de la sede:<br>";
 			#Como no hubo coincidencia, registra y devuelve su ID
-			$sede = saveSede($sede,$codigo_dane_sede,$consecutivo,$zona_sede,$modelo,$institucion,$municipio,$cn);
+			$sede = saveSede($sede,$codigo_dane_sede,$consecutivo,$zona_sede,$modelo,$institucion,$municipio,$alianza,$cn);
 			echo "<br>ID sede registrada: $sede<br>";
 		}else{
 			echo "<br>Ya hay sede registrada<br>";
 			$sede = $estado_busqueda;
-			echo "<b> Sede: $sede <br>";
 		}
+			echo "<b> Sede: $sede <br>";
 
 		echo "<br>***********************<br>";
 
@@ -161,11 +166,11 @@ echo $numRows;
 
 
 		#Relacion:
+		echo "*****JORNADAS*****";
 		$jornada = utf8_decode( $objPHPEXCEL ->getActiveSheet()->getCell('L'.$i)->getCalculatedValue());
 		$jornada = validarYregistrar('jornadas','nombre','descripcion',$jornada,$cn);
 
 		echo "<br>***********ESTUDIANTE************<br>";
-		///******************ESTUDIANTE********************
 		#Relacion:
 		$codigo_grado = $objPHPEXCEL ->getActiveSheet()->getCell('M'.$i)->getCalculatedValue();
 		$codigo_grado = validarYregistrar('grados','nombre','descripcion',$codigo_grado,$cn);
@@ -174,6 +179,7 @@ echo $numRows;
 
 		#Relacion: ?
 		$grupo = $objPHPEXCEL ->getActiveSheet()->getCell('N'.$i)->getCalculatedValue();
+		echo "<br>Grupo: $grupo <br>";
 
 		#?
 		$motivo = $objPHPEXCEL ->getActiveSheet()->getCell('P'.$i)->getCalculatedValue();
@@ -250,6 +256,9 @@ echo $numRows;
 		#atributo
 		$eps_estudiante = $objPHPEXCEL ->getActiveSheet()->getCell('AH'.$i)->getCalculatedValue();
 		echo "<br> EPS: $eps_estudiante <br>";
+		if (empty($eps_estudiante)) {
+			$eps_estudiante = "SIN REGISTRO";
+		}
 
 		#?
 		$num_contrato = $objPHPEXCEL ->getActiveSheet()->getCell('AI'.$i)->getCalculatedValue();
@@ -382,8 +391,8 @@ echo $numRows;
 	#var_dump($state);
 
 	$resultE = $state->execute();
-	#echo "<br>RESULTADO INSERCION ESTUDIANTE <br>";
-	#var_dump($resultE);
+	echo "<br>RESULTADO INSERCION ESTUDIANTE <br>";
+	var_dump($resultE);
 
 #Una vez se hace el insert para el estudiante retornamos si ID para ser ocupado en la tabla "estudiante_serviciosocial: campos ids estudiante_serviciosocial_id - servicio_social_id"
 
@@ -397,19 +406,34 @@ echo $numRows;
 		$stp->bindParam(':estudiante',$idEstudiante);
 		$stp->bindParam(':servicio',$servicioSocial['id']);
 		$resultS = $stp->execute();
-
+		echo "<br>Resultado SS:<br>";
+		var_dump($resultS);
 
 		if ($resultE != false && $resultS != false) {
 			echo "<br>estudiante y sercio : OK<br>";
+		}else{
+			echo "<br>Ocurrio un error registrando el estudiante o su servicio socal<br>";
+			echo "<br><br>";
 		}
 
 
 					}//Fin for
 
-#header("Location:".URL."gestion/importar-estudiantes.php?select=e");
+#header("Location:".URL."");
 #https://www.youtube.com/watch?v=4Sw24E5Hi5M
 
+					?>
+				<script type="text/javascript">
+					window.location="<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
+				</script>
+					<?php
+
 								} //End file exist
+								?>
+				<script type="text/javascript">
+					window.location="<?php echo URL ?>gestion/importar-estudiantes.php?select=e";
+				</script>
+					<?php
 
 		} //End substr
 		

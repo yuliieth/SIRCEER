@@ -146,6 +146,7 @@ function saveSede($nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$
 
 }
 
+/*Para insert intituciones*/
 function saveSchool($institucion,$calendario,$dane,$sector,$municipio,$cn){
 
 	echo "<br>Entro saveSchool<br> Valores variables recibidads: <br>
@@ -199,7 +200,7 @@ function validarYregistrar($nameTable,$nameColumnUno,$nameColumnDos,$valueUno,$c
 			#echo "$last_id_estado";
 		}else
 		{
-			#echo "No hay coincidencias...";
+			echo "No hay coincidencias...";
 
 
 			switch ($nameTable) {
@@ -217,7 +218,7 @@ function validarYregistrar($nameTable,$nameColumnUno,$nameColumnDos,$valueUno,$c
 			#Do insert
 			$do_registred = registrarRelacion($nameTable,$nameColumnUno,$nameColumnDos,$valueUno,$valueDos,$cn);
 			echo "<br>";
-			#var_dump($do_registred);
+			var_dump($do_registred);
 			echo "<br>";
 			if ($do_registred == false) {
 				echo "Ocurrio un error al tratar de registrar $nameTable";
