@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-04-2018 a las 17:55:34
+-- Tiempo de generación: 25-04-2018 a las 05:19:24
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -33,6 +33,13 @@ CREATE TABLE `alianzas` (
   `fecha_final` date DEFAULT NULL,
   `cupos` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `alianzas`
+--
+
+INSERT INTO `alianzas` (`id`, `nombre`, `fecha_inicio`, `fecha_final`, `cupos`) VALUES
+(1, 'NO APLICA', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -90,7 +97,9 @@ CREATE TABLE `discapacidades` (
 --
 
 INSERT INTO `discapacidades` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'NO APLICA', 'Descripcion por defecto');
+(1, 'NO APLICA', 'SIN RELACION'),
+(2, 'SORDERA', 'PERSONA CON DIFICULTADES AUDITIVAS'),
+(3, 'CEGUERA', 'PERSONA CON DIFICULTADES VISUALES');
 
 -- --------------------------------------------------------
 
@@ -109,8 +118,8 @@ CREATE TABLE `estados` (
 --
 
 INSERT INTO `estados` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'activo', 'de alta'),
-(2, 'inactivo', 'fuera de servicio');
+(1, 'ACTIVO', 'CON PERMISO'),
+(2, 'INACTIVO', 'SIN PERMISO');
 
 -- --------------------------------------------------------
 
@@ -129,11 +138,11 @@ CREATE TABLE `estrato` (
 --
 
 INSERT INTO `estrato` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'ESTRATO 2', 'Descripcion por defecto'),
-(2, 'ESTRATO 1', 'Descripcion por defecto'),
-(3, 'ESTRATO 0', 'Descripcion por defecto'),
-(4, 'ESTRATO 3', 'Descripcion por defecto'),
-(5, 'ESTRATO 4', 'Descripcion por defecto');
+(1, 'ESTRATO 1', NULL),
+(2, 'ESTRATO 2', NULL),
+(3, 'ESTRATO 3', NULL),
+(4, 'ESTRATO 4', NULL),
+(5, 'ESTRATO 5', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,7 +162,7 @@ CREATE TABLE `estudiantes` (
   `fecha_nacimiento` datetime NOT NULL COMMENT 'Fecha de nacimiento',
   `edad` varchar(3) DEFAULT NULL,
   `direccion_residencia` varchar(50) DEFAULT NULL,
-  `EPS` varchar(20) NOT NULL COMMENT 'Entidado de salu del estudiante',
+  `EPS` varchar(20) DEFAULT NULL COMMENT 'Entidado de salu del estudiante',
   `fecha_inicio` datetime NOT NULL,
   `fecha_fin` datetime DEFAULT NULL,
   `observacion` text COMMENT 'OPcional',
@@ -174,6 +183,26 @@ CREATE TABLE `estudiantes` (
   `sede_id` int(11) NOT NULL COMMENT 'Sede a la que pertenece el estudiante'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `estudiantes`
+--
+
+INSERT INTO `estudiantes` (`id`, `documento`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `telefono_contacto`, `email`, `fecha_nacimiento`, `edad`, `direccion_residencia`, `EPS`, `fecha_inicio`, `fecha_fin`, `observacion`, `tipo_documento_id`, `tipo_sangre_id`, `zona_id`, `tipo_poblaion_id`, `estrato_id`, `genero_id`, `ojos_id`, `situacion_academica_id`, `situacion_social_id`, `grado_id`, `fuenterecurso_id`, `internado_id`, `discapacidad_id`, `municipio_id`, `sede_id`) VALUES
+(1, '1004831861', 'ISABELLA', '', 'ABAD', 'GUEVARA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1),
+(2, '1004682651', 'HILARY', '', 'ABAD', 'RAMIREZ', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 4, 2, 2, 1, 1, 1),
+(3, '1090332332', 'MARIA', 'YAMILE', 'ABREO', 'MONCADA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'ASOCIACION DE CABILD', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
+(4, '1090332069', 'CLAUDIA', 'PATRICIA', 'ACEVEDO', 'ARCE', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
+(5, '1192723769', 'LEIDY', 'LORENA', 'ACEVEDO', 'ARICAPA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
+(6, '1007212530', 'LUZ', 'ENITH', 'ACEVEDO', 'BARTOLO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 3, 2, 2, 1, 1, 5),
+(7, '1057756237', 'JUAN', 'FELIPE', 'ACEVEDO', 'BEDOYA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1),
+(8, '1088236043', 'JUAN', 'MANUEL', 'ACEVEDO', 'BETANCOURT', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2, 1, 1, 1),
+(9, '1086604010', 'YURANI', '', 'ACEVEDO', 'CAMPO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 3, 2, 2, 1, 1, 1),
+(10, '1004994162', 'VERONICA', '', 'ACEVEDO', 'CARMONA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
+(11, '1093186132', 'DANIA', 'YISETH', 'ACEVEDO', 'CASTAÑO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'CAFESALUD E.P.S. S.A', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 10),
+(12, '1193540912', 'JUAN', 'DAVID', 'ACEVEDO', 'CORREA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 1, 1, 7),
+(13, '1089931234', 'HARRISON', '', 'ACEVEDO', 'GIRALDO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1),
+(14, '1088536009', 'MARIA', 'CAMILA', 'ACEVEDO', 'HERNANDEZ', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 4, 2, 2, 1, 1, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -185,6 +214,26 @@ CREATE TABLE `estudiante_serviciosocial` (
   `estudiante_serviciosocial_id` int(11) NOT NULL COMMENT 'Incrementable, no key',
   `servicio_social_id` int(11) NOT NULL COMMENT 'Relacion: Servicio_social->estudiante_sercviciosocial'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estudiante_serviciosocial`
+--
+
+INSERT INTO `estudiante_serviciosocial` (`id`, `estudiante_serviciosocial_id`, `servicio_social_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -203,8 +252,8 @@ CREATE TABLE `fuente_recursos` (
 --
 
 INSERT INTO `fuente_recursos` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'NO APLICA', 'Descripcion por defecto'),
-(2, 'SGP', 'Descripcion por defecto');
+(1, 'NO APLICA', 'SIN RELACION'),
+(2, 'SGP', '');
 
 -- --------------------------------------------------------
 
@@ -223,8 +272,8 @@ CREATE TABLE `generos` (
 --
 
 INSERT INTO `generos` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'FEMENINO', 'Descripcion por defecto'),
-(2, 'MASCULINO', 'Descripcion por defecto');
+(1, 'MASCULINO', NULL),
+(2, 'FEMENINO', NULL);
 
 -- --------------------------------------------------------
 
@@ -243,9 +292,10 @@ CREATE TABLE `grados` (
 --
 
 INSERT INTO `grados` (`id`, `nombre`, `descripcion`) VALUES
-(1, '10', 'Descripcion por defecto'),
-(2, '11', 'Descripcion por defecto'),
-(3, '9', 'Descripcion por defecto');
+(1, '8', NULL),
+(2, '9', NULL),
+(3, '10', NULL),
+(4, '11', NULL);
 
 -- --------------------------------------------------------
 
@@ -280,18 +330,22 @@ CREATE TABLE `instituciones` (
   `municipio_id` int(11) NOT NULL COMMENT 'El colegio pertenece a  un municipio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `instituciones_alianzas`
+-- Volcado de datos para la tabla `instituciones`
 --
 
-CREATE TABLE `instituciones_alianzas` (
-  `id` int(11) NOT NULL,
-  `institucion_id` int(11) NOT NULL,
-  `alianzas_id` int(11) NOT NULL,
-  `fecha_vinculacion` date NOT NULL COMMENT 'Fecha en la cual da inicio la estrategia'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `instituciones` (`id`, `nombre`, `telefono`, `siglas`, `calendario`, `DANE`, `sector_id`, `municipio_id`) VALUES
+(1, 'NO APLICA', NULL, NULL, ' ', ' ', 1, 1),
+(2, 'COL SANTA MARIA GORETTI', NULL, NULL, 'A', '366682000478', 2, 16),
+(3, 'IE LICEO DE OCCIDENTE', NULL, NULL, 'A', '166383000012', 1, 7),
+(4, 'IE INSTITUTO INTEGRADO IRRA', NULL, NULL, 'A', '266594001087', 1, 13),
+(5, 'IE NUESTRA SEÃƒÂ‘ORA DE LOS DOLORES', NULL, NULL, 'A', '166594000027', 1, 13),
+(6, 'CE BACHILLERATO EN BIENESTAR RURAL -QUINCHIA-', NULL, NULL, 'A', '266594001274', 1, 13),
+(7, 'CE BACHILLERATO EN BIENESTAR RURAL -LA VIRGINIA-', NULL, NULL, 'A', '166400000401', 1, 8),
+(8, 'IE ALTO CAUCA', NULL, NULL, 'A', '266440000070', 1, 9),
+(9, 'IE SAGRADA FAMILIA', NULL, NULL, 'A', '166045000686', 1, 2),
+(10, 'IE SAN PABLO', NULL, NULL, 'A', '166572000015', 1, 12),
+(11, 'IE BERNARDO ARIAS TRUJILLO', NULL, NULL, 'A', '166400000013', 1, 8);
 
 -- --------------------------------------------------------
 
@@ -310,7 +364,8 @@ CREATE TABLE `internado` (
 --
 
 INSERT INTO `internado` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'NINGUNO', 'Descripcion por defecto');
+(1, 'NO APLICA', ''),
+(2, 'NINGUNO', '');
 
 -- --------------------------------------------------------
 
@@ -329,7 +384,10 @@ CREATE TABLE `jornadas` (
 --
 
 INSERT INTO `jornadas` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'MAÑANA', 'Descripcion por defecto');
+(1, 'NO APLICA', 'SIN RELACIÓN'),
+(2, 'MAÑANA', ''),
+(3, 'TARDE', ''),
+(4, 'NOCHE', '');
 
 -- --------------------------------------------------------
 
@@ -361,9 +419,11 @@ CREATE TABLE `modelos` (
 --
 
 INSERT INTO `modelos` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'EDUCACIÓN TRADICIONAL', 'Descripcion por defecto'),
-(2, 'SAT PRESENCIAL', 'Descripcion por defecto'),
-(3, 'POST PRIMARIA', 'Descripcion por defecto');
+(1, 'NO APLICA\r\n', ''),
+(2, 'EDUCACIÓN TRADICIONAL\r\n', ''),
+(3, 'SAT PRESENCIAL\r\n', ''),
+(4, 'EDUCACIÓN TRADICIONAL', 'Descripcion por defecto'),
+(5, 'SAT PRESENCIAL', 'Descripcion por defecto');
 
 -- --------------------------------------------------------
 
@@ -396,8 +456,8 @@ INSERT INTO `municipios` (`id`, `nombre`, `departamentos_id`) VALUES
 (12, 'PUEBLO RICO', 1),
 (13, 'QUINCHIA', 1),
 (14, 'SANTA ROSA DE CABAL', 1),
-(15, 'NUCLEO 21', 1),
-(16, 'SANTUARIO', 1);
+(15, 'SANTUARIO', 1),
+(16, 'NUCLEO 21', 1);
 
 -- --------------------------------------------------------
 
@@ -417,9 +477,9 @@ CREATE TABLE `nivel_academico` (
 
 INSERT INTO `nivel_academico` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'NO APLICA', 'SIN REGISTRO'),
-(2, 'TECNICO', ''),
-(4, 'TECNOLOGÍA', ''),
-(5, 'INGENIERÍA', '');
+(2, 'TÉCNICO', ''),
+(3, 'TECNOLOGÍA', ''),
+(4, 'INGENIERÍA', '');
 
 -- --------------------------------------------------------
 
@@ -434,7 +494,7 @@ CREATE TABLE `programas` (
   `cantidad_semestre` varchar(10) DEFAULT NULL COMMENT 'Numero de semestre que contiene el programa',
   `costo_semestre` double(10,6) DEFAULT NULL COMMENT 'Valor por semestre',
   `nivel_academico_id` int(11) NOT NULL,
-  `institucion_id` int(11) NOT NULL,
+  `universidad_id` int(11) NOT NULL,
   `jornada_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -456,8 +516,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `nombre`, `descripcion`, `estado`) VALUES
-(3, 'admin', 'administrador', 1),
-(4, 'usuario', 'usuario regular', 1);
+(1, 'ADMINISTRADOR', 'Administrador del programa', 1),
+(2, 'REGULAR', 'Usuario del programa', 1);
 
 -- --------------------------------------------------------
 
@@ -469,11 +529,18 @@ CREATE TABLE `roles_opciones` (
   `id` int(11) NOT NULL,
   `opcion` int(11) NOT NULL,
   `estado` int(11) NOT NULL,
-  `fecha_desde` date DEFAULT NULL,
-  `fecha_hasta` date DEFAULT NULL,
-  `codigo_opcion` varchar(70) DEFAULT NULL,
   `rol_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `roles_opciones`
+--
+
+INSERT INTO `roles_opciones` (`id`, `opcion`, `estado`, `rol_id`) VALUES
+(1, 1, 1, 1),
+(2, 2, 1, 1),
+(3, 1, 1, 2),
+(4, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -492,8 +559,8 @@ CREATE TABLE `sectores` (
 --
 
 INSERT INTO `sectores` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'NO OFICIAL', 'Descripcion por defecto'),
-(2, 'OFICIAL', 'Descripcion por defecto');
+(1, 'OFICIAL', ''),
+(2, 'NO OFICIAL', '');
 
 -- --------------------------------------------------------
 
@@ -509,8 +576,26 @@ CREATE TABLE `sedes` (
   `zona_id` int(11) NOT NULL COMMENT 'Zona rural o urbana de la sede',
   `modelo_id` int(11) NOT NULL COMMENT 'Modelo de la sede',
   `institucion_id` int(11) NOT NULL COMMENT 'Institucion a la que pertenece la sede',
-  `municipio_id` int(11) NOT NULL COMMENT 'Municipio de la sede'
+  `municipio_id` int(11) NOT NULL COMMENT 'Municipio de la sede',
+  `alianza_id` int(11) NOT NULL COMMENT 'Peretenece a una alianza'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sedes`
+--
+
+INSERT INTO `sedes` (`id`, `nombre`, `codigo_dane_sede`, `consecutivo`, `zona_id`, `modelo_id`, `institucion_id`, `municipio_id`, `alianza_id`) VALUES
+(1, 'NO APLICA', ' ', ' ', 1, 1, 1, 1, 1),
+(2, 'COL SANTA MARIA GORETTI', '366682000478', '36668200047801', 2, 4, 2, 16, 1),
+(3, 'SE LICEO DE OCCIDENTE - SEDE PRINCIPAL', '166383000012', '16638300001201', 2, 4, 3, 7, 1),
+(4, 'SE INSTITUTO INTEGRADO IRRA - SEDE PRINCIPAL', '266594001087', '26659400108701', 3, 4, 4, 13, 1),
+(5, 'SE NUESTRA SEÃƒÂ‘ORA DE LOS DOLORES - SEDE PRINCIPAL', '166594000027', '16659400002701', 2, 4, 5, 13, 1),
+(6, 'SE BACHILLERATO EN BIENESTAR RURAL -QUINCHIA- SEDE PRINCIPAL', '266594001274', '26659400127401', 3, 5, 6, 13, 1),
+(7, 'SE BACHILLERATO EN BIENESTAR RURAL -LA VIRGINIA- SEDE PRINCIPAL', '166400000401', '16640000040101', 3, 5, 7, 8, 1),
+(8, 'SE ALTO CAUCA - SEDE PRINCIPAL', '266440000070', '26644000007001', 3, 4, 8, 9, 1),
+(9, 'SE SAGRADA FAMILIA - SEDE PRINCIPAL', '166045000686', '16604500068601', 2, 4, 9, 2, 1),
+(10, 'SE SAN PABLO - SEDE PRINCIPAL', '166572000015', '16657200001501', 2, 4, 10, 12, 1),
+(11, 'SE BERNARDO ARIAS TRUJILLO - SEDE PRINCIPAL', '166400000013', '16640000001301', 2, 4, 11, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -521,7 +606,7 @@ CREATE TABLE `sedes` (
 CREATE TABLE `semestre` (
   `id` int(11) NOT NULL,
   `semestre` int(5) NOT NULL COMMENT 'Semestre actual',
-  `periodo` date NOT NULL COMMENT 'Bisemestre del año'
+  `periodo` varchar(2) NOT NULL COMMENT 'Bisemestre del año'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -541,9 +626,10 @@ CREATE TABLE `servicios_sociales` (
 --
 
 INSERT INTO `servicios_sociales` (`id`, `estado`, `descripcion`) VALUES
-(1, 'APROBADO', ''),
-(2, 'EN CURSO', ''),
-(3, 'NO APROBADO', '');
+(1, 'NO APLICA', ''),
+(2, 'APROBADO', ''),
+(3, 'EN CURSO', ''),
+(4, 'NO APROBADO', '');
 
 -- --------------------------------------------------------
 
@@ -562,8 +648,9 @@ CREATE TABLE `situaciones_academicas` (
 --
 
 INSERT INTO `situaciones_academicas` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'MATRICULADO', 'Descripcion por defecto'),
-(2, 'NO MATRICULADO', NULL);
+(1, 'MATRICULADO', ''),
+(2, 'SUSPENDIDO', ''),
+(3, 'CANCELADO', '');
 
 -- --------------------------------------------------------
 
@@ -604,9 +691,8 @@ CREATE TABLE `tipos_documento` (
 --
 
 INSERT INTO `tipos_documento` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'TI:TARJETA DE IDENTIDAD', 'Descripcion por defecto'),
-(2, 'CC:CÃ‰DULA DE CIUDADANÃA', 'Descripcion por defecto'),
-(3, 'NES:NÃšMERO ESTABLECIDO POR LA SECRETARÃA', 'Descripcion por defecto');
+(1, 'TI:TARJETA DE IDENTIDAD', 'MENOR DE EDAD'),
+(2, 'CC:CEDULA DE CIUDADANIA', 'MAYOR DE EDAD');
 
 -- --------------------------------------------------------
 
@@ -664,15 +750,16 @@ CREATE TABLE `universidades` (
   `telefono` varchar(12) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `direccion` varchar(50) DEFAULT NULL COMMENT 'Direccion de la institucion',
-  `ciudad_id` int(11) NOT NULL COMMENT 'Ciudad de la institucion'
+  `ciudad_id` int(11) NOT NULL COMMENT 'Ciudad de la institucion',
+  `alianza_id` int(11) NOT NULL COMMENT 'Alianza'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `universidades`
 --
 
-INSERT INTO `universidades` (`id`, `nombre`, `telefono`, `email`, `direccion`, `ciudad_id`) VALUES
-(1, 'Universidad Catolica de Pereira', '312400', 'ucp@ucp.edu.co', 'Av las americas', 7);
+INSERT INTO `universidades` (`id`, `nombre`, `telefono`, `email`, `direccion`, `ciudad_id`, `alianza_id`) VALUES
+(1, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -684,7 +771,6 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `clave` varchar(100) NOT NULL COMMENT 'Contraseña asignada al usuario',
-  `correo` varchar(100) DEFAULT NULL,
   `fecha_ingreso` date NOT NULL,
   `rol_id` int(11) NOT NULL,
   `estado_id` int(11) NOT NULL COMMENT 'Clave primaria , auto-incrementable of Estados'
@@ -694,9 +780,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `clave`, `correo`, `fecha_ingreso`, `rol_id`, `estado_id`) VALUES
-(1, 'cristhian', '123', 'titiruiza@gmail.com', '2018-04-05', 4, 1),
-(2, 'invitado', '123', 'ninguno@ninguno.com', '2018-04-06', 4, 1);
+INSERT INTO `usuarios` (`id`, `nombre`, `clave`, `fecha_ingreso`, `rol_id`, `estado_id`) VALUES
+(1, 'admin', '123', '2018-04-21', 1, 1),
+(2, 'invitado', '123', '2018-04-21', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -715,9 +801,9 @@ CREATE TABLE `zonas` (
 --
 
 INSERT INTO `zonas` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'URBANA', 'Descripcion por defecto'),
-(2, 'RURAL', 'Descripcion por defecto'),
-(3, 'NO APLICA', 'SIN RELACION');
+(1, 'NO APLICA', 'SIN RELACION'),
+(2, 'URBANA', 'METROPOLI'),
+(3, 'RURAL', 'GRANJAS Y EXTENSIONES DE TIERRA');
 
 --
 -- Índices para tablas volcadas
@@ -834,14 +920,6 @@ ALTER TABLE `instituciones`
   ADD KEY `sector_id` (`sector_id`);
 
 --
--- Indices de la tabla `instituciones_alianzas`
---
-ALTER TABLE `instituciones_alianzas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alianzas_id` (`alianzas_id`),
-  ADD KEY `institucion_id` (`institucion_id`);
-
---
 -- Indices de la tabla `internado`
 --
 ALTER TABLE `internado`
@@ -892,15 +970,14 @@ ALTER TABLE `programas`
   ADD UNIQUE KEY `unq_programa_snies` (`snies`),
   ADD KEY `jornada_id` (`jornada_id`),
   ADD KEY `nivel_academico_id` (`nivel_academico_id`),
-  ADD KEY `institucion_id` (`institucion_id`);
+  ADD KEY `universidad_id` (`universidad_id`);
 
 --
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unq_roles_codigo` (`nombre`),
-  ADD UNIQUE KEY `unq_roles_descripcion` (`descripcion`);
+  ADD UNIQUE KEY `unq_roles_codigo` (`nombre`);
 
 --
 -- Indices de la tabla `roles_opciones`
@@ -922,6 +999,7 @@ ALTER TABLE `sectores`
 ALTER TABLE `sedes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unq_sedes_nombre` (`nombre`),
+  ADD KEY `alianza_id` (`alianza_id`),
   ADD KEY `institucion_id` (`institucion_id`),
   ADD KEY `modelo_id` (`modelo_id`),
   ADD KEY `municipio_id` (`municipio_id`),
@@ -983,6 +1061,7 @@ ALTER TABLE `universidades`
   ADD UNIQUE KEY `unq_institucion_nombre` (`nombre`),
   ADD UNIQUE KEY `unq_institucion_email` (`email`),
   ADD UNIQUE KEY `unq_institucion_direccion` (`direccion`),
+  ADD KEY `alianza_id` (`alianza_id`),
   ADD KEY `ciudad_id` (`ciudad_id`);
 
 --
@@ -991,7 +1070,6 @@ ALTER TABLE `universidades`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unq_usuarios_codigo` (`nombre`),
-  ADD UNIQUE KEY `unq_usuarios_correo` (`correo`),
   ADD KEY `estado_id` (`estado_id`),
   ADD KEY `rol_id` (`rol_id`);
 
@@ -1010,7 +1088,7 @@ ALTER TABLE `zonas`
 -- AUTO_INCREMENT de la tabla `alianzas`
 --
 ALTER TABLE `alianzas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `color_ojos`
 --
@@ -1025,7 +1103,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `discapacidades`
 --
 ALTER TABLE `discapacidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `estados`
 --
@@ -1040,12 +1118,12 @@ ALTER TABLE `estrato`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Incrementable, no key', AUTO_INCREMENT=123;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Incrementable, no key', AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `estudiante_serviciosocial`
 --
 ALTER TABLE `estudiante_serviciosocial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `fuente_recursos`
 --
@@ -1060,7 +1138,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `grados`
 --
 ALTER TABLE `grados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `historial_academico_semestre`
 --
@@ -1070,22 +1148,17 @@ ALTER TABLE `historial_academico_semestre`
 -- AUTO_INCREMENT de la tabla `instituciones`
 --
 ALTER TABLE `instituciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id colegio', AUTO_INCREMENT=62;
---
--- AUTO_INCREMENT de la tabla `instituciones_alianzas`
---
-ALTER TABLE `instituciones_alianzas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id colegio', AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `internado`
 --
 ALTER TABLE `internado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `jornadas`
 --
 ALTER TABLE `jornadas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `matricula`
 --
@@ -1095,7 +1168,7 @@ ALTER TABLE `matricula`
 -- AUTO_INCREMENT de la tabla `modelos`
 --
 ALTER TABLE `modelos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
@@ -1105,7 +1178,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `nivel_academico`
 --
 ALTER TABLE `nivel_academico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `programas`
 --
@@ -1115,12 +1188,12 @@ ALTER TABLE `programas`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `roles_opciones`
 --
 ALTER TABLE `roles_opciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `sectores`
 --
@@ -1130,7 +1203,7 @@ ALTER TABLE `sectores`
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `semestre`
 --
@@ -1140,12 +1213,12 @@ ALTER TABLE `semestre`
 -- AUTO_INCREMENT de la tabla `servicios_sociales`
 --
 ALTER TABLE `servicios_sociales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `situaciones_academicas`
 --
 ALTER TABLE `situaciones_academicas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `situaciones_sociales`
 --
@@ -1155,7 +1228,7 @@ ALTER TABLE `situaciones_sociales`
 -- AUTO_INCREMENT de la tabla `tipos_documento`
 --
 ALTER TABLE `tipos_documento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tipos_poblacion`
 --
@@ -1227,13 +1300,6 @@ ALTER TABLE `instituciones`
   ADD CONSTRAINT `instituciones_ibfk_2` FOREIGN KEY (`sector_id`) REFERENCES `sectores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `instituciones_alianzas`
---
-ALTER TABLE `instituciones_alianzas`
-  ADD CONSTRAINT `instituciones_alianzas_ibfk_1` FOREIGN KEY (`alianzas_id`) REFERENCES `alianzas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `instituciones_alianzas_ibfk_2` FOREIGN KEY (`institucion_id`) REFERENCES `universidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `matricula`
 --
 ALTER TABLE `matricula`
@@ -1252,7 +1318,7 @@ ALTER TABLE `municipios`
 ALTER TABLE `programas`
   ADD CONSTRAINT `programas_ibfk_1` FOREIGN KEY (`jornada_id`) REFERENCES `jornadas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `programas_ibfk_2` FOREIGN KEY (`nivel_academico_id`) REFERENCES `nivel_academico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `programas_ibfk_3` FOREIGN KEY (`institucion_id`) REFERENCES `universidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `programas_ibfk_3` FOREIGN KEY (`universidad_id`) REFERENCES `universidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `roles_opciones`
@@ -1264,16 +1330,18 @@ ALTER TABLE `roles_opciones`
 -- Filtros para la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  ADD CONSTRAINT `sedes_ibfk_1` FOREIGN KEY (`institucion_id`) REFERENCES `instituciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `sedes_ibfk_2` FOREIGN KEY (`modelo_id`) REFERENCES `modelos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `sedes_ibfk_3` FOREIGN KEY (`municipio_id`) REFERENCES `municipios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `sedes_ibfk_4` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `sedes_ibfk_1` FOREIGN KEY (`alianza_id`) REFERENCES `alianzas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `sedes_ibfk_2` FOREIGN KEY (`institucion_id`) REFERENCES `instituciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `sedes_ibfk_3` FOREIGN KEY (`modelo_id`) REFERENCES `modelos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `sedes_ibfk_4` FOREIGN KEY (`municipio_id`) REFERENCES `municipios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `sedes_ibfk_5` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `universidades`
 --
 ALTER TABLE `universidades`
-  ADD CONSTRAINT `universidades_ibfk_1` FOREIGN KEY (`ciudad_id`) REFERENCES `municipios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `universidades_ibfk_1` FOREIGN KEY (`alianza_id`) REFERENCES `alianzas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `universidades_ibfk_2` FOREIGN KEY (`ciudad_id`) REFERENCES `municipios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `usuarios`
