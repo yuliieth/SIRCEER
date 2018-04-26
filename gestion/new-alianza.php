@@ -7,13 +7,11 @@ validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
-$instituciones = getAllSubject('instituciones',$cn);
-$universidades = getAllSubject('universidades',$cn);
 
 $enviado = "";
 if (isset($_POST['submit'])) {
 	#echo "entro post";
-	var_dump($_POST);
+	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
 		"nombre"
@@ -29,17 +27,16 @@ if (isset($_POST['submit'])) {
 		$fecha_ini = $_POST['fecha_ini'];
 		$fecha_final = $_POST['fecha_final'];
 		$cupos = $_POST['cupos'];
-		$institucion = $_POST['institucion'];
-		$universidad = $_POST['universidad'];
 		
 
 $estado_alianza = saveAlianza(
-	$nombre,$fecha_ini,$fecha_final,$cupos,$institucion,$universidad,$cn
+	$nombre,$fecha_ini,$fecha_final,$cupos,$cn
 	);
 
 	if ($estado_alianza) {
 		?> 
 			<script type="text/javascript">
+				alert('Hecho...');
 				window.location="<?php echo URL ?>gestion/buscar-alianza.php?select=a";
 			</script>
 		

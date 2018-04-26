@@ -26,28 +26,6 @@
 			</td>
 		</tr>	
 
-		<tr>
-			<td><label for="institucion">Institución</label></td>
-			<td>
-				<select name="institucion" id="">
-					<option value="#">No aplica</option>
-				<?php foreach ($instituciones as $value): ?>
-					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
-				<?php endforeach ?>
-				</select>
-			</td>
-
-			<td><label for="universidad">Universidad</label></td>
-			<td>
-				<select name="universidad" id="">
-					<option value="#">No aplica</option>
-				<?php foreach ($universidades as $value): ?>
-					<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
-				<?php endforeach ?>
-				</select>
-			</td>
-		</tr>
-
 		
 	</table>	
 

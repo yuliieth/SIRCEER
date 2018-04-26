@@ -423,7 +423,7 @@ function countEntityWithOutWhere($tabla,$cn){
 }
 
 function saveAlianza(
-	$nombre,$fecha_ini,$fecha_final,$cupos,$instituciones,$universidad,$cn
+	$nombre,$fecha_ini,$fecha_final,$cupos,$cn
 )
 {
 
