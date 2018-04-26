@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	// echo a message to say the UPDATE succeeded
    # echo $ps->rowCount() . " records UPDATED successfully";
-	var_dump($ps);
+	#var_dump($ps);
 	if ($ps) {
 		?>
 		
