@@ -7,16 +7,21 @@
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">	
 	<table>
 		<tr>
+			<td><label for="nombre">Nombre</label></td>
 			<td><input type="text" size="30" name="nombre" placeholder="Nombre*" required></td>
+			<td><label for="telefono">Telefono</label></td>
 			<td><input type="text" size="30" name="telefono" placeholder="Telefono"></td>
 		</tr>
 	
 		<tr>
+			<td><label for="email">E-mail</label></td>
 			<td><input type="email" size="30" name="email" placeholder="E-mail*" ></td>
+			<td><label for="direccion">Direccion</label></td>
 			<td><input type="text" size="30" name="direccion" placeholder="Direccion"></td>
 		</tr>
 		
 		<tr>
+			<td><label for="alianza">Alianza</label></td>
 			<td>
 				<select  name="alianza" id="alianza">
 			<?php foreach ($alianzas as $valor): ?>
@@ -24,6 +29,7 @@
 			<?php endforeach ?>
 		</select>
 			</td>
+			<td><label for="municipio">Munucipio</label></td>
 			<td>
 				<select  name="municipio" id="municipio">
 			<?php foreach ($municipios as $valor): ?>
