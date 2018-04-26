@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 
 	$errores = "";
 	$parameters = array(
-		"nombre","codigo_snies","jornada","nivel_academico","universidad","valor_semestre"
+		"nombre","codigo_snies","jornada","nivel_academico","universidad"
 		);
 	#var_dump($parameters);
 	#echo "string";
@@ -44,7 +44,14 @@ $estado_programa = saveProgram(
 	if ($estado_programa) {
 		?>
 			<script type="text/javascript">
+				alert("Hecho...");
 				window.location="<?php echo URL ?>gestion/new-programa.php?select=p";
+			</script>
+		<?php
+	}else{
+		?>
+			<script>
+				alert("Error al registrar el programa...");
 			</script>
 		<?php
 	}

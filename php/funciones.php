@@ -1040,14 +1040,14 @@ function saveProgram
 	
 	
 			//var_dump($conexion);
-		$sql = "INSERT INTO programas(snies, nombre,cantidad_semestre,costo_semestre,nivel_academico_id,institucion_id,jornada_id) VALUES(  :snies,:nombre,:num_semestres,:costo_semestre,:nivel_academico_id,:institucion_id,:jornada_id)";
+		$sql = "INSERT INTO programas(snies, nombre, cantidad_semestre, costo_semestre, nivel_academico_id, universidad_id, jornada_id) VALUES(  :snies,:nombre,:num_semestres,:costo_semestre,:nivel_academico_id,:universidad_id,:jornada_id)";
 		$stp = $cn->prepare($sql);
 		$stp->bindParam( ':snies' , $codigo_snies);
 		$stp->bindParam( ':nombre' , $nombre);
 		$stp->bindParam( ':num_semestres' , $semestres);
 		$stp->bindParam( ':costo_semestre' , $valor_semestre);
 		$stp->bindParam( ':nivel_academico_id' , $nivel_academico);
-		$stp->bindParam( ':institucion_id' , $universidad);
+		$stp->bindParam( ':universidad_id' , $universidad);
 		$stp->bindParam( ':jornada_id' , $jornada);
 		#var_dump($stp);
 		$result= $stp->execute();
