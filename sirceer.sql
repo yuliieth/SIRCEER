@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2018 a las 05:19:24
+-- Tiempo de generación: 26-04-2018 a las 05:12:49
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -183,26 +183,6 @@ CREATE TABLE `estudiantes` (
   `sede_id` int(11) NOT NULL COMMENT 'Sede a la que pertenece el estudiante'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `estudiantes`
---
-
-INSERT INTO `estudiantes` (`id`, `documento`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `telefono_contacto`, `email`, `fecha_nacimiento`, `edad`, `direccion_residencia`, `EPS`, `fecha_inicio`, `fecha_fin`, `observacion`, `tipo_documento_id`, `tipo_sangre_id`, `zona_id`, `tipo_poblaion_id`, `estrato_id`, `genero_id`, `ojos_id`, `situacion_academica_id`, `situacion_social_id`, `grado_id`, `fuenterecurso_id`, `internado_id`, `discapacidad_id`, `municipio_id`, `sede_id`) VALUES
-(1, '1004831861', 'ISABELLA', '', 'ABAD', 'GUEVARA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1),
-(2, '1004682651', 'HILARY', '', 'ABAD', 'RAMIREZ', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 4, 2, 2, 1, 1, 1),
-(3, '1090332332', 'MARIA', 'YAMILE', 'ABREO', 'MONCADA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'ASOCIACION DE CABILD', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
-(4, '1090332069', 'CLAUDIA', 'PATRICIA', 'ACEVEDO', 'ARCE', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
-(5, '1192723769', 'LEIDY', 'LORENA', 'ACEVEDO', 'ARICAPA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
-(6, '1007212530', 'LUZ', 'ENITH', 'ACEVEDO', 'BARTOLO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 3, 2, 2, 1, 1, 5),
-(7, '1057756237', 'JUAN', 'FELIPE', 'ACEVEDO', 'BEDOYA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1),
-(8, '1088236043', 'JUAN', 'MANUEL', 'ACEVEDO', 'BETANCOURT', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2, 1, 1, 1),
-(9, '1086604010', 'YURANI', '', 'ACEVEDO', 'CAMPO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 2, 1, 1, 1, 3, 2, 2, 1, 1, 1),
-(10, '1004994162', 'VERONICA', '', 'ACEVEDO', 'CARMONA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1),
-(11, '1093186132', 'DANIA', 'YISETH', 'ACEVEDO', 'CASTAÑO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'CAFESALUD E.P.S. S.A', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 10),
-(12, '1193540912', 'JUAN', 'DAVID', 'ACEVEDO', 'CORREA', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 1, 1, 7),
-(13, '1089931234', 'HARRISON', '', 'ACEVEDO', 'GIRALDO', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1),
-(14, '1088536009', 'MARIA', 'CAMILA', 'ACEVEDO', 'HERNANDEZ', 'SIN REGISTRO', 'SIN REGISTRO', '1989-01-17 00:00:00', '0', 'SIN REGISTRO', 'SIN REGISTRO', '2018-01-27 00:00:00', NULL, 'SIN REGISTRO', 1, 1, 1, 1, 1, 2, 1, 1, 1, 4, 2, 2, 1, 1, 10);
-
 -- --------------------------------------------------------
 
 --
@@ -214,26 +194,6 @@ CREATE TABLE `estudiante_serviciosocial` (
   `estudiante_serviciosocial_id` int(11) NOT NULL COMMENT 'Incrementable, no key',
   `servicio_social_id` int(11) NOT NULL COMMENT 'Relacion: Servicio_social->estudiante_sercviciosocial'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `estudiante_serviciosocial`
---
-
-INSERT INTO `estudiante_serviciosocial` (`id`, `estudiante_serviciosocial_id`, `servicio_social_id`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 3, 1),
-(4, 4, 1),
-(5, 5, 1),
-(6, 6, 1),
-(7, 7, 1),
-(8, 8, 1),
-(9, 9, 1),
-(10, 10, 1),
-(11, 11, 1),
-(12, 12, 1),
-(13, 13, 1),
-(14, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -335,17 +295,7 @@ CREATE TABLE `instituciones` (
 --
 
 INSERT INTO `instituciones` (`id`, `nombre`, `telefono`, `siglas`, `calendario`, `DANE`, `sector_id`, `municipio_id`) VALUES
-(1, 'NO APLICA', NULL, NULL, ' ', ' ', 1, 1),
-(2, 'COL SANTA MARIA GORETTI', NULL, NULL, 'A', '366682000478', 2, 16),
-(3, 'IE LICEO DE OCCIDENTE', NULL, NULL, 'A', '166383000012', 1, 7),
-(4, 'IE INSTITUTO INTEGRADO IRRA', NULL, NULL, 'A', '266594001087', 1, 13),
-(5, 'IE NUESTRA SEÃƒÂ‘ORA DE LOS DOLORES', NULL, NULL, 'A', '166594000027', 1, 13),
-(6, 'CE BACHILLERATO EN BIENESTAR RURAL -QUINCHIA-', NULL, NULL, 'A', '266594001274', 1, 13),
-(7, 'CE BACHILLERATO EN BIENESTAR RURAL -LA VIRGINIA-', NULL, NULL, 'A', '166400000401', 1, 8),
-(8, 'IE ALTO CAUCA', NULL, NULL, 'A', '266440000070', 1, 9),
-(9, 'IE SAGRADA FAMILIA', NULL, NULL, 'A', '166045000686', 1, 2),
-(10, 'IE SAN PABLO', NULL, NULL, 'A', '166572000015', 1, 12),
-(11, 'IE BERNARDO ARIAS TRUJILLO', NULL, NULL, 'A', '166400000013', 1, 8);
+(1, 'NO APLICA', NULL, NULL, ' ', ' ', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -421,9 +371,7 @@ CREATE TABLE `modelos` (
 INSERT INTO `modelos` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'NO APLICA\r\n', ''),
 (2, 'EDUCACIÓN TRADICIONAL\r\n', ''),
-(3, 'SAT PRESENCIAL\r\n', ''),
-(4, 'EDUCACIÓN TRADICIONAL', 'Descripcion por defecto'),
-(5, 'SAT PRESENCIAL', 'Descripcion por defecto');
+(3, 'SAT PRESENCIAL\r\n', '');
 
 -- --------------------------------------------------------
 
@@ -456,8 +404,7 @@ INSERT INTO `municipios` (`id`, `nombre`, `departamentos_id`) VALUES
 (12, 'PUEBLO RICO', 1),
 (13, 'QUINCHIA', 1),
 (14, 'SANTA ROSA DE CABAL', 1),
-(15, 'SANTUARIO', 1),
-(16, 'NUCLEO 21', 1);
+(15, 'SANTUARIO', 1);
 
 -- --------------------------------------------------------
 
@@ -585,17 +532,7 @@ CREATE TABLE `sedes` (
 --
 
 INSERT INTO `sedes` (`id`, `nombre`, `codigo_dane_sede`, `consecutivo`, `zona_id`, `modelo_id`, `institucion_id`, `municipio_id`, `alianza_id`) VALUES
-(1, 'NO APLICA', ' ', ' ', 1, 1, 1, 1, 1),
-(2, 'COL SANTA MARIA GORETTI', '366682000478', '36668200047801', 2, 4, 2, 16, 1),
-(3, 'SE LICEO DE OCCIDENTE - SEDE PRINCIPAL', '166383000012', '16638300001201', 2, 4, 3, 7, 1),
-(4, 'SE INSTITUTO INTEGRADO IRRA - SEDE PRINCIPAL', '266594001087', '26659400108701', 3, 4, 4, 13, 1),
-(5, 'SE NUESTRA SEÃƒÂ‘ORA DE LOS DOLORES - SEDE PRINCIPAL', '166594000027', '16659400002701', 2, 4, 5, 13, 1),
-(6, 'SE BACHILLERATO EN BIENESTAR RURAL -QUINCHIA- SEDE PRINCIPAL', '266594001274', '26659400127401', 3, 5, 6, 13, 1),
-(7, 'SE BACHILLERATO EN BIENESTAR RURAL -LA VIRGINIA- SEDE PRINCIPAL', '166400000401', '16640000040101', 3, 5, 7, 8, 1),
-(8, 'SE ALTO CAUCA - SEDE PRINCIPAL', '266440000070', '26644000007001', 3, 4, 8, 9, 1),
-(9, 'SE SAGRADA FAMILIA - SEDE PRINCIPAL', '166045000686', '16604500068601', 2, 4, 9, 2, 1),
-(10, 'SE SAN PABLO - SEDE PRINCIPAL', '166572000015', '16657200001501', 2, 4, 10, 12, 1),
-(11, 'SE BERNARDO ARIAS TRUJILLO - SEDE PRINCIPAL', '166400000013', '16640000001301', 2, 4, 11, 8, 1);
+(1, 'NO APLICA', ' ', ' ', 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1118,12 +1055,12 @@ ALTER TABLE `estrato`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Incrementable, no key', AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Incrementable, no key';
 --
 -- AUTO_INCREMENT de la tabla `estudiante_serviciosocial`
 --
 ALTER TABLE `estudiante_serviciosocial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `fuente_recursos`
 --
@@ -1148,7 +1085,7 @@ ALTER TABLE `historial_academico_semestre`
 -- AUTO_INCREMENT de la tabla `instituciones`
 --
 ALTER TABLE `instituciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id colegio', AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id colegio', AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `internado`
 --
@@ -1168,12 +1105,12 @@ ALTER TABLE `matricula`
 -- AUTO_INCREMENT de la tabla `modelos`
 --
 ALTER TABLE `modelos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
 ALTER TABLE `municipios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `nivel_academico`
 --
@@ -1203,7 +1140,7 @@ ALTER TABLE `sectores`
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `semestre`
 --
