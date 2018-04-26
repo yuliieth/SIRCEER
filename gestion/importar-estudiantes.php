@@ -59,7 +59,7 @@ $numRows = $objPHPEXCEL->setActiveSheetIndex(0)->getHighestRow();
 echo $numRows;
 
 
-	for ($i=2; $i <= 15; $i++) { 
+	for ($i=2; $i <= 20; $i++) { 
 
 		//Extrae datos por fila
 
@@ -410,7 +410,12 @@ echo $numRows;
 		var_dump($resultS);
 
 		if ($resultE != false && $resultS != false) {
-			echo "<br>estudiante y sercio : OK<br>";
+					?>
+				<script type="text/javascript">
+					alert('Hecho...');
+					window.location="<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
+				</script>
+					<?php
 		}else{
 			echo "<br>Ocurrio un error registrando el estudiante o su servicio socal<br>";
 			echo "<br><br>";
@@ -419,21 +424,10 @@ echo $numRows;
 
 					}//Fin for
 
-#header("Location:".URL."");
-#https://www.youtube.com/watch?v=4Sw24E5Hi5M
 
-					?>
-				<script type="text/javascript">
-					window.location="<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
-				</script>
-					<?php
+
 
 								} //End file exist
-								?>
-				<script type="text/javascript">
-					window.location="<?php echo URL ?>gestion/importar-estudiantes.php?select=e";
-				</script>
-					<?php
 
 		} //End substr
 		

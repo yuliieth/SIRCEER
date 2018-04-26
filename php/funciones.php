@@ -523,7 +523,7 @@ LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id
 LEFT JOIN sedes ON estudiantes.sede_id=sedes.id
 LEFT JOIN matricula ON estudiantes.id=matricula.estudiante_id
 LEFT JOIN programas ON matricula.programa_id=programas.id
-LEFT JOIN universidades ON programas.institucion_id=universidades.id
+LEFT JOIN universidades ON programas.universidad_id=universidades.id
 LEFT JOIN historial_academico_semestre ON matricula.id=historial_academico_semestre.matricula_id
 LEFT JOIN semestre ON historial_academico_semestre.semestre_id=semestre.id
 LEFT JOIN estudiante_serviciosocial ON estudiantes.id=estudiante_serviciosocial.estudiante_serviciosocial_id
@@ -540,7 +540,7 @@ where estudiantes.documento=$documento ORDER BY historial_academico_semestre.id 
 
 function getProgramaOfEstudiante($documento,$con)
 {
-	$sql = "SELECT programa.nombre AS nombre_programa,programa.snies AS codigo_snies, institucion.nombre AS nombre_institucion FROM programa INNER JOIN evaluacion_semestral ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN institucion ON institucion.id=programa.institucion_id WHERE evaluacion_semestral.estudiante_documento=$documento LIMIT 1";
+	$sql = "SELECT programas.nombre AS nombre_programa,programas.snies AS codigo_snies, institucion.nombre AS nombre_institucion FROM programa INNER JOIN evaluacion_semestral ON programa.snies=evaluacion_semestral.programa_snies INNER JOIN institucion ON institucion.id=programa.universidad_id WHERE evaluacion_semestral.estudiante_documento=$documento LIMIT 1";
 	$ps = $con->prepare($sql);
 	$ps->execute();
 	$result = $ps->fetchAll();

@@ -17,4 +17,4 @@ $matricula = getMatricula($documento,$cn);
 $historial = getHistorialEstudiante($matricula,$cn);
 #var_dump($historial);
 ?>
-<?php require("../view/ver-estudiante.view.php") ?>
+<?php require "../view/ver-estudiante.view.php" ?>

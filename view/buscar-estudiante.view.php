@@ -47,6 +47,9 @@
 			<td class="table_estudiantes_td">
 				<a href="<?php echo URL ?>php/eliminarEstudiante.php?id=<?php echo urlencode($value['doc_estudiante'])?>">Eliminar</a>
 			</td>
+			<td class="table_estudiantes_td">
+				<a href="<?php echo URL ?>gestion/ver-estudiante.php?id=<?php echo urlencode($value['doc_estudiante'])?>">Ver</a>
+			</td>
 		<?php
 	}
 	 ?>
