@@ -36,7 +36,7 @@
 				<td>
 					<select name="universidad" id="">
 						<?php foreach ($universidades as $value): ?>
-					<option value="<?php echo $value['id'] ?>" <?php if ($result['institucion_id'] == $value['id']): ?>
+					<option value="<?php echo $value['id'] ?>" <?php if ($result['universidad_id'] == $value['id']): ?>
 						<?php echo 'selected' ?>
 					<?php endif ?>><?php echo $value['nombre'] ?></option>
 				<?php endforeach ?>

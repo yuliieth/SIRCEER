@@ -19,26 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$jornada = cleanData($_POST['jornada']);
 
 	$sql = 
-	"UPDATE programas SET snies=:snies,nombre=:nombre,cantidad_semestre=:cantidad_semestre,costo_semestre=:costo_semestre,nivel_academico_id=:nivel_academico,institucion_id=:institucion_id,jornada_id=:jornada_id WHERE programas.snies=:snies";
+	"UPDATE programas SET snies=:snies,nombre=:nombre,cantidad_semestre=:cantidad_semestre,costo_semestre=:costo_semestre,nivel_academico_id=:nivel_academico,universidad_id=:universidad_id,jornada_id=:jornada_id WHERE programas.snies=:snies";
 	$ps=$cn->prepare($sql);
 
 	$ps->bindParam(":nombre",$nombre);
 	$ps->bindParam(":cantidad_semestre",$num_semestres);
 	$ps->bindParam(":costo_semestre",$num_creditos);
 	$ps->bindParam(":nivel_academico",$nivel_academico);
-	$ps->bindParam(":institucion_id",$universidad);
+	$ps->bindParam(":universidad_id",$universidad);
 	$ps->bindParam(":jornada_id",$jornada);
 	$ps->bindParam(":snies",$snies);
-	$ps->execute();
+	$ps = $ps->execute();
 	
 
 	// echo a message to say the UPDATE succeeded
    # echo $ps->rowCount() . " records UPDATED successfully";
+	var_dump($ps);
 	if ($ps) {
 		?>
 		
 			<script type="text/javascript">
-				window.location="<?php URL ?>buscar-programa.php?select=p";
+				window.location="<?php echo URL ?>gestion/buscar-programa.php?select=p";
 			</script>
 		
 		<?php
@@ -46,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		?>
 		
 			<script type="text/javascript">
-				window.location="<?php URL ?>gestion/errorIn.php";
+				window.location="<?php echo URL ?>gestion/errorIn.php";
 			</script>
 		
 		<?php
