@@ -76,7 +76,8 @@ echo $numRows;
 		
 		echo "<b>********MUNICIPIO*********<br>";
 		#Relacion:Jerarquia=municipio
-		$jerarquia = utf8_decode($objPHPEXCEL ->getActiveSheet()->getCell('C'.$i)->getCalculatedValue());
+		$jerarquia = utf8_encode($objPHPEXCEL ->getActiveSheet()->getCell('C'.$i)->getCalculatedValue());
+		echo "<br> $jerarquia <br>";
 		$municipio =  validarYregistrar('municipios','nombre','departamentos_id',$jerarquia,$cn);
 		echo "<br> municipio: $municipio <br>";
 

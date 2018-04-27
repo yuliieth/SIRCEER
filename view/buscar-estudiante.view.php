@@ -15,6 +15,7 @@
 	<!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 	<table class="table_estudiantes">
 		<tr>
+			<th class="table_estudiantes_th">Id</th>
 			<th class="table_estudiantes_th">Documento</th>
 			<th class="table_estudiantes_th">Nombres</th>
 			<th class="table_estudiantes_th">Apellidos</th>
@@ -29,6 +30,7 @@
 
 	<?php foreach ($rows as $value) {?>
 		<tr class="table_estudiantes_tr">
+			<td class="table_estudiantes_td"><?php echo $value['id'] ?></td>
 			<td class="table_estudiantes_td"><?php echo $value['doc_estudiante'] ?></td>
 			<td class="table_estudiantes_td"><?php echo $value['primer_nombre'] . " " .$value['segundo_nombre']?></td>
 			<td class="table_estudiantes_td"><?php echo $value['primer_apellido'] . " " .$value['segundo_apellido']?></td>

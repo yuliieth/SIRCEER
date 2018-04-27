@@ -10,7 +10,7 @@ function obtener_estudiante($estudiante_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $estudiante_por_pagina - $estudiante_por_pagina : 0;
 
 
-	$ps = $cn->prepare("SELECT  SQL_CALC_FOUND_ROWS estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id LIMIT $inicio, $estudiante_por_pagina");
+	$ps = $cn->prepare("SELECT  SQL_CALC_FOUND_ROWS estudiantes.id,estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id LIMIT $inicio, $estudiante_por_pagina");
 
 	$ps->execute();
 
@@ -478,7 +478,7 @@ function getAllStudentRelations($documento,$con)
 	#Trae todos los campos de todas las tablas que tienen relacion con el estudiante con documento = ...
 	#Utilizada por ver-estudiante
 	$sql="SELECT 
-estudiantes.documento, estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.email, estudiantes.fecha_nacimiento,estudiantes.edad,estudiantes.direccion_residencia,estudiantes.fecha_inicio,estudiantes.fecha_fin, estudiantes.telefono_contacto,estudiantes.EPS, estudiantes.observacion, 
+estudiantes.id,estudiantes.documento, estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.email, estudiantes.fecha_nacimiento,estudiantes.edad,estudiantes.direccion_residencia,estudiantes.fecha_inicio,estudiantes.fecha_fin, estudiantes.telefono_contacto,estudiantes.EPS, estudiantes.observacion, 
 tipos_documento.nombre AS tipos_documento,
 tipos_sangre.nombre AS sangre,
 zonas.nombre AS zona,

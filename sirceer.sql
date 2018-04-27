@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2018 a las 05:12:49
+-- Tiempo de generación: 27-04-2018 a las 18:28:23
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -158,11 +158,11 @@ CREATE TABLE `estudiantes` (
   `primer_apellido` varchar(15) NOT NULL COMMENT 'Apellido paterno',
   `segundo_apellido` varchar(20) DEFAULT NULL COMMENT 'Apelllido materno',
   `telefono_contacto` varchar(14) DEFAULT NULL COMMENT 'Telefono de contacto',
-  `email` varchar(50) DEFAULT NULL,
-  `fecha_nacimiento` datetime NOT NULL COMMENT 'Fecha de nacimiento',
+  `email` varchar(100) DEFAULT NULL COMMENT 'Correo electronico del estudainte',
+  `fecha_nacimiento` datetime DEFAULT NULL COMMENT 'Fecha de nacimiento',
   `edad` varchar(3) DEFAULT NULL,
   `direccion_residencia` varchar(50) DEFAULT NULL,
-  `EPS` varchar(20) DEFAULT NULL COMMENT 'Entidado de salu del estudiante',
+  `EPS` varchar(100) DEFAULT NULL COMMENT 'Entidad de salud del estudiante',
   `fecha_inicio` datetime NOT NULL,
   `fecha_fin` datetime DEFAULT NULL,
   `observacion` text COMMENT 'OPcional',
