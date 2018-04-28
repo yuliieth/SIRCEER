@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	$palabra = $_POST['busqueda'];
 
-	$sql = "SELECT estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id WHERE
+	$sql = "SELECT estudiantes.id,estudiantes.documento AS doc_estudiante,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido,estudiantes.edad, generos.nombre AS genero, zonas.nombre AS zona,grados.nombre AS grado,municipios.nombre AS municipio, sedes.nombre AS sede FROM estudiantes LEFT JOIN generos ON estudiantes.genero_id=generos.id LEFT JOIN zonas ON estudiantes.zona_id=zonas.id LEFT JOIN grados ON estudiantes.grado_id=grados.id LEFT JOIN municipios ON estudiantes.municipio_id=municipios.id LEFT JOIN sedes ON estudiantes.sede_id=sedes.id WHERE
 		estudiantes.documento LIKE '%".$palabra."%' OR
 		estudiantes.primer_nombre LIKE '%".$palabra."%' OR
 		estudiantes.segundo_nombre LIKE '%".$palabra."%' OR
