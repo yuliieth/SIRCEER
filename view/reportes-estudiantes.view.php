@@ -10,58 +10,12 @@
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 
 <table>
-  <tr>
-    <td> <label for="Edad">Edad:</label></td>
-    <td><input type="number" name="edad" min="0" max="30" ></td>
-    <td><label for="zona">Zona:</label></td>
-    <td><select name="zona" id="zona">
-          <option value="0">No aplica</option>
-          <option value="Urbana">Urbana</option>
-          <option value="Rural">Rural</option>
-        </select></td>
-  
-    <td><label for="tipo_poblacion">Tipo población:</label></td>
-    <td>
-        <select name="tipo_poblacion" id="tipo_poblacion">
-          <option value="0">No aplica</option>
-          <option value="Indigena">Indigena</option>
-          <option value="Afro">Afro</option>
-          <option value="Mestizo">Mestizo</option>
-        </select></td>
-    <td><label for="estrato">Estrato:</label></td>
-    <td><select name="estrato" id="estrato">
-          <option value="0">No aplica</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+  <select name="sede" id="">
+            <option value="#">Sin seleccionar</option>
+          <?php foreach ($sedes as $value): ?>
+          <option value="<?php echo $value['id'] ?>"><?php echo $value['nombre'] ?></option>
+        <?php endforeach ?>
         </select>
-        </td>
-  </tr>
-
-
-  <tr>
-    <td>  <label for="situacion">Situacion:</label></td>
-    <td><select name="situacion" id="situacion">
-          <option value="0">No aplica</option>
-          <option value="Victima conflicto">Victima conflicto</option>
-          <option value="Desplazado">Desplazado</option>
-          <option value="Vulnerable">Vulnerable</option>
-
-        </select>
-</td>
-  
-    <td><label for="ojos">Ojos:</label></td>
-    <td><select name="ojos" id="estrato">
-          <option value="0">No aplica</option>
-          <option value="Negros">Negros</option>
-          <option value="Cafes">Cafes</option>
-          <option value="Verdes">Verdes</option>
-          <option value="Azules">Azules</option>
-        </select>
-</td>
-
   </tr>
         <input type="submit" name="generar" value="Generar">
 </table>

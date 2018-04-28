@@ -52,6 +52,7 @@ $objPHPEXCEL = PHPEXCEL_IOFactory::load('../tmp_excel/back_'.$nombreArchivo);
 $objPHPEXCEL->setActiveSheetIndex(0);
 #obtenemos el numero de filas en la hoja activa
 $numRows = $objPHPEXCEL->setActiveSheetIndex(0)->getHighestRow();
+$registrosDone = 0;
 
 
 
@@ -144,6 +145,9 @@ echo $numRows;
 		$modelo = utf8_decode( $objPHPEXCEL ->getActiveSheet()->getCell('O'.$i)->getCalculatedValue());
 		$modelo = validarYregistrar('modelos','nombre','descripcion',$modelo,$cn);
 		echo "<br>Id modelo: $modelo<br>";
+
+
+
 		#validamos si existe coincidencia para la sede
 		$estado_busqueda = validarRegistro('sedes','nombre',$sede,$cn);
 		echo "<br>Valor estado sede: $estado_busqueda <br>";
@@ -410,21 +414,20 @@ echo $numRows;
 		echo "<br>Resultado SS:<br>";
 		var_dump($resultS);
 
-		if ($resultE != false && $resultS != false) {
-					?>
-				<script type="text/javascript">
-					alert('Hecho...');
-					window.location="<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
-				</script>
-					<?php
-		}else{
+		if ($resultE == false && $resultS == false) {
 			echo "<br>Ocurrio un error registrando el estudiante o su servicio socal<br>";
 			echo "<br><br>";
 		}
-
+$registrosDone++;
 
 					}//Fin for
 
+					?>
+				<script type="text/javascript">
+					alert("Se registraron: <?php echo $registrosDone ?> de <?php echo $numRows ?>");
+					window.location="<?php echo URL ?>gestion/buscar-estudiantes.php?select=e";
+				</script>
+					<?php
 
 
 

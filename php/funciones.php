@@ -1,5 +1,13 @@
 <?php 
 
+function getEstudiantesBySede($value,$cn)
+{
+	$sql = "SELECT estudiantes.id AS id_estudiante,estudiantes.documento,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido, sedes.nombre AS sede  FROM estudiantes,sedes WHERE estudiantes.sede_id = sedes.id AND sedes.id=$value ORDER BY estudiantes.id ASC";
+	$ps = $cn->prepare($sql);
+	$ps->execute();
+	return $ps->fetchAll();
+}
+
 function pagina_actual(){
 	#echo "Pagina actual:";
 	#var_dump($_GET);
@@ -185,7 +193,7 @@ function saveSchool($institucion,$calendario,$dane,$sector,$municipio,$cn){
 function validarYregistrar($nameTable,$nameColumnUno,$nameColumnDos,$valueUno,$cn){
 	$id = 0;
 	$relacion = validarRegistro($nameTable,$nameColumnUno,$valueUno,$cn);
-		if ($relacion) {
+		if ( !empty( $relacion) || $relacion != "") {
 			#Ya hay coincidencia
 			#Obtener id para establecer relacion en BD
 			echo "Encontro coincidencia";
@@ -252,7 +260,7 @@ function validarYregistrar($nameTable,$nameColumnUno,$nameColumnDos,$valueUno,$c
 	$preparado->bindParam(1,$valueUno);
 	$preparado->bindParam(2,$valueDos);
 	$state = $preparado->execute();
-	var_dump($preparado);
+	var_dump($state);
 
 	#con->lastInsertId(); //devuelve el id del ultimo registro insertado en esta conexion
 	if ($state) {
@@ -279,19 +287,20 @@ function validarRegistro($nameTable,$nameColumn,$valor,$cn)
 	echo "<br>Ingresa a validarRegistro:<br>";
 
 	$value = "";
-	$sql = "SELECT * FROM $nameTable WHERE $nameColumn LIKE '".$valor."' LIMIT 1";	
+	$sql = "SELECT * FROM $nameTable WHERE $nameColumn LIKE '%".$valor."%' LIMIT 1";	
 	$stm = $cn->prepare($sql);
 	$stm->execute();
 	$estado = $stm->fetch();
-	#echo "<br>Valor de stm<br>";
-	#var_dump($stm);
+	echo "<br>Valor de stm<br>";
+	var_dump($stm);
 
 	#echo "<br>Valor de estado de la busquedad...<br>";
-	#var_dump($estado);
+	var_dump($estado);
 	#echo "<br>";
 	if ($estado != false) {
 	#	echo "<br> Hay coincidencias <br>";
 			#Sy hay coincidencas
+		echo "<br>hay coincidencas<br>";
 			$row = getSubjectByValue($nameTable,$valor,$nameColumn,$cn);
 			#var_dump($row);
 			#id de la ENTIDAD donde el nombre coincide

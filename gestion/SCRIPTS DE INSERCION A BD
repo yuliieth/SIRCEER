@@ -104,12 +104,9 @@ INSERT INTO `jornadas`( `nombre`, `descripcion`) VALUES ("NOCHE","");
 
 
 /*MODELOS o por importancion*/
-INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("NO APLICA
-","");
-INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("EDUCACIÓN TRADICIONAL
-","");
-INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("SAT PRESENCIAL
-","");
+INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("NO APLICA","");
+INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("EDUCACIÓN TRADICIONAL","");
+INSERT INTO `modelos`(`nombre`, `descripcion`) VALUES ("SAT PRESENCIAL","");
 
 
 /*SECTORES o por importacion*/

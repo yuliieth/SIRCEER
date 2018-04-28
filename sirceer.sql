@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2018 a las 18:28:23
+-- Tiempo de generación: 28-04-2018 a las 00:35:21
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -70,15 +70,16 @@ INSERT INTO `color_ojos` (`id`, `color`) VALUES
 
 CREATE TABLE `departamentos` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(20) NOT NULL COMMENT 'Nombre deldepartamento'
+  `nombre` varchar(20) NOT NULL COMMENT 'Nombre deldepartamento',
+  `descripcion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `departamentos`
 --
 
-INSERT INTO `departamentos` (`id`, `nombre`) VALUES
-(1, 'RISARALDA');
+INSERT INTO `departamentos` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'RISARALDA', NULL);
 
 -- --------------------------------------------------------
 
@@ -369,9 +370,9 @@ CREATE TABLE `modelos` (
 --
 
 INSERT INTO `modelos` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'NO APLICA\r\n', ''),
-(2, 'EDUCACIÓN TRADICIONAL\r\n', ''),
-(3, 'SAT PRESENCIAL\r\n', '');
+(1, 'NO APLICA', ''),
+(2, 'EDUCACIÓN TRADICIONAL', ''),
+(3, 'SAT PRESENCIAL', '');
 
 -- --------------------------------------------------------
 
@@ -620,7 +621,7 @@ INSERT INTO `situaciones_sociales` (`id`, `nombre`, `descripcion`) VALUES
 CREATE TABLE `tipos_documento` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL COMMENT 'Tipo de documento',
-  `descripcion` varchar(255) NOT NULL COMMENT 'Descripcion del tipo de documento'
+  `descripcion` varchar(255) DEFAULT NULL COMMENT 'Descripcion del tipo de documento'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -640,7 +641,7 @@ INSERT INTO `tipos_documento` (`id`, `nombre`, `descripcion`) VALUES
 CREATE TABLE `tipos_poblacion` (
   `id` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `descripcion` varchar(100) NOT NULL
+  `descripcion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -730,7 +731,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `clave`, `fecha_ingreso`, `rol_id`, `est
 CREATE TABLE `zonas` (
   `id` int(11) NOT NULL,
   `nombre` varchar(10) NOT NULL,
-  `descripcion` varchar(50) NOT NULL
+  `descripcion` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

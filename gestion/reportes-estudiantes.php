@@ -6,45 +6,19 @@ require_once '../mpdf60/mpdf.php';
 validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
+$sedes = getAllSubject('sedes',$cn);
 ?>
 
-<?php #Recibe los valores introducidos, como primera medida se deben identificar los valores que no fueron seleccionados como criterios.
-
-#var_dump($_POST);
+<?php 
+#Objectivo mostrar el listado de estudaintes por institucion o se seleccionada
 
 if (isset($_POST['generar'])) {
-	$param = array('edad','zona','tipo_poblacion','estrato','situacion','ojos');
-	$valores  = array();
-	$criterios  = array();
-	#echo "Tamaño criterios:";
-	foreach ($param as $value) {
-		if ($_POST[$value] != '0') {
-			$criterios[]= $value;
-			$valores[]= $_POST[$value];
-		}
-	}
-
+	
+	#var_dump($_POST);
 	#echo count($criterios)."\n";
-	$sql = "SELECT * FROM estudiante WHERE "; 
-	foreach ($criterios as $value) {
-		$sql .= $value . "=:" .$value." ";
-		if (end($criterios) != $value ) {
-			$sql .= "AND ";
-		}
-	}
-	$ps = $cn->prepare($sql);
-	#echo "<br>";
-	#var_dump($ps);
-	$i=0;
-	foreach ($criterios as $value) {
-		$ps->bindParam($value,$valores[$i]);
-		$i++;
-	}
-	$ps->execute();
-
-	$result = $ps->fetchAll();
-	#Teniendo ya los estudiantes que han cumplido con los criterios, podemos generar el reporte
-	require("../view/ver-estudiantes.view.php");
+	$estudiantes_sedes = getEstudiantesBySede($_POST['sede'],$cn);
+	#var_dump($estudiantes_sedes);
+	require "../view/reportes-estudiantes-parameters.view.php";
 	
 
 }
@@ -52,4 +26,4 @@ if (isset($_POST['generar'])) {
  ?>
 
 
-<?php require("../view/reportes-estudiantes.view.php") ?>
+<?php require "../view/reportes-estudiantes.view.php" ?>
