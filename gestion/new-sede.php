@@ -16,7 +16,7 @@ $alianzas = getAllSubject('alianzas',$cn);
 $enviado = "";
 if (isset($_POST['submit'])) {
 	#echo "entro post";
-	var_dump($_POST);
+	#var_dump($_POST);
 	$errores = "";
 	$parameters = array(
 		"nombre","codigo_dane","consecutivo","zona","modelo","institucion","municipio"
