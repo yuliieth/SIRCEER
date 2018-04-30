@@ -1,9 +1,11 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
-<h2>Nueva universidad</h2>
 <div class="wrap-formulario-institucion">
-
+	
+<div class="wra_titulo">
+	<h2>Nueva universidad</h2>
+</div>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">	
 	<table>
 		<tr>
@@ -40,7 +42,9 @@
 		</tr>
 
 		<tr>
+			<td></td>
 			<td><input type="reset" name=""></td>
+			<td></td>
 			<td><input type="submit" name="submit" class="btn btn-primary" value="Guardar"></td>
 		</tr>
 		

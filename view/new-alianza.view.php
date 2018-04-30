@@ -3,7 +3,9 @@
 <!--CONTENIDO-->
 
 <div class="wrap-formulario-new-estudiante">
-	<h1>Nuevo Alianza</h1>
+	<div class="wra_titulo">
+		<h1>Nuevo Alianza</h1>
+	</div>
 		
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
@@ -25,10 +27,21 @@
 			<td><input type="text" size="30" name="cupos" placeholder="cupos" required="required">
 			</td>
 		</tr>	
-
-		
+	
+		<tr>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="reset" name=""></td>
+			<td></td>
+			<td><input type="submit" name="submit" class="btn btn-primary" value="Guardar"></td>
+		</tr>
 	</table>	
-
+	</form>
+	
+</div>
 		<?php //if (!empty($errores)): ?>
 			<!--<div class="input-redit alert error">
 				<?php #echo $errores;?>
@@ -39,14 +52,6 @@
 			</div>-->
 		<?php #endif ?>
 		
-
-		
-		<input type="reset" name="">
-		<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
-
-	</form>
-	
-</div>
 
 <!--END CONTENIDO-->
 <?php require("footer-menu.view.php") ?>					

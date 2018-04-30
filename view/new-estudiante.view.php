@@ -2,11 +2,11 @@
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
 
-<div style=" margin-top: 5px; padding-top: 15px; width: 82%; height: 40px; background-color: rgb(255,255,255);">
-	<h1>AGREGANDO NUEVO ESTUDIANTE</h1>
-</div>
 
 <div class="wrap-formulario-new-estudiante">
+<div class="wra_titulo">
+	<h1>NUEVO ESTUDIANTE</h1>
+</div>
 	
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
@@ -233,6 +233,20 @@
 			<td><label for="observacion:">Observación:</label></td>
 			<td><textarea name="observacion" placeholder="Observaciones para el estudiante..." id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
 		</tr>
+		
+		<tr>
+			<td><label for=""></label></td>
+			<td><input type="hidden"></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><input type="reset" name=""></td>
+			<td></td>
+			<td><input type="submit" name="submit" class="btn btn-primary" value="Guardar"></td>
+		</tr>
+		
+		
 
 	</table>
 		<?php //if (!empty($errores)): ?>
@@ -244,8 +258,6 @@
 				<p>Datos enviados correctamente</p>
 			</div>-->
 		<?php #endif ?>	
-		<input type="reset" name="">
-		<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
 
 	</form>
 	

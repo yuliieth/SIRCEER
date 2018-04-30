@@ -276,7 +276,7 @@ form{
 	overflow: hidden;/*Para el efecto del boton ya que le pusimos loat:left*/
 	border-top: 4px solid rgba(227, 84, 96, 1);
 	box-shadow: 0 2px 3px grey;/*Creamos la sombra: primer parametro:,segundo parametro: grosor abajo,tercer parametro es el grosor*/
-	font-size: 1.9em;
+	font-size: 1.1em;
 }
 
 .table-formulario{
@@ -361,7 +361,18 @@ form{
 	}
 
 
+/***************ESTILOS WRA TITULO***************/
+.wra_titulo{
+	width: 99%;
+margin: 20px 0;
+padding: 27px;
+background-color: rgb(255,255,255);
+overflow: hidden;
+border-top: 4px solid rgba(227, 84, 96, 1);
+box-shadow: 0 2px 3px grey;
+font-size: 1.1em;
 
+}
 
 /*-------estilos input----------*/
 form input[type="date"],
@@ -446,8 +457,8 @@ form input[type="email"]:focus{
 .btn,
 form input[type="submit"]{
 	padding: 15px;
-	background: #ED572A;
-	color: #E1E9FA;
+	background: #009e35;
+	color: #fff;
 	font-size: 1em;
 	border-radius: 2px;
 	border: none;
@@ -456,7 +467,23 @@ form input[type="submit"]{
 }
 
 form input[type="submit"]:hover{
-	background-color: #E64E19;
+	background-color: #2d9e00;
+}
+
+
+form input[type="reset"]{
+	padding: 15px;
+	background: rgb(247,48,6);
+	color: #fff;
+	font-size: 1em;
+	border-radius: 2px;
+	border: none;
+	float: right;
+	cursor: pointer;
+}
+
+form input[type="reset"]:hover{
+	background-color: rgb(227,84,96,1);
 }
 
 /**ESETILOS resultados BUSCAR ALUMNO*/

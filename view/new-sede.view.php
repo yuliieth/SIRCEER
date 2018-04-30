@@ -3,7 +3,9 @@
 <!--CONTENIDO-->
 
 <div class="wrap-formulario-new-estudiante">
-	<h1>Nuevo Sede</h1>
+	<div class="wra_titulo">
+		<h1>Nuevo Sede</h1>
+	</div>
 		
 	<form  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table width="100%">
@@ -71,7 +73,18 @@
 		</select>
 			</td>
 		</tr>
-
+		
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><input type="reset" name=""></td>
+			<td></td>
+			<td><input type="submit" name="submit" class="btn btn-primary" value="Guardar"></td>
+		</tr>
+		
+		
+		
 		
 	</table>	
 
@@ -86,9 +99,6 @@
 		<?php #endif ?>
 		
 
-		
-		<input type="reset" name="">
-		<input type="submit" name="submit" class="btn btn-primary" value="Guardar">
 
 	</form>
 	

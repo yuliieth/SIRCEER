@@ -2,8 +2,10 @@
 <?php require("cabecera-admin.php") ?>
 <?php require("header-menu.view.php") ?>			
 <!--CONTENIDO-->
-<h2> <strong> Nuevo programa </strong></h2>
 <div class="wrap-formulario">
+	<div class="wra_titulo">
+		<h2> <strong> Nuevo programa </strong></h2>
+	</div>
 
 	<!--<table class="table-formulario">-->
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
