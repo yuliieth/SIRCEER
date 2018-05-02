@@ -14,6 +14,20 @@ function pagina_actual(){
 	return isset($_GET['p']) ? (int)$_GET['p'] : 1;
 }
 
+
+
+function obtener_instituciones($instituciones_por_pagina,$cn){
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $instituciones_por_pagina - $instituciones_por_pagina : 0;
+
+
+	$ps = $cn->prepare("SELECT instituciones.id AS id_institucion,instituciones.nombre AS name_institucion,instituciones.telefono, instituciones.siglas,instituciones.calendario,instituciones.DANE,sectores.nombre AS sector,municipios.nombre AS name_municipio  FROM instituciones  LEFT JOIN municipios ON municipios.id=instituciones.municipio_id LEFT JOIN sectores ON sectores.id=instituciones.sector_id;");
+
+	$ps->execute();
+
+
+	return $ps->fetchAll();
+}
+
 function obtener_estudiante($estudiante_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $estudiante_por_pagina - $estudiante_por_pagina : 0;
 

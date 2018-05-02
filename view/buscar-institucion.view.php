@@ -1,23 +1,68 @@
 <?php require("cabecera-admin.php") ?>
-<script src="<?php echo URL; ?>js/buscar-institucion.js"></script>
 <?php require("header-menu.view.php") ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="../js/buscar-institucion.js"></script>
+
 
 <section class="contenedor-busqueda">
+	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 		<input type="text" name="busqueda" id="busqueda" placeholder="Buscar...">
-	</section>
+		<input type="submit" name="buscar" value="Buscar">
+	</form>
+</section>
 
-	<div id="tabla_resultado">
+
+
+<div style="overflow-x:auto; padding: 17px;">
 	<!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
-	</div>
-</div>	
-					
-	</td>
-</tr>
-</table>
+	<table class="table_estudiantes">
+		<tr>
+			<th class="table_estudiantes_th">ID</th>
+			<th class="table_estudiantes_th">NOMBRE</th>
+			<th class="table_estudiantes_th">TELEFONO</th>
+			<th class="table_estudiantes_th">SIGLAS</th>
+			<th class="table_estudiantes_th">CALENDARIO</th>
+			<th class="table_estudiantes_th">DANE</th>
+		</tr>
+
+	<?php foreach ($rows as $value) {?>
+		<tr class="table_estudiantes_tr">
+			<td class="table_estudiantes_td"><?php echo $value['id_institucion'] ?></td>
+			<td class="table_estudiantes_td"><?php echo $value['name_institucion'] ?></td>
+			<td class="table_estudiantes_td"><?php echo $value['telefono'] ?></td>
+			<td class="table_estudiantes_td"><?php echo $value['siglas'] ?></td>
+			<td class="table_estudiantes_td"><?php echo $value['calendario'] ?></td>
+			<td class="table_estudiantes_td"><?php echo $value['DANE'] ?></td>
+			<td class="table_estudiantes_td"><?php echo $value['sector'] ?></td>
+			<td class="table_estudiantes_td"><?php echo $value['name_municipio'] ?></td>
+			<td class="table_estudiantes_td">
+				<a href="<?php echo URL ?>gestion/gestionar-institucion.php?id=<?php echo urlencode($value['id_institucion'])?>&select=e">Gestionar</a>
+			</td>
+			<td class="table_estudiantes_td">
+				<a href="<?php echo URL ?>gestion/editar-institucion.php?id=<?php echo urlencode($value['id_institucion'])?>&select=e">Editar</a>
+			</td>
+			<td class="table_estudiantes_td">
+				<a href="<?php echo URL ?>php/eliminarInstitucion.php?id=<?php echo urlencode($value['id_institucion'])?>">Eliminar</a>
+			</td>
+			<td class="table_estudiantes_td">
+				<a href="<?php echo URL ?>gestion/ver-institucion.php?id=<?php echo urlencode($value['id_institucion'])?>">Ver</a>
+			</td>
+		<?php
+	}
+	 ?>
+
+	</table>
+</div>
+
+
+
+
+
+<div>
+<?php require 'paginacion.view.php' ?>
+</div>
 
 <?php require("footer-menu.view.php") ?>	
 <?php #require 'piedepagina-admin.php' ?>
+
+
 
 

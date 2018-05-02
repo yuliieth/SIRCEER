@@ -10,7 +10,7 @@ $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
 #Declaracion variable global 
-$rows = obtener_estudiante($config_global['estudiantes_por_pagina'],$cn);
+$rows = obtener_estudiante($config_global['result_por_pagina'],$cn);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	#var_dump($_POST);

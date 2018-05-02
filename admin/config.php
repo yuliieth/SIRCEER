@@ -13,7 +13,7 @@
 		);
 
 	$config_global = array(
-		'estudiantes_por_pagina' => 10
+		'result_por_pagina' => 10
 		 );
 
 	#DESCOMENTAR PARA HABILITAR
