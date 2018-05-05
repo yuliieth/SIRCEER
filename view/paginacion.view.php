@@ -1,4 +1,4 @@
-<?php $numero_paginas = numero_paginas($config_global['result_por_pagina'],$cn) ?>
+<?php $numero_paginas = numero_paginas($config_global['result_por_pagina'],$name_bd,$cn) ?>
 <?php $file = $_SERVER['PHP_SELF']; ?>
 <?php $file  =  explode('/', $file) ?>
 <section class="paginacion">

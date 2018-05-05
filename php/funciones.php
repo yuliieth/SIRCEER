@@ -15,6 +15,17 @@ function pagina_actual(){
 }
 
 
+function obtener_programas($programas_por_pagina,$cn){
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $programas_por_pagina - $programas_por_pagina : 0;
+
+
+	$ps = $cn->prepare("SELECT programas.id AS id_programa, programas.snies,programas.nombre AS name_programa, programas.cantidad_semestre AS num_semestres, programas.costo_semestre, nivel_academico.nombre AS nivel_academico,universidades.nombre AS name_universidad,jornadas.nombre AS jornada FROM programas LEFT JOIN nivel_academico ON nivel_academico.id=programas.nivel_academico_id LEFT JOIN universidades ON universidades.id=programas.universidad_id LEFT JOIN  jornadas ON jornadas.id=programas.jornada_id");
+
+	$ps->execute();
+
+
+	return $ps->fetchAll();
+}
 
 function obtener_instituciones($instituciones_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $instituciones_por_pagina - $instituciones_por_pagina : 0;
@@ -41,8 +52,8 @@ function obtener_estudiante($estudiante_por_pagina,$cn){
 }
 
 
-function numero_paginas($estudiantes_por_pagina,$cn){
-	$total_estudiantes = $cn->prepare('SELECT COUNT(*) AS total FROM estudiantes');
+function numero_paginas($estudiantes_por_pagina,$name_bd,$cn){
+	$total_estudiantes = $cn->prepare("SELECT COUNT(*) AS total FROM $name_bd");
 	$total_estudiantes->execute();
 	$total_estudiantes = $total_estudiantes->fetch()['total'];
 	#echo "<br> 1. $total_estudiantes<br>";
