@@ -15,6 +15,19 @@ function pagina_actual(){
 }
 
 
+function obtener_universidades($universidades_por_pagina,$cn){
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $universidades_por_pagina - $universidades_por_pagina : 0;
+
+
+	$ps = $cn->prepare("SELECT universidades.id AS id_universidad,universidades.nombre AS universidad, universidades.telefono,universidades.email,universidades.direccion, municipios.nombre AS municipio,alianzas.nombre AS alianza FROM universidades LEFT JOIN municipios ON municipios.id=universidades.ciudad_id LEFT JOIN alianzas ON alianzas.id=universidades.alianza_id");
+
+	$ps->execute();
+
+
+	return $ps->fetchAll();
+}
+
+
 function obtener_programas($programas_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $programas_por_pagina - $programas_por_pagina : 0;
 

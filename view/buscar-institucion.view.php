@@ -33,9 +33,11 @@
 			<td class="table_estudiantes_td"><?php echo $value['DANE'] ?></td>
 			<td class="table_estudiantes_td"><?php echo $value['sector'] ?></td>
 			<td class="table_estudiantes_td"><?php echo $value['name_municipio'] ?></td>
+			<!--
 			<td class="table_estudiantes_td">
 				<a href="<?php echo URL ?>gestion/gestionar-institucion.php?id=<?php echo urlencode($value['id_institucion'])?>&select=e">Gestionar</a>
 			</td>
+		-->
 			<td class="table_estudiantes_td">
 				<a href="<?php echo URL ?>gestion/editar-institucion.php?id=<?php echo urlencode($value['id_institucion'])?>&select=e">Editar</a>
 			</td>

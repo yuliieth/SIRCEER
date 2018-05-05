@@ -38,7 +38,7 @@ $ps->bindParam(':ciudad_id',$ciudad);
 $ps->bindParam(':id',$id);
 
 $result = $ps->execute();
-var_dump($result);
+#var_dump($result);
 
 if ($result != false) {
 	?>

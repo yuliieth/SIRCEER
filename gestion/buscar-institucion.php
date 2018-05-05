@@ -9,6 +9,9 @@ validateSession();
 $cn = getConexion($bd_config);
 comprobarConexion($cn);
 
+
+#nombre de la BD
+$name_bd = "instituciones";
 #Declaracion variable global 
 $rows = obtener_instituciones($config_global['result_por_pagina'],$cn);
 
