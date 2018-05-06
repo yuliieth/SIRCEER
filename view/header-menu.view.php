@@ -93,7 +93,7 @@
                 <a href="../gestion/estadisticas-programas.php?select=p">Estadisticas</a>
                 </li>
 -->                                <li>
-                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+               <i class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/importar-programas.php?select=u">Importar</a>
                 </li>
                         </ul>
@@ -164,7 +164,7 @@
 
                 -->
                 <li>
-                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/importar-universidades.php?select=u">Importar</a>
                 </li>
 
@@ -207,7 +207,7 @@ case 's':
 
                 -->
                 <li>
-                <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-cloud-upload fa-2x" aria-hidden="true"></i>
                 <a href="../gestion/importar-sedes.php?select=s">Importar</a>
                 </li>
 
