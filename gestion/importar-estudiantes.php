@@ -15,9 +15,9 @@ if (isset($_POST['Importar'])) {
 $nombreArchivo = $_FILES['myfile']['name'];
 
 $destino = '../tmp_excel/back_'.$nombreArchivo;
-echo "<br> Destino: $destino <br> ";
+#echo "<br> Destino: $destino <br> ";
 
-var_dump($_FILES);
+#var_dump($_FILES);
 
 echo "Copying...";
 if (copy($_FILES['myfile']['tmp_name'], $destino)) {
@@ -30,7 +30,8 @@ if (copy($_FILES['myfile']['tmp_name'], $destino)) {
 if (file_exists("../tmp_excel/back_".$nombreArchivo)) {
 
 #Cambiamos parametros de PHP
-//set_time_limit('max_execution_time','1200'); //5 minutos ó  set_time_limit 
+set_time_limit(3600); //5 minutos ó  set_time_limit 
+//init_set('memory_limit','512');
 
 
 
@@ -41,7 +42,7 @@ LINEA: PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 SE COMPRUEBA QUE SOLO FUNCIONA ESTE ENTORNO CON PHPEXCEL VERSION 2017, EL QUE ESTA HABILITADO EN ESTE MOMENTO
 PHP 7.1
 */
-echo "Exists";
+#echo "Exists";
 PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 #indicamos que vamos a cargar el archivo
 #llama a la funcion  PHPEXCEL_IOFactory
@@ -77,7 +78,7 @@ echo $numRows;
 		
 		echo "<b>********MUNICIPIO*********<br>";
 		#Relacion:Jerarquia=municipio
-		$jerarquia = utf8_encode($objPHPEXCEL ->getActiveSheet()->getCell('C'.$i)->getCalculatedValue());
+		$jerarquia = utf8_decode($objPHPEXCEL ->getActiveSheet()->getCell('C'.$i)->getCalculatedValue());
 		echo "<br> $jerarquia <br>";
 		$municipio =  validarYregistrar('municipios','nombre','departamentos_id',$jerarquia,$cn);
 		echo "<br> municipio: $municipio <br>";
@@ -89,7 +90,7 @@ echo $numRows;
 		#2. Registrar(si aplica)
 		#3. Obtener id
 		#Atributo para colegios
-		$institucion =  utf8_encode( $objPHPEXCEL ->getActiveSheet()->getCell('D'.$i)->getCalculatedValue());
+		$institucion =  utf8_decode( $objPHPEXCEL ->getActiveSheet()->getCell('D'.$i)->getCalculatedValue());
 		echo "Institucion: $institucion";
 		#Atributo para colegios
 		$dane = $objPHPEXCEL ->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
@@ -125,7 +126,7 @@ echo $numRows;
 		echo "<br>**********SEDES*************<br>";
 		//******sedes******
 		#Relacion: sedes(nombre, codigo_dane, consecutivo,zona,modelo,colegio)
-		$sede = utf8_encode( $objPHPEXCEL ->getActiveSheet()->getCell('H'.$i)->getCalculatedValue());
+		$sede = utf8_decode( $objPHPEXCEL ->getActiveSheet()->getCell('H'.$i)->getCalculatedValue());
 		echo "<br>Nombre sede: $sede<br>";
 
 		$codigo_dane_sede = $objPHPEXCEL ->getActiveSheet()->getCell('I'.$i)->getCalculatedValue();
@@ -415,7 +416,7 @@ echo $numRows;
 		var_dump($resultS);
 
 		if ($resultE == false && $resultS == false) {
-			echo "<br>Ocurrio un error registrando el estudiante o su servicio socal<br>";
+			echo "<br>Ocurrio un error registrando el estudiante o su servicio social<br>";
 			echo "<br><br>";
 		}
 $registrosDone++;
