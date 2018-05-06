@@ -461,6 +461,17 @@ function getIdmatricula($documento,$cn)
 	return $result;
 }
 
+function contarEntity($tablaUno,$tablaDos,$criterioUno,$criterioDos,$value,$cn){
+	$sql = "SELECT COUNT($tablaUno".".".$criterioUno.") AS total FROM ".$tablaUno." WHERE ".$tablaUno.".".$criterioUno."= (SELECT id FROM ".$tablaDos." WHERE ".$tablaDos.".".$criterioDos." LIKE '".$value."')";
+	#var_dump($sql);
+	$ps=$cn->prepare($sql);
+	$ps->execute();
+	$result=$ps->fetch()['total'];
+	$result = (integer) $result;
+	#var_dump($result);
+	return $result;
+}
+
 function contarGeneroEstudiantes($tablaUno,$tablaDos,$criterioUno,$criterioDos,$value,$cn){
 	$sql = "SELECT COUNT($tablaUno".".".$criterioUno.") AS total FROM ".$tablaUno." WHERE ".$tablaUno.".".$criterioUno."= (SELECT id FROM ".$tablaDos." WHERE ".$tablaDos.".".$criterioDos." LIKE '".$value."')";
 	#var_dump($sql);

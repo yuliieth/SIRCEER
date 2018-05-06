@@ -1,65 +1,269 @@
 <?php require 'cabecera-admin.php';
 require_once '../admin/config.php'; ?>
-
-      <script src="https://code.highcharts.com/highcharts.js"></script>
-      <script src="https://code.highcharts.com/modules/exporting.js"></script>
-
       
       <?php require("header-menu.view.php") ?>
       
 
-      <!--<div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>-->							
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <div class="wraper-charts">
+        
+
+        <div style="width:43%; height:226px; float: left;"  id="sector"></div>
+        <!--<div style="width:43%; height:226px; float: left;"  id="estudiantes_zona"></div>
+        <div style="width:43%; height:226px; float: left;"  id="estudiantes_tipo_poblacion"></div>
+        <div style="width:43%; height:226px; float: left;"  id="estudiantes_victimas_conflicto"></div>
+        <div style="width:43%; height:222px; float: left;"  id="estudiantes_menores_mayores_edad"></div>-->
+    </div>
+
+
+<!--CODIGOS-->
+<script type="text/javascript">
+
+Highcharts.chart('sector', {
+    chart: {
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text:  "SECTORES"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'OFICIAL',
+            y: <?php echo $porceISO ?>
+        }, {
+            name: 'NO OFICIAL',
+            y: <?php echo $porceISNO ?> ,
+            sliced: true,
+            selected: true
+        }]
+    }]
+});
+
+
+/*
+
+Highcharts.chart('estudiantes_zona', {
+    chart: {
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text:  "Estudiantes de zonas urbanas y rurales"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Urbana',
+            y: <?php echo $porceZU ?>
+        }, {
+            name: 'Rural',
+            y: <?php echo $porceZR ?> ,
+            sliced: true,
+            selected: true
+        },{
+            name: 'No registra',
+            y: <?php echo $porceNRZ ?> ,
+            sliced: true,
+            selected: true
+        }
+        ]
+    }]
+});
+
+
+
+
+
+Highcharts.chart('estudiantes_tipo_poblacion', {
+    chart: {
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text:  "Estudiantes por tipo de población"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'No registra',
+            y: <?php echo $porceMes ?>
+        }, {
+            name: 'Indigena',
+            y: <?php echo $porceInd ?> ,
+            sliced: true,
+            selected: true
+        },{
+            name: 'Afro',
+            y: <?php echo $porceAfr ?>
+        }
+        ]
+    }]
+});
+
+
+
+Highcharts.chart('estudiantes_victimas_conflicto', {
+    chart: {
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text:  "Estudiantes por situación"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Desplazado',
+            y: <?php echo $porceDes ?>
+        }, {
+            name: 'Victima del conflicto',
+            y: <?php echo $porceVC ?> ,
+            sliced: true,
+            selected: true
+        },{
+            name: 'No registra',
+            y: <?php echo $porceVu ?>
+        }, {
+            name: 'Extrema pobreza',
+            y: <?php echo $porceEP ?> ,
+            sliced: true,
+            selected: true
+        }
+        ]
+    }]
+});
+
+
+Highcharts.chart('estudiantes_menores_mayores_edad', {
+    chart: {
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
+        plotShadow: true,
+        type: 'pie'
+    },
+    title: {
+        text:  "Estudiantes menores y mayores de edad"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Desplazado',
+            y: <?php echo $porceDes ?>
+        }, {
+            name: 'Victima del conflicto',
+            y: <?php echo $porceVC ?> ,
+            sliced: true,
+            selected: true
+        },{
+            name: 'Vulnerable',
+            y: <?php echo $porceVu ?>
+        }
+        ]
+    }]
+});
+*/
+        </script>   
       <?php require("footer-menu.view.php") ?>
 
-<!--
-      <script type="text/javascript">
 
-        Highcharts.chart('container', {
-            chart: {
-                type: 'area'
-            },
-            title: {
-                text: 'Historico y estimacion estudiantes por genero'
-            },
-            subtitle: {
-                text: 'Source: Gobernacion de Risaralda'
-            },
-            xAxis: {
-                categories: ['2011', '2012', '2013', '2014', '2015', '2016', '2017'],
-                tickmarkPlacement: 'on',
-                title: {
-                    enabled: false
-                }
-            },
-            yAxis: {
-                title: {
-                    text: 'Percent'
-                }
-            },
-            tooltip: {
-                pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} Miles)<br/>',
-                split: true
-            },
-            plotOptions: {
-                area: {
-                    stacking: 'percent',
-                    lineColor: '#ffffff',
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: '#ffffff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Men',
-                data: [502, 635, 809, 947, 1402, 3634, <?php #echo $numMen ?> ]
-            }, {
-                name: 'Women',
-                data: [106, 107, 111, 133, 221, 767, <?php #echo $numWomen ?> ]
-            }]
-        });
-    </script>
-    -->
+      
 
     <?php #require 'piedepagina-admin.php'; ?>
+
