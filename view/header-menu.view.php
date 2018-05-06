@@ -168,7 +168,7 @@
                 <a href="../gestion/importar-universidades.php?select=u">Importar</a>
                 </li>
 
--->                        </ul>
+                    </ul>
                 </td>
                 <td id="pagina">
 
@@ -211,7 +211,7 @@ case 's':
                 <a href="../gestion/importar-sedes.php?select=s">Importar</a>
                 </li>
 
--->                        </ul>
+                    </ul>
                 </td>
                 <td id="pagina">
 
