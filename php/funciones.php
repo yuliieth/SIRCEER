@@ -15,6 +15,31 @@ function pagina_actual(){
 }
 
 
+function obtener_sedes($sedes_por_pagina,$cn){
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $sedes_por_pagina - $sedes_por_pagina : 0;
+
+
+	$ps = $cn->prepare("SELECT sedes.id AS id_sede, sedes.nombre AS sede, sedes.codigo_dane_sede,sedes.consecutivo AS consecutivo_sede, zonas.nombre AS zona, modelos.nombre AS modelo, instituciones.nombre AS institucion, municipios.nombre AS municipio,alianzas.nombre AS alianza  FROM sedes LEFT JOIN zonas ON sedes.zona_id=zonas.id LEFT JOIN modelos ON sedes.modelo_id=modelos.id LEFT JOIN instituciones ON sedes.institucion_id=instituciones.id LEFT JOIN municipios ON sedes.municipio_id=municipios.id LEFT JOIN alianzas ON sedes.alianza_id=alianzas.id;");
+
+	$ps->execute();
+
+
+	return $ps->fetchAll();
+}
+
+
+function obtener_alianzas($alianzas_por_pagina,$cn){
+	$inicio = (pagina_actual() > 1) ? pagina_actual() * $alianzas_por_pagina - $alianzas_por_pagina : 0;
+
+
+	$ps = $cn->prepare("SELECT alianzas.id AS id_alianza,alianzas.nombre, alianzas.fecha_inicio,alianzas.fecha_final,alianzas.cupos FROM alianzas;");
+
+	$ps->execute();
+
+
+	return $ps->fetchAll();
+}
+
 function obtener_universidades($universidades_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $universidades_por_pagina - $universidades_por_pagina : 0;
 
