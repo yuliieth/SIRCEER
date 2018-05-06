@@ -19,7 +19,7 @@ function obtener_sedes($sedes_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $sedes_por_pagina - $sedes_por_pagina : 0;
 
 
-	$ps = $cn->prepare("SELECT sedes.id AS id_sede, sedes.nombre AS sede, sedes.codigo_dane_sede,sedes.consecutivo AS consecutivo_sede, zonas.nombre AS zona, modelos.nombre AS modelo, instituciones.nombre AS institucion, municipios.nombre AS municipio,alianzas.nombre AS alianza  FROM sedes LEFT JOIN zonas ON sedes.zona_id=zonas.id LEFT JOIN modelos ON sedes.modelo_id=modelos.id LEFT JOIN instituciones ON sedes.institucion_id=instituciones.id LEFT JOIN municipios ON sedes.municipio_id=municipios.id LEFT JOIN alianzas ON sedes.alianza_id=alianzas.id;");
+	$ps = $cn->prepare("SELECT sedes.id AS id_sede, sedes.nombre AS sede, sedes.codigo_dane_sede,sedes.consecutivo AS consecutivo_sede, zonas.nombre AS zona, modelos.nombre AS modelo, instituciones.nombre AS institucion, municipios.nombre AS municipio,alianzas.nombre AS alianza  FROM sedes LEFT JOIN zonas ON sedes.zona_id=zonas.id LEFT JOIN modelos ON sedes.modelo_id=modelos.id LEFT JOIN instituciones ON sedes.institucion_id=instituciones.id LEFT JOIN municipios ON sedes.municipio_id=municipios.id LEFT JOIN alianzas ON sedes.alianza_id=alianzas.id LIMIT $inicio, $sedes_por_pagina");
 
 	$ps->execute();
 
@@ -32,7 +32,7 @@ function obtener_alianzas($alianzas_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $alianzas_por_pagina - $alianzas_por_pagina : 0;
 
 
-	$ps = $cn->prepare("SELECT alianzas.id AS id_alianza,alianzas.nombre, alianzas.fecha_inicio,alianzas.fecha_final,alianzas.cupos FROM alianzas;");
+	$ps = $cn->prepare("SELECT alianzas.id AS id_alianza,alianzas.nombre, alianzas.fecha_inicio,alianzas.fecha_final,alianzas.cupos FROM alianzas LIMIT $inicio, $alianzas_por_pagina");
 
 	$ps->execute();
 
@@ -44,7 +44,7 @@ function obtener_universidades($universidades_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $universidades_por_pagina - $universidades_por_pagina : 0;
 
 
-	$ps = $cn->prepare("SELECT universidades.id AS id_universidad,universidades.nombre AS universidad, universidades.telefono,universidades.email,universidades.direccion, municipios.nombre AS municipio,alianzas.nombre AS alianza FROM universidades LEFT JOIN municipios ON municipios.id=universidades.ciudad_id LEFT JOIN alianzas ON alianzas.id=universidades.alianza_id");
+	$ps = $cn->prepare("SELECT universidades.id AS id_universidad,universidades.nombre AS universidad, universidades.telefono,universidades.email,universidades.direccion, municipios.nombre AS municipio,alianzas.nombre AS alianza FROM universidades LEFT JOIN municipios ON municipios.id=universidades.ciudad_id LEFT JOIN alianzas ON alianzas.id=universidades.alianza_id LIMIT $inicio, $universidades_por_pagina");
 
 	$ps->execute();
 
@@ -57,7 +57,7 @@ function obtener_programas($programas_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $programas_por_pagina - $programas_por_pagina : 0;
 
 
-	$ps = $cn->prepare("SELECT programas.id AS id_programa, programas.snies,programas.nombre AS name_programa, programas.cantidad_semestre AS num_semestres, programas.costo_semestre, nivel_academico.nombre AS nivel_academico,universidades.nombre AS name_universidad,jornadas.nombre AS jornada FROM programas LEFT JOIN nivel_academico ON nivel_academico.id=programas.nivel_academico_id LEFT JOIN universidades ON universidades.id=programas.universidad_id LEFT JOIN  jornadas ON jornadas.id=programas.jornada_id");
+	$ps = $cn->prepare("SELECT programas.id AS id_programa, programas.snies,programas.nombre AS name_programa, programas.cantidad_semestre AS num_semestres, programas.costo_semestre, nivel_academico.nombre AS nivel_academico,universidades.nombre AS name_universidad,jornadas.nombre AS jornada FROM programas LEFT JOIN nivel_academico ON nivel_academico.id=programas.nivel_academico_id LEFT JOIN universidades ON universidades.id=programas.universidad_id LEFT JOIN  jornadas ON jornadas.id=programas.jornada_id LIMIT $inicio, $programas_por_pagina");
 
 	$ps->execute();
 
@@ -69,7 +69,7 @@ function obtener_instituciones($instituciones_por_pagina,$cn){
 	$inicio = (pagina_actual() > 1) ? pagina_actual() * $instituciones_por_pagina - $instituciones_por_pagina : 0;
 
 
-	$ps = $cn->prepare("SELECT instituciones.id AS id_institucion,instituciones.nombre AS name_institucion,instituciones.telefono, instituciones.siglas,instituciones.calendario,instituciones.DANE,sectores.nombre AS sector,municipios.nombre AS name_municipio  FROM instituciones  LEFT JOIN municipios ON municipios.id=instituciones.municipio_id LEFT JOIN sectores ON sectores.id=instituciones.sector_id;");
+	$ps = $cn->prepare("SELECT instituciones.id AS id_institucion,instituciones.nombre AS name_institucion,instituciones.telefono, instituciones.siglas,instituciones.calendario,instituciones.DANE,sectores.nombre AS sector,municipios.nombre AS name_municipio  FROM instituciones  LEFT JOIN municipios ON municipios.id=instituciones.municipio_id LEFT JOIN sectores ON sectores.id=instituciones.sector_id LIMIT $inicio, $instituciones_por_pagina");
 
 	$ps->execute();
 
