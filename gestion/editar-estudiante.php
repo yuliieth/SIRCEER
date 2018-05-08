@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$fecha_fin = cleanData($_POST['fecha_fin']);
 	$fuenterecurso_id = cleanData($_POST['fuente_recurso']);
 	$internado_id = cleanData($_POST['internado']);
+	$servicio_social_id = cleanData($_POST['servicio_social']);
 	$grado_id = cleanData($_POST['grado']);
 	$tipo_sangre_id = cleanData($_POST['tipo_sangre']);
 	$sede_id = cleanData($_POST['colegio']);
@@ -122,20 +123,38 @@ echo "<br>*****VARIABLES RECIBIDAS*****<br>";
 */
 	#var_dump($statement);
 	$resultE = $statement->execute();
-	
+
+	#echo "ID: $id";
+	#Recojer el id del estudiante y el nuevo ID del servicio social y hacer update a la tabla estudiante_serviciosocial
+	$sql_update_servicio_social = "UPDATE estudiante_serviciosocial SET servicio_social_id=:servicio_social WHERE estudiante_serviciosocial.estudiante_serviciosocial_id=:estudiante";
 
 
 
+	$ps=$cn->prepare($sql_update_servicio_social);
+	$ps->bindParam(':servicio_social',$servicio_social_id);
+	$ps->bindParam(':estudiante',$id);
+
+	$resultSS = $ps->execute();
+	#var_dump($resultSS);
 	// echo a message to say the UPDATE succeeded
     #echo $ps->rowCount() . " records UPDATED successfully";
-	if ($resultE != false) {
+	if ($resultE != false || $resultSS != false) {
 		?>
             <script type="text/javascript"> 
+            alert('Registro actualizado....');
                 window.location="<?php echo URL ?>gestion/buscar-estudiantes.php?select=e"; 
             </script> 
             <?php //lo abro de nuevo
     $enviado = true;
+	}else{
+		?>
+            <script type="text/javascript"> 
+                alert('Ocurrio un error...');
+            </script> 
+            <?php //lo abro de nuevo
 	}
+
+
 }else
 {
 	#Crear funcion para limpiar id
@@ -165,8 +184,7 @@ echo "<br>*****VARIABLES RECIBIDAS*****<br>";
 	$zonas = getZona($cn);
 	#var_dump($situacion_social);
 	$estudianteServicioSocial = getEstudianteServicioSocial($result['id'],$cn);
-
-	#var_dump($result);
+    #var_dump($estudianteServicioSocial);
 	#var_dump($estudianteServicioSocial);
 
 }
