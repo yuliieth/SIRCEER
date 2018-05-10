@@ -13,7 +13,7 @@
 		);
 
 	$config_global = array(
-		'result_por_pagina' => 10
+		'result_por_pagina' => 11
 		 );
 
 	#DESCOMENTAR PARA HABILITAR

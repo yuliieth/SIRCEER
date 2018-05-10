@@ -8,9 +8,9 @@
 			<script type="text/javascript">
 				alert("Realizar matricula en un programa de formacion superior...");
 			</script>
-			<h2>ESTUDIANTE NO MATRICULADO EN ALGÚN PROGRAMA DE FORMACIÓN SUPERIOR</h2>
+			<h2>EL ESTUDIANTE NO ESTA MATRICULADO</h2>
 				<?php else: ?>
-			<h2>ESTUDIANTE YA SE ENCUENTRA CURSANDO UN PROGRAMA DE FORMACIÓN SUPERIOR</h2>
+			<h2>EL ESTUDIANTE SE ENCUENTRA MATRICULADO</h2>
 		<?php endif ?>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table>
@@ -84,7 +84,9 @@
 			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['id_matricula']; ?>"></td>
 			<td><input type="hidden" name="operacion" value="<?php if ( !empty( $datosEstudiante['id_matricula'])) echo 'update'; else echo 'insert'; ?>"></td>
 			<td></td>
-			<td><input type="submit" name="matricular" value="MATRICULAR"></td>
+			<td><input type="submit" name="matricular" value="MATRICULAR" <?php if ( empty( $datosEstudiante['promedio']) ) {
+				echo "disabled=''";
+			} ?>></td>
 		</tr>
 	
 	</table>
@@ -94,7 +96,7 @@
 <!--******************************************************************-->
 
 	<?php if ( !empty($datosEstudiante['id_matricula']) || ($datosEstudiante['id_matricula'] != NULL)): ?>
-	<h2>Cargar pronmedio semestre culminado</h2>
+	<h2>ASIGNAR PROMEDIO SEMESTRE EN CURSO</h2>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 	<table>
 		<th><p><strong>Estudiante</strong></p></th>
@@ -153,9 +155,13 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><input type="submit" name="cargar" value="Cargar"></td>
+			<td><input type="submit" name="cargar" value="CARGAR"></td>
 		</tr>
-	
+		<?php if (empty( $datosEstudiante['promedio'])): ?>
+		<script type="text/javascript">
+			alert("Debe asignar un promedio al semestre actual");
+		</script>
+		<?php endif ?>
 	</table>
 	</form>
 <?php endif ?>

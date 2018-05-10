@@ -3,7 +3,7 @@
 require_once '../admin/config.php';
 require_once '../php/funciones.php';
 require_once '../php/Conexion.php';
-#validateSession();
+validateSession();
 $cn = getConexion($bd_config);
 #Chart estudiantes by genero
 $totalE=countEntityWithOutWhere("estudiantes",$cn);

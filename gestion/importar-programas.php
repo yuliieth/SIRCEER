@@ -15,9 +15,9 @@ if (isset($_POST['Importar'])) {
 $nombreArchivo = $_FILES['myfile']['name'];
 
 $destino = '../tmp_excel/back_'.$nombreArchivo;
-echo "<br> Destino: $destino <br> ";
+#echo "<br> Destino: $destino <br> ";
 
-var_dump($_FILES);
+#var_dump($_FILES);
 
 #echo "Copying...";
 if (copy($_FILES['myfile']['tmp_name'], $destino)) {

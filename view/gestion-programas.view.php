@@ -6,10 +6,11 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
     <div class="wraper-charts">
-        <div style="width:100%; height:250px;"  id="programas"></div>
+        <div style="width:43%; height:226px; float: left;"  id="programas"></div>
+        <div style="width:43%; height:226px; float: left;"  id="jornadas"></div>
     </div>
     
-    <div></div>
+    
 
 <!--CODIGOS-->
 <script type="text/javascript">
@@ -22,7 +23,7 @@ Highcharts.chart('programas', {
         type: 'pie'
     },
     title: {
-        text:  "Programas registrados a la fecha"
+        text:  "NIVEL ACADEMICO"
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -44,16 +45,66 @@ Highcharts.chart('programas', {
         name: 'Brands',
         colorByPoint: true,
         data: [{
-            name: 'Ingeniería',
-            y: <?php echo $porceI ?>
+            name: 'INGENIERIA',
+            y: <?php echo $porcePI?>
         }, {
-            name: 'Tecnología',
-            y: <?php echo $porceTo ?> ,
+            name: 'TECNOLOGIA',
+            y: <?php echo $porcePTE ?> ,
             sliced: true,
             selected: true
         }, {
-            name: 'Tecnico',
-            y: <?php echo $porceTi ?> ,
+            name: 'TECNICO',
+            y: <?php echo $porcePT ?> ,
+            sliced: true,
+            selected: true
+        }
+        ]
+    }]
+});
+
+
+
+
+Highcharts.chart('jornadas', {
+    chart: {
+        plotBackgroundColor: "#009E35",
+        plotBorderWidth: 0,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text:  "JORNADA"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'MAÑANA',
+            y: <?php echo $porcePJM?>
+        }, {
+            name: 'TARDE',
+            y: <?php echo $porcePJT ?> ,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'NOCHE',
+            y: <?php echo $porcePJN ?> ,
             sliced: true,
             selected: true
         }

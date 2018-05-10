@@ -11,8 +11,8 @@ require_once '../admin/config.php'; ?>
         
 
         <div style="width:43%; height:226px; float: left;"  id="sector"></div>
-        <!--<div style="width:43%; height:226px; float: left;"  id="estudiantes_zona"></div>
-        <div style="width:43%; height:226px; float: left;"  id="estudiantes_tipo_poblacion"></div>
+        <div style="width:43%; height:226px; float: left;"  id="calendario"></div>
+        <!--<div style="width:43%; height:226px; float: left;"  id="estudiantes_tipo_poblacion"></div>
         <div style="width:43%; height:226px; float: left;"  id="estudiantes_victimas_conflicto"></div>
         <div style="width:43%; height:222px; float: left;"  id="estudiantes_menores_mayores_edad"></div>-->
     </div>
@@ -63,9 +63,8 @@ Highcharts.chart('sector', {
 });
 
 
-/*
 
-Highcharts.chart('estudiantes_zona', {
+Highcharts.chart('calendario', {
     chart: {
         plotBackgroundColor: "#009E35",
         plotBorderWidth: 0,
@@ -73,7 +72,7 @@ Highcharts.chart('estudiantes_zona', {
         type: 'pie'
     },
     title: {
-        text:  "Estudiantes de zonas urbanas y rurales"
+        text:  "CALENDARIO"
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -95,16 +94,11 @@ Highcharts.chart('estudiantes_zona', {
         name: 'Brands',
         colorByPoint: true,
         data: [{
-            name: 'Urbana',
-            y: <?php echo $porceZU ?>
+            name: 'A',
+            y: <?php echo $porceIA ?>
         }, {
-            name: 'Rural',
-            y: <?php echo $porceZR ?> ,
-            sliced: true,
-            selected: true
-        },{
-            name: 'No registra',
-            y: <?php echo $porceNRZ ?> ,
+            name: 'B',
+            y: <?php echo $porceIB ?> ,
             sliced: true,
             selected: true
         }
@@ -115,6 +109,7 @@ Highcharts.chart('estudiantes_zona', {
 
 
 
+/*
 
 Highcharts.chart('estudiantes_tipo_poblacion', {
     chart: {

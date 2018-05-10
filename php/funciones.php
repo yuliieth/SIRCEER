@@ -1,5 +1,12 @@
 <?php 
 
+function contarIstitucionesCalendario($calendario,$cn){
+	$sql = "SELECT COUNT(*) AS total FROM instituciones WHERE instituciones.calendario LIKE '%".$calendario."%';";
+	$ps = $cn->prepare($sql);
+	$ps->execute();
+	return $ps->fetch()['total'];
+}
+
 function getEstudiantesBySede($value,$cn)
 {
 	$sql = "SELECT estudiantes.id AS id_estudiante,estudiantes.documento,estudiantes.primer_nombre,estudiantes.segundo_nombre,estudiantes.primer_apellido,estudiantes.segundo_apellido, sedes.nombre AS sede  FROM estudiantes,sedes WHERE estudiantes.sede_id = sedes.id AND sedes.id=$value ORDER BY estudiantes.id ASC";
@@ -220,8 +227,8 @@ function saveSede($nombre,$codigo_dane,$consecutivo,$zona,$modelo,$institucion,$
 /*Para insert intituciones*/
 function saveSchool($institucion,$calendario,$dane,$sector,$municipio,$cn){
 
-	echo "<br>Entro saveSchool<br> Valores variables recibidads: <br>
-	$institucion <br> $calendario <br> $dane <br> $sector <br> municipio: $municipio <br>";
+	#echo "<br>Entro saveSchool<br> Valores variables recibidads: <br>
+	#$institucion <br> $calendario <br> $dane <br> $sector <br> municipio: $municipio <br>";
 
 	/*
 	#Primero debemos conocer el municipio y obtener su id
@@ -239,16 +246,16 @@ function saveSchool($institucion,$calendario,$dane,$sector,$municipio,$cn){
 	$stm->bindParam(':sector_id',$sector);
 	$stm->bindParam(':municipio_id',$municipio);
 
-	echo "Insertando escuela...";
+	#echo "Insertando escuela...";
 	$estado = $stm->execute();
-	echo "<br> Valor de estado: ";
-	var_dump($estado);
+	#echo "<br> Valor de estado: ";
+	#var_dump($estado);
 	if ($estado==false) {
 		echo "<br> Error insertando la escuela<br>";
 	}else{
 
-	echo "<br> Id escuela insertada:<br>";
-	var_dump($cn->lastInsertId());
+	#echo "<br> Id escuela insertada:<br>";
+	#var_dump($cn->lastInsertId());
 	}
 	return $cn->lastInsertId();
 }
