@@ -84,9 +84,9 @@
 			<td><input type="hidden" name="matricula" value="<?php echo $datosEstudiante['id_matricula']; ?>"></td>
 			<td><input type="hidden" name="operacion" value="<?php if ( !empty( $datosEstudiante['id_matricula'])) echo 'update'; else echo 'insert'; ?>"></td>
 			<td></td>
-			<td><input type="submit" name="matricular" value="MATRICULAR" <?php if ( empty( $datosEstudiante['promedio']) ) {
-				echo "disabled=''";
-			} ?>></td>
+			<td><input type="submit" name="matricular" value="MATRICULAR"<?php #if ( empty( $datosEstudiante['promedio']) ) {
+				#echo "disabled=''";
+			#}?>></td>
 		</tr>
 	
 	</table>

@@ -186,6 +186,7 @@ echo "<br>*****VARIABLES RECIBIDAS*****<br>";
 	$estudianteServicioSocial = getEstudianteServicioSocial($result['id'],$cn);
     #var_dump($estudianteServicioSocial);
 	#var_dump($estudianteServicioSocial);
+	#var_dump($result);
 
 }
 ?>

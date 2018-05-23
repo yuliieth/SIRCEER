@@ -253,7 +253,7 @@
 				</select>
 			</td>
 			<td><label for="observacion:">Observación:</label></td>
-			<td><textarea name="observacion" placeholder="Observaciones para el estudiante..." id="observacion" cols="30" rows="3" maxlength="110"></textarea></td>
+			<td><textarea name="observacion" id="observacion" cols="30" rows="3" maxlength="110"  value="<?php echo $result['observacion']; ?>"></textarea></td>
 		</tr>
 
 		<?php if (!empty($errores)): ?>
