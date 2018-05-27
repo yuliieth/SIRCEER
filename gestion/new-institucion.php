@@ -51,10 +51,15 @@ $estado_institucion = saveInstitucion(
 	if ($estado_institucion) {
 		?>
 			<script type="text/javascript">
-				window.location = "<?php echo URL ?>gestion/new-institucion.php?select=i"
+				window.location = "<?php echo URL ?>gestion/buscar-institucion.php?select=i"
 			</script>
 		<?php
-	}
+	}else{ ?>
+		<script type="text/javascript">
+			alert("Ha ocurrido un error...");	
+			window.location = "<?php echo URL ?>gestion/new-institucion.php?select=i"
+		</script>
+	<?php }
 
 }
 
