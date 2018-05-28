@@ -178,7 +178,7 @@ $html = '
                 <td>'. $value['semestre'] .'</td>
                 <td>'. $value['periodo'] .'</td>
                 <td>'. $value['promedio'] .'</td>
-                <td>'. $value['fecha_modificacion'] .'</td>
+                <td>'. $value['fecha_modificaion'] .'</td>
             </tr>
               ';            
               }

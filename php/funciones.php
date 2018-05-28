@@ -396,6 +396,7 @@ function getDepartamentos($cn)
 
 function  getHistorialEstudiante($matricula,$cn)
 {
+	echo "Matricula: $matricula";
 	$sql = "SELECT * FROM historial_academico_semestre,semestre WHERE historial_academico_semestre.matricula_id=$matricula AND historial_academico_semestre.semestre_id=semestre.id";
 	#var_dump($sql);
 	$ps = $cn->prepare($sql);
@@ -410,6 +411,7 @@ function  getHistorialEstudiante($matricula,$cn)
 
 function getMatricula($documento,$cn)
 {
+	echo "Doc: $documento";
 	$sql = "SELECT id AS matricula FROM matricula WHERE matricula.estudiante_id=$documento";
 	#var_dump($sql);
 	$ps = $cn->prepare($sql);

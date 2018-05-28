@@ -12,9 +12,9 @@ $documento = $_GET['id'];
 
 $estudiante = getAllStudentRelations($documento,$cn);
 #var_dump($estudiante);
-$matricula = getMatricula($documento,$cn);
-#echo "$matricula";
-$historial = getHistorialEstudiante($matricula,$cn);
+$matricula = getMatricula($estudiante['id'],$cn);
+
+$historial = getHistorialEstudiante($estudiante['id'],$cn);
 #var_dump($historial);
 ?>
 <?php require "../view/ver-estudiante.view.php" ?>
